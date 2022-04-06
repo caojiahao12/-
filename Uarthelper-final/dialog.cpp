@@ -108,7 +108,7 @@ void Dialog::on_SerialPort_readyRead()
             ui->lineEdit_tem->setText(QString::number(data.midRef(4,4).toInt(&ok)));
             ui->lineEdit_hum->setText(QString::number(data.midRef(8,4).toInt(&ok)));
             ui->lineEdit_lum->setText(QString::number(data.midRef(12,4).toInt(&ok)));
-            if(data.mid(16,1)=='0')
+            if(data.mid(16,1)=='0')//接收灯状态
             {
                 ui->Button_light->setText(QString("OFF"));
             }
@@ -117,13 +117,13 @@ void Dialog::on_SerialPort_readyRead()
                 ui->Button_light->setText(QString("ON"));
             }
 
-            if(data.mid(17,1)=='0')
+            if(data.mid(17,1)=='0')//接收马达状态
                 ui->Button_motor ->setText(QString("OFF"));
             else
                 ui->Button_motor->setText(QString("ON"));
 
             mSerialPort.clear();
-            data.clear();//够16个字符，做一次清除，不影响后续数据接收
+            data.clear();//够18个字符，做一次清除，不影响后续数据接收
         }
     }
 }
@@ -135,7 +135,7 @@ void Dialog::on_SerialPort_readyRead()
 
 void Dialog::on_pushButton_motor_clicked()
 {
-    mSerialPort.write("M");
+    mSerialPort.write("M");//控制马达
     if(ui->Button_motor->text() == "ON")
         ui->Button_motor->setText("OFF");
     else
@@ -144,7 +144,7 @@ void Dialog::on_pushButton_motor_clicked()
 
 void Dialog::on_pushButton_light_clicked()
 {
-    mSerialPort.write("L");
+    mSerialPort.write("L");//控制灯
     if(ui->Button_light->text() == "ON")
         ui->Button_light->setText("OFF");
     else
