@@ -1,0 +1,230 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccF3dSU9.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"link_random.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.link_random,"ax",%progbits
+  18              		.align	1
+  19              		.weak	link_random
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	link_random:
+  27              	.LVL0:
+  28              	.LFB3:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/link_misc/link_random.c"
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccF3dSU9.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** /**
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  *  2019-05-10 10:26  zhangqianfu  The first version  
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  *
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****  */
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** #include <stdint.h>
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** #include <stddef.h>
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** 
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** #include <stdlib.h>
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** #include <string.h>
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** 
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** #include <osal.h>
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** 
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** __attribute__((weak)) int link_random(void* output, int len)
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** {
+  30              		.loc 1 48 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     int i;
+  34              		.loc 1 49 5 view .LVU1
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     int random_number;
+  35              		.loc 1 50 5 view .LVU2
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     char* pbuf;
+  36              		.loc 1 51 5 view .LVU3
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** 
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     if (NULL == output)
+  37              		.loc 1 53 5 view .LVU4
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     int i;
+  38              		.loc 1 48 1 is_stmt 0 view .LVU5
+  39 0000 73B5     		push	{r0, r1, r4, r5, r6, lr}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 24
+  42              		.cfi_offset 4, -16
+  43              		.cfi_offset 5, -12
+  44              		.cfi_offset 6, -8
+  45              		.cfi_offset 14, -4
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     int i;
+  46              		.loc 1 48 1 view .LVU6
+  47 0002 0D46     		mov	r5, r1
+  48              		.loc 1 53 8 view .LVU7
+  49 0004 0646     		mov	r6, r0
+  50 0006 B0B1     		cbz	r0, .L5
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     {
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****         return -1;
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     }
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** 
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     pbuf = output;
+  51              		.loc 1 58 5 is_stmt 1 view .LVU8
+  52              	.LVL1:
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     srand(osal_sys_time());
+  53              		.loc 1 59 5 view .LVU9
+  54              		.loc 1 59 11 is_stmt 0 view .LVU10
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccF3dSU9.s 			page 3
+
+
+  55 0008 FFF7FEFF 		bl	osal_sys_time
+  56              	.LVL2:
+  57              		.loc 1 59 5 view .LVU11
+  58 000c FFF7FEFF 		bl	srand
+  59              	.LVL3:
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** 
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     for (i = 0; i < len; i += sizeof(int))
+  60              		.loc 1 61 5 is_stmt 1 view .LVU12
+  61              		.loc 1 61 12 is_stmt 0 view .LVU13
+  62 0010 0024     		movs	r4, #0
+  63              	.LVL4:
+  64              	.L3:
+  65              		.loc 1 61 17 is_stmt 1 discriminator 1 view .LVU14
+  66              		.loc 1 61 5 is_stmt 0 discriminator 1 view .LVU15
+  67 0012 AC42     		cmp	r4, r5
+  68 0014 02DB     		blt	.L4
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     {
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****         random_number = rand();
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****         (void) memcpy(pbuf + i, &random_number,
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****                sizeof(int) > (unsigned int)(len - i)? (unsigned int)(len - i): sizeof(int));
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     }
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** 
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     return 0;
+  69              		.loc 1 68 12 view .LVU16
+  70 0016 0020     		movs	r0, #0
+  71              	.LVL5:
+  72              	.L1:
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c **** }
+  73              		.loc 1 69 1 view .LVU17
+  74 0018 02B0     		add	sp, sp, #8
+  75              	.LCFI1:
+  76              		.cfi_remember_state
+  77              		.cfi_def_cfa_offset 16
+  78              		@ sp needed
+  79 001a 70BD     		pop	{r4, r5, r6, pc}
+  80              	.LVL6:
+  81              	.L4:
+  82              	.LCFI2:
+  83              		.cfi_restore_state
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****         (void) memcpy(pbuf + i, &random_number,
+  84              		.loc 1 63 9 is_stmt 1 discriminator 3 view .LVU18
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****         (void) memcpy(pbuf + i, &random_number,
+  85              		.loc 1 63 25 is_stmt 0 discriminator 3 view .LVU19
+  86 001c FFF7FEFF 		bl	rand
+  87              	.LVL7:
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     }
+  88              		.loc 1 65 49 discriminator 3 view .LVU20
+  89 0020 2A1B     		subs	r2, r5, r4
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****                sizeof(int) > (unsigned int)(len - i)? (unsigned int)(len - i): sizeof(int));
+  90              		.loc 1 64 16 discriminator 3 view .LVU21
+  91 0022 042A     		cmp	r2, #4
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****         (void) memcpy(pbuf + i, &random_number,
+  92              		.loc 1 63 23 discriminator 3 view .LVU22
+  93 0024 0190     		str	r0, [sp, #4]
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****                sizeof(int) > (unsigned int)(len - i)? (unsigned int)(len - i): sizeof(int));
+  94              		.loc 1 64 9 is_stmt 1 discriminator 3 view .LVU23
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****                sizeof(int) > (unsigned int)(len - i)? (unsigned int)(len - i): sizeof(int));
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccF3dSU9.s 			page 4
+
+
+  95              		.loc 1 64 16 is_stmt 0 discriminator 3 view .LVU24
+  96 0026 28BF     		it	cs
+  97 0028 0422     		movcs	r2, #4
+  98 002a 3019     		adds	r0, r6, r4
+  99 002c 01A9     		add	r1, sp, #4
+ 100 002e FFF7FEFF 		bl	memcpy
+ 101              	.LVL8:
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     {
+ 102              		.loc 1 61 26 is_stmt 1 discriminator 3 view .LVU25
+ 103 0032 0434     		adds	r4, r4, #4
+ 104              	.LVL9:
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     {
+ 105              		.loc 1 61 26 is_stmt 0 discriminator 3 view .LVU26
+ 106 0034 EDE7     		b	.L3
+ 107              	.LVL10:
+ 108              	.L5:
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     }
+ 109              		.loc 1 55 16 view .LVU27
+ 110 0036 4FF0FF30 		mov	r0, #-1
+ 111              	.LVL11:
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_random.c ****     }
+ 112              		.loc 1 55 16 view .LVU28
+ 113 003a EDE7     		b	.L1
+ 114              		.cfi_endproc
+ 115              	.LFE3:
+ 117              		.text
+ 118              	.Letext0:
+ 119              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 120              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 121              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 122              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 123              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 124              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/inc/link_log.h"
+ 125              		.file 8 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccF3dSU9.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 link_random.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccF3dSU9.s:18     .text.link_random:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccF3dSU9.s:26     .text.link_random:00000000 link_random
+
+UNDEFINED SYMBOLS
+osal_sys_time
+srand
+rand
+memcpy

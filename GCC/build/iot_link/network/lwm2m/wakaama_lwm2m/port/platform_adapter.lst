@@ -1,0 +1,341 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"platform_adapter.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.lwm2m_malloc,"ax",%progbits
+  18              		.align	1
+  19              		.global	lwm2m_malloc
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	lwm2m_malloc:
+  27              	.LVL0:
+  28              	.LFB3:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lw
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** /*******************************************************************************
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * Copyright (c) 2013, 2014, 2015 Intel Corporation and others.
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * The Eclipse Public License is available at
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  * Contributors:
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****  *******************************************************************************/
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** #include <stdint.h>
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** #include <stddef.h>
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** #include <string.h>
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** #include <osal.h>
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** #ifndef LWM2M_MEMORY_TRACE
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** void *lwm2m_malloc(size_t s)
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** {
+  30              		.loc 1 62 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****     return osal_malloc(s);
+  35              		.loc 1 63 5 view .LVU1
+  36              		.loc 1 63 12 is_stmt 0 view .LVU2
+  37 0000 FFF7FEBF 		b	osal_malloc
+  38              	.LVL1:
+  39              		.loc 1 63 12 view .LVU3
+  40              		.cfi_endproc
+  41              	.LFE3:
+  43              		.section	.text.lwm2m_free,"ax",%progbits
+  44              		.align	1
+  45              		.global	lwm2m_free
+  46              		.syntax unified
+  47              		.thumb
+  48              		.thumb_func
+  49              		.fpu fpv4-sp-d16
+  51              	lwm2m_free:
+  52              	.LVL2:
+  53              	.LFB4:
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s 			page 3
+
+
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** void lwm2m_free(void *p)
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** {
+  54              		.loc 1 67 1 is_stmt 1 view -0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58              		@ link register save eliminated.
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****     osal_free(p);
+  59              		.loc 1 68 5 view .LVU5
+  60 0000 FFF7FEBF 		b	osal_free
+  61              	.LVL3:
+  62              		.loc 1 68 5 is_stmt 0 view .LVU6
+  63              		.cfi_endproc
+  64              	.LFE4:
+  66              		.section	.text.lwm2m_strdup,"ax",%progbits
+  67              		.align	1
+  68              		.global	lwm2m_strdup
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  72              		.fpu fpv4-sp-d16
+  74              	lwm2m_strdup:
+  75              	.LVL4:
+  76              	.LFB5:
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** }
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** char *lwm2m_strdup(const char *str)
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** {
+  77              		.loc 1 72 1 is_stmt 1 view -0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****     return osal_strdup(str);
+  82              		.loc 1 73 5 view .LVU8
+  83              		.loc 1 73 12 is_stmt 0 view .LVU9
+  84 0000 FFF7FEBF 		b	osal_strdup
+  85              	.LVL5:
+  86              		.loc 1 73 12 view .LVU10
+  87              		.cfi_endproc
+  88              	.LFE5:
+  90              		.section	.text.lwm2m_strncmp,"ax",%progbits
+  91              		.align	1
+  92              		.global	lwm2m_strncmp
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  96              		.fpu fpv4-sp-d16
+  98              	lwm2m_strncmp:
+  99              	.LVL6:
+ 100              	.LFB6:
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** }
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** #endif
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** int lwm2m_strncmp(const char *s1,
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s 			page 4
+
+
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****                   const char *s2,
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****                   size_t n)
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** {
+ 101              		.loc 1 81 1 is_stmt 1 view -0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              		@ link register save eliminated.
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****     return strncmp(s1, s2, n);
+ 106              		.loc 1 82 5 view .LVU12
+ 107              		.loc 1 82 12 is_stmt 0 view .LVU13
+ 108 0000 FFF7FEBF 		b	strncmp
+ 109              	.LVL7:
+ 110              		.loc 1 82 12 view .LVU14
+ 111              		.cfi_endproc
+ 112              	.LFE6:
+ 114              		.global	__aeabi_uldivmod
+ 115              		.section	.text.lwm2m_gettime,"ax",%progbits
+ 116              		.align	1
+ 117              		.global	lwm2m_gettime
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 121              		.fpu fpv4-sp-d16
+ 123              	lwm2m_gettime:
+ 124              	.LFB7:
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** }
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** unsigned int lwm2m_gettime(void)
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** {
+ 125              		.loc 1 86 1 is_stmt 1 view -0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****     return (uint32_t)(osal_sys_time() / 1000);
+ 129              		.loc 1 87 5 view .LVU16
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****     return (uint32_t)(osal_sys_time() / 1000);
+ 130              		.loc 1 86 1 is_stmt 0 view .LVU17
+ 131 0000 08B5     		push	{r3, lr}
+ 132              	.LCFI0:
+ 133              		.cfi_def_cfa_offset 8
+ 134              		.cfi_offset 3, -8
+ 135              		.cfi_offset 14, -4
+ 136              		.loc 1 87 23 view .LVU18
+ 137 0002 FFF7FEFF 		bl	osal_sys_time
+ 138              	.LVL8:
+ 139              		.loc 1 87 39 view .LVU19
+ 140 0006 4FF47A72 		mov	r2, #1000
+ 141 000a 0023     		movs	r3, #0
+ 142 000c FFF7FEFF 		bl	__aeabi_uldivmod
+ 143              	.LVL9:
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** }
+ 144              		.loc 1 88 1 view .LVU20
+ 145 0010 08BD     		pop	{r3, pc}
+ 146              		.cfi_endproc
+ 147              	.LFE7:
+ 149              		.section	.text.lwm2m_rand,"ax",%progbits
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s 			page 5
+
+
+ 150              		.align	1
+ 151              		.global	lwm2m_rand
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.fpu fpv4-sp-d16
+ 157              	lwm2m_rand:
+ 158              	.LVL10:
+ 159              	.LFB8:
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** int lwm2m_rand(void *output, size_t len)
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** {
+ 160              		.loc 1 91 1 is_stmt 1 view -0
+ 161              		.cfi_startproc
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              		@ link register save eliminated.
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****     return link_random(output, len);
+ 165              		.loc 1 92 5 view .LVU22
+ 166              		.loc 1 92 12 is_stmt 0 view .LVU23
+ 167 0000 FFF7FEBF 		b	link_random
+ 168              	.LVL11:
+ 169              		.loc 1 92 12 view .LVU24
+ 170              		.cfi_endproc
+ 171              	.LFE8:
+ 173              		.section	.text.lwm2m_delay,"ax",%progbits
+ 174              		.align	1
+ 175              		.global	lwm2m_delay
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 179              		.fpu fpv4-sp-d16
+ 181              	lwm2m_delay:
+ 182              	.LVL12:
+ 183              	.LFB9:
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** }
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** 
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** void lwm2m_delay(uint32_t second)
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c **** {
+ 184              		.loc 1 96 1 is_stmt 1 view -0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 0
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188              		@ link register save eliminated.
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\platform_adapter.c ****     osal_task_sleep(second * 1000);
+ 189              		.loc 1 97 5 view .LVU26
+ 190 0000 4FF47A73 		mov	r3, #1000
+ 191 0004 5843     		muls	r0, r3, r0
+ 192              	.LVL13:
+ 193              		.loc 1 97 5 is_stmt 0 view .LVU27
+ 194 0006 FFF7FEBF 		b	osal_task_sleep
+ 195              	.LVL14:
+ 196              		.cfi_endproc
+ 197              	.LFE9:
+ 199              		.text
+ 200              	.Letext0:
+ 201              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s 			page 6
+
+
+ 202              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 203              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 204              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 205              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 206              		.file 7 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 207              		.file 8 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal.h"
+ 208              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/link_misc/link_misc.h"
+ 209              		.file 10 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/inc/link_log.h"
+ 210              		.file 11 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 platform_adapter.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:18     .text.lwm2m_malloc:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:26     .text.lwm2m_malloc:00000000 lwm2m_malloc
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:44     .text.lwm2m_free:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:51     .text.lwm2m_free:00000000 lwm2m_free
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:67     .text.lwm2m_strdup:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:74     .text.lwm2m_strdup:00000000 lwm2m_strdup
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:91     .text.lwm2m_strncmp:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:98     .text.lwm2m_strncmp:00000000 lwm2m_strncmp
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:116    .text.lwm2m_gettime:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:123    .text.lwm2m_gettime:00000000 lwm2m_gettime
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:150    .text.lwm2m_rand:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:157    .text.lwm2m_rand:00000000 lwm2m_rand
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:174    .text.lwm2m_delay:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccIEvQlg.s:181    .text.lwm2m_delay:00000000 lwm2m_delay
+
+UNDEFINED SYMBOLS
+osal_malloc
+osal_free
+osal_strdup
+strncmp
+__aeabi_uldivmod
+osal_sys_time
+link_random
+osal_task_sleep

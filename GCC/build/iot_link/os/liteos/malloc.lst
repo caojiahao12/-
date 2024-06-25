@@ -1,0 +1,349 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"malloc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.free,"ax",%progbits
+  18              		.align	1
+  19              		.weak	free
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	free:
+  27              	.LVL0:
+  28              	.LFB3:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/malloc.c"
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** /************************************************************************
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  *
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * Redistribution and use in source and binary forms, with or without
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * modification, are permitted provided that the following conditions
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * are met:
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * 1. Redistributions of source code must retain the above copyright
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  *    notice,this list of conditions and the following disclaimer.
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * 2. Redistributions in binary form must reproduce the above copyright
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  *    notice,this list of conditions and the following disclaimer in the
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  *    documentation and/or other materials provided with the distribution.
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * 3. Neither the name of the copyright holder nor the names of its
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  *    contributors may be used to endorse or promote products derived from
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  *    this software without specific prior written permission.
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  *
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * POSSIBILITY OF SUCH DAMAGE.
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  ************************************************************************/
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** /************************************************************************
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * Notice of Export Control Law
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * ===============================================
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations,
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * which might include those applicable to Huawei LiteOS of U.S. and the country
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * in which you are located.
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  * compliance with such applicable export control laws and regulations.
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****  ************************************************************************/
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** #include <stdint.h>
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** #include <stddef.h>
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** #include <stdlib.h>
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** #include <osal.h>
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** #if defined(LOS_LIBC_MALLOC_ALIGN) && !defined(LOS_LIBC_MALLOC_ALIGN_SIZE)
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** #error "macro LOS_LIBC_MALLOC_ALIGN_SIZE undefined"
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** #endif
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** /*****************************************************************************
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Function         :      free
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Description      :      Deallocates the memory previously allocated by a call to calloc, malloc, or
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 realloc. The argument ptr points to the space that was previously allocated.
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 If ptr points to a memory block that was not allocated with calloc, malloc,
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 or realloc, or is a space that has been deallocated, then the result is
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 undefined.
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Input            :      [1] void *ptr, pointed to the memory need to free.
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Output           :      nothing.
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Return           :      No value is returned.
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** *****************************************************************************/
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** __attribute__((weak)) void free(void *ptr)
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** {
+  30              		.loc 1 61 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****     osal_free(ptr);
+  35              		.loc 1 62 5 view .LVU1
+  36 0000 FFF7FEBF 		b	osal_free
+  37              	.LVL1:
+  38              		.loc 1 62 5 is_stmt 0 view .LVU2
+  39              		.cfi_endproc
+  40              	.LFE3:
+  42              		.section	.text.malloc,"ax",%progbits
+  43              		.align	1
+  44              		.weak	malloc
+  45              		.syntax unified
+  46              		.thumb
+  47              		.thumb_func
+  48              		.fpu fpv4-sp-d16
+  50              	malloc:
+  51              	.LVL2:
+  52              	.LFB4:
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****     return;
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** }
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s 			page 3
+
+
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** /*****************************************************************************
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Function         :      malloc
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Description      :      Allocates the requested memory and returns a pointer to it. The requested
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 size is size bytes. The value of the space is indeterminate.
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Input            :      [1] size_t size, spcified the size need to allocate.
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Output           :      nothing.
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Return           :      On success a pointer to the requested space is returned.
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 On failure a null pointer is returned.
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** *****************************************************************************/
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** __attribute__((weak)) void *malloc(size_t size) /*lint !e31 !e10*/
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** {
+  53              		.loc 1 77 1 is_stmt 1 view -0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		@ link register save eliminated.
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****     return osal_malloc(size);
+  58              		.loc 1 78 5 view .LVU4
+  59              		.loc 1 78 12 is_stmt 0 view .LVU5
+  60 0000 FFF7FEBF 		b	osal_malloc
+  61              	.LVL3:
+  62              		.loc 1 78 12 view .LVU6
+  63              		.cfi_endproc
+  64              	.LFE4:
+  66              		.section	.text.zalloc,"ax",%progbits
+  67              		.align	1
+  68              		.weak	zalloc
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  72              		.fpu fpv4-sp-d16
+  74              	zalloc:
+  75              	.LVL4:
+  76              	.LFB5:
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** }
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** __attribute__((weak)) void *zalloc(size_t size) /*lint !e10*/
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** {
+  77              		.loc 1 84 1 is_stmt 1 view -0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****     return osal_zalloc(size);
+  82              		.loc 1 85 5 view .LVU8
+  83              		.loc 1 85 12 is_stmt 0 view .LVU9
+  84 0000 FFF7FEBF 		b	osal_zalloc
+  85              	.LVL5:
+  86              		.loc 1 85 12 view .LVU10
+  87              		.cfi_endproc
+  88              	.LFE5:
+  90              		.section	.text.calloc,"ax",%progbits
+  91              		.align	1
+  92              		.weak	calloc
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s 			page 4
+
+
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  96              		.fpu fpv4-sp-d16
+  98              	calloc:
+  99              	.LVL6:
+ 100              	.LFB6:
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** }
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** /*****************************************************************************
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Function         :      calloc
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Description      :    Allocates the requested memory and returns a pointer to it. The requested
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 size is nitems each size bytes long (total memory requested is nitems*size).
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 The space is initialized to all zero bits.
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Input            :      [1] size_t nitems,
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 [2] size_t size,
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Output           :      nothing.
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Return           :      On success a pointer to the requested space is returned.
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 On failure a null pointer is returned.
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** *****************************************************************************/
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** __attribute__((weak)) void *calloc(size_t nitems, size_t size) /*lint !e578*/
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** {
+ 101              		.loc 1 102 1 is_stmt 1 view -0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              		@ link register save eliminated.
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****     return osal_calloc(nitems,size);
+ 106              		.loc 1 103 5 view .LVU12
+ 107              		.loc 1 103 12 is_stmt 0 view .LVU13
+ 108 0000 FFF7FEBF 		b	osal_calloc
+ 109              	.LVL7:
+ 110              		.loc 1 103 12 view .LVU14
+ 111              		.cfi_endproc
+ 112              	.LFE6:
+ 114              		.section	.text.memalign,"ax",%progbits
+ 115              		.align	1
+ 116              		.weak	memalign
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 120              		.fpu fpv4-sp-d16
+ 122              	memalign:
+ 123              	.LVL8:
+ 124              	.LFB7:
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** }
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** /*****************************************************************************
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Function         :      memalign
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Description      :      allocates a block of size bytes whose address is a multiple of boundary.
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                The boundary must be a power of two!
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Input            :      [1] size_t size, spcified the size need to allocate.
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                [2] size_t boundary, the returned memory address will be a multiple of boundary.
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                This argument must be a power of two. This property is not checked by
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s 			page 5
+
+
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                memalign, so misuse may result in random runtime errors.
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Output           :      nothing.
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Return           :      On success a pointer to the requested space is returned.
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                On failure a null pointer is returned.
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** *****************************************************************************/
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** __attribute__((weak)) void *memalign (size_t boundary, size_t size)  /*lint !e18 !e578*/
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** {
+ 125              		.loc 1 120 1 is_stmt 1 view -0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              		@ link register save eliminated.
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****     return osal_malloc(size);
+ 130              		.loc 1 121 5 view .LVU16
+ 131              		.loc 1 121 12 is_stmt 0 view .LVU17
+ 132 0000 0846     		mov	r0, r1
+ 133              	.LVL9:
+ 134              		.loc 1 121 12 view .LVU18
+ 135 0002 FFF7FEBF 		b	osal_malloc
+ 136              	.LVL10:
+ 137              		.loc 1 121 12 view .LVU19
+ 138              		.cfi_endproc
+ 139              	.LFE7:
+ 141              		.section	.text.realloc,"ax",%progbits
+ 142              		.align	1
+ 143              		.global	realloc
+ 144              		.syntax unified
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.fpu fpv4-sp-d16
+ 149              	realloc:
+ 150              	.LVL11:
+ 151              	.LFB8:
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** }
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** 
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** /*****************************************************************************
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Function         :      realloc
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Description      :      Attempts to resize the memory block pointed to by ptr that was previously
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 allocated with a call to malloc or calloc. The contents pointed to by ptr are
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 unchanged. If the value of size is greater than the previous size of the
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 block, then the additional bytes have an undeterminate value. If the value
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 of size is less than the previous size of the block, then the difference of
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 bytes at the end of the block are freed. If ptr is null, then it behaves like
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 malloc. If ptr points to a memory block that was not allocated with calloc
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 or malloc, or is a space that has been deallocated, then the result is
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 undefined. If the new space cannot be allocated, then the contents pointed
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 to by ptr are unchanged. If size is zero, then the memory block is completely
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 freed.
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Input            :      [1] void *ptr, pointed to the memory which need to remalloc.
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 [2] size_t size, specified the size to remalloc.
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Output           :      nothing.
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** Return           :      On success a pointer to the memory block is returned (which may be in a
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                 different location as before).
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****                On failure or if size is zero, a null pointer is returned.
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** *****************************************************************************/
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** void *realloc(void *ptr, size_t size)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s 			page 6
+
+
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c **** {
+ 152              		.loc 1 146 1 is_stmt 1 view -0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156              		@ link register save eliminated.
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\malloc.c ****     return osal_realloc(ptr,size);
+ 157              		.loc 1 147 5 view .LVU21
+ 158              		.loc 1 147 12 is_stmt 0 view .LVU22
+ 159 0000 FFF7FEBF 		b	osal_realloc
+ 160              	.LVL12:
+ 161              		.loc 1 147 12 view .LVU23
+ 162              		.cfi_endproc
+ 163              	.LFE8:
+ 165              		.text
+ 166              	.Letext0:
+ 167              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 168              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 169              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 170              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 171              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 172              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal.h"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 malloc.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:18     .text.free:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:26     .text.free:00000000 free
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:43     .text.malloc:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:50     .text.malloc:00000000 malloc
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:67     .text.zalloc:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:74     .text.zalloc:00000000 zalloc
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:91     .text.calloc:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:98     .text.calloc:00000000 calloc
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:115    .text.memalign:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:122    .text.memalign:00000000 memalign
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:142    .text.realloc:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccY8JlXh.s:149    .text.realloc:00000000 realloc
+
+UNDEFINED SYMBOLS
+osal_free
+osal_malloc
+osal_zalloc
+osal_calloc
+osal_realloc

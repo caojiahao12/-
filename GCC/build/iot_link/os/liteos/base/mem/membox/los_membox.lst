@@ -1,0 +1,901 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_membox.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LOS_MemboxInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	LOS_MemboxInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	LOS_MemboxInit:
+  27              	.LVL0:
+  28              	.LFB288:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membo
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #include "los_typedef.h"
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #include "los_hwi.h"
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #include "los_membox.ph"
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #include "los_memcheck.ph"
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #endif
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #ifdef __cplusplus
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #if __cplusplus
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** extern "C" {
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #endif /* __cplusplus */
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #endif /* __cplusplus */
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /**
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * The address of the static memory pool must be aligned to the boundary of 4.
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  */
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_BOXMEM_BASE_ALIGN  4
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define IS_BOXMEM_ALIGNED(value, alignSize)  (0 == (((UINT32)(value)) & ((UINT32)(alignSize - 1))))
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /**
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * Get the address of the next memory node in the static memory pool.
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  */
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_MEMBOX_NODE_NEXT(addr, uwBlkSize)  (LOS_MEMBOX_NODE *)((UINT8 *)(addr) + (uwBlkSize))
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /**
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * The magic word of the memory box.
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  */
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #ifdef LOS_MEMBOX_MAGIC_CHECK
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_MEMBOX_MAGIC              0xa55a5aa5
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_MEMBOX_SET_MAGIC(addr)    *((UINT32 *)(addr)) = OS_MEMBOX_MAGIC
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_MEMBOX_CHECK_MAGIC(addr)  ((*((UINT32 *)(addr)) == OS_MEMBOX_MAGIC) ? LOS_OK: LOS_NOK)
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #else
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_MEMBOX_SET_MAGIC(addr)
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_MEMBOX_CHECK_MAGIC(addr)  LOS_OK
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #endif
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /**
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  * Get the address of memory block according to the magic word information.
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  */
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_MEMBOX_USER_ADDR(addr)  ((VOID *)((UINT8 *)(addr) + LOS_MEMBOX_MAGIC_SIZE))
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #define OS_MEMBOX_NODE_ADDR(addr)  ((LOS_MEMBOX_NODE *)((UINT8 *)(addr) - LOS_MEMBOX_MAGIC_SIZE))
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /*****************************************************************************
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Function : osCheckBoxMem
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Description : Check whether the memory block is valid
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Input       : pstBoxInfo  --- Pointer to the memory pool
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****                pstNode     --- Pointer to the memory block that will be checked
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Output      : None
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Return      : LOS_OK - OK, LOS_NOK - Error
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** *****************************************************************************/
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 3
+
+
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT static INLINE UINT32 osCheckBoxMem(const LOS_MEMBOX_INFO *pstBoxInfo, const VOID *
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** {
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     UINT32 uwOffSet;
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (pstBoxInfo->uwBlkSize == 0)
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return LOS_NOK;
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     uwOffSet = (UINT32)pstNode - (UINT32)(pstBoxInfo + 1);
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if ((uwOffSet % pstBoxInfo->uwBlkSize) != 0)
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if ((uwOffSet / pstBoxInfo->uwBlkSize) >= pstBoxInfo->uwBlkNum)
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     return OS_MEMBOX_CHECK_MAGIC(pstNode);
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Function : LOS_MemboxInit
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Description : Initialize Static Memory pool
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Input       : pBoxMem    --- Pointer to the memory pool
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****                uwBoxSize  --- Size of the memory pool
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****                uwBlkSize  --- Size of the memory block
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Output      : None
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Return      : LOS_OK - OK, LOS_NOK - Error
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_MemboxInit(VOID *pBoxMem, UINT32 uwBoxSize, UINT32 uwBlkSize)
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** {
+  30              		.loc 1 120 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+  34              		.loc 1 121 5 view .LVU1
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_NODE *pstNode = NULL;
+  35              		.loc 1 122 5 view .LVU2
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     UINT32 i;
+  36              		.loc 1 123 5 view .LVU3
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+  37              		.loc 1 124 5 view .LVU4
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (pBoxMem == NULL || uwBlkSize == 0 || uwBoxSize < sizeof(LOS_MEMBOX_INFO))
+  38              		.loc 1 126 5 view .LVU5
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+  39              		.loc 1 120 1 is_stmt 0 view .LVU6
+  40 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 24
+  43              		.cfi_offset 3, -24
+  44              		.cfi_offset 4, -20
+  45              		.cfi_offset 5, -16
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 4
+
+
+  46              		.cfi_offset 6, -12
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+  49              		.loc 1 120 1 view .LVU7
+  50 0002 0F46     		mov	r7, r1
+  51 0004 1446     		mov	r4, r2
+  52              		.loc 1 126 8 view .LVU8
+  53 0006 0546     		mov	r5, r0
+  54 0008 A8B1     		cbz	r0, .L9
+  55              		.loc 1 126 25 discriminator 1 view .LVU9
+  56 000a A2B1     		cbz	r2, .L9
+  57              		.loc 1 126 43 discriminator 2 view .LVU10
+  58 000c 0F29     		cmp	r1, #15
+  59 000e 12D9     		bls	.L9
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (!IS_BOXMEM_ALIGNED(pBoxMem, OS_BOXMEM_BASE_ALIGN))
+  60              		.loc 1 131 5 is_stmt 1 view .LVU11
+  61              		.loc 1 131 8 is_stmt 0 view .LVU12
+  62 0010 10F00306 		ands	r6, r0, #3
+  63 0014 0FD1     		bne	.L9
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     uvIntSave = LOS_IntLock();
+  64              		.loc 1 136 5 is_stmt 1 view .LVU13
+  65              		.loc 1 136 17 is_stmt 0 view .LVU14
+  66 0016 FFF7FEFF 		bl	LOS_IntLock
+  67              	.LVL1:
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     /*
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****      * The node size is aligned to the next 4 boundary.
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****      * Memory that is not enough for one node size in the memory pool will be ignored.
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****      */
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkSize = LOS_MEMBOX_ALIGNED(uwBlkSize + LOS_MEMBOX_MAGIC_SIZE);
+  68              		.loc 1 142 29 view .LVU15
+  69 001a E21D     		adds	r2, r4, #7
+  70 001c 22F00302 		bic	r2, r2, #3
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkNum = (uwBoxSize - sizeof(LOS_MEMBOX_INFO)) / pstBoxInfo->uwBlkSize;
+  71              		.loc 1 143 39 view .LVU16
+  72 0020 103F     		subs	r7, r7, #16
+  73              	.LVL2:
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkCnt = 0;
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (pstBoxInfo->uwBlkNum == 0)
+  74              		.loc 1 146 8 view .LVU17
+  75 0022 BA42     		cmp	r2, r7
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkNum = (uwBoxSize - sizeof(LOS_MEMBOX_INFO)) / pstBoxInfo->uwBlkSize;
+  76              		.loc 1 143 66 view .LVU18
+  77 0024 B7FBF2F3 		udiv	r3, r7, r2
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+  78              		.loc 1 136 17 view .LVU19
+  79 0028 8446     		mov	ip, r0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 5
+
+
+  80              	.LVL3:
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkNum = (uwBoxSize - sizeof(LOS_MEMBOX_INFO)) / pstBoxInfo->uwBlkSize;
+  81              		.loc 1 142 5 is_stmt 1 view .LVU20
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkCnt = 0;
+  82              		.loc 1 144 26 is_stmt 0 view .LVU21
+  83 002a C5E90136 		strd	r3, r6, [r5, #4]
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkNum = (uwBoxSize - sizeof(LOS_MEMBOX_INFO)) / pstBoxInfo->uwBlkSize;
+  84              		.loc 1 142 27 view .LVU22
+  85 002e 2A60     		str	r2, [r5]
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkCnt = 0;
+  86              		.loc 1 143 5 is_stmt 1 view .LVU23
+  87              		.loc 1 146 5 view .LVU24
+  88              		.loc 1 146 8 is_stmt 0 view .LVU25
+  89 0030 03D9     		bls	.L3
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         LOS_IntRestore(uvIntSave);
+  90              		.loc 1 148 9 is_stmt 1 view .LVU26
+  91 0032 FFF7FEFF 		bl	LOS_IntRestore
+  92              	.LVL4:
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return LOS_NOK;
+  93              		.loc 1 149 9 view .LVU27
+  94              	.L9:
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+  95              		.loc 1 128 16 is_stmt 0 view .LVU28
+  96 0036 0126     		movs	r6, #1
+  97 0038 0EE0     		b	.L1
+  98              	.LVL5:
+  99              	.L3:
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstNode = (LOS_MEMBOX_NODE *)(pstBoxInfo + 1);
+ 100              		.loc 1 152 5 is_stmt 1 view .LVU29
+ 101              		.loc 1 152 13 is_stmt 0 view .LVU30
+ 102 003a 05F11000 		add	r0, r5, #16
+ 103              	.LVL6:
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->stFreeList.pstNext = pstNode;
+ 104              		.loc 1 153 5 is_stmt 1 view .LVU31
+ 105              		.loc 1 153 36 is_stmt 0 view .LVU32
+ 106 003e E860     		str	r0, [r5, #12]
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     for (i = 0; i < pstBoxInfo->uwBlkNum - 1; ++i)
+ 107              		.loc 1 155 5 is_stmt 1 view .LVU33
+ 108              	.LVL7:
+ 109              		.loc 1 155 12 is_stmt 0 view .LVU34
+ 110 0040 3446     		mov	r4, r6
+ 111              	.LVL8:
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstBoxInfo->stFreeList.pstNext = pstNode;
+ 112              		.loc 1 152 13 view .LVU35
+ 113 0042 0146     		mov	r1, r0
+ 114              		.loc 1 155 42 view .LVU36
+ 115 0044 013B     		subs	r3, r3, #1
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstNode->pstNext = OS_MEMBOX_NODE_NEXT(pstNode, pstBoxInfo->uwBlkSize);
+ 116              		.loc 1 157 26 view .LVU37
+ 117 0046 5542     		rsbs	r5, r2, #0
+ 118              	.LVL9:
+ 119              	.L4:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 6
+
+
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 120              		.loc 1 155 17 is_stmt 1 discriminator 1 view .LVU38
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 121              		.loc 1 155 5 is_stmt 0 discriminator 1 view .LVU39
+ 122 0048 A342     		cmp	r3, r4
+ 123 004a 07D8     		bhi	.L5
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstNode = pstNode->pstNext;
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstNode->pstNext = (LOS_MEMBOX_NODE *)NULL;  /* The last node */
+ 124              		.loc 1 160 5 is_stmt 1 view .LVU40
+ 125              		.loc 1 160 22 is_stmt 0 view .LVU41
+ 126 004c 5343     		muls	r3, r2, r3
+ 127 004e 0022     		movs	r2, #0
+ 128 0050 C250     		str	r2, [r0, r3]
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #if ((LOSCFG_PLATFORM_EXC == YES) && (LOSCFG_SAVE_EXC_INFO == YES))
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     osMemInfoUpdate(pBoxMem, uwBoxSize, MEM_MANG_MEMBOX);
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** #endif
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 129              		.loc 1 166 5 is_stmt 1 view .LVU42
+ 130 0052 6046     		mov	r0, ip
+ 131              	.LVL10:
+ 132              		.loc 1 166 5 is_stmt 0 view .LVU43
+ 133 0054 FFF7FEFF 		bl	LOS_IntRestore
+ 134              	.LVL11:
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     return LOS_OK;
+ 135              		.loc 1 168 5 is_stmt 1 view .LVU44
+ 136              	.L1:
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 137              		.loc 1 169 1 is_stmt 0 view .LVU45
+ 138 0058 3046     		mov	r0, r6
+ 139 005a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 140              	.LVL12:
+ 141              	.L5:
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstNode = pstNode->pstNext;
+ 142              		.loc 1 157 9 is_stmt 1 discriminator 3 view .LVU46
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstNode = pstNode->pstNext;
+ 143              		.loc 1 157 28 is_stmt 0 discriminator 3 view .LVU47
+ 144 005c 1144     		add	r1, r1, r2
+ 145              	.LVL13:
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 146              		.loc 1 155 47 discriminator 3 view .LVU48
+ 147 005e 0134     		adds	r4, r4, #1
+ 148              	.LVL14:
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstNode = pstNode->pstNext;
+ 149              		.loc 1 157 26 discriminator 3 view .LVU49
+ 150 0060 4951     		str	r1, [r1, r5]
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 151              		.loc 1 158 9 is_stmt 1 discriminator 3 view .LVU50
+ 152              	.LVL15:
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 153              		.loc 1 155 47 discriminator 3 view .LVU51
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 154              		.loc 1 155 47 is_stmt 0 discriminator 3 view .LVU52
+ 155 0062 F1E7     		b	.L4
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 7
+
+
+ 156              		.cfi_endproc
+ 157              	.LFE288:
+ 159              		.section	.text.LOS_MemboxAlloc,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	LOS_MemboxAlloc
+ 162              		.syntax unified
+ 163              		.thumb
+ 164              		.thumb_func
+ 165              		.fpu fpv4-sp-d16
+ 167              	LOS_MemboxAlloc:
+ 168              	.LVL16:
+ 169              	.LFB289:
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Function : LOS_MemboxAlloc
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Description : Allocate Memory block from Static Memory pool
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Input       : pBoxMem  --- Pointer to memory pool
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Output      : None
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Return      : Pointer to allocated memory block
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT VOID *LOS_MemboxAlloc(VOID *pBoxMem)
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** {
+ 170              		.loc 1 179 1 is_stmt 1 view -0
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 174              		.loc 1 180 5 view .LVU54
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_NODE *pstNode = NULL;
+ 175              		.loc 1 181 5 view .LVU55
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_NODE *pRet = NULL;
+ 176              		.loc 1 182 5 view .LVU56
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 177              		.loc 1 183 5 view .LVU57
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (pBoxMem == NULL)
+ 178              		.loc 1 185 5 view .LVU58
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 179              		.loc 1 179 1 is_stmt 0 view .LVU59
+ 180 0000 38B5     		push	{r3, r4, r5, lr}
+ 181              	.LCFI1:
+ 182              		.cfi_def_cfa_offset 16
+ 183              		.cfi_offset 3, -16
+ 184              		.cfi_offset 4, -12
+ 185              		.cfi_offset 5, -8
+ 186              		.cfi_offset 14, -4
+ 187              		.loc 1 185 8 view .LVU60
+ 188 0002 0546     		mov	r5, r0
+ 189 0004 08B9     		cbnz	r0, .L11
+ 190              	.LVL17:
+ 191              	.L14:
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return NULL;
+ 192              		.loc 1 187 16 view .LVU61
+ 193 0006 0020     		movs	r0, #0
+ 194              	.L10:
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 8
+
+
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     uvIntSave = LOS_IntLock();
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     pstNode = &pstBoxInfo->stFreeList;
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (pstNode->pstNext != NULL)
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pRet = pstNode->pstNext;
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstNode->pstNext = pRet->pstNext;
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         OS_MEMBOX_SET_MAGIC(pRet);
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstBoxInfo->uwBlkCnt++;
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     return pRet == NULL ? NULL : OS_MEMBOX_USER_ADDR(pRet);
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 195              		.loc 1 204 1 view .LVU62
+ 196 0008 38BD     		pop	{r3, r4, r5, pc}
+ 197              	.LVL18:
+ 198              	.L11:
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 199              		.loc 1 190 5 is_stmt 1 view .LVU63
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 200              		.loc 1 190 17 is_stmt 0 view .LVU64
+ 201 000a FFF7FEFF 		bl	LOS_IntLock
+ 202              	.LVL19:
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (pstNode->pstNext != NULL)
+ 203              		.loc 1 192 5 is_stmt 1 view .LVU65
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 204              		.loc 1 193 5 view .LVU66
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 205              		.loc 1 193 16 is_stmt 0 view .LVU67
+ 206 000e EC68     		ldr	r4, [r5, #12]
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 207              		.loc 1 193 8 view .LVU68
+ 208 0010 34B1     		cbz	r4, .L13
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstNode->pstNext = pRet->pstNext;
+ 209              		.loc 1 195 9 is_stmt 1 view .LVU69
+ 210              	.LVL20:
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         OS_MEMBOX_SET_MAGIC(pRet);
+ 211              		.loc 1 196 9 view .LVU70
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         OS_MEMBOX_SET_MAGIC(pRet);
+ 212              		.loc 1 196 32 is_stmt 0 view .LVU71
+ 213 0012 2368     		ldr	r3, [r4]
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         OS_MEMBOX_SET_MAGIC(pRet);
+ 214              		.loc 1 196 26 view .LVU72
+ 215 0014 EB60     		str	r3, [r5, #12]
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstBoxInfo->uwBlkCnt++;
+ 216              		.loc 1 197 9 is_stmt 1 view .LVU73
+ 217 0016 054B     		ldr	r3, .L21
+ 218 0018 2360     		str	r3, [r4]
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 219              		.loc 1 198 9 view .LVU74
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 220              		.loc 1 198 29 is_stmt 0 view .LVU75
+ 221 001a AB68     		ldr	r3, [r5, #8]
+ 222 001c 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 9
+
+
+ 223 001e AB60     		str	r3, [r5, #8]
+ 224              	.LVL21:
+ 225              	.L13:
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 226              		.loc 1 201 5 is_stmt 1 view .LVU76
+ 227 0020 FFF7FEFF 		bl	LOS_IntRestore
+ 228              	.LVL22:
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 229              		.loc 1 203 5 view .LVU77
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 230              		.loc 1 203 32 is_stmt 0 view .LVU78
+ 231 0024 002C     		cmp	r4, #0
+ 232 0026 EED0     		beq	.L14
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 233              		.loc 1 203 32 discriminator 1 view .LVU79
+ 234 0028 201D     		adds	r0, r4, #4
+ 235 002a EDE7     		b	.L10
+ 236              	.L22:
+ 237              		.align	2
+ 238              	.L21:
+ 239 002c A55A5AA5 		.word	-1520805211
+ 240              		.cfi_endproc
+ 241              	.LFE289:
+ 243              		.section	.text.LOS_MemboxFree,"ax",%progbits
+ 244              		.align	1
+ 245              		.global	LOS_MemboxFree
+ 246              		.syntax unified
+ 247              		.thumb
+ 248              		.thumb_func
+ 249              		.fpu fpv4-sp-d16
+ 251              	LOS_MemboxFree:
+ 252              	.LVL23:
+ 253              	.LFB290:
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Function : LOS_MemboxFree
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Description : Free Memory block and return it to Static Memory pool
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Input       : pBoxMem  --- Pointer to memory pool
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****                pBox     --- Pointer to memory block to free
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Output      : None
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Return      : LOS_OK - OK, LOS_NOK - Error
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT UINT32 LOS_MemboxFree(VOID *pBoxMem, VOID *pBox)
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** {
+ 254              		.loc 1 215 1 is_stmt 1 view -0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 258              		.loc 1 216 5 view .LVU81
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     UINT32 uwRet = LOS_NOK;
+ 259              		.loc 1 217 5 view .LVU82
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 260              		.loc 1 218 5 view .LVU83
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (pBoxMem == NULL || pBox == NULL)
+ 261              		.loc 1 220 5 view .LVU84
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 10
+
+
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 262              		.loc 1 215 1 is_stmt 0 view .LVU85
+ 263 0000 70B5     		push	{r4, r5, r6, lr}
+ 264              	.LCFI2:
+ 265              		.cfi_def_cfa_offset 16
+ 266              		.cfi_offset 4, -16
+ 267              		.cfi_offset 5, -12
+ 268              		.cfi_offset 6, -8
+ 269              		.cfi_offset 14, -4
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 270              		.loc 1 215 1 view .LVU86
+ 271 0002 0E46     		mov	r6, r1
+ 272              		.loc 1 220 8 view .LVU87
+ 273 0004 0546     		mov	r5, r0
+ 274 0006 10B3     		cbz	r0, .L27
+ 275              		.loc 1 220 25 discriminator 1 view .LVU88
+ 276 0008 09B3     		cbz	r1, .L27
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     uvIntSave = LOS_IntLock();
+ 277              		.loc 1 225 5 is_stmt 1 view .LVU89
+ 278              		.loc 1 225 17 is_stmt 0 view .LVU90
+ 279 000a FFF7FEFF 		bl	LOS_IntLock
+ 280              	.LVL24:
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     do
+ 281              		.loc 1 227 5 is_stmt 1 view .LVU91
+ 282              	.LBB5:
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         LOS_MEMBOX_NODE *pstNode = OS_MEMBOX_NODE_ADDR(pBox);
+ 283              		.loc 1 229 9 view .LVU92
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         if (osCheckBoxMem(pstBoxInfo, pstNode) != LOS_OK)
+ 284              		.loc 1 231 9 view .LVU93
+ 285              	.LBB6:
+ 286              	.LBI6:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** {
+ 287              		.loc 1 87 39 view .LVU94
+ 288              	.LBB7:
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 289              		.loc 1 89 5 view .LVU95
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 290              		.loc 1 91 5 view .LVU96
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 291              		.loc 1 91 19 is_stmt 0 view .LVU97
+ 292 000e 2C68     		ldr	r4, [r5]
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 293              		.loc 1 91 8 view .LVU98
+ 294 0010 DCB1     		cbz	r4, .L31
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if ((uwOffSet % pstBoxInfo->uwBlkSize) != 0)
+ 295              		.loc 1 96 14 view .LVU99
+ 296 0012 A6F11403 		sub	r3, r6, #20
+ 297 0016 5B1B     		subs	r3, r3, r5
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 298              		.loc 1 97 19 view .LVU100
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 11
+
+
+ 299 0018 B3FBF4F2 		udiv	r2, r3, r4
+ 300 001c 04FB1234 		mls	r4, r4, r2, r3
+ 301              	.LBE7:
+ 302              	.LBE6:
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 303              		.loc 1 229 26 view .LVU101
+ 304 0020 311F     		subs	r1, r6, #4
+ 305              	.LVL25:
+ 306              	.LBB9:
+ 307              	.LBB8:
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if ((uwOffSet % pstBoxInfo->uwBlkSize) != 0)
+ 308              		.loc 1 96 5 is_stmt 1 view .LVU102
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 309              		.loc 1 97 5 view .LVU103
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 310              		.loc 1 97 8 is_stmt 0 view .LVU104
+ 311 0022 94B9     		cbnz	r4, .L31
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 312              		.loc 1 102 5 is_stmt 1 view .LVU105
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 313              		.loc 1 102 8 is_stmt 0 view .LVU106
+ 314 0024 6B68     		ldr	r3, [r5, #4]
+ 315              	.LVL26:
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 316              		.loc 1 102 8 view .LVU107
+ 317 0026 9A42     		cmp	r2, r3
+ 318 0028 0FD2     		bcs	.L31
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 319              		.loc 1 107 5 is_stmt 1 view .LVU108
+ 320              	.LVL27:
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 321              		.loc 1 107 5 is_stmt 0 view .LVU109
+ 322              	.LBE8:
+ 323              	.LBE9:
+ 324              		.loc 1 231 12 view .LVU110
+ 325 002a 56F8042C 		ldr	r2, [r6, #-4]
+ 326 002e 094B     		ldr	r3, .L32
+ 327 0030 9A42     		cmp	r2, r3
+ 328 0032 0AD1     		bne	.L31
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         {
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****             break;
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         }
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstNode->pstNext = pstBoxInfo->stFreeList.pstNext;
+ 329              		.loc 1 236 9 is_stmt 1 view .LVU111
+ 330              		.loc 1 236 50 is_stmt 0 view .LVU112
+ 331 0034 EB68     		ldr	r3, [r5, #12]
+ 332              		.loc 1 236 26 view .LVU113
+ 333 0036 46F8043C 		str	r3, [r6, #-4]
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstBoxInfo->stFreeList.pstNext = pstNode;
+ 334              		.loc 1 237 9 is_stmt 1 view .LVU114
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstBoxInfo->uwBlkCnt--;
+ 335              		.loc 1 238 29 is_stmt 0 view .LVU115
+ 336 003a AB68     		ldr	r3, [r5, #8]
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         pstBoxInfo->stFreeList.pstNext = pstNode;
+ 337              		.loc 1 237 40 view .LVU116
+ 338 003c E960     		str	r1, [r5, #12]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 12
+
+
+ 339              		.loc 1 238 9 is_stmt 1 view .LVU117
+ 340              		.loc 1 238 29 is_stmt 0 view .LVU118
+ 341 003e 013B     		subs	r3, r3, #1
+ 342 0040 AB60     		str	r3, [r5, #8]
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         uwRet = LOS_OK;
+ 343              		.loc 1 239 9 is_stmt 1 view .LVU119
+ 344              	.LVL28:
+ 345              	.L25:
+ 346              		.loc 1 239 9 is_stmt 0 view .LVU120
+ 347              	.LBE5:
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     } while (0);
+ 348              		.loc 1 240 13 is_stmt 1 view .LVU121
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 349              		.loc 1 242 5 view .LVU122
+ 350 0042 FFF7FEFF 		bl	LOS_IntRestore
+ 351              	.LVL29:
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     return uwRet;
+ 352              		.loc 1 244 5 view .LVU123
+ 353              	.L23:
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 354              		.loc 1 245 1 is_stmt 0 view .LVU124
+ 355 0046 2046     		mov	r0, r4
+ 356 0048 70BD     		pop	{r4, r5, r6, pc}
+ 357              	.LVL30:
+ 358              	.L31:
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 359              		.loc 1 217 12 view .LVU125
+ 360 004a 0124     		movs	r4, #1
+ 361 004c F9E7     		b	.L25
+ 362              	.LVL31:
+ 363              	.L27:
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 364              		.loc 1 222 16 view .LVU126
+ 365 004e 0124     		movs	r4, #1
+ 366 0050 F9E7     		b	.L23
+ 367              	.L33:
+ 368 0052 00BF     		.align	2
+ 369              	.L32:
+ 370 0054 A55A5AA5 		.word	-1520805211
+ 371              		.cfi_endproc
+ 372              	.LFE290:
+ 374              		.section	.text.LOS_MemboxClr,"ax",%progbits
+ 375              		.align	1
+ 376              		.global	LOS_MemboxClr
+ 377              		.syntax unified
+ 378              		.thumb
+ 379              		.thumb_func
+ 380              		.fpu fpv4-sp-d16
+ 382              	LOS_MemboxClr:
+ 383              	.LVL32:
+ 384              	.LFB291:
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Function : LOS_MemboxClr
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Description : Clear the memory block
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 13
+
+
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Input       : pBoxMem  --- Pointer to memory pool
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****                pBox     --- Pointer to memory block to clear
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Output      : None
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Return      : None
+ 254:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT_MINOR VOID LOS_MemboxClr(VOID *pBoxMem, VOID *pBox)
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** {
+ 385              		.loc 1 256 1 is_stmt 1 view -0
+ 386              		.cfi_startproc
+ 387              		@ args = 0, pretend = 0, frame = 0
+ 388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 389              		@ link register save eliminated.
+ 257:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 390              		.loc 1 257 5 view .LVU128
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if (pBoxMem == NULL || pBox == NULL)
+ 391              		.loc 1 259 5 view .LVU129
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 392              		.loc 1 256 1 is_stmt 0 view .LVU130
+ 393 0000 0B46     		mov	r3, r1
+ 394              		.loc 1 259 8 view .LVU131
+ 395 0002 30B1     		cbz	r0, .L34
+ 396              		.loc 1 259 25 discriminator 1 view .LVU132
+ 397 0004 29B1     		cbz	r1, .L34
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 261:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return;
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     memset(pBox, 0, pstBoxInfo->uwBlkSize - LOS_MEMBOX_MAGIC_SIZE);
+ 398              		.loc 1 264 5 is_stmt 1 view .LVU133
+ 399 0006 0268     		ldr	r2, [r0]
+ 400 0008 0021     		movs	r1, #0
+ 401              	.LVL33:
+ 402              		.loc 1 264 5 is_stmt 0 view .LVU134
+ 403 000a 043A     		subs	r2, r2, #4
+ 404 000c 1846     		mov	r0, r3
+ 405              	.LVL34:
+ 406              		.loc 1 264 5 view .LVU135
+ 407 000e FFF7FEBF 		b	memset
+ 408              	.LVL35:
+ 409              	.L34:
+ 265:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 410              		.loc 1 265 1 view .LVU136
+ 411 0012 7047     		bx	lr
+ 412              		.cfi_endproc
+ 413              	.LFE291:
+ 415              		.section	.text.LOS_MemboxStatisticsGet,"ax",%progbits
+ 416              		.align	1
+ 417              		.global	LOS_MemboxStatisticsGet
+ 418              		.syntax unified
+ 419              		.thumb
+ 420              		.thumb_func
+ 421              		.fpu fpv4-sp-d16
+ 423              	LOS_MemboxStatisticsGet:
+ 424              	.LVL36:
+ 425              	.LFB292:
+ 266:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 14
+
+
+ 267:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 268:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Function : LOS_MemboxStatisticsGet
+ 269:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Description : Get information about membox
+ 270:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Input       : pBoxMem     --- Pointer to the calculate membox
+ 271:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Output      : puwMaxBlk   --- Record the total number of membox
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****                puwBlkCnt   --- Record the number of the allocated blocks of membox
+ 273:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****                puwBlkSize  --- Record the block size of membox
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****  Return      : LOS_OK - OK, LOS_NOK - Error
+ 275:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 276:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT_MINOR UINT32 LOS_MemboxStatisticsGet(VOID *pBoxMem, UINT32 *puwMaxBlk, UINT32 *puw
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** {
+ 426              		.loc 1 277 1 is_stmt 1 view -0
+ 427              		.cfi_startproc
+ 428              		@ args = 0, pretend = 0, frame = 0
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 278:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if ((NULL == pBoxMem) || (NULL == puwMaxBlk) || (NULL == puwBlkCnt) || (NULL == puwBlkSize))
+ 430              		.loc 1 278 5 view .LVU138
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     if ((NULL == pBoxMem) || (NULL == puwMaxBlk) || (NULL == puwBlkCnt) || (NULL == puwBlkSize))
+ 431              		.loc 1 277 1 is_stmt 0 view .LVU139
+ 432 0000 10B5     		push	{r4, lr}
+ 433              	.LCFI3:
+ 434              		.cfi_def_cfa_offset 8
+ 435              		.cfi_offset 4, -8
+ 436              		.cfi_offset 14, -4
+ 437              		.loc 1 278 8 view .LVU140
+ 438 0002 50B1     		cbz	r0, .L47
+ 439              		.loc 1 278 27 discriminator 1 view .LVU141
+ 440 0004 49B1     		cbz	r1, .L47
+ 441              		.loc 1 278 50 discriminator 2 view .LVU142
+ 442 0006 42B1     		cbz	r2, .L47
+ 443              		.loc 1 278 73 discriminator 3 view .LVU143
+ 444 0008 3BB1     		cbz	r3, .L47
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     {
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ 283:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     *puwMaxBlk = ((LOS_MEMBOX_INFO *)pBoxMem)->uwBlkNum;    /* Total number of blocks */
+ 445              		.loc 1 283 5 is_stmt 1 view .LVU144
+ 446              		.loc 1 283 46 is_stmt 0 view .LVU145
+ 447 000a 4468     		ldr	r4, [r0, #4]
+ 448              		.loc 1 283 16 view .LVU146
+ 449 000c 0C60     		str	r4, [r1]
+ 284:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     *puwBlkCnt = ((LOS_MEMBOX_INFO *)pBoxMem)->uwBlkCnt;    /* The number of allocated blocks */
+ 450              		.loc 1 284 5 is_stmt 1 view .LVU147
+ 451              		.loc 1 284 46 is_stmt 0 view .LVU148
+ 452 000e 8168     		ldr	r1, [r0, #8]
+ 453              	.LVL37:
+ 454              		.loc 1 284 16 view .LVU149
+ 455 0010 1160     		str	r1, [r2]
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     *puwBlkSize = ((LOS_MEMBOX_INFO *)pBoxMem)->uwBlkSize;  /* Block size */
+ 456              		.loc 1 285 5 is_stmt 1 view .LVU150
+ 457              		.loc 1 285 47 is_stmt 0 view .LVU151
+ 458 0012 0268     		ldr	r2, [r0]
+ 459              	.LVL38:
+ 460              		.loc 1 285 17 view .LVU152
+ 461 0014 1A60     		str	r2, [r3]
+ 286:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 15
+
+
+ 287:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     return LOS_OK;
+ 462              		.loc 1 287 5 is_stmt 1 view .LVU153
+ 463              		.loc 1 287 12 is_stmt 0 view .LVU154
+ 464 0016 0020     		movs	r0, #0
+ 465              	.LVL39:
+ 466              	.L42:
+ 288:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c **** }
+ 467              		.loc 1 288 1 view .LVU155
+ 468 0018 10BD     		pop	{r4, pc}
+ 469              	.LVL40:
+ 470              	.L47:
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 471              		.loc 1 280 16 view .LVU156
+ 472 001a 0120     		movs	r0, #1
+ 473              	.LVL41:
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/membox\los_membox.c ****     }
+ 474              		.loc 1 280 16 view .LVU157
+ 475 001c FCE7     		b	.L42
+ 476              		.cfi_endproc
+ 477              	.LFE292:
+ 479              		.text
+ 480              	.Letext0:
+ 481              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 482              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 483              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 484              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 485              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 486              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 487              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 488              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 489              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 490              		.file 11 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 491              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 492              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 493              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_m
+ 494              		.file 15 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_membox.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:18     .text.LOS_MemboxInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:26     .text.LOS_MemboxInit:00000000 LOS_MemboxInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:160    .text.LOS_MemboxAlloc:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:167    .text.LOS_MemboxAlloc:00000000 LOS_MemboxAlloc
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:239    .text.LOS_MemboxAlloc:0000002c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:244    .text.LOS_MemboxFree:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:251    .text.LOS_MemboxFree:00000000 LOS_MemboxFree
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:370    .text.LOS_MemboxFree:00000054 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:375    .text.LOS_MemboxClr:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:382    .text.LOS_MemboxClr:00000000 LOS_MemboxClr
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:416    .text.LOS_MemboxStatisticsGet:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccayVTci.s:423    .text.LOS_MemboxStatisticsGet:00000000 LOS_MemboxStatisticsGet
+
+UNDEFINED SYMBOLS
+LOS_IntLock
+LOS_IntRestore
+memset

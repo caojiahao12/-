@@ -1,0 +1,1539 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_hal_uart_ex.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HAL_RS485Ex_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	HAL_RS485Ex_Init
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	HAL_RS485Ex_Init:
+  27              	.LVL0:
+  28              	.LFB287:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   ******************************************************************************
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @file    stm32l4xx_hal_uart_ex.c
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @author  MCD Application Team
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief   Extended UART HAL module driver.
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          This file provides firmware functions to manage the following extended
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          functionalities of the Universal Asynchronous Receiver Transmitter Peripheral (UART).
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *           + Initialization and de-initialization functions
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *           + Peripheral Control functions
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   @verbatim
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   ==============================================================================
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****                ##### UART peripheral extended features  #####
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   ==============================================================================
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     (#) Declare a UART_HandleTypeDef handle structure.
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     (#) For the UART RS485 Driver Enable mode, initialize the UART registers
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         by calling the HAL_RS485Ex_Init() API.
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     (#) FIFO mode enabling/disabling and RX/TX FIFO threshold programming.
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         -@- When USART operates in FIFO mode, FIFO mode must be enabled prior 
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****             starting RX/TX transfers. Also RX/TX FIFO thresholds must be 
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****             configured prior starting RX/TX transfers.
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     (#) Slave mode enabling/disabling and NSS pin configuration.
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         -@- When USART operates in Slave mode, Slave mode must be enabled prior 
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****             starting RX/TX transfers.
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   @endverbatim
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   ******************************************************************************
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @attention
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * are permitted provided that the following conditions are met:
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *      this list of conditions and the following disclaimer.
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *      this list of conditions and the following disclaimer in the documentation
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *      and/or other materials provided with the distribution.
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *      may be used to endorse or promote products derived from this software
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *      without specific prior written permission.
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   ******************************************************************************
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /* Includes ------------------------------------------------------------------*/
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #include "stm32l4xx_hal.h"
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /** @addtogroup STM32L4xx_HAL_Driver
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @{
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /** @defgroup UARTEx UARTEx
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief UART Extended HAL module driver
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @{
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #ifdef HAL_UART_MODULE_ENABLED
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /* Private typedef -----------------------------------------------------------*/
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /* Private define ------------------------------------------------------------*/
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /* Private macros ------------------------------------------------------------*/
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /* Private variables ---------------------------------------------------------*/
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /* Private function prototypes -----------------------------------------------*/
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /** @defgroup UARTEx_Private_Functions UARTEx Private Functions
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @{
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** static void UARTEx_Wakeup_AddressConfig(UART_HandleTypeDef *huart, UART_WakeUpTypeDef WakeUpSelecti
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 3
+
+
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #if defined(USART_CR1_FIFOEN)
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** static void UARTEx_SetNbDataToProcess(UART_HandleTypeDef *huart);
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #endif
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @}
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /* Exported functions --------------------------------------------------------*/
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /** @defgroup UARTEx_Exported_Functions  UARTEx Exported Functions
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @{
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /** @defgroup UARTEx_Exported_Functions_Group1 Initialization and de-initialization functions
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief    Extended Initialization and Configuration Functions
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** @verbatim
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** ===============================================================================
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****             ##### Initialization and Configuration functions #####
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  ===============================================================================
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     [..]
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     This subsection provides a set of functions allowing to initialize the USARTx or the UARTy
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     in asynchronous mode.
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****       (+) For the asynchronous mode the parameters below can be configured:
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) Baud Rate
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) Word Length
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) Stop Bit
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) Parity: If the parity is enabled, then the MSB bit of the data written
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****              in the data register is transmitted but is changed by the parity bit.
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) Hardware flow control
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) Receiver/transmitter modes
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) Over Sampling Method
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) One-Bit Sampling Method
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****       (+) For the asynchronous mode, the following advanced features can be configured as well:
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) TX and/or RX pin level inversion
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) data logical level inversion
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) RX and TX pins swap
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) RX overrun detection disabling
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) DMA disabling on RX error
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) MSB first on communication line
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (++) auto Baud rate detection
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     [..]
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     The HAL_RS485Ex_Init() API follows the UART RS485 mode configuration
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      procedures (details for the procedures are available in reference manual).
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** @endverbatim
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   Depending on the frame length defined by the M1 and M0 bits (7-bit, 
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   8-bit or 9-bit), the possible UART formats are listed in the 
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   following table.
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     Table 1. UART frame format.
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     +-----------------------------------------------------------------------+
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |  M1 bit |  M0 bit |  PCE bit  |             UART frame                |
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |---------|---------|-----------|---------------------------------------|
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |    0    |    0    |    0      |    | SB |    8 bit data   | STB |     |
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |---------|---------|-----------|---------------------------------------|
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 4
+
+
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |    0    |    0    |    1      |    | SB | 7 bit data | PB | STB |     |
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |---------|---------|-----------|---------------------------------------|
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |    0    |    1    |    0      |    | SB |    9 bit data   | STB |     |
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |---------|---------|-----------|---------------------------------------|
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |    0    |    1    |    1      |    | SB | 8 bit data | PB | STB |     |
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |---------|---------|-----------|---------------------------------------|
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |    1    |    0    |    0      |    | SB |    7 bit data   | STB |     |
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |---------|---------|-----------|---------------------------------------|
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     |    1    |    0    |    1      |    | SB | 6 bit data | PB | STB |     |
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     +-----------------------------------------------------------------------+
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @{
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief Initialize the RS485 Driver enable feature according to the specified
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *         parameters in the UART_InitTypeDef and creates the associated handle.
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart            UART handle.
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param Polarity         Select the driver enable polarity.
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          This parameter can be one of the following values:
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          @arg @ref UART_DE_POLARITY_HIGH DE signal is active high
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          @arg @ref UART_DE_POLARITY_LOW  DE signal is active low
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param AssertionTime    Driver Enable assertion time:
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       5-bit value defining the time between the activation of the DE (Driver Enable)
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       signal and the beginning of the start bit. It is expressed in sample time
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       units (1/8 or 1/16 bit time, depending on the oversampling rate)
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param DeassertionTime  Driver Enable deassertion time:
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       5-bit value defining the time between the end of the last stop bit, in a
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       transmitted message, and the de-activation of the DE (Driver Enable) signal.
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       It is expressed in sample time units (1/8 or 1/16 bit time, depending on the
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       oversampling rate).
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_RS485Ex_Init(UART_HandleTypeDef *huart, uint32_t Polarity, uint32_t Assertion
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+  30              		.loc 1 178 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t temp = 0x0;
+  34              		.loc 1 179 3 view .LVU1
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check the UART handle allocation */
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   if(huart == NULL)
+  35              		.loc 1 182 3 view .LVU2
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t temp = 0x0;
+  36              		.loc 1 178 1 is_stmt 0 view .LVU3
+  37 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 24
+  40              		.cfi_offset 4, -24
+  41              		.cfi_offset 5, -20
+  42              		.cfi_offset 6, -16
+  43              		.cfi_offset 7, -12
+  44              		.cfi_offset 8, -8
+  45              		.cfi_offset 14, -4
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t temp = 0x0;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 5
+
+
+  46              		.loc 1 178 1 view .LVU4
+  47 0004 8846     		mov	r8, r1
+  48 0006 1746     		mov	r7, r2
+  49 0008 1D46     		mov	r5, r3
+  50              		.loc 1 182 5 view .LVU5
+  51 000a 0446     		mov	r4, r0
+  52 000c 0028     		cmp	r0, #0
+  53 000e 38D0     		beq	.L3
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     return HAL_ERROR;
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check the Driver Enable UART instance */
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_DRIVER_ENABLE_INSTANCE(huart->Instance));
+  54              		.loc 1 187 3 is_stmt 1 view .LVU6
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check the Driver Enable polarity */
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_DE_POLARITY(Polarity));
+  55              		.loc 1 190 3 view .LVU7
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check the Driver Enable assertion time */
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_ASSERTIONTIME(AssertionTime));
+  56              		.loc 1 193 3 view .LVU8
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check the Driver Enable deassertion time */
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_DEASSERTIONTIME(DeassertionTime));
+  57              		.loc 1 196 3 view .LVU9
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   if(huart->gState == HAL_UART_STATE_RESET)
+  58              		.loc 1 198 3 view .LVU10
+  59              		.loc 1 198 11 is_stmt 0 view .LVU11
+  60 0010 90F87130 		ldrb	r3, [r0, #113]	@ zero_extendqisi2
+  61              	.LVL1:
+  62              		.loc 1 198 5 view .LVU12
+  63 0014 03F0FF02 		and	r2, r3, #255
+  64              	.LVL2:
+  65              		.loc 1 198 5 view .LVU13
+  66 0018 1BB9     		cbnz	r3, .L4
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     /* Allocate lock resource and initialize it */
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     huart->Lock = HAL_UNLOCKED;
+  67              		.loc 1 201 5 is_stmt 1 view .LVU14
+  68              		.loc 1 201 17 is_stmt 0 view .LVU15
+  69 001a 80F87020 		strb	r2, [r0, #112]
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     /* Init the low level hardware : GPIO, CLOCK, CORTEX */
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     HAL_UART_MspInit(huart);
+  70              		.loc 1 204 5 is_stmt 1 view .LVU16
+  71 001e FFF7FEFF 		bl	HAL_UART_MspInit
+  72              	.LVL3:
+  73              	.L4:
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+  74              		.loc 1 207 3 view .LVU17
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable the Peripheral */
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 6
+
+
+  75              		.loc 1 210 3 is_stmt 0 view .LVU18
+  76 0022 2268     		ldr	r2, [r4]
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+  77              		.loc 1 207 17 view .LVU19
+  78 0024 2423     		movs	r3, #36
+  79 0026 84F87130 		strb	r3, [r4, #113]
+  80              		.loc 1 210 3 is_stmt 1 view .LVU20
+  81 002a 1368     		ldr	r3, [r2]
+  82 002c 23F00103 		bic	r3, r3, #1
+  83 0030 1360     		str	r3, [r2]
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Set the UART Communication parameters */
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   if (UART_SetConfig(huart) == HAL_ERROR)
+  84              		.loc 1 213 3 view .LVU21
+  85              		.loc 1 213 7 is_stmt 0 view .LVU22
+  86 0032 2046     		mov	r0, r4
+  87 0034 FFF7FEFF 		bl	UART_SetConfig
+  88              	.LVL4:
+  89              		.loc 1 213 6 view .LVU23
+  90 0038 0128     		cmp	r0, #1
+  91 003a 22D0     		beq	.L3
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     return HAL_ERROR;
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   if(huart->AdvancedInit.AdvFeatureInit != UART_ADVFEATURE_NO_INIT)
+  92              		.loc 1 218 3 is_stmt 1 view .LVU24
+  93              		.loc 1 218 5 is_stmt 0 view .LVU25
+  94 003c 636A     		ldr	r3, [r4, #36]
+  95 003e 13B1     		cbz	r3, .L6
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     UART_AdvFeatureConfig(huart);
+  96              		.loc 1 220 5 is_stmt 1 view .LVU26
+  97 0040 2046     		mov	r0, r4
+  98 0042 FFF7FEFF 		bl	UART_AdvFeatureConfig
+  99              	.LVL5:
+ 100              	.L6:
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Enable the Driver Enable mode by setting the DEM bit in the CR3 register */
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   SET_BIT(huart->Instance->CR3, USART_CR3_DEM);
+ 101              		.loc 1 224 3 view .LVU27
+ 102 0046 2068     		ldr	r0, [r4]
+ 103 0048 8368     		ldr	r3, [r0, #8]
+ 104 004a 43F48043 		orr	r3, r3, #16384
+ 105 004e 8360     		str	r3, [r0, #8]
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Set the Driver Enable polarity */
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR3, USART_CR3_DEP, Polarity);
+ 106              		.loc 1 227 3 view .LVU28
+ 107 0050 8668     		ldr	r6, [r0, #8]
+ 108 0052 26F40046 		bic	r6, r6, #32768
+ 109 0056 46EA0806 		orr	r6, r6, r8
+ 110 005a 8660     		str	r6, [r0, #8]
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Set the Driver Enable assertion and deassertion times */
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   temp = (AssertionTime << UART_CR1_DEAT_ADDRESS_LSB_POS);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 7
+
+
+ 111              		.loc 1 230 3 view .LVU29
+ 112              	.LVL6:
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   temp |= (DeassertionTime << UART_CR1_DEDT_ADDRESS_LSB_POS);
+ 113              		.loc 1 231 3 view .LVU30
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR1, (USART_CR1_DEDT|USART_CR1_DEAT), temp);
+ 114              		.loc 1 232 3 view .LVU31
+ 115 005c 0168     		ldr	r1, [r0]
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   temp |= (DeassertionTime << UART_CR1_DEDT_ADDRESS_LSB_POS);
+ 116              		.loc 1 231 28 is_stmt 0 view .LVU32
+ 117 005e 2B04     		lsls	r3, r5, #16
+ 118              		.loc 1 232 3 view .LVU33
+ 119 0060 21F07F75 		bic	r5, r1, #66846720
+ 120              	.LVL7:
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   temp |= (DeassertionTime << UART_CR1_DEDT_ADDRESS_LSB_POS);
+ 121              		.loc 1 231 8 view .LVU34
+ 122 0064 43EA4752 		orr	r2, r3, r7, lsl #21
+ 123              	.LVL8:
+ 124              		.loc 1 232 3 view .LVU35
+ 125 0068 25F44035 		bic	r5, r5, #196608
+ 126 006c 1543     		orrs	r5, r5, r2
+ 127 006e 0560     		str	r5, [r0]
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Enable the Peripheral */
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_ENABLE(huart);
+ 128              		.loc 1 235 3 is_stmt 1 view .LVU36
+ 129 0070 0368     		ldr	r3, [r0]
+ 130 0072 43F00103 		orr	r3, r3, #1
+ 131 0076 0360     		str	r3, [r0]
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* TEACK and/or REACK to check before moving huart->gState and huart->RxState to Ready */
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return (UART_CheckIdleState(huart));
+ 132              		.loc 1 238 3 view .LVU37
+ 133              		.loc 1 238 11 is_stmt 0 view .LVU38
+ 134 0078 2046     		mov	r0, r4
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 135              		.loc 1 239 1 view .LVU39
+ 136 007a BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+ 137              	.LCFI1:
+ 138              		.cfi_remember_state
+ 139              		.cfi_restore 14
+ 140              		.cfi_restore 8
+ 141              		.cfi_restore 7
+ 142              		.cfi_restore 6
+ 143              		.cfi_restore 5
+ 144              		.cfi_restore 4
+ 145              		.cfi_def_cfa_offset 0
+ 146              	.LVL9:
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 147              		.loc 1 238 11 view .LVU40
+ 148 007e FFF7FEBF 		b	UART_CheckIdleState
+ 149              	.LVL10:
+ 150              	.L3:
+ 151              	.LCFI2:
+ 152              		.cfi_restore_state
+ 153              		.loc 1 239 1 view .LVU41
+ 154 0082 0120     		movs	r0, #1
+ 155 0084 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 8
+
+
+ 156              		.loc 1 239 1 view .LVU42
+ 157              		.cfi_endproc
+ 158              	.LFE287:
+ 160              		.section	.text.HAL_UARTEx_WakeupCallback,"ax",%progbits
+ 161              		.align	1
+ 162              		.weak	HAL_UARTEx_WakeupCallback
+ 163              		.syntax unified
+ 164              		.thumb
+ 165              		.thumb_func
+ 166              		.fpu fpv4-sp-d16
+ 168              	HAL_UARTEx_WakeupCallback:
+ 169              	.LVL11:
+ 170              	.LFB288:
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @}
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /** @defgroup UARTEx_Exported_Functions_Group2 IO operation functions
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *  @brief Extended functions
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** @verbatim
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  ===============================================================================
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****                       ##### IO operation functions #####
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  ===============================================================================
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     This subsection provides a set of Wakeup and FIFO mode related callback functions.
+ 254:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     (#) Wakeup from Stop mode Callback:
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (+) HAL_UARTEx_WakeupCallback()
+ 257:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     (#) TX/RX Fifos Callbacks:
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (+) HAL_UARTEx_RxFifoFullCallback()
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****         (+) HAL_UARTEx_TxFifoEmptyCallback()
+ 261:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** @endverbatim
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @{
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 265:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 266:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 267:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief UART wakeup from Stop mode callback.
+ 268:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart UART handle.
+ 269:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval None
+ 270:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 271:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  __weak void HAL_UARTEx_WakeupCallback(UART_HandleTypeDef *huart)
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 171              		.loc 1 272 1 is_stmt 1 view -0
+ 172              		.cfi_startproc
+ 173              		@ args = 0, pretend = 0, frame = 0
+ 174              		@ frame_needed = 0, uses_anonymous_args = 0
+ 175              		@ link register save eliminated.
+ 273:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Prevent unused argument(s) compilation warning */
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   UNUSED(huart);
+ 176              		.loc 1 274 3 view .LVU44
+ 275:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 276:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* NOTE : This function should not be modified, when the callback is needed,
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****             the HAL_UARTEx_WakeupCallback can be implemented in the user file.
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 9
+
+
+ 278:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****    */
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 177              		.loc 1 279 1 is_stmt 0 view .LVU45
+ 178 0000 7047     		bx	lr
+ 179              		.cfi_endproc
+ 180              	.LFE288:
+ 182              		.section	.text.HAL_MultiProcessorEx_AddressLength_Set,"ax",%progbits
+ 183              		.align	1
+ 184              		.global	HAL_MultiProcessorEx_AddressLength_Set
+ 185              		.syntax unified
+ 186              		.thumb
+ 187              		.thumb_func
+ 188              		.fpu fpv4-sp-d16
+ 190              	HAL_MultiProcessorEx_AddressLength_Set:
+ 191              	.LVL12:
+ 192              	.LFB289:
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #if defined(USART_CR1_FIFOEN)
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 283:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  UART RX Fifo full callback.
+ 284:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param  huart UART handle.
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval None
+ 286:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 287:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** __weak void HAL_UARTEx_RxFifoFullCallback (UART_HandleTypeDef *huart)
+ 288:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 289:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Prevent unused argument(s) compilation warning */
+ 290:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   UNUSED(huart);
+ 291:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 292:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* NOTE : This function should not be modified, when the callback is needed,
+ 293:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****             the HAL_UARTEx_RxFifoFullCallback can be implemented in the user file.
+ 294:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****    */
+ 295:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 296:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 297:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 298:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  UART TX Fifo empty callback.
+ 299:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param  huart UART handle.
+ 300:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval None
+ 301:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 302:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** __weak void HAL_UARTEx_TxFifoEmptyCallback (UART_HandleTypeDef *huart)
+ 303:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 304:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Prevent unused argument(s) compilation warning */
+ 305:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   UNUSED(huart);
+ 306:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* NOTE : This function should not be modified, when the callback is needed,
+ 308:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****             the HAL_UARTEx_TxFifoEmptyCallback can be implemented in the user file.
+ 309:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****    */
+ 310:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 311:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #endif
+ 312:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 313:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 314:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @}
+ 315:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 316:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 317:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /** @defgroup UARTEx_Exported_Functions_Group3 Peripheral Control functions
+ 318:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief    Extended Peripheral Control functions
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  *
+ 320:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** @verbatim
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 10
+
+
+ 321:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  ===============================================================================
+ 322:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****                       ##### Peripheral Control functions #####
+ 323:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  ===============================================================================
+ 324:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     [..] This section provides the following functions:
+ 325:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_EnableClockStopMode() API enables the UART clock (HSI or LSE only) during stop 
+ 326:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_DisableClockStopMode() API disables the above functionality
+ 327:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_MultiProcessorEx_AddressLength_Set() API optionally sets the UART node address
+ 328:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****          detection length to more than 4 bits for multiprocessor address mark wake up.
+ 329:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_StopModeWakeUpSourceConfig() API defines the wake-up from stop mode
+ 330:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****          trigger: address match, Start Bit detection or RXNE bit status.
+ 331:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_EnableStopMode() API enables the UART to wake up the MCU from stop mode
+ 332:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_DisableStopMode() API disables the above functionality
+ 333:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_WakeupCallback() called upon UART wakeup interrupt
+ 334:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_EnableSPISlaveMode() API enables the SPI slave mode
+ 335:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_DisableSPISlaveMode() API disables the SPI slave mode
+ 336:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_ConfigNSS API configures the Slave Select input pin (NSS)
+ 337:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_EnableFifoMode() API enables the FIFO mode
+ 338:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_DisableFifoMode() API disables the FIFO mode
+ 339:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_SetTxFifoThreshold() API sets the TX FIFO threshold
+ 340:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****      (+) HAL_UARTEx_SetRxFifoThreshold() API sets the RX FIFO threshold
+ 341:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 342:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** @endverbatim
+ 343:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @{
+ 344:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 345:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 346:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 347:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 348:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 349:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 350:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief By default in multiprocessor mode, when the wake up method is set
+ 351:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *        to address mark, the UART handles only 4-bit long addresses detection;
+ 352:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *        this API allows to enable longer addresses detection (6-, 7- or 8-bit
+ 353:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *        long).
+ 354:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @note  Addresses detection lengths are: 6-bit address detection in 7-bit data mode, 
+ 355:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *        7-bit address detection in 8-bit data mode, 8-bit address detection in 9-bit data mode.
+ 356:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart         UART handle.
+ 357:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param AddressLength This parameter can be one of the following values:
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          @arg @ref UART_ADDRESS_DETECT_4B 4-bit long address
+ 359:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          @arg @ref UART_ADDRESS_DETECT_7B 6-, 7- or 8-bit long address
+ 360:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 361:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 362:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_MultiProcessorEx_AddressLength_Set(UART_HandleTypeDef *huart, uint32_t Addres
+ 363:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 193              		.loc 1 363 1 is_stmt 1 view -0
+ 194              		.cfi_startproc
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              		@ link register save eliminated.
+ 364:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check the UART handle allocation */
+ 365:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   if(huart == NULL)
+ 198              		.loc 1 365 3 view .LVU47
+ 199              		.loc 1 365 5 is_stmt 0 view .LVU48
+ 200 0000 90B1     		cbz	r0, .L15
+ 366:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 367:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     return HAL_ERROR;
+ 368:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 369:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 11
+
+
+ 370:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check the address length parameter */
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_ADDRESSLENGTH_DETECT(AddressLength));
+ 201              		.loc 1 371 3 is_stmt 1 view .LVU49
+ 372:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 373:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 202              		.loc 1 373 3 view .LVU50
+ 374:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 375:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable the Peripheral */
+ 376:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ 203              		.loc 1 376 3 is_stmt 0 view .LVU51
+ 204 0002 0368     		ldr	r3, [r0]
+ 373:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 205              		.loc 1 373 17 view .LVU52
+ 206 0004 2422     		movs	r2, #36
+ 207 0006 80F87120 		strb	r2, [r0, #113]
+ 208              		.loc 1 376 3 is_stmt 1 view .LVU53
+ 209 000a 1A68     		ldr	r2, [r3]
+ 210 000c 22F00102 		bic	r2, r2, #1
+ 211 0010 1A60     		str	r2, [r3]
+ 377:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 378:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Set the address length */
+ 379:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR2, USART_CR2_ADDM7, AddressLength);
+ 212              		.loc 1 379 3 view .LVU54
+ 213 0012 5A68     		ldr	r2, [r3, #4]
+ 214 0014 22F01002 		bic	r2, r2, #16
+ 215 0018 1143     		orrs	r1, r1, r2
+ 216              	.LVL13:
+ 217              		.loc 1 379 3 is_stmt 0 view .LVU55
+ 218 001a 5960     		str	r1, [r3, #4]
+ 380:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 381:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Enable the Peripheral */
+ 382:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_ENABLE(huart);
+ 219              		.loc 1 382 3 is_stmt 1 view .LVU56
+ 220 001c 1A68     		ldr	r2, [r3]
+ 221 001e 42F00102 		orr	r2, r2, #1
+ 222 0022 1A60     		str	r2, [r3]
+ 383:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 384:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* TEACK and/or REACK to check before moving huart->gState to Ready */
+ 385:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return (UART_CheckIdleState(huart));
+ 223              		.loc 1 385 3 view .LVU57
+ 224              		.loc 1 385 11 is_stmt 0 view .LVU58
+ 225 0024 FFF7FEBF 		b	UART_CheckIdleState
+ 226              	.LVL14:
+ 227              	.L15:
+ 386:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 228              		.loc 1 386 1 view .LVU59
+ 229 0028 0120     		movs	r0, #1
+ 230              	.LVL15:
+ 231              		.loc 1 386 1 view .LVU60
+ 232 002a 7047     		bx	lr
+ 233              		.cfi_endproc
+ 234              	.LFE289:
+ 236              		.section	.text.HAL_UARTEx_StopModeWakeUpSourceConfig,"ax",%progbits
+ 237              		.align	1
+ 238              		.global	HAL_UARTEx_StopModeWakeUpSourceConfig
+ 239              		.syntax unified
+ 240              		.thumb
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 12
+
+
+ 241              		.thumb_func
+ 242              		.fpu fpv4-sp-d16
+ 244              	HAL_UARTEx_StopModeWakeUpSourceConfig:
+ 245              	.LVL16:
+ 246              	.LFB290:
+ 387:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 388:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 389:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 390:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief Set Wakeup from Stop mode interrupt flag selection.
+ 391:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @note It is the application responsibility to enable the interrupt used as
+ 392:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       usart_wkup interrupt source before entering low-power mode.
+ 393:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart           UART handle.
+ 394:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param WakeUpSelection Address match, Start Bit detection or RXNE/RXFNE bit status.
+ 395:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          This parameter can be one of the following values:
+ 396:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          @arg @ref UART_WAKEUP_ON_ADDRESS
+ 397:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          @arg @ref UART_WAKEUP_ON_STARTBIT
+ 398:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          @arg @ref UART_WAKEUP_ON_READDATA_NONEMPTY
+ 399:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 400:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 401:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_StopModeWakeUpSourceConfig(UART_HandleTypeDef *huart, UART_WakeUpTypeD
+ 402:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 247              		.loc 1 402 1 is_stmt 1 view -0
+ 248              		.cfi_startproc
+ 249              		@ args = 0, pretend = 0, frame = 8
+ 250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 251              		.loc 1 402 1 is_stmt 0 view .LVU62
+ 252 0000 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+ 253              	.LCFI3:
+ 254              		.cfi_def_cfa_offset 24
+ 255              		.cfi_offset 4, -8
+ 256              		.cfi_offset 14, -4
+ 257              		.loc 1 402 1 view .LVU63
+ 258 0002 04AB     		add	r3, sp, #16
+ 259 0004 03E90600 		stmdb	r3, {r1, r2}
+ 403:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 404:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t tickstart = 0;
+ 405:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 406:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* check the wake-up from stop mode UART instance */
+ 407:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_WAKEUP_FROMSTOP_INSTANCE(huart->Instance));
+ 408:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* check the wake-up selection parameter */
+ 409:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_WAKEUP_SELECTION(WakeUpSelection.WakeUpEvent));
+ 410:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 411:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 412:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 260              		.loc 1 412 3 view .LVU64
+ 261 0008 90F87030 		ldrb	r3, [r0, #112]	@ zero_extendqisi2
+ 262 000c 0299     		ldr	r1, [sp, #8]
+ 263              	.LVL17:
+ 403:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 264              		.loc 1 403 3 is_stmt 1 view .LVU65
+ 404:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 265              		.loc 1 404 3 view .LVU66
+ 407:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* check the wake-up selection parameter */
+ 266              		.loc 1 407 3 view .LVU67
+ 409:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 267              		.loc 1 409 3 view .LVU68
+ 268              		.loc 1 412 3 view .LVU69
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 13
+
+
+ 269              		.loc 1 412 3 view .LVU70
+ 270 000e 012B     		cmp	r3, #1
+ 402:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 271              		.loc 1 402 1 is_stmt 0 view .LVU71
+ 272 0010 0446     		mov	r4, r0
+ 273              		.loc 1 412 3 view .LVU72
+ 274 0012 3AD0     		beq	.L20
+ 275              		.loc 1 412 3 is_stmt 1 discriminator 2 view .LVU73
+ 276 0014 0123     		movs	r3, #1
+ 277 0016 80F87030 		strb	r3, [r0, #112]
+ 278              		.loc 1 412 3 discriminator 2 view .LVU74
+ 413:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 414:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 279              		.loc 1 414 3 discriminator 2 view .LVU75
+ 280              		.loc 1 414 17 is_stmt 0 discriminator 2 view .LVU76
+ 281 001a 2423     		movs	r3, #36
+ 282 001c 80F87130 		strb	r3, [r0, #113]
+ 415:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 416:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable the Peripheral */
+ 417:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ 283              		.loc 1 417 3 is_stmt 1 discriminator 2 view .LVU77
+ 284 0020 0368     		ldr	r3, [r0]
+ 285 0022 1A68     		ldr	r2, [r3]
+ 286 0024 22F00102 		bic	r2, r2, #1
+ 287 0028 1A60     		str	r2, [r3]
+ 418:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 419:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Set the wake-up selection scheme */
+ 420:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR3, USART_CR3_WUS, WakeUpSelection.WakeUpEvent);
+ 288              		.loc 1 420 3 discriminator 2 view .LVU78
+ 289 002a 9A68     		ldr	r2, [r3, #8]
+ 290 002c 22F44012 		bic	r2, r2, #3145728
+ 291 0030 0A43     		orrs	r2, r2, r1
+ 292 0032 9A60     		str	r2, [r3, #8]
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 422:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   if (WakeUpSelection.WakeUpEvent == UART_WAKEUP_ON_ADDRESS)
+ 293              		.loc 1 422 3 discriminator 2 view .LVU79
+ 294              		.loc 1 422 6 is_stmt 0 discriminator 2 view .LVU80
+ 295 0034 71B9     		cbnz	r1, .L18
+ 423:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 424:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     UARTEx_Wakeup_AddressConfig(huart, WakeUpSelection);
+ 296              		.loc 1 424 5 is_stmt 1 view .LVU81
+ 297              	.LBB4:
+ 298              	.LBB5:
+ 425:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 426:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 427:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Enable the Peripheral */
+ 428:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_ENABLE(huart);
+ 429:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 430:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Init tickstart for timeout managment*/
+ 431:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   tickstart = HAL_GetTick();
+ 432:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 433:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Wait until REACK flag is set */
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   if(UART_WaitOnFlagUntilTimeout(huart, USART_ISR_REACK, RESET, tickstart, HAL_UART_TIMEOUT_VALUE) 
+ 435:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 436:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     status = HAL_TIMEOUT;
+ 437:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 438:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   else
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 14
+
+
+ 439:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 440:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     /* Initialize the UART State */
+ 441:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****     huart->gState = HAL_UART_STATE_READY;
+ 442:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 443:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 444:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 446:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 447:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return status;
+ 448:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 449:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 450:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 451:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 452:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief Enable UART Stop Mode.
+ 453:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @note The UART is able to wake up the MCU from Stop 1 mode as long as UART clock is HSI or LSE.
+ 454:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart UART handle.
+ 455:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 456:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 457:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_EnableStopMode(UART_HandleTypeDef *huart)
+ 458:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 459:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 461:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 463:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 464:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Set UESM bit */
+ 465:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   SET_BIT(huart->Instance->CR1, USART_CR1_UESM);
+ 466:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 467:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 468:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 469:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 470:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 471:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 472:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;
+ 473:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 474:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 475:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 476:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief Disable UART Stop Mode.
+ 477:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart UART handle.
+ 478:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 479:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 480:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_DisableStopMode(UART_HandleTypeDef *huart)
+ 481:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 482:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 484:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 485:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 486:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 487:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Clear UESM bit */
+ 488:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   CLEAR_BIT(huart->Instance->CR1, USART_CR1_UESM);
+ 489:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 490:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 491:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 492:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 494:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 495:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 15
+
+
+ 496:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 497:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 498:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #if defined(USART_CR2_SLVEN)
+ 499:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 500:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  Enable the SPI slave mode.
+ 501:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @note When the UART operates in SPI slave mode, it handles data flow using
+ 502:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       the serial interface clock derived from the external SCLK signal
+ 503:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       provided by the external master SPI device.
+ 504:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @note In SPI slave mode, the UART must be enabled before starting the master
+ 505:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       communications (or between frames while the clock is stable). Otherwise,
+ 506:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       if the UART slave is enabled while the master is in the middle of a
+ 507:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       frame, it will become desynchronized with the master. 
+ 508:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @note The data register of the slave needs to be ready before the first edge
+ 509:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       of the communication clock or before the end of the ongoing communication,
+ 510:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       otherwise the SPI slave will transmit zeros.
+ 511:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart      UART handle.
+ 512:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 513:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 514:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_EnableSlaveMode(UART_HandleTypeDef *huart)
+ 515:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 516:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t tmpcr1 = 0;
+ 517:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 518:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check parameters */
+ 519:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_SPI_SLAVE_INSTANCE(huart->Instance));
+ 520:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 521:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 522:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 523:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 524:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 525:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 526:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Save actual UART configuration */
+ 527:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   tmpcr1 = READ_REG(huart->Instance->CR1);
+ 528:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 529:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable UART */
+ 530:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ 531:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 532:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* In SPI slave mode mode, the following bits must be kept cleared:
+ 533:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   - LINEN and CLKEN bit in the USART_CR2 register
+ 534:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   - HDSEL, SCEN and IREN bits in the USART_CR3 register.*/
+ 535:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   CLEAR_BIT(huart->Instance->CR2, (USART_CR2_LINEN | USART_CR2_CLKEN));
+ 536:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   CLEAR_BIT(huart->Instance->CR3, (USART_CR3_SCEN | USART_CR3_HDSEL | USART_CR3_IREN));
+ 537:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 538:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Enable SPI slave mode */
+ 539:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   SET_BIT(huart->Instance->CR2, USART_CR2_SLVEN);
+ 540:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 541:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Restore UART configuration */
+ 542:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   WRITE_REG(huart->Instance->CR1, tmpcr1);
+ 543:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  
+ 544:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->SlaveMode = UART_SLAVEMODE_ENABLE;
+ 545:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 546:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 547:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 548:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Enable UART */
+ 549:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_ENABLE(huart);
+ 550:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 551:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 552:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 16
+
+
+ 553:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 554:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;  
+ 555:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 556:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 557:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 558:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  Disable the SPI slave mode.
+ 559:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart      UART handle.
+ 560:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 561:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 562:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_DisableSlaveMode(UART_HandleTypeDef *huart)
+ 563:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 564:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t tmpcr1 = 0;
+ 565:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 566:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check parameters */
+ 567:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_SPI_SLAVE_INSTANCE(huart->Instance));
+ 568:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 569:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 570:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 571:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 572:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 573:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 574:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Save actual UART configuration */
+ 575:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   tmpcr1 = READ_REG(huart->Instance->CR1);
+ 576:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 577:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable UART */
+ 578:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ 579:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 580:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable SPI slave mode */
+ 581:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   CLEAR_BIT(huart->Instance->CR2, USART_CR2_SLVEN);
+ 582:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 583:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Restore UART configuration */
+ 584:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   WRITE_REG(huart->Instance->CR1, tmpcr1);
+ 585:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 586:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->SlaveMode = UART_SLAVEMODE_ENABLE;
+ 587:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 588:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 589:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 590:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 591:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 592:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 593:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;  
+ 594:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 595:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 596:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 597:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  Configure the Slave Select input pin (NSS).
+ 598:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @note Software NSS management: SPI slave will always be selected and NSS
+ 599:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       input pin will be ignored.
+ 600:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @note Hardware NSS management: the SPI slave selection depends on NSS
+ 601:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       input pin. The slave is selected when NSS is low and deselected when
+ 602:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *       NSS is high.
+ 603:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart      UART handle.
+ 604:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param NSSConfig   NSS configuration.
+ 605:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          This parameter can be one of the following values:
+ 606:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_NSS_HARD
+ 607:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_NSS_SOFT
+ 608:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 609:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 17
+
+
+ 610:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_ConfigNSS(UART_HandleTypeDef *huart, uint32_t NSSConfig)
+ 611:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 612:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t tmpcr1 = 0;
+ 613:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 614:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check parameters */
+ 615:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_SPI_SLAVE_INSTANCE(huart->Instance));
+ 616:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_NSS(NSSConfig));
+ 617:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 618:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 619:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 620:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 621:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 622:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 623:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Save actual UART configuration */
+ 624:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   tmpcr1 = READ_REG(huart->Instance->CR1);
+ 625:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 626:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable UART */
+ 627:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ 628:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 629:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Program DIS_NSS bit in the USART_CR2 register */
+ 630:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR2, USART_CR2_DIS_NSS, NSSConfig);
+ 631:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 632:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Restore UART configuration */
+ 633:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   WRITE_REG(huart->Instance->CR1, tmpcr1);
+ 634:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  
+ 635:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 636:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 637:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 638:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 639:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 640:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;
+ 641:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 642:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #endif
+ 643:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 644:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #if defined(USART_CR1_FIFOEN)
+ 645:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 646:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  Enable the FIFO mode.
+ 647:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart      UART handle.
+ 648:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 649:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 650:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_EnableFifoMode(UART_HandleTypeDef *huart)
+ 651:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 652:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t tmpcr1 = 0;
+ 653:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 654:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check parameters */
+ 655:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_FIFO_INSTANCE(huart->Instance));
+ 656:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 657:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 658:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 659:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 660:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 661:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 662:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Save actual UART configuration */
+ 663:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   tmpcr1 = READ_REG(huart->Instance->CR1);
+ 664:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 665:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable UART */
+ 666:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 18
+
+
+ 667:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 668:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Enable FIFO mode */
+ 669:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   SET_BIT(tmpcr1, USART_CR1_FIFOEN);
+ 670:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->FifoMode = UART_FIFOMODE_ENABLE;
+ 671:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 672:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Restore UART configuration */
+ 673:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   WRITE_REG(huart->Instance->CR1, tmpcr1);
+ 674:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 675:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Determine the number of data to process during RX/TX ISR execution */
+ 676:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   UARTEx_SetNbDataToProcess(huart);
+ 677:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 678:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 679:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 680:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 681:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 682:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  
+ 683:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;
+ 684:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 685:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 686:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 687:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  Disable the FIFO mode.
+ 688:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart      UART handle.
+ 689:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 690:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 691:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_DisableFifoMode(UART_HandleTypeDef *huart)
+ 692:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 693:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t tmpcr1 = 0;
+ 694:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 695:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check parameters */
+ 696:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_FIFO_INSTANCE(huart->Instance));
+ 697:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 698:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 699:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 700:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 701:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 702:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 703:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Save actual UART configuration */
+ 704:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   tmpcr1 = READ_REG(huart->Instance->CR1);
+ 705:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 706:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable UART */
+ 707:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ 708:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 709:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Enable FIFO mode */
+ 710:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   CLEAR_BIT(tmpcr1, USART_CR1_FIFOEN);
+ 711:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->FifoMode = UART_FIFOMODE_DISABLE;
+ 712:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 713:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Restore UART configuration */
+ 714:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   WRITE_REG(huart->Instance->CR1, tmpcr1);
+ 715:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 716:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 717:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 718:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 719:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 720:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****  
+ 721:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;
+ 722:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 723:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 19
+
+
+ 724:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 725:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  Set the TXFIFO threshold.
+ 726:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart      UART handle.
+ 727:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param Threshold  TX FIFO threshold value
+ 728:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          This parameter can be one of the following values:
+ 729:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_TXFIFO_THRESHOLD_1_8
+ 730:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_TXFIFO_THRESHOLD_1_4
+ 731:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_TXFIFO_THRESHOLD_1_2
+ 732:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_TXFIFO_THRESHOLD_3_4
+ 733:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_TXFIFO_THRESHOLD_7_8
+ 734:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_TXFIFO_THRESHOLD_8_8
+ 735:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 736:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 737:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_SetTxFifoThreshold(UART_HandleTypeDef *huart, uint32_t Threshold)
+ 738:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 739:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t tmpcr1 = 0;
+ 740:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 741:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check parameters */
+ 742:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_FIFO_INSTANCE(huart->Instance));
+ 743:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_TXFIFO_THRESHOLD(Threshold));
+ 744:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 745:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 746:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 747:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 748:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 749:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 750:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Save actual UART configuration */
+ 751:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   tmpcr1 = READ_REG(huart->Instance->CR1);
+ 752:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 753:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable UART */
+ 754:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ 755:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 756:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Update TX threshold configuration */
+ 757:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR3, USART_CR3_TXFTCFG, Threshold);
+ 758:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 759:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Determine the number of data to process during RX/TX ISR execution */
+ 760:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   UARTEx_SetNbDataToProcess(huart);
+ 761:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 762:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Restore UART configuration */
+ 763:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   WRITE_REG(huart->Instance->CR1, tmpcr1);
+ 764:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 765:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 766:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 767:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 768:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 769:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 770:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;
+ 771:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 772:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 773:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 774:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief  Set the RXFIFO threshold.
+ 775:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart      UART handle.
+ 776:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param Threshold  RX FIFO threshold value
+ 777:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *          This parameter can be one of the following values:
+ 778:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_RXFIFO_THRESHOLD_1_8
+ 779:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_RXFIFO_THRESHOLD_1_4
+ 780:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_RXFIFO_THRESHOLD_1_2
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 20
+
+
+ 781:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_RXFIFO_THRESHOLD_3_4
+ 782:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_RXFIFO_THRESHOLD_7_8
+ 783:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   *            @arg @ref UART_RXFIFO_THRESHOLD_8_8
+ 784:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval HAL status
+ 785:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 786:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** HAL_StatusTypeDef HAL_UARTEx_SetRxFifoThreshold(UART_HandleTypeDef *huart, uint32_t Threshold)
+ 787:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 788:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   uint32_t tmpcr1 = 0;
+ 789:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 790:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Check the parameters */
+ 791:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_FIFO_INSTANCE(huart->Instance));
+ 792:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_RXFIFO_THRESHOLD(Threshold));
+ 793:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 794:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 795:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
+ 796:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 797:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_BUSY;
+ 798:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 799:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Save actual UART configuration */
+ 800:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   tmpcr1 = READ_REG(huart->Instance->CR1);
+ 801:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 802:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Disable UART */
+ 803:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UART_DISABLE(huart);
+ 804:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 805:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Update RX threshold configuration */
+ 806:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR3, USART_CR3_RXFTCFG, Threshold);
+ 807:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 808:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Determine the number of data to process during RX/TX ISR execution */
+ 809:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   UARTEx_SetNbDataToProcess(huart);
+ 810:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 811:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Restore UART configuration */
+ 812:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   WRITE_REG(huart->Instance->CR1, tmpcr1);
+ 813:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 814:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   huart->gState = HAL_UART_STATE_READY;
+ 815:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 816:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
+ 817:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
+ 818:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 819:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   return HAL_OK;
+ 820:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 821:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** #endif
+ 822:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 823:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 824:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @}
+ 825:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 826:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 827:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 828:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @}
+ 829:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 830:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 831:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /** @addtogroup UARTEx_Private_Functions
+ 832:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @{
+ 833:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 834:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 835:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** /**
+ 836:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @brief Initialize the UART wake-up from stop mode parameters when triggered by address detectio
+ 837:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param huart           UART handle.
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 21
+
+
+ 838:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @param WakeUpSelection UART wake up from stop mode parameters.
+ 839:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   * @retval None
+ 840:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   */
+ 841:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** static void UARTEx_Wakeup_AddressConfig(UART_HandleTypeDef *huart, UART_WakeUpTypeDef WakeUpSelecti
+ 842:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 843:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_ADDRESSLENGTH_DETECT(WakeUpSelection.AddressLength));
+ 844:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 845:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Set the USART address length */
+ 846:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR2, USART_CR2_ADDM7, WakeUpSelection.AddressLength);
+ 299              		.loc 1 846 3 is_stmt 0 view .LVU82
+ 300 0036 5968     		ldr	r1, [r3, #4]
+ 301              	.LVL18:
+ 302              		.loc 1 846 3 view .LVU83
+ 303 0038 BDF80C20 		ldrh	r2, [sp, #12]
+ 304              	.LBE5:
+ 305              	.LBE4:
+ 424:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 306              		.loc 1 424 5 view .LVU84
+ 307 003c 9DF80E00 		ldrb	r0, [sp, #14]	@ zero_extendqisi2
+ 308              	.LVL19:
+ 309              	.LBB7:
+ 310              	.LBI4:
+ 841:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** {
+ 311              		.loc 1 841 13 is_stmt 1 view .LVU85
+ 312              	.LBB6:
+ 843:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 313              		.loc 1 843 3 view .LVU86
+ 314              		.loc 1 846 3 view .LVU87
+ 315 0040 21F01001 		bic	r1, r1, #16
+ 316 0044 1143     		orrs	r1, r1, r2
+ 317 0046 5960     		str	r1, [r3, #4]
+ 847:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 848:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Set the USART address node */
+ 849:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR2, USART_CR2_ADD, ((uint32_t)WakeUpSelection.Address << UART_CR2_AD
+ 318              		.loc 1 849 3 view .LVU88
+ 319 0048 5A68     		ldr	r2, [r3, #4]
+ 320 004a 22F07F42 		bic	r2, r2, #-16777216
+ 321 004e 42EA0062 		orr	r2, r2, r0, lsl #24
+ 322 0052 5A60     		str	r2, [r3, #4]
+ 323              	.LVL20:
+ 324              	.L18:
+ 325              		.loc 1 849 3 is_stmt 0 view .LVU89
+ 326              	.LBE6:
+ 327              	.LBE7:
+ 428:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 328              		.loc 1 428 3 is_stmt 1 view .LVU90
+ 329 0054 1A68     		ldr	r2, [r3]
+ 330 0056 42F00102 		orr	r2, r2, #1
+ 331 005a 1A60     		str	r2, [r3]
+ 431:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 332              		.loc 1 431 3 view .LVU91
+ 431:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 333              		.loc 1 431 15 is_stmt 0 view .LVU92
+ 334 005c FFF7FEFF 		bl	HAL_GetTick
+ 335              	.LVL21:
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 336              		.loc 1 434 6 view .LVU93
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 22
+
+
+ 337 0060 6FF07E42 		mvn	r2, #-33554432
+ 431:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 338              		.loc 1 431 15 view .LVU94
+ 339 0064 0346     		mov	r3, r0
+ 340              	.LVL22:
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 341              		.loc 1 434 3 is_stmt 1 view .LVU95
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 342              		.loc 1 434 6 is_stmt 0 view .LVU96
+ 343 0066 0092     		str	r2, [sp]
+ 344 0068 4FF48001 		mov	r1, #4194304
+ 345 006c 0022     		movs	r2, #0
+ 346 006e 2046     		mov	r0, r4
+ 347              	.LVL23:
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 348              		.loc 1 434 6 view .LVU97
+ 349 0070 FFF7FEFF 		bl	UART_WaitOnFlagUntilTimeout
+ 350              	.LVL24:
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   {
+ 351              		.loc 1 434 5 view .LVU98
+ 352 0074 38B9     		cbnz	r0, .L21
+ 441:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 353              		.loc 1 441 5 is_stmt 1 view .LVU99
+ 441:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 354              		.loc 1 441 19 is_stmt 0 view .LVU100
+ 355 0076 2023     		movs	r3, #32
+ 356 0078 84F87130 		strb	r3, [r4, #113]
+ 357              	.L19:
+ 358              	.LVL25:
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 359              		.loc 1 445 3 is_stmt 1 view .LVU101
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 360              		.loc 1 445 3 view .LVU102
+ 361 007c 0023     		movs	r3, #0
+ 362 007e 84F87030 		strb	r3, [r4, #112]
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 363              		.loc 1 445 3 view .LVU103
+ 447:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 364              		.loc 1 447 3 view .LVU104
+ 365              	.LVL26:
+ 366              	.L17:
+ 448:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 367              		.loc 1 448 1 is_stmt 0 view .LVU105
+ 368 0082 04B0     		add	sp, sp, #16
+ 369              	.LCFI4:
+ 370              		.cfi_remember_state
+ 371              		.cfi_def_cfa_offset 8
+ 372              		@ sp needed
+ 373 0084 10BD     		pop	{r4, pc}
+ 374              	.LVL27:
+ 375              	.L21:
+ 376              	.LCFI5:
+ 377              		.cfi_restore_state
+ 436:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   }
+ 378              		.loc 1 436 12 view .LVU106
+ 379 0086 0320     		movs	r0, #3
+ 380 0088 F8E7     		b	.L19
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 23
+
+
+ 381              	.LVL28:
+ 382              	.L20:
+ 412:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 383              		.loc 1 412 3 view .LVU107
+ 384 008a 0220     		movs	r0, #2
+ 385              	.LVL29:
+ 412:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 386              		.loc 1 412 3 view .LVU108
+ 387 008c F9E7     		b	.L17
+ 388              		.cfi_endproc
+ 389              	.LFE290:
+ 391              		.section	.text.HAL_UARTEx_EnableStopMode,"ax",%progbits
+ 392              		.align	1
+ 393              		.global	HAL_UARTEx_EnableStopMode
+ 394              		.syntax unified
+ 395              		.thumb
+ 396              		.thumb_func
+ 397              		.fpu fpv4-sp-d16
+ 399              	HAL_UARTEx_EnableStopMode:
+ 400              	.LVL30:
+ 401              	.LFB291:
+ 458:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 402              		.loc 1 458 1 is_stmt 1 view -0
+ 403              		.cfi_startproc
+ 404              		@ args = 0, pretend = 0, frame = 0
+ 405              		@ frame_needed = 0, uses_anonymous_args = 0
+ 406              		@ link register save eliminated.
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 407              		.loc 1 460 3 view .LVU110
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 408              		.loc 1 460 3 view .LVU111
+ 409 0000 90F87030 		ldrb	r3, [r0, #112]	@ zero_extendqisi2
+ 410 0004 012B     		cmp	r3, #1
+ 411 0006 0FD0     		beq	.L24
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 412              		.loc 1 460 3 discriminator 2 view .LVU112
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 413              		.loc 1 460 3 discriminator 2 view .LVU113
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 414              		.loc 1 462 3 discriminator 2 view .LVU114
+ 465:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 415              		.loc 1 465 3 is_stmt 0 discriminator 2 view .LVU115
+ 416 0008 0268     		ldr	r2, [r0]
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 417              		.loc 1 462 17 discriminator 2 view .LVU116
+ 418 000a 2423     		movs	r3, #36
+ 419 000c 80F87130 		strb	r3, [r0, #113]
+ 465:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 420              		.loc 1 465 3 is_stmt 1 discriminator 2 view .LVU117
+ 421 0010 1368     		ldr	r3, [r2]
+ 422 0012 43F00203 		orr	r3, r3, #2
+ 423 0016 1360     		str	r3, [r2]
+ 467:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 424              		.loc 1 467 3 discriminator 2 view .LVU118
+ 467:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 425              		.loc 1 467 17 is_stmt 0 discriminator 2 view .LVU119
+ 426 0018 2023     		movs	r3, #32
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 24
+
+
+ 427 001a 80F87130 		strb	r3, [r0, #113]
+ 470:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 428              		.loc 1 470 3 is_stmt 1 discriminator 2 view .LVU120
+ 470:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 429              		.loc 1 470 3 discriminator 2 view .LVU121
+ 430 001e 0023     		movs	r3, #0
+ 431 0020 80F87030 		strb	r3, [r0, #112]
+ 470:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 432              		.loc 1 470 3 discriminator 2 view .LVU122
+ 472:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 433              		.loc 1 472 3 discriminator 2 view .LVU123
+ 472:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 434              		.loc 1 472 10 is_stmt 0 discriminator 2 view .LVU124
+ 435 0024 1846     		mov	r0, r3
+ 436              	.LVL31:
+ 472:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 437              		.loc 1 472 10 discriminator 2 view .LVU125
+ 438 0026 7047     		bx	lr
+ 439              	.LVL32:
+ 440              	.L24:
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 441              		.loc 1 460 3 view .LVU126
+ 442 0028 0220     		movs	r0, #2
+ 443              	.LVL33:
+ 473:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 444              		.loc 1 473 1 view .LVU127
+ 445 002a 7047     		bx	lr
+ 446              		.cfi_endproc
+ 447              	.LFE291:
+ 449              		.section	.text.HAL_UARTEx_DisableStopMode,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	HAL_UARTEx_DisableStopMode
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 455              		.fpu fpv4-sp-d16
+ 457              	HAL_UARTEx_DisableStopMode:
+ 458              	.LVL34:
+ 459              	.LFB292:
+ 481:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
+ 460              		.loc 1 481 1 is_stmt 1 view -0
+ 461              		.cfi_startproc
+ 462              		@ args = 0, pretend = 0, frame = 0
+ 463              		@ frame_needed = 0, uses_anonymous_args = 0
+ 464              		@ link register save eliminated.
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 465              		.loc 1 483 3 view .LVU129
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 466              		.loc 1 483 3 view .LVU130
+ 467 0000 90F87030 		ldrb	r3, [r0, #112]	@ zero_extendqisi2
+ 468 0004 012B     		cmp	r3, #1
+ 469 0006 0FD0     		beq	.L27
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 470              		.loc 1 483 3 discriminator 2 view .LVU131
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 471              		.loc 1 483 3 discriminator 2 view .LVU132
+ 485:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 25
+
+
+ 472              		.loc 1 485 3 discriminator 2 view .LVU133
+ 488:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 473              		.loc 1 488 3 is_stmt 0 discriminator 2 view .LVU134
+ 474 0008 0268     		ldr	r2, [r0]
+ 485:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 475              		.loc 1 485 17 discriminator 2 view .LVU135
+ 476 000a 2423     		movs	r3, #36
+ 477 000c 80F87130 		strb	r3, [r0, #113]
+ 488:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 478              		.loc 1 488 3 is_stmt 1 discriminator 2 view .LVU136
+ 479 0010 1368     		ldr	r3, [r2]
+ 480 0012 23F00203 		bic	r3, r3, #2
+ 481 0016 1360     		str	r3, [r2]
+ 490:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 482              		.loc 1 490 3 discriminator 2 view .LVU137
+ 490:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 483              		.loc 1 490 17 is_stmt 0 discriminator 2 view .LVU138
+ 484 0018 2023     		movs	r3, #32
+ 485 001a 80F87130 		strb	r3, [r0, #113]
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 486              		.loc 1 493 3 is_stmt 1 discriminator 2 view .LVU139
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 487              		.loc 1 493 3 discriminator 2 view .LVU140
+ 488 001e 0023     		movs	r3, #0
+ 489 0020 80F87030 		strb	r3, [r0, #112]
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 490              		.loc 1 493 3 discriminator 2 view .LVU141
+ 495:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 491              		.loc 1 495 3 discriminator 2 view .LVU142
+ 495:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 492              		.loc 1 495 10 is_stmt 0 discriminator 2 view .LVU143
+ 493 0024 1846     		mov	r0, r3
+ 494              	.LVL35:
+ 495:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** }
+ 495              		.loc 1 495 10 discriminator 2 view .LVU144
+ 496 0026 7047     		bx	lr
+ 497              	.LVL36:
+ 498              	.L27:
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c ****   
+ 499              		.loc 1 483 3 view .LVU145
+ 500 0028 0220     		movs	r0, #2
+ 501              	.LVL37:
+ 496:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_uart_ex.c **** 
+ 502              		.loc 1 496 1 view .LVU146
+ 503 002a 7047     		bx	lr
+ 504              		.cfi_endproc
+ 505              	.LFE292:
+ 507              		.text
+ 508              	.Letext0:
+ 509              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 510              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 511              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 512              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 513              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 514              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 515              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 516              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 26
+
+
+ 517              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 518              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 519              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 520              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 521              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 522              		.file 15 "d:/liteos/code/WIFI2/Inc/stm32l4xx.h"
+ 523              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 524              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 525              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 526              		.file 19 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 527              		.file 20 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32l4xx_hal_uart_ex.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:18     .text.HAL_RS485Ex_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:26     .text.HAL_RS485Ex_Init:00000000 HAL_RS485Ex_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:161    .text.HAL_UARTEx_WakeupCallback:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:168    .text.HAL_UARTEx_WakeupCallback:00000000 HAL_UARTEx_WakeupCallback
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:183    .text.HAL_MultiProcessorEx_AddressLength_Set:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:190    .text.HAL_MultiProcessorEx_AddressLength_Set:00000000 HAL_MultiProcessorEx_AddressLength_Set
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:237    .text.HAL_UARTEx_StopModeWakeUpSourceConfig:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:244    .text.HAL_UARTEx_StopModeWakeUpSourceConfig:00000000 HAL_UARTEx_StopModeWakeUpSourceConfig
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:392    .text.HAL_UARTEx_EnableStopMode:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:399    .text.HAL_UARTEx_EnableStopMode:00000000 HAL_UARTEx_EnableStopMode
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:450    .text.HAL_UARTEx_DisableStopMode:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccloWCPn.s:457    .text.HAL_UARTEx_DisableStopMode:00000000 HAL_UARTEx_DisableStopMode
+
+UNDEFINED SYMBOLS
+HAL_UART_MspInit
+UART_SetConfig
+UART_AdvFeatureConfig
+UART_CheckIdleState
+HAL_GetTick
+UART_WaitOnFlagUntilTimeout

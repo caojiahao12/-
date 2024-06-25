@@ -1,0 +1,23 @@
+{
+    "compiler": {
+        "path": "${system_default}",
+        "prefix": "arm-none-eabi",
+        "makefile": "GCC/Makefile",
+        "makeparam": "-j"
+    },
+    "debugger": {
+        "adapter": "OpenOCD",
+        "openocdPath": "${system_default}",
+        "openocdOption": "-f interface/stlink-v2-1.cfg -f target/stm32l4x.cfg",
+        "interface": "SWD",
+        "deviceName": "STM32L431RC",
+        "loadAddress": "0x08000000",
+        "verify": true,
+        "binfile": "GCC\\build\\Huawei_LiteOS.elf"
+    },
+    "general": {
+        "sdk": "IoT_LINK",
+        "projectName": "WIFI"
+    },
+    "version": "1.0.0"
+}

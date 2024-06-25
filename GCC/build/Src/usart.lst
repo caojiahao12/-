@@ -1,0 +1,1343 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"usart.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata.MX_LPUART1_UART_Init.str1.1,"aMS",%progbits,1
+  18              	.LC0:
+  19 0000 643A2F6C 		.ascii	"d:/liteos/code/WIFI2/Src/usart.c\000"
+  19      6974656F 
+  19      732F636F 
+  19      64652F57 
+  19      49464932 
+  20              		.section	.text.MX_LPUART1_UART_Init,"ax",%progbits
+  21              		.align	1
+  22              		.global	MX_LPUART1_UART_Init
+  23              		.arch armv7e-m
+  24              		.syntax unified
+  25              		.thumb
+  26              		.thumb_func
+  27              		.fpu fpv4-sp-d16
+  29              	MX_LPUART1_UART_Init:
+  30              	.LFB287:
+  31              		.file 1 "d:/liteos/code/WIFI2/Src/usart.c"
+   1:d:/liteos/code/WIFI2/Src\usart.c **** /**
+   2:d:/liteos/code/WIFI2/Src\usart.c ****   ******************************************************************************
+   3:d:/liteos/code/WIFI2/Src\usart.c ****   * File Name          : USART.c
+   4:d:/liteos/code/WIFI2/Src\usart.c ****   * Description        : This file provides code for the configuration
+   5:d:/liteos/code/WIFI2/Src\usart.c ****   *                      of the USART instances.
+   6:d:/liteos/code/WIFI2/Src\usart.c ****   ******************************************************************************
+   7:d:/liteos/code/WIFI2/Src\usart.c ****   ** This notice applies to any and all portions of this file
+   8:d:/liteos/code/WIFI2/Src\usart.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:d:/liteos/code/WIFI2/Src\usart.c ****   * USER CODE END. Other portions of this file, whether 
+  10:d:/liteos/code/WIFI2/Src\usart.c ****   * inserted by the user or by software development tools
+  11:d:/liteos/code/WIFI2/Src\usart.c ****   * are owned by their respective copyright owners.
+  12:d:/liteos/code/WIFI2/Src\usart.c ****   *
+  13:d:/liteos/code/WIFI2/Src\usart.c ****   * COPYRIGHT(c) 2018 STMicroelectronics
+  14:d:/liteos/code/WIFI2/Src\usart.c ****   *
+  15:d:/liteos/code/WIFI2/Src\usart.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:d:/liteos/code/WIFI2/Src\usart.c ****   * are permitted provided that the following conditions are met:
+  17:d:/liteos/code/WIFI2/Src\usart.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:d:/liteos/code/WIFI2/Src\usart.c ****   *      this list of conditions and the following disclaimer.
+  19:d:/liteos/code/WIFI2/Src\usart.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:d:/liteos/code/WIFI2/Src\usart.c ****   *      this list of conditions and the following disclaimer in the documentation
+  21:d:/liteos/code/WIFI2/Src\usart.c ****   *      and/or other materials provided with the distribution.
+  22:d:/liteos/code/WIFI2/Src\usart.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:d:/liteos/code/WIFI2/Src\usart.c ****   *      may be used to endorse or promote products derived from this software
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 2
+
+
+  24:d:/liteos/code/WIFI2/Src\usart.c ****   *      without specific prior written permission.
+  25:d:/liteos/code/WIFI2/Src\usart.c ****   *
+  26:d:/liteos/code/WIFI2/Src\usart.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:d:/liteos/code/WIFI2/Src\usart.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:d:/liteos/code/WIFI2/Src\usart.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:d:/liteos/code/WIFI2/Src\usart.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:d:/liteos/code/WIFI2/Src\usart.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:d:/liteos/code/WIFI2/Src\usart.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:d:/liteos/code/WIFI2/Src\usart.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:d:/liteos/code/WIFI2/Src\usart.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:d:/liteos/code/WIFI2/Src\usart.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:d:/liteos/code/WIFI2/Src\usart.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:d:/liteos/code/WIFI2/Src\usart.c ****   *
+  37:d:/liteos/code/WIFI2/Src\usart.c ****   ******************************************************************************
+  38:d:/liteos/code/WIFI2/Src\usart.c ****   */
+  39:d:/liteos/code/WIFI2/Src\usart.c **** 
+  40:d:/liteos/code/WIFI2/Src\usart.c **** /* Includes ------------------------------------------------------------------*/
+  41:d:/liteos/code/WIFI2/Src\usart.c **** #include "usart.h"
+  42:d:/liteos/code/WIFI2/Src\usart.c **** 
+  43:d:/liteos/code/WIFI2/Src\usart.c **** #include "gpio.h"
+  44:d:/liteos/code/WIFI2/Src\usart.c **** 
+  45:d:/liteos/code/WIFI2/Src\usart.c **** /* USER CODE BEGIN 0 */
+  46:d:/liteos/code/WIFI2/Src\usart.c **** 
+  47:d:/liteos/code/WIFI2/Src\usart.c **** /* USER CODE END 0 */
+  48:d:/liteos/code/WIFI2/Src\usart.c **** 
+  49:d:/liteos/code/WIFI2/Src\usart.c **** UART_HandleTypeDef hlpuart1;
+  50:d:/liteos/code/WIFI2/Src\usart.c **** UART_HandleTypeDef huart1;
+  51:d:/liteos/code/WIFI2/Src\usart.c **** UART_HandleTypeDef huart2;
+  52:d:/liteos/code/WIFI2/Src\usart.c **** UART_HandleTypeDef huart3;
+  53:d:/liteos/code/WIFI2/Src\usart.c **** /* LPUART1 init function */
+  54:d:/liteos/code/WIFI2/Src\usart.c **** 
+  55:d:/liteos/code/WIFI2/Src\usart.c **** void MX_LPUART1_UART_Init(void)
+  56:d:/liteos/code/WIFI2/Src\usart.c **** {
+  32              		.loc 1 56 1 view -0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  57:d:/liteos/code/WIFI2/Src\usart.c **** 
+  58:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Instance = LPUART1;
+  36              		.loc 1 58 3 view .LVU1
+  37              		.loc 1 58 21 is_stmt 0 view .LVU2
+  38 0000 0C48     		ldr	r0, .L3
+  59:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.BaudRate = 9600;
+  39              		.loc 1 59 26 view .LVU3
+  40 0002 0D4A     		ldr	r2, .L3+4
+  56:d:/liteos/code/WIFI2/Src\usart.c **** 
+  41              		.loc 1 56 1 view .LVU4
+  42 0004 08B5     		push	{r3, lr}
+  43              	.LCFI0:
+  44              		.cfi_def_cfa_offset 8
+  45              		.cfi_offset 3, -8
+  46              		.cfi_offset 14, -4
+  47              		.loc 1 59 26 view .LVU5
+  48 0006 4FF41653 		mov	r3, #9600
+  49 000a C0E90023 		strd	r2, r3, [r0]
+  60:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.WordLength = UART_WORDLENGTH_8B;
+  50              		.loc 1 60 3 is_stmt 1 view .LVU6
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 3
+
+
+  51              		.loc 1 60 28 is_stmt 0 view .LVU7
+  52 000e 0023     		movs	r3, #0
+  61:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.StopBits = UART_STOPBITS_1;
+  62:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.Parity = UART_PARITY_NONE;
+  63:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.Mode = UART_MODE_TX_RX;
+  53              		.loc 1 63 22 view .LVU8
+  54 0010 0C22     		movs	r2, #12
+  61:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.StopBits = UART_STOPBITS_1;
+  55              		.loc 1 61 26 view .LVU9
+  56 0012 C0E90233 		strd	r3, r3, [r0, #8]
+  62:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.Mode = UART_MODE_TX_RX;
+  57              		.loc 1 62 3 is_stmt 1 view .LVU10
+  64:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  58              		.loc 1 64 27 is_stmt 0 view .LVU11
+  59 0016 C0E90523 		strd	r2, r3, [r0, #20]
+  65:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  66:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  60              		.loc 1 66 40 view .LVU12
+  61 001a C0E90833 		strd	r3, r3, [r0, #32]
+  62:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.Mode = UART_MODE_TX_RX;
+  62              		.loc 1 62 24 view .LVU13
+  63 001e 0361     		str	r3, [r0, #16]
+  63:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  64              		.loc 1 63 3 is_stmt 1 view .LVU14
+  65:d:/liteos/code/WIFI2/Src\usart.c ****   hlpuart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  65              		.loc 1 65 3 view .LVU15
+  67:d:/liteos/code/WIFI2/Src\usart.c ****   if (HAL_UART_Init(&hlpuart1) != HAL_OK)
+  66              		.loc 1 67 3 view .LVU16
+  67              		.loc 1 67 7 is_stmt 0 view .LVU17
+  68 0020 FFF7FEFF 		bl	HAL_UART_Init
+  69              	.LVL0:
+  70              		.loc 1 67 6 view .LVU18
+  71 0024 28B1     		cbz	r0, .L1
+  68:d:/liteos/code/WIFI2/Src\usart.c ****   {
+  69:d:/liteos/code/WIFI2/Src\usart.c ****     _Error_Handler(__FILE__, __LINE__);
+  72              		.loc 1 69 5 is_stmt 1 view .LVU19
+  70:d:/liteos/code/WIFI2/Src\usart.c ****   }
+  71:d:/liteos/code/WIFI2/Src\usart.c **** 
+  72:d:/liteos/code/WIFI2/Src\usart.c **** }
+  73              		.loc 1 72 1 is_stmt 0 view .LVU20
+  74 0026 BDE80840 		pop	{r3, lr}
+  75              	.LCFI1:
+  76              		.cfi_remember_state
+  77              		.cfi_restore 14
+  78              		.cfi_restore 3
+  79              		.cfi_def_cfa_offset 0
+  69:d:/liteos/code/WIFI2/Src\usart.c ****   }
+  80              		.loc 1 69 5 view .LVU21
+  81 002a 0448     		ldr	r0, .L3+8
+  82 002c 4521     		movs	r1, #69
+  83 002e FFF7FEBF 		b	_Error_Handler
+  84              	.LVL1:
+  85              	.L1:
+  86              	.LCFI2:
+  87              		.cfi_restore_state
+  88              		.loc 1 72 1 view .LVU22
+  89 0032 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 4
+
+
+  90              	.L4:
+  91              		.align	2
+  92              	.L3:
+  93 0034 00000000 		.word	hlpuart1
+  94 0038 00800040 		.word	1073774592
+  95 003c 00000000 		.word	.LC0
+  96              		.cfi_endproc
+  97              	.LFE287:
+  99              		.section	.text.MX_USART1_UART_Init,"ax",%progbits
+ 100              		.align	1
+ 101              		.global	MX_USART1_UART_Init
+ 102              		.syntax unified
+ 103              		.thumb
+ 104              		.thumb_func
+ 105              		.fpu fpv4-sp-d16
+ 107              	MX_USART1_UART_Init:
+ 108              	.LFB288:
+  73:d:/liteos/code/WIFI2/Src\usart.c **** 
+  74:d:/liteos/code/WIFI2/Src\usart.c **** /* USART1 init function */
+  75:d:/liteos/code/WIFI2/Src\usart.c **** 
+  76:d:/liteos/code/WIFI2/Src\usart.c **** void MX_USART1_UART_Init(void)
+  77:d:/liteos/code/WIFI2/Src\usart.c **** {
+ 109              		.loc 1 77 1 is_stmt 1 view -0
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+  78:d:/liteos/code/WIFI2/Src\usart.c **** 
+  79:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Instance = USART1;
+ 113              		.loc 1 79 3 view .LVU24
+ 114              		.loc 1 79 19 is_stmt 0 view .LVU25
+ 115 0000 0D48     		ldr	r0, .L7
+  80:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.BaudRate = 115200;
+ 116              		.loc 1 80 24 view .LVU26
+ 117 0002 0E4A     		ldr	r2, .L7+4
+  77:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 118              		.loc 1 77 1 view .LVU27
+ 119 0004 08B5     		push	{r3, lr}
+ 120              	.LCFI3:
+ 121              		.cfi_def_cfa_offset 8
+ 122              		.cfi_offset 3, -8
+ 123              		.cfi_offset 14, -4
+ 124              		.loc 1 80 24 view .LVU28
+ 125 0006 4FF4E133 		mov	r3, #115200
+ 126 000a C0E90023 		strd	r2, r3, [r0]
+  81:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
+ 127              		.loc 1 81 3 is_stmt 1 view .LVU29
+ 128              		.loc 1 81 26 is_stmt 0 view .LVU30
+ 129 000e 0023     		movs	r3, #0
+  82:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.StopBits = UART_STOPBITS_1;
+  83:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.Parity = UART_PARITY_NONE;
+  84:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.Mode = UART_MODE_TX_RX;
+ 130              		.loc 1 84 20 view .LVU31
+ 131 0010 0C22     		movs	r2, #12
+  82:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.StopBits = UART_STOPBITS_1;
+ 132              		.loc 1 82 24 view .LVU32
+ 133 0012 C0E90233 		strd	r3, r3, [r0, #8]
+  83:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.Mode = UART_MODE_TX_RX;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 5
+
+
+ 134              		.loc 1 83 3 is_stmt 1 view .LVU33
+  85:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 135              		.loc 1 85 25 is_stmt 0 view .LVU34
+ 136 0016 C0E90523 		strd	r2, r3, [r0, #20]
+  86:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  87:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+ 137              		.loc 1 87 30 view .LVU35
+ 138 001a C0E90733 		strd	r3, r3, [r0, #28]
+  83:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.Mode = UART_MODE_TX_RX;
+ 139              		.loc 1 83 22 view .LVU36
+ 140 001e 0361     		str	r3, [r0, #16]
+  84:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 141              		.loc 1 84 3 is_stmt 1 view .LVU37
+  86:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+ 142              		.loc 1 86 3 view .LVU38
+  88:d:/liteos/code/WIFI2/Src\usart.c ****   huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+ 143              		.loc 1 88 3 view .LVU39
+ 144              		.loc 1 88 38 is_stmt 0 view .LVU40
+ 145 0020 4362     		str	r3, [r0, #36]
+  89:d:/liteos/code/WIFI2/Src\usart.c ****   if (HAL_UART_Init(&huart1) != HAL_OK)
+ 146              		.loc 1 89 3 is_stmt 1 view .LVU41
+ 147              		.loc 1 89 7 is_stmt 0 view .LVU42
+ 148 0022 FFF7FEFF 		bl	HAL_UART_Init
+ 149              	.LVL2:
+ 150              		.loc 1 89 6 view .LVU43
+ 151 0026 28B1     		cbz	r0, .L5
+  90:d:/liteos/code/WIFI2/Src\usart.c ****   {
+  91:d:/liteos/code/WIFI2/Src\usart.c ****     _Error_Handler(__FILE__, __LINE__);
+ 152              		.loc 1 91 5 is_stmt 1 view .LVU44
+  92:d:/liteos/code/WIFI2/Src\usart.c ****   }
+  93:d:/liteos/code/WIFI2/Src\usart.c **** 
+  94:d:/liteos/code/WIFI2/Src\usart.c **** }
+ 153              		.loc 1 94 1 is_stmt 0 view .LVU45
+ 154 0028 BDE80840 		pop	{r3, lr}
+ 155              	.LCFI4:
+ 156              		.cfi_remember_state
+ 157              		.cfi_restore 14
+ 158              		.cfi_restore 3
+ 159              		.cfi_def_cfa_offset 0
+  91:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 160              		.loc 1 91 5 view .LVU46
+ 161 002c 0448     		ldr	r0, .L7+8
+ 162 002e 5B21     		movs	r1, #91
+ 163 0030 FFF7FEBF 		b	_Error_Handler
+ 164              	.LVL3:
+ 165              	.L5:
+ 166              	.LCFI5:
+ 167              		.cfi_restore_state
+ 168              		.loc 1 94 1 view .LVU47
+ 169 0034 08BD     		pop	{r3, pc}
+ 170              	.L8:
+ 171 0036 00BF     		.align	2
+ 172              	.L7:
+ 173 0038 00000000 		.word	huart1
+ 174 003c 00380140 		.word	1073821696
+ 175 0040 00000000 		.word	.LC0
+ 176              		.cfi_endproc
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 6
+
+
+ 177              	.LFE288:
+ 179              		.section	.text.MX_USART2_UART_Init,"ax",%progbits
+ 180              		.align	1
+ 181              		.global	MX_USART2_UART_Init
+ 182              		.syntax unified
+ 183              		.thumb
+ 184              		.thumb_func
+ 185              		.fpu fpv4-sp-d16
+ 187              	MX_USART2_UART_Init:
+ 188              	.LFB289:
+  95:d:/liteos/code/WIFI2/Src\usart.c **** /* USART2 init function */
+  96:d:/liteos/code/WIFI2/Src\usart.c **** 
+  97:d:/liteos/code/WIFI2/Src\usart.c **** void MX_USART2_UART_Init(void)
+  98:d:/liteos/code/WIFI2/Src\usart.c **** {
+ 189              		.loc 1 98 1 is_stmt 1 view -0
+ 190              		.cfi_startproc
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+  99:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 100:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Instance = USART2;
+ 193              		.loc 1 100 3 view .LVU49
+ 194              		.loc 1 100 19 is_stmt 0 view .LVU50
+ 195 0000 0D48     		ldr	r0, .L11
+ 101:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.BaudRate = 9600;
+ 196              		.loc 1 101 24 view .LVU51
+ 197 0002 0E4A     		ldr	r2, .L11+4
+  98:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 198              		.loc 1 98 1 view .LVU52
+ 199 0004 08B5     		push	{r3, lr}
+ 200              	.LCFI6:
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 3, -8
+ 203              		.cfi_offset 14, -4
+ 204              		.loc 1 101 24 view .LVU53
+ 205 0006 4FF41653 		mov	r3, #9600
+ 206 000a C0E90023 		strd	r2, r3, [r0]
+ 102:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.WordLength = UART_WORDLENGTH_8B;
+ 207              		.loc 1 102 3 is_stmt 1 view .LVU54
+ 208              		.loc 1 102 26 is_stmt 0 view .LVU55
+ 209 000e 0023     		movs	r3, #0
+ 103:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.StopBits = UART_STOPBITS_1;
+ 104:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.Parity = UART_PARITY_NONE;
+ 105:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.Mode = UART_MODE_TX_RX;
+ 210              		.loc 1 105 20 view .LVU56
+ 211 0010 0C22     		movs	r2, #12
+ 103:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.StopBits = UART_STOPBITS_1;
+ 212              		.loc 1 103 24 view .LVU57
+ 213 0012 C0E90233 		strd	r3, r3, [r0, #8]
+ 104:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.Mode = UART_MODE_TX_RX;
+ 214              		.loc 1 104 3 is_stmt 1 view .LVU58
+ 106:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 215              		.loc 1 106 25 is_stmt 0 view .LVU59
+ 216 0016 C0E90523 		strd	r2, r3, [r0, #20]
+ 107:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+ 108:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+ 217              		.loc 1 108 30 view .LVU60
+ 218 001a C0E90733 		strd	r3, r3, [r0, #28]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 7
+
+
+ 104:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.Mode = UART_MODE_TX_RX;
+ 219              		.loc 1 104 22 view .LVU61
+ 220 001e 0361     		str	r3, [r0, #16]
+ 105:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 221              		.loc 1 105 3 is_stmt 1 view .LVU62
+ 107:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+ 222              		.loc 1 107 3 view .LVU63
+ 109:d:/liteos/code/WIFI2/Src\usart.c ****   huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+ 223              		.loc 1 109 3 view .LVU64
+ 224              		.loc 1 109 38 is_stmt 0 view .LVU65
+ 225 0020 4362     		str	r3, [r0, #36]
+ 110:d:/liteos/code/WIFI2/Src\usart.c ****   if (HAL_UART_Init(&huart2) != HAL_OK)
+ 226              		.loc 1 110 3 is_stmt 1 view .LVU66
+ 227              		.loc 1 110 7 is_stmt 0 view .LVU67
+ 228 0022 FFF7FEFF 		bl	HAL_UART_Init
+ 229              	.LVL4:
+ 230              		.loc 1 110 6 view .LVU68
+ 231 0026 28B1     		cbz	r0, .L9
+ 111:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 112:d:/liteos/code/WIFI2/Src\usart.c ****     _Error_Handler(__FILE__, __LINE__);
+ 232              		.loc 1 112 5 is_stmt 1 view .LVU69
+ 113:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 114:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 115:d:/liteos/code/WIFI2/Src\usart.c **** }
+ 233              		.loc 1 115 1 is_stmt 0 view .LVU70
+ 234 0028 BDE80840 		pop	{r3, lr}
+ 235              	.LCFI7:
+ 236              		.cfi_remember_state
+ 237              		.cfi_restore 14
+ 238              		.cfi_restore 3
+ 239              		.cfi_def_cfa_offset 0
+ 112:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 240              		.loc 1 112 5 view .LVU71
+ 241 002c 0448     		ldr	r0, .L11+8
+ 242 002e 7021     		movs	r1, #112
+ 243 0030 FFF7FEBF 		b	_Error_Handler
+ 244              	.LVL5:
+ 245              	.L9:
+ 246              	.LCFI8:
+ 247              		.cfi_restore_state
+ 248              		.loc 1 115 1 view .LVU72
+ 249 0034 08BD     		pop	{r3, pc}
+ 250              	.L12:
+ 251 0036 00BF     		.align	2
+ 252              	.L11:
+ 253 0038 00000000 		.word	huart2
+ 254 003c 00440040 		.word	1073759232
+ 255 0040 00000000 		.word	.LC0
+ 256              		.cfi_endproc
+ 257              	.LFE289:
+ 259              		.section	.text.MX_USART3_UART_Init,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	MX_USART3_UART_Init
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 265              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 8
+
+
+ 267              	MX_USART3_UART_Init:
+ 268              	.LFB290:
+ 116:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 117:d:/liteos/code/WIFI2/Src\usart.c **** /* USART3 init function */
+ 118:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 119:d:/liteos/code/WIFI2/Src\usart.c **** void MX_USART3_UART_Init(void)
+ 120:d:/liteos/code/WIFI2/Src\usart.c **** {
+ 269              		.loc 1 120 1 is_stmt 1 view -0
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 0
+ 272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 122:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Instance = USART3;
+ 273              		.loc 1 122 3 view .LVU74
+ 274              		.loc 1 122 19 is_stmt 0 view .LVU75
+ 275 0000 0D48     		ldr	r0, .L15
+ 123:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.BaudRate = 9600;
+ 276              		.loc 1 123 24 view .LVU76
+ 277 0002 0E4A     		ldr	r2, .L15+4
+ 120:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 278              		.loc 1 120 1 view .LVU77
+ 279 0004 08B5     		push	{r3, lr}
+ 280              	.LCFI9:
+ 281              		.cfi_def_cfa_offset 8
+ 282              		.cfi_offset 3, -8
+ 283              		.cfi_offset 14, -4
+ 284              		.loc 1 123 24 view .LVU78
+ 285 0006 4FF41653 		mov	r3, #9600
+ 286 000a C0E90023 		strd	r2, r3, [r0]
+ 124:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
+ 287              		.loc 1 124 3 is_stmt 1 view .LVU79
+ 288              		.loc 1 124 26 is_stmt 0 view .LVU80
+ 289 000e 0023     		movs	r3, #0
+ 125:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 126:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.Parity = UART_PARITY_NONE;
+ 127:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 290              		.loc 1 127 20 view .LVU81
+ 291 0010 0C22     		movs	r2, #12
+ 125:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 292              		.loc 1 125 24 view .LVU82
+ 293 0012 C0E90233 		strd	r3, r3, [r0, #8]
+ 126:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 294              		.loc 1 126 3 is_stmt 1 view .LVU83
+ 128:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 295              		.loc 1 128 25 is_stmt 0 view .LVU84
+ 296 0016 C0E90523 		strd	r2, r3, [r0, #20]
+ 129:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 130:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+ 297              		.loc 1 130 30 view .LVU85
+ 298 001a C0E90733 		strd	r3, r3, [r0, #28]
+ 126:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 299              		.loc 1 126 22 view .LVU86
+ 300 001e 0361     		str	r3, [r0, #16]
+ 127:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 301              		.loc 1 127 3 is_stmt 1 view .LVU87
+ 129:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 302              		.loc 1 129 3 view .LVU88
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 9
+
+
+ 131:d:/liteos/code/WIFI2/Src\usart.c ****   huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+ 303              		.loc 1 131 3 view .LVU89
+ 304              		.loc 1 131 38 is_stmt 0 view .LVU90
+ 305 0020 4362     		str	r3, [r0, #36]
+ 132:d:/liteos/code/WIFI2/Src\usart.c ****   if (HAL_UART_Init(&huart3) != HAL_OK)
+ 306              		.loc 1 132 3 is_stmt 1 view .LVU91
+ 307              		.loc 1 132 7 is_stmt 0 view .LVU92
+ 308 0022 FFF7FEFF 		bl	HAL_UART_Init
+ 309              	.LVL6:
+ 310              		.loc 1 132 6 view .LVU93
+ 311 0026 28B1     		cbz	r0, .L13
+ 133:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 134:d:/liteos/code/WIFI2/Src\usart.c ****     _Error_Handler(__FILE__, __LINE__);
+ 312              		.loc 1 134 5 is_stmt 1 view .LVU94
+ 135:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 136:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 137:d:/liteos/code/WIFI2/Src\usart.c **** }
+ 313              		.loc 1 137 1 is_stmt 0 view .LVU95
+ 314 0028 BDE80840 		pop	{r3, lr}
+ 315              	.LCFI10:
+ 316              		.cfi_remember_state
+ 317              		.cfi_restore 14
+ 318              		.cfi_restore 3
+ 319              		.cfi_def_cfa_offset 0
+ 134:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 320              		.loc 1 134 5 view .LVU96
+ 321 002c 0448     		ldr	r0, .L15+8
+ 322 002e 8621     		movs	r1, #134
+ 323 0030 FFF7FEBF 		b	_Error_Handler
+ 324              	.LVL7:
+ 325              	.L13:
+ 326              	.LCFI11:
+ 327              		.cfi_restore_state
+ 328              		.loc 1 137 1 view .LVU97
+ 329 0034 08BD     		pop	{r3, pc}
+ 330              	.L16:
+ 331 0036 00BF     		.align	2
+ 332              	.L15:
+ 333 0038 00000000 		.word	huart3
+ 334 003c 00480040 		.word	1073760256
+ 335 0040 00000000 		.word	.LC0
+ 336              		.cfi_endproc
+ 337              	.LFE290:
+ 339              		.section	.text.HAL_UART_MspInit,"ax",%progbits
+ 340              		.align	1
+ 341              		.global	HAL_UART_MspInit
+ 342              		.syntax unified
+ 343              		.thumb
+ 344              		.thumb_func
+ 345              		.fpu fpv4-sp-d16
+ 347              	HAL_UART_MspInit:
+ 348              	.LVL8:
+ 349              	.LFB291:
+ 138:d:/liteos/code/WIFI2/Src\usart.c **** void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+ 139:d:/liteos/code/WIFI2/Src\usart.c **** {
+ 350              		.loc 1 139 1 is_stmt 1 view -0
+ 351              		.cfi_startproc
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 10
+
+
+ 352              		@ args = 0, pretend = 0, frame = 40
+ 353              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 141:d:/liteos/code/WIFI2/Src\usart.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+ 354              		.loc 1 141 3 view .LVU99
+ 142:d:/liteos/code/WIFI2/Src\usart.c ****   if(uartHandle->Instance==LPUART1)
+ 355              		.loc 1 142 3 view .LVU100
+ 139:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 356              		.loc 1 139 1 is_stmt 0 view .LVU101
+ 357 0000 10B5     		push	{r4, lr}
+ 358              	.LCFI12:
+ 359              		.cfi_def_cfa_offset 8
+ 360              		.cfi_offset 4, -8
+ 361              		.cfi_offset 14, -4
+ 362              		.loc 1 142 16 view .LVU102
+ 363 0002 0368     		ldr	r3, [r0]
+ 364              		.loc 1 142 5 view .LVU103
+ 365 0004 464A     		ldr	r2, .L23
+ 366 0006 9342     		cmp	r3, r2
+ 139:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 367              		.loc 1 139 1 view .LVU104
+ 368 0008 8AB0     		sub	sp, sp, #40
+ 369              	.LCFI13:
+ 370              		.cfi_def_cfa_offset 48
+ 371              		.loc 1 142 5 view .LVU105
+ 372 000a 20D1     		bne	.L18
+ 143:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 144:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN LPUART1_MspInit 0 */
+ 145:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 146:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END LPUART1_MspInit 0 */
+ 147:d:/liteos/code/WIFI2/Src\usart.c ****     /* LPUART1 clock enable */
+ 148:d:/liteos/code/WIFI2/Src\usart.c ****     __HAL_RCC_LPUART1_CLK_ENABLE();
+ 373              		.loc 1 148 5 is_stmt 1 view .LVU106
+ 374              	.LBB2:
+ 375              		.loc 1 148 5 view .LVU107
+ 376              		.loc 1 148 5 view .LVU108
+ 377 000c 454B     		ldr	r3, .L23+4
+ 378              	.LBE2:
+ 149:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 150:d:/liteos/code/WIFI2/Src\usart.c ****     /**LPUART1 GPIO Configuration    
+ 151:d:/liteos/code/WIFI2/Src\usart.c ****     PC0     ------> LPUART1_RX
+ 152:d:/liteos/code/WIFI2/Src\usart.c ****     PC1     ------> LPUART1_TX 
+ 153:d:/liteos/code/WIFI2/Src\usart.c ****     */
+ 154:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
+ 155:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 156:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 157:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 158:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF8_LPUART1;
+ 159:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 379              		.loc 1 159 5 is_stmt 0 view .LVU109
+ 380 000e 4648     		ldr	r0, .L23+8
+ 381              	.LVL9:
+ 382              	.LBB3:
+ 148:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 383              		.loc 1 148 5 view .LVU110
+ 384 0010 DA6D     		ldr	r2, [r3, #92]
+ 385 0012 42F00102 		orr	r2, r2, #1
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 11
+
+
+ 386 0016 DA65     		str	r2, [r3, #92]
+ 148:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 387              		.loc 1 148 5 is_stmt 1 view .LVU111
+ 388 0018 DB6D     		ldr	r3, [r3, #92]
+ 389 001a 03F00103 		and	r3, r3, #1
+ 390 001e 0193     		str	r3, [sp, #4]
+ 148:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 391              		.loc 1 148 5 view .LVU112
+ 392              	.LBE3:
+ 155:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 393              		.loc 1 155 26 is_stmt 0 view .LVU113
+ 394 0020 0222     		movs	r2, #2
+ 156:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 395              		.loc 1 156 26 view .LVU114
+ 396 0022 0024     		movs	r4, #0
+ 397              	.LBB4:
+ 148:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 398              		.loc 1 148 5 view .LVU115
+ 399 0024 019B     		ldr	r3, [sp, #4]
+ 400              	.LBE4:
+ 148:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 401              		.loc 1 148 5 is_stmt 1 view .LVU116
+ 154:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 402              		.loc 1 154 5 view .LVU117
+ 155:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 403              		.loc 1 155 26 is_stmt 0 view .LVU118
+ 404 0026 0323     		movs	r3, #3
+ 405 0028 CDE90532 		strd	r3, r2, [sp, #20]
+ 156:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 406              		.loc 1 156 5 is_stmt 1 view .LVU119
+ 157:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF8_LPUART1;
+ 407              		.loc 1 157 27 is_stmt 0 view .LVU120
+ 408 002c CDE90743 		strd	r4, r3, [sp, #28]
+ 158:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 409              		.loc 1 158 5 is_stmt 1 view .LVU121
+ 410              		.loc 1 159 5 is_stmt 0 view .LVU122
+ 411 0030 05A9     		add	r1, sp, #20
+ 158:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 412              		.loc 1 158 31 view .LVU123
+ 413 0032 0823     		movs	r3, #8
+ 414 0034 0993     		str	r3, [sp, #36]
+ 415              		.loc 1 159 5 is_stmt 1 view .LVU124
+ 416 0036 FFF7FEFF 		bl	HAL_GPIO_Init
+ 417              	.LVL10:
+ 160:d:/liteos/code/WIFI2/Src\usart.c **** 		
+ 161:d:/liteos/code/WIFI2/Src\usart.c ****   /* LPUART1 interrupt Init */
+ 162:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_SetPriority(LPUART1_IRQn, 0, 0);
+ 418              		.loc 1 162 5 view .LVU125
+ 419 003a 4620     		movs	r0, #70
+ 420 003c 2246     		mov	r2, r4
+ 421 003e 2146     		mov	r1, r4
+ 422 0040 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 423              	.LVL11:
+ 163:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_EnableIRQ(LPUART1_IRQn);
+ 424              		.loc 1 163 5 view .LVU126
+ 425 0044 4620     		movs	r0, #70
+ 426              	.L22:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 12
+
+
+ 164:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN LPUART1_MspInit 1 */
+ 165:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 166:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END LPUART1_MspInit 1 */
+ 167:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 168:d:/liteos/code/WIFI2/Src\usart.c **** 	else if(uartHandle->Instance==USART1)
+ 169:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 170:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART1_MspInit 0 */
+ 171:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 172:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART1_MspInit 0 */
+ 173:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART1 clock enable */
+ 174:d:/liteos/code/WIFI2/Src\usart.c ****     __HAL_RCC_USART1_CLK_ENABLE();
+ 175:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 176:d:/liteos/code/WIFI2/Src\usart.c ****     /**USART1 GPIO Configuration    
+ 177:d:/liteos/code/WIFI2/Src\usart.c ****     PA9     ------> USART1_TX
+ 178:d:/liteos/code/WIFI2/Src\usart.c ****     PA10     ------> USART1_RX 
+ 179:d:/liteos/code/WIFI2/Src\usart.c ****     */
+ 180:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
+ 181:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 182:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 183:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 184:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+ 185:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 186:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 187:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART1 interrupt Init */
+ 188:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+ 189:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_EnableIRQ(USART1_IRQn);
+ 190:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART1_MspInit 1 */
+ 191:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 192:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART1_MspInit 1 */
+ 193:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 194:d:/liteos/code/WIFI2/Src\usart.c ****   else if(uartHandle->Instance==USART2)
+ 195:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 196:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART2_MspInit 0 */
+ 197:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 198:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART2_MspInit 0 */
+ 199:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART2 clock enable */
+ 200:d:/liteos/code/WIFI2/Src\usart.c ****     __HAL_RCC_USART2_CLK_ENABLE();
+ 201:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 202:d:/liteos/code/WIFI2/Src\usart.c ****     /**USART2 GPIO Configuration    
+ 203:d:/liteos/code/WIFI2/Src\usart.c ****     PA2     ------> USART2_TX
+ 204:d:/liteos/code/WIFI2/Src\usart.c ****     PA3     ------> USART2_RX 
+ 205:d:/liteos/code/WIFI2/Src\usart.c ****     */
+ 206:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3;
+ 207:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 208:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 209:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 210:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+ 211:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 212:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 213:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART2 interrupt Init */
+ 214:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_SetPriority(USART2_IRQn, 0, 0);
+ 215:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_EnableIRQ(USART2_IRQn);
+ 216:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART2_MspInit 1 */
+ 217:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 218:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART2_MspInit 1 */
+ 219:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 220:d:/liteos/code/WIFI2/Src\usart.c ****   else if(uartHandle->Instance==USART3)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 13
+
+
+ 221:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 222:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART3_MspInit 0 */
+ 223:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 224:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART3_MspInit 0 */
+ 225:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART3 clock enable */
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****     __HAL_RCC_USART3_CLK_ENABLE();
+ 227:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 228:d:/liteos/code/WIFI2/Src\usart.c ****     /**USART3 GPIO Configuration    
+ 229:d:/liteos/code/WIFI2/Src\usart.c ****     PC4     ------> USART3_TX
+ 230:d:/liteos/code/WIFI2/Src\usart.c ****     PC5     ------> USART3_RX 
+ 231:d:/liteos/code/WIFI2/Src\usart.c ****     */
+ 232:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5;
+ 233:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 234:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 235:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 236:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 237:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 238:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 239:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART3 interrupt Init */
+ 240:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_SetPriority(USART3_IRQn, 0, 0);
+ 241:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_EnableIRQ(USART3_IRQn);
+ 427              		.loc 1 241 5 is_stmt 0 view .LVU127
+ 428 0046 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 429              	.LVL12:
+ 430              	.L17:
+ 242:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 243:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 244:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART3_MspInit 1 */
+ 245:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 246:d:/liteos/code/WIFI2/Src\usart.c **** }
+ 431              		.loc 1 246 1 view .LVU128
+ 432 004a 0AB0     		add	sp, sp, #40
+ 433              	.LCFI14:
+ 434              		.cfi_remember_state
+ 435              		.cfi_def_cfa_offset 8
+ 436              		@ sp needed
+ 437 004c 10BD     		pop	{r4, pc}
+ 438              	.LVL13:
+ 439              	.L18:
+ 440              	.LCFI15:
+ 441              		.cfi_restore_state
+ 168:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 442              		.loc 1 168 7 is_stmt 1 view .LVU129
+ 168:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 443              		.loc 1 168 9 is_stmt 0 view .LVU130
+ 444 004e 374A     		ldr	r2, .L23+12
+ 445 0050 9342     		cmp	r3, r2
+ 446 0052 20D1     		bne	.L20
+ 174:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 447              		.loc 1 174 5 is_stmt 1 view .LVU131
+ 448              	.LBB5:
+ 174:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 449              		.loc 1 174 5 view .LVU132
+ 174:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 450              		.loc 1 174 5 view .LVU133
+ 451 0054 334B     		ldr	r3, .L23+4
+ 452 0056 1A6E     		ldr	r2, [r3, #96]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 14
+
+
+ 453 0058 42F48042 		orr	r2, r2, #16384
+ 454 005c 1A66     		str	r2, [r3, #96]
+ 174:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 455              		.loc 1 174 5 view .LVU134
+ 456 005e 1B6E     		ldr	r3, [r3, #96]
+ 457 0060 03F48043 		and	r3, r3, #16384
+ 458 0064 0293     		str	r3, [sp, #8]
+ 174:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 459              		.loc 1 174 5 view .LVU135
+ 460 0066 029B     		ldr	r3, [sp, #8]
+ 461              	.LBE5:
+ 174:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 462              		.loc 1 174 5 view .LVU136
+ 180:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 463              		.loc 1 180 5 view .LVU137
+ 181:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 464              		.loc 1 181 26 is_stmt 0 view .LVU138
+ 465 0068 4FF4C060 		mov	r0, #1536
+ 466              	.LVL14:
+ 181:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 467              		.loc 1 181 26 view .LVU139
+ 468 006c 0223     		movs	r3, #2
+ 469 006e CDE90503 		strd	r0, r3, [sp, #20]
+ 182:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 470              		.loc 1 182 5 is_stmt 1 view .LVU140
+ 183:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+ 471              		.loc 1 183 27 is_stmt 0 view .LVU141
+ 472 0072 0024     		movs	r4, #0
+ 473 0074 0323     		movs	r3, #3
+ 474 0076 CDE90743 		strd	r4, r3, [sp, #28]
+ 184:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 475              		.loc 1 184 5 is_stmt 1 view .LVU142
+ 185:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 476              		.loc 1 185 5 is_stmt 0 view .LVU143
+ 477 007a 05A9     		add	r1, sp, #20
+ 184:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 478              		.loc 1 184 31 view .LVU144
+ 479 007c 0723     		movs	r3, #7
+ 185:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 480              		.loc 1 185 5 view .LVU145
+ 481 007e 4FF09040 		mov	r0, #1207959552
+ 184:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 482              		.loc 1 184 31 view .LVU146
+ 483 0082 0993     		str	r3, [sp, #36]
+ 185:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 484              		.loc 1 185 5 is_stmt 1 view .LVU147
+ 485 0084 FFF7FEFF 		bl	HAL_GPIO_Init
+ 486              	.LVL15:
+ 188:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_EnableIRQ(USART1_IRQn);
+ 487              		.loc 1 188 5 view .LVU148
+ 488 0088 2520     		movs	r0, #37
+ 489 008a 2246     		mov	r2, r4
+ 490 008c 2146     		mov	r1, r4
+ 491 008e FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 492              	.LVL16:
+ 189:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART1_MspInit 1 */
+ 493              		.loc 1 189 5 view .LVU149
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 15
+
+
+ 494 0092 2520     		movs	r0, #37
+ 495 0094 D7E7     		b	.L22
+ 496              	.LVL17:
+ 497              	.L20:
+ 194:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 498              		.loc 1 194 8 view .LVU150
+ 194:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 499              		.loc 1 194 10 is_stmt 0 view .LVU151
+ 500 0096 264A     		ldr	r2, .L23+16
+ 501 0098 9342     		cmp	r3, r2
+ 502 009a 1FD1     		bne	.L21
+ 200:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 503              		.loc 1 200 5 is_stmt 1 view .LVU152
+ 504              	.LBB6:
+ 200:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 505              		.loc 1 200 5 view .LVU153
+ 200:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 506              		.loc 1 200 5 view .LVU154
+ 507 009c 214B     		ldr	r3, .L23+4
+ 508 009e 9A6D     		ldr	r2, [r3, #88]
+ 509 00a0 42F40032 		orr	r2, r2, #131072
+ 510 00a4 9A65     		str	r2, [r3, #88]
+ 200:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 511              		.loc 1 200 5 view .LVU155
+ 512 00a6 9B6D     		ldr	r3, [r3, #88]
+ 513 00a8 03F40033 		and	r3, r3, #131072
+ 514 00ac 0393     		str	r3, [sp, #12]
+ 200:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 515              		.loc 1 200 5 view .LVU156
+ 516 00ae 039B     		ldr	r3, [sp, #12]
+ 517              	.LBE6:
+ 200:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 518              		.loc 1 200 5 view .LVU157
+ 206:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 519              		.loc 1 206 5 view .LVU158
+ 207:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 520              		.loc 1 207 26 is_stmt 0 view .LVU159
+ 521 00b0 0C21     		movs	r1, #12
+ 522 00b2 0223     		movs	r3, #2
+ 523 00b4 CDE90513 		strd	r1, r3, [sp, #20]
+ 208:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 524              		.loc 1 208 5 is_stmt 1 view .LVU160
+ 209:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+ 525              		.loc 1 209 27 is_stmt 0 view .LVU161
+ 526 00b8 0024     		movs	r4, #0
+ 527 00ba 0323     		movs	r3, #3
+ 528 00bc CDE90743 		strd	r4, r3, [sp, #28]
+ 210:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 529              		.loc 1 210 5 is_stmt 1 view .LVU162
+ 211:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 530              		.loc 1 211 5 is_stmt 0 view .LVU163
+ 531 00c0 05A9     		add	r1, sp, #20
+ 210:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 532              		.loc 1 210 31 view .LVU164
+ 533 00c2 0723     		movs	r3, #7
+ 211:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 534              		.loc 1 211 5 view .LVU165
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 16
+
+
+ 535 00c4 4FF09040 		mov	r0, #1207959552
+ 536              	.LVL18:
+ 210:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 537              		.loc 1 210 31 view .LVU166
+ 538 00c8 0993     		str	r3, [sp, #36]
+ 211:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 539              		.loc 1 211 5 is_stmt 1 view .LVU167
+ 540 00ca FFF7FEFF 		bl	HAL_GPIO_Init
+ 541              	.LVL19:
+ 214:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_EnableIRQ(USART2_IRQn);
+ 542              		.loc 1 214 5 view .LVU168
+ 543 00ce 2620     		movs	r0, #38
+ 544 00d0 2246     		mov	r2, r4
+ 545 00d2 2146     		mov	r1, r4
+ 546 00d4 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 547              	.LVL20:
+ 215:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART2_MspInit 1 */
+ 548              		.loc 1 215 5 view .LVU169
+ 549 00d8 2620     		movs	r0, #38
+ 550 00da B4E7     		b	.L22
+ 551              	.LVL21:
+ 552              	.L21:
+ 220:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 553              		.loc 1 220 8 view .LVU170
+ 220:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 554              		.loc 1 220 10 is_stmt 0 view .LVU171
+ 555 00dc 154A     		ldr	r2, .L23+20
+ 556 00de 9342     		cmp	r3, r2
+ 557 00e0 B3D1     		bne	.L17
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 558              		.loc 1 226 5 is_stmt 1 view .LVU172
+ 559              	.LBB7:
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 560              		.loc 1 226 5 view .LVU173
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 561              		.loc 1 226 5 view .LVU174
+ 562 00e2 104B     		ldr	r3, .L23+4
+ 563              	.LBE7:
+ 237:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 564              		.loc 1 237 5 is_stmt 0 view .LVU175
+ 565 00e4 1048     		ldr	r0, .L23+8
+ 566              	.LVL22:
+ 567              	.LBB8:
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 568              		.loc 1 226 5 view .LVU176
+ 569 00e6 9A6D     		ldr	r2, [r3, #88]
+ 570 00e8 42F48022 		orr	r2, r2, #262144
+ 571 00ec 9A65     		str	r2, [r3, #88]
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 572              		.loc 1 226 5 is_stmt 1 view .LVU177
+ 573 00ee 9B6D     		ldr	r3, [r3, #88]
+ 574 00f0 03F48023 		and	r3, r3, #262144
+ 575 00f4 0493     		str	r3, [sp, #16]
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 576              		.loc 1 226 5 view .LVU178
+ 577              	.LBE8:
+ 233:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 17
+
+
+ 578              		.loc 1 233 26 is_stmt 0 view .LVU179
+ 579 00f6 3022     		movs	r2, #48
+ 580              	.LBB9:
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 581              		.loc 1 226 5 view .LVU180
+ 582 00f8 049B     		ldr	r3, [sp, #16]
+ 583              	.LBE9:
+ 226:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 584              		.loc 1 226 5 is_stmt 1 view .LVU181
+ 232:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 585              		.loc 1 232 5 view .LVU182
+ 233:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 586              		.loc 1 233 26 is_stmt 0 view .LVU183
+ 587 00fa 0223     		movs	r3, #2
+ 588 00fc CDE90523 		strd	r2, r3, [sp, #20]
+ 234:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 589              		.loc 1 234 5 is_stmt 1 view .LVU184
+ 235:d:/liteos/code/WIFI2/Src\usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 590              		.loc 1 235 27 is_stmt 0 view .LVU185
+ 591 0100 0024     		movs	r4, #0
+ 592 0102 0323     		movs	r3, #3
+ 593 0104 CDE90743 		strd	r4, r3, [sp, #28]
+ 236:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 594              		.loc 1 236 5 is_stmt 1 view .LVU186
+ 237:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 595              		.loc 1 237 5 is_stmt 0 view .LVU187
+ 596 0108 05A9     		add	r1, sp, #20
+ 236:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 597              		.loc 1 236 31 view .LVU188
+ 598 010a 0723     		movs	r3, #7
+ 599 010c 0993     		str	r3, [sp, #36]
+ 237:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 600              		.loc 1 237 5 is_stmt 1 view .LVU189
+ 601 010e FFF7FEFF 		bl	HAL_GPIO_Init
+ 602              	.LVL23:
+ 240:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_EnableIRQ(USART3_IRQn);
+ 603              		.loc 1 240 5 view .LVU190
+ 604 0112 2720     		movs	r0, #39
+ 605 0114 2246     		mov	r2, r4
+ 606 0116 2146     		mov	r1, r4
+ 607 0118 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 608              	.LVL24:
+ 241:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 609              		.loc 1 241 5 view .LVU191
+ 610 011c 2720     		movs	r0, #39
+ 611 011e 92E7     		b	.L22
+ 612              	.L24:
+ 613              		.align	2
+ 614              	.L23:
+ 615 0120 00800040 		.word	1073774592
+ 616 0124 00100240 		.word	1073876992
+ 617 0128 00080048 		.word	1207961600
+ 618 012c 00380140 		.word	1073821696
+ 619 0130 00440040 		.word	1073759232
+ 620 0134 00480040 		.word	1073760256
+ 621              		.cfi_endproc
+ 622              	.LFE291:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 18
+
+
+ 624              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
+ 625              		.align	1
+ 626              		.global	HAL_UART_MspDeInit
+ 627              		.syntax unified
+ 628              		.thumb
+ 629              		.thumb_func
+ 630              		.fpu fpv4-sp-d16
+ 632              	HAL_UART_MspDeInit:
+ 633              	.LVL25:
+ 634              	.LFB292:
+ 247:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 248:d:/liteos/code/WIFI2/Src\usart.c **** void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+ 249:d:/liteos/code/WIFI2/Src\usart.c **** {
+ 635              		.loc 1 249 1 view -0
+ 636              		.cfi_startproc
+ 637              		@ args = 0, pretend = 0, frame = 0
+ 638              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 251:d:/liteos/code/WIFI2/Src\usart.c ****   if(uartHandle->Instance==LPUART1)
+ 639              		.loc 1 251 3 view .LVU193
+ 249:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 640              		.loc 1 249 1 is_stmt 0 view .LVU194
+ 641 0000 08B5     		push	{r3, lr}
+ 642              	.LCFI16:
+ 643              		.cfi_def_cfa_offset 8
+ 644              		.cfi_offset 3, -8
+ 645              		.cfi_offset 14, -4
+ 646              		.loc 1 251 5 view .LVU195
+ 647 0002 224A     		ldr	r2, .L31
+ 648              		.loc 1 251 16 view .LVU196
+ 649 0004 0368     		ldr	r3, [r0]
+ 650              		.loc 1 251 5 view .LVU197
+ 651 0006 9342     		cmp	r3, r2
+ 652 0008 0ED1     		bne	.L26
+ 252:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 253:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN LPUART1_MspDeInit 0 */
+ 254:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 255:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END LPUART1_MspDeInit 0 */
+ 256:d:/liteos/code/WIFI2/Src\usart.c ****     /* Peripheral clock disable */
+ 257:d:/liteos/code/WIFI2/Src\usart.c ****     __HAL_RCC_LPUART1_CLK_DISABLE();
+ 653              		.loc 1 257 5 is_stmt 1 view .LVU198
+ 654 000a 02F5C832 		add	r2, r2, #102400
+ 258:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 259:d:/liteos/code/WIFI2/Src\usart.c ****     /**LPUART1 GPIO Configuration    
+ 260:d:/liteos/code/WIFI2/Src\usart.c ****     PC0     ------> LPUART1_RX
+ 261:d:/liteos/code/WIFI2/Src\usart.c ****     PC1     ------> LPUART1_TX 
+ 262:d:/liteos/code/WIFI2/Src\usart.c ****     */
+ 263:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_0|GPIO_PIN_1);
+ 655              		.loc 1 263 5 is_stmt 0 view .LVU199
+ 656 000e 2048     		ldr	r0, .L31+4
+ 657              	.LVL26:
+ 257:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 658              		.loc 1 257 5 view .LVU200
+ 659 0010 D36D     		ldr	r3, [r2, #92]
+ 660 0012 23F00103 		bic	r3, r3, #1
+ 661 0016 D365     		str	r3, [r2, #92]
+ 662              		.loc 1 263 5 is_stmt 1 view .LVU201
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 19
+
+
+ 663 0018 0321     		movs	r1, #3
+ 664 001a FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 665              	.LVL27:
+ 264:d:/liteos/code/WIFI2/Src\usart.c **** 		
+ 265:d:/liteos/code/WIFI2/Src\usart.c **** 	/* LPUART1 interrupt Deinit */
+ 266:d:/liteos/code/WIFI2/Src\usart.c **** 		HAL_NVIC_DisableIRQ(LPUART1_IRQn);
+ 666              		.loc 1 266 3 view .LVU202
+ 667 001e 4620     		movs	r0, #70
+ 668              	.L30:
+ 267:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN LPUART1_MspDeInit 1 */
+ 268:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 269:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END LPUART1_MspDeInit 1 */
+ 270:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 271:d:/liteos/code/WIFI2/Src\usart.c ****   else if(uartHandle->Instance==USART1)
+ 272:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 273:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART1_MspDeInit 0 */
+ 274:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 275:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART1_MspDeInit 0 */
+ 276:d:/liteos/code/WIFI2/Src\usart.c ****     /* Peripheral clock disable */
+ 277:d:/liteos/code/WIFI2/Src\usart.c ****     __HAL_RCC_USART1_CLK_DISABLE();
+ 278:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 279:d:/liteos/code/WIFI2/Src\usart.c ****     /**USART1 GPIO Configuration    
+ 280:d:/liteos/code/WIFI2/Src\usart.c ****     PA9     ------> USART1_TX
+ 281:d:/liteos/code/WIFI2/Src\usart.c ****     PA10     ------> USART1_RX 
+ 282:d:/liteos/code/WIFI2/Src\usart.c ****     */
+ 283:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
+ 284:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 285:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART1 interrupt Deinit */
+ 286:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_DisableIRQ(USART1_IRQn);
+ 287:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART1_MspDeInit 1 */
+ 288:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 289:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART1_MspDeInit 1 */
+ 290:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 291:d:/liteos/code/WIFI2/Src\usart.c ****   else if(uartHandle->Instance==USART2)
+ 292:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 293:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART2_MspDeInit 0 */
+ 294:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 295:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART2_MspDeInit 0 */
+ 296:d:/liteos/code/WIFI2/Src\usart.c ****     /* Peripheral clock disable */
+ 297:d:/liteos/code/WIFI2/Src\usart.c ****     __HAL_RCC_USART2_CLK_DISABLE();
+ 298:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 299:d:/liteos/code/WIFI2/Src\usart.c ****     /**USART2 GPIO Configuration    
+ 300:d:/liteos/code/WIFI2/Src\usart.c ****     PA2     ------> USART2_TX
+ 301:d:/liteos/code/WIFI2/Src\usart.c ****     PA3     ------> USART2_RX 
+ 302:d:/liteos/code/WIFI2/Src\usart.c ****     */
+ 303:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2|GPIO_PIN_3);
+ 304:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 305:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART2 interrupt Deinit */
+ 306:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_DisableIRQ(USART2_IRQn);
+ 307:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART2_MspDeInit 1 */
+ 308:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 309:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART2_MspDeInit 1 */
+ 310:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 311:d:/liteos/code/WIFI2/Src\usart.c ****   else if(uartHandle->Instance==USART3)
+ 312:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 313:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART3_MspDeInit 0 */
+ 314:d:/liteos/code/WIFI2/Src\usart.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 20
+
+
+ 315:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART3_MspDeInit 0 */
+ 316:d:/liteos/code/WIFI2/Src\usart.c ****     /* Peripheral clock disable */
+ 317:d:/liteos/code/WIFI2/Src\usart.c ****     __HAL_RCC_USART3_CLK_DISABLE();
+ 318:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 319:d:/liteos/code/WIFI2/Src\usart.c ****     /**USART3 GPIO Configuration    
+ 320:d:/liteos/code/WIFI2/Src\usart.c ****     PC4     ------> USART3_TX
+ 321:d:/liteos/code/WIFI2/Src\usart.c ****     PC5     ------> USART3_RX 
+ 322:d:/liteos/code/WIFI2/Src\usart.c ****     */
+ 323:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_4|GPIO_PIN_5);
+ 324:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 325:d:/liteos/code/WIFI2/Src\usart.c ****     /* USART3 interrupt Deinit */
+ 326:d:/liteos/code/WIFI2/Src\usart.c ****     HAL_NVIC_DisableIRQ(USART3_IRQn);
+ 327:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 328:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 329:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE END USART3_MspDeInit 1 */
+ 330:d:/liteos/code/WIFI2/Src\usart.c ****   }
+ 331:d:/liteos/code/WIFI2/Src\usart.c **** }
+ 669              		.loc 1 331 1 is_stmt 0 view .LVU203
+ 670 0020 BDE80840 		pop	{r3, lr}
+ 671              	.LCFI17:
+ 672              		.cfi_remember_state
+ 673              		.cfi_restore 14
+ 674              		.cfi_restore 3
+ 675              		.cfi_def_cfa_offset 0
+ 326:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 676              		.loc 1 326 5 view .LVU204
+ 677 0024 FFF7FEBF 		b	HAL_NVIC_DisableIRQ
+ 678              	.LVL28:
+ 679              	.L26:
+ 680              	.LCFI18:
+ 681              		.cfi_restore_state
+ 271:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 682              		.loc 1 271 8 is_stmt 1 view .LVU205
+ 271:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 683              		.loc 1 271 10 is_stmt 0 view .LVU206
+ 684 0028 1A4A     		ldr	r2, .L31+8
+ 685 002a 9342     		cmp	r3, r2
+ 686 002c 0DD1     		bne	.L27
+ 277:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 687              		.loc 1 277 5 is_stmt 1 view .LVU207
+ 688 002e 02F55842 		add	r2, r2, #55296
+ 283:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 689              		.loc 1 283 5 is_stmt 0 view .LVU208
+ 690 0032 4FF09040 		mov	r0, #1207959552
+ 691              	.LVL29:
+ 277:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 692              		.loc 1 277 5 view .LVU209
+ 693 0036 136E     		ldr	r3, [r2, #96]
+ 694 0038 23F48043 		bic	r3, r3, #16384
+ 695 003c 1366     		str	r3, [r2, #96]
+ 283:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 696              		.loc 1 283 5 is_stmt 1 view .LVU210
+ 697 003e 4FF4C061 		mov	r1, #1536
+ 698 0042 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 699              	.LVL30:
+ 286:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART1_MspDeInit 1 */
+ 700              		.loc 1 286 5 view .LVU211
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 21
+
+
+ 701 0046 2520     		movs	r0, #37
+ 702 0048 EAE7     		b	.L30
+ 703              	.LVL31:
+ 704              	.L27:
+ 291:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 705              		.loc 1 291 8 view .LVU212
+ 291:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 706              		.loc 1 291 10 is_stmt 0 view .LVU213
+ 707 004a 134A     		ldr	r2, .L31+12
+ 708 004c 9342     		cmp	r3, r2
+ 709 004e 0CD1     		bne	.L28
+ 297:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 710              		.loc 1 297 5 is_stmt 1 view .LVU214
+ 711 0050 02F5E632 		add	r2, r2, #117760
+ 303:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 712              		.loc 1 303 5 is_stmt 0 view .LVU215
+ 713 0054 4FF09040 		mov	r0, #1207959552
+ 714              	.LVL32:
+ 297:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 715              		.loc 1 297 5 view .LVU216
+ 716 0058 936D     		ldr	r3, [r2, #88]
+ 717 005a 23F40033 		bic	r3, r3, #131072
+ 718 005e 9365     		str	r3, [r2, #88]
+ 303:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 719              		.loc 1 303 5 is_stmt 1 view .LVU217
+ 720 0060 0C21     		movs	r1, #12
+ 721 0062 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 722              	.LVL33:
+ 306:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART2_MspDeInit 1 */
+ 723              		.loc 1 306 5 view .LVU218
+ 724 0066 2620     		movs	r0, #38
+ 725 0068 DAE7     		b	.L30
+ 726              	.LVL34:
+ 727              	.L28:
+ 311:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 728              		.loc 1 311 8 view .LVU219
+ 311:d:/liteos/code/WIFI2/Src\usart.c ****   {
+ 729              		.loc 1 311 10 is_stmt 0 view .LVU220
+ 730 006a 0C4A     		ldr	r2, .L31+16
+ 731 006c 9342     		cmp	r3, r2
+ 732 006e 0BD1     		bne	.L25
+ 317:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 733              		.loc 1 317 5 is_stmt 1 view .LVU221
+ 734 0070 02F5E432 		add	r2, r2, #116736
+ 323:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 735              		.loc 1 323 5 is_stmt 0 view .LVU222
+ 736 0074 0648     		ldr	r0, .L31+4
+ 737              	.LVL35:
+ 317:d:/liteos/code/WIFI2/Src\usart.c ****   
+ 738              		.loc 1 317 5 view .LVU223
+ 739 0076 936D     		ldr	r3, [r2, #88]
+ 740 0078 23F48023 		bic	r3, r3, #262144
+ 741 007c 9365     		str	r3, [r2, #88]
+ 323:d:/liteos/code/WIFI2/Src\usart.c **** 
+ 742              		.loc 1 323 5 is_stmt 1 view .LVU224
+ 743 007e 3021     		movs	r1, #48
+ 744 0080 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 22
+
+
+ 745              	.LVL36:
+ 326:d:/liteos/code/WIFI2/Src\usart.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 746              		.loc 1 326 5 view .LVU225
+ 747 0084 2720     		movs	r0, #39
+ 748 0086 CBE7     		b	.L30
+ 749              	.LVL37:
+ 750              	.L25:
+ 751              		.loc 1 331 1 is_stmt 0 view .LVU226
+ 752 0088 08BD     		pop	{r3, pc}
+ 753              	.L32:
+ 754 008a 00BF     		.align	2
+ 755              	.L31:
+ 756 008c 00800040 		.word	1073774592
+ 757 0090 00080048 		.word	1207961600
+ 758 0094 00380140 		.word	1073821696
+ 759 0098 00440040 		.word	1073759232
+ 760 009c 00480040 		.word	1073760256
+ 761              		.cfi_endproc
+ 762              	.LFE292:
+ 764              		.comm	huart3,120,4
+ 765              		.comm	huart2,120,4
+ 766              		.comm	huart1,120,4
+ 767              		.comm	hlpuart1,120,4
+ 768              		.text
+ 769              	.Letext0:
+ 770              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 771              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 772              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 773              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 774              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 775              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 776              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 777              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 778              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 779              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 780              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 781              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 782              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 783              		.file 15 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 784              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 785              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 786              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 787              		.file 19 "d:/liteos/code/WIFI2/Inc/usart.h"
+ 788              		.file 20 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usart.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:21     .text.MX_LPUART1_UART_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:29     .text.MX_LPUART1_UART_Init:00000000 MX_LPUART1_UART_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:93     .text.MX_LPUART1_UART_Init:00000034 $d
+                            *COM*:00000078 hlpuart1
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:100    .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:107    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:173    .text.MX_USART1_UART_Init:00000038 $d
+                            *COM*:00000078 huart1
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:180    .text.MX_USART2_UART_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:187    .text.MX_USART2_UART_Init:00000000 MX_USART2_UART_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:253    .text.MX_USART2_UART_Init:00000038 $d
+                            *COM*:00000078 huart2
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:260    .text.MX_USART3_UART_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:267    .text.MX_USART3_UART_Init:00000000 MX_USART3_UART_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:333    .text.MX_USART3_UART_Init:00000038 $d
+                            *COM*:00000078 huart3
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:340    .text.HAL_UART_MspInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:347    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:615    .text.HAL_UART_MspInit:00000120 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:625    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:632    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccPGNWJ4.s:756    .text.HAL_UART_MspDeInit:0000008c $d
+
+UNDEFINED SYMBOLS
+HAL_UART_Init
+_Error_Handler
+HAL_GPIO_Init
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_GPIO_DeInit
+HAL_NVIC_DisableIRQ

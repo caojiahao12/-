@@ -1,0 +1,1424 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_hal_pwr.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HAL_PWR_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	HAL_PWR_DeInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	HAL_PWR_DeInit:
+  27              	.LFB287:
+  28              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   ******************************************************************************
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @file    stm32l4xx_hal_pwr.c
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @author  MCD Application Team
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief   PWR HAL module driver.
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *          This file provides firmware functions to manage the following
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *          functionalities of the Power Controller (PWR) peripheral:
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           + Initialization/de-initialization functions
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           + Peripheral Control functions
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   ******************************************************************************
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @attention
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * are permitted provided that the following conditions are met:
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *      this list of conditions and the following disclaimer.
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *      this list of conditions and the following disclaimer in the documentation
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *      and/or other materials provided with the distribution.
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *      may be used to endorse or promote products derived from this software
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *      without specific prior written permission.
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 2
+
+
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   ******************************************************************************
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /* Includes ------------------------------------------------------------------*/
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** #include "stm32l4xx_hal.h"
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /** @addtogroup STM32L4xx_HAL_Driver
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @{
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /** @defgroup PWR PWR
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief PWR HAL module driver
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @{
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** #ifdef HAL_PWR_MODULE_ENABLED
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /* Private typedef -----------------------------------------------------------*/
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /* Private define ------------------------------------------------------------*/ 
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /** @defgroup PWR_Private_Defines PWR Private Defines
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @{
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /** @defgroup PWR_PVD_Mode_Mask PWR PVD Mode Mask
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @{
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */ 
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** #define PVD_MODE_IT               ((uint32_t)0x00010000)  /*!< Mask for interruption yielded by PVD
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** #define PVD_MODE_EVT              ((uint32_t)0x00020000)  /*!< Mask for event yielded by PVD thresh
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** #define PVD_RISING_EDGE           ((uint32_t)0x00000001)  /*!< Mask for rising edge set as PVD trig
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** #define PVD_FALLING_EDGE          ((uint32_t)0x00000002)  /*!< Mask for falling edge set as PVD tri
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @}
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @}
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /* Private macro -------------------------------------------------------------*/
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /* Private variables ---------------------------------------------------------*/
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /* Private function prototypes -----------------------------------------------*/
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /* Exported functions --------------------------------------------------------*/
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /** @defgroup PWR_Exported_Functions PWR Exported Functions
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @{
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /** @defgroup PWR_Exported_Functions_Group1 Initialization and de-initialization functions 
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *  @brief    Initialization and de-initialization functions
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 3
+
+
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** @verbatim
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****  ===============================================================================
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****               ##### Initialization and de-initialization functions #####
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****  ===============================================================================
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     [..]
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** @endverbatim
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @{
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Deinitialize the HAL PWR peripheral registers to their default reset values.
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_DeInit(void)
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+  29              		.loc 1 104 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   __HAL_RCC_PWR_FORCE_RESET();
+  34              		.loc 1 105 3 view .LVU1
+  35 0000 044B     		ldr	r3, .L2
+  36 0002 9A6B     		ldr	r2, [r3, #56]
+  37 0004 42F08052 		orr	r2, r2, #268435456
+  38 0008 9A63     		str	r2, [r3, #56]
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   __HAL_RCC_PWR_RELEASE_RESET();
+  39              		.loc 1 106 3 view .LVU2
+  40 000a 9A6B     		ldr	r2, [r3, #56]
+  41 000c 22F08052 		bic	r2, r2, #268435456
+  42 0010 9A63     		str	r2, [r3, #56]
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+  43              		.loc 1 107 1 is_stmt 0 view .LVU3
+  44 0012 7047     		bx	lr
+  45              	.L3:
+  46              		.align	2
+  47              	.L2:
+  48 0014 00100240 		.word	1073876992
+  49              		.cfi_endproc
+  50              	.LFE287:
+  52              		.section	.text.HAL_PWR_EnableBkUpAccess,"ax",%progbits
+  53              		.align	1
+  54              		.global	HAL_PWR_EnableBkUpAccess
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  58              		.fpu fpv4-sp-d16
+  60              	HAL_PWR_EnableBkUpAccess:
+  61              	.LFB288:
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Enable access to the backup domain 
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        (RTC registers, RTC backup data registers).
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  After reset, the backup domain is protected against 
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        possible unwanted write accesses.
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 4
+
+
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  RTCSEL that sets the RTC clock source selection is in the RTC back-up domain.
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        In order to set or modify the RTC clock, the backup domain access must be
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        disabled. 
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  LSEON bit that switches on and off the LSE crystal belongs as well to the
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        back-up domain.                
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_EnableBkUpAccess(void)
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+  62              		.loc 1 122 1 is_stmt 1 view -0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   SET_BIT(PWR->CR1, PWR_CR1_DBP);    
+  67              		.loc 1 123 3 view .LVU5
+  68 0000 024A     		ldr	r2, .L5
+  69 0002 1368     		ldr	r3, [r2]
+  70 0004 43F48073 		orr	r3, r3, #256
+  71 0008 1360     		str	r3, [r2]
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+  72              		.loc 1 124 1 is_stmt 0 view .LVU6
+  73 000a 7047     		bx	lr
+  74              	.L6:
+  75              		.align	2
+  76              	.L5:
+  77 000c 00700040 		.word	1073770496
+  78              		.cfi_endproc
+  79              	.LFE288:
+  81              		.section	.text.HAL_PWR_DisableBkUpAccess,"ax",%progbits
+  82              		.align	1
+  83              		.global	HAL_PWR_DisableBkUpAccess
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  87              		.fpu fpv4-sp-d16
+  89              	HAL_PWR_DisableBkUpAccess:
+  90              	.LFB289:
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Disable access to the backup domain
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        (RTC registers, RTC backup data registers).    
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_DisableBkUpAccess(void)
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+  91              		.loc 1 132 1 is_stmt 1 view -0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95              		@ link register save eliminated.
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   CLEAR_BIT(PWR->CR1, PWR_CR1_DBP);   
+  96              		.loc 1 133 3 view .LVU8
+  97 0000 024A     		ldr	r2, .L8
+  98 0002 1368     		ldr	r3, [r2]
+  99 0004 23F48073 		bic	r3, r3, #256
+ 100 0008 1360     		str	r3, [r2]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 5
+
+
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 101              		.loc 1 134 1 is_stmt 0 view .LVU9
+ 102 000a 7047     		bx	lr
+ 103              	.L9:
+ 104              		.align	2
+ 105              	.L8:
+ 106 000c 00700040 		.word	1073770496
+ 107              		.cfi_endproc
+ 108              	.LFE289:
+ 110              		.section	.text.HAL_PWR_ConfigPVD,"ax",%progbits
+ 111              		.align	1
+ 112              		.global	HAL_PWR_ConfigPVD
+ 113              		.syntax unified
+ 114              		.thumb
+ 115              		.thumb_func
+ 116              		.fpu fpv4-sp-d16
+ 118              	HAL_PWR_ConfigPVD:
+ 119              	.LVL0:
+ 120              	.LFB290:
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @}
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /** @defgroup PWR_Exported_Functions_Group2 Peripheral Control functions
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *  @brief Low Power modes configuration functions
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** @verbatim
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****  ===============================================================================
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                  ##### Peripheral Control functions #####
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****  ===============================================================================
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****  
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****      [..]
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****      *** PVD configuration ***
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     =========================
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     [..]
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) The PVD is used to monitor the VDD power supply by comparing it to a
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           threshold selected by the PVD Level (PLS[2:0] bits in PWR_CR2 register).
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) PVDO flag is available to indicate if VDD/VDDA is higher or lower
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           than the PVD threshold. This event is internally connected to the EXTI
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           line16 and can generate an interrupt if enabled. This is done through
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           __HAL_PVD_EXTI_ENABLE_IT() macro.
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) The PVD is stopped in Standby mode.
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****  
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     *** WakeUp pin configuration ***
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     ================================
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     [..]
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) WakeUp pins are used to wakeup the system from Standby mode or Shutdown mode. 
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           The polarity of these pins can be set to configure event detection on high 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 6
+
+
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           level (rising edge) or low level (falling edge).
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     *** Low Power modes configuration ***
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     =====================================
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     [..]
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       The devices feature 8 low-power modes:
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Low-power Run mode: core and peripherals are running, main regulator off, low power regul
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Sleep mode: Cortex-M4 core stopped, peripherals kept running, main and low power regulato
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Low-power Sleep mode: Cortex-M4 core stopped, peripherals kept running, main regulator of
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Stop 0 mode: all clocks are stopped except LSI and LSE, main and low power regulators on.
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Stop 1 mode: all clocks are stopped except LSI and LSE, main regulator off, low power reg
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Stop 2 mode: all clocks are stopped except LSI and LSE, main regulator off, low power reg
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Standby mode with SRAM2: all clocks are stopped except LSI and LSE, SRAM2 content preserv
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Standby mode without SRAM2: all clocks are stopped except LSI and LSE, main and low power
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Shutdown mode: all clocks are stopped except LSE, main and low power regulators off.
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    *** Low-power run mode ***
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    ==========================
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     [..]
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Entry: (from main run mode)
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         (++) set LPR bit with HAL_PWREx_EnableLowPowerRunMode() API after having decreased the syst
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****      
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Exit:
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         (++) clear LPR bit then wait for REGLP bit to be reset with HAL_PWREx_DisableLowPowerRunMod
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****              then can the system clock frequency be increased above 2 MHz.
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    *** Sleep mode / Low-power sleep mode ***
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    =========================================
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     [..]
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Entry:                                                         
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           The Sleep mode / Low-power Sleep mode is entered thru HAL_PWR_EnterSLEEPMode() API
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           in specifying whether or not the regulator is forced to low-power mode and if exit is int
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) PWR_MAINREGULATOR_ON: Sleep mode (regulator in main mode).              
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) PWR_LOWPOWERREGULATOR_ON: Low-power sleep (regulator in low power mode).
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           In the latter case, the system clock frequency must have been decreased below 2 MHz befor
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) PWR_SLEEPENTRY_WFI: enter SLEEP mode with WFI instruction
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) PWR_SLEEPENTRY_WFE: enter SLEEP mode with WFE instruction
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****      
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) WFI Exit:
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         (++) Any peripheral interrupt acknowledged by the nested vectored interrupt
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****              controller (NVIC) or any wake-up event.
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****              
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) WFE Exit:
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         (++) Any wake-up event such as an EXTI line configured in event mode.             
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****              
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****          [..] When exiting the Low-power sleep mode by issuing an interrupt or a wakeup event, 
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****              the MCU is in Low-power Run mode. 
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    *** Stop 0, Stop 1 and Stop 2 modes ***
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    ===============================
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     [..]
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Entry:                                                 
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           The Stop 0, Stop 1 or Stop 2 modes are entered thru the following API's:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 7
+
+
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) HAL_PWREx_EnterSTOP0Mode() for mode 0 or HAL_PWREx_EnterSTOP1Mode() for mode 1 or fo
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) HAL_PWREx_EnterSTOP2Mode() for mode 2.  
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Regulator setting (applicable to HAL_PWR_EnterSTOPMode() only):
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) PWR_MAINREGULATOR_ON
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) PWR_LOWPOWERREGULATOR_ON
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Exit (interrupt or event-triggered, specified when entering STOP mode):
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) PWR_STOPENTRY_WFI: enter Stop mode with WFI instruction
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) PWR_STOPENTRY_WFE: enter Stop mode with WFE instruction
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) WFI Exit:
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) Any EXTI Line (Internal or External) configured in Interrupt mode.
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) Some specific communication peripherals (USART, LPUART, I2C) interrupts 
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                when programmed in wakeup mode. 
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) WFE Exit:  
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) Any EXTI Line (Internal or External) configured in Event mode.
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****        
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****        [..]                      
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           When exiting Stop 0 and Stop 1 modes, the MCU is either in Run mode or in Low-power Run m
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           depending on the LPR bit setting. 
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           When exiting Stop 2 mode, the MCU is in Run mode. 
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    *** Standby mode ***
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    ====================
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****      [..]
+ 254:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       The Standby mode offers two options: 
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) option a) all clocks off except LSI and LSE, RRS bit set (keeps voltage regulator in low 
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         SRAM and registers contents are lost except for the SRAM2 content, the RTC registers, RTC b
+ 257:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         and Standby circuitry.      
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) option b) all clocks off except LSI and LSE, RRS bit cleared (voltage regulator then disa
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         SRAM and register contents are lost except for the RTC registers, RTC backup registers 
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         and Standby circuitry.
+ 261:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (++) Entry:                                    
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (+++) The Standby mode is entered thru HAL_PWR_EnterSTANDBYMode() API. 
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                 SRAM1 and register contents are lost except for registers in the Backup domain and 
+ 265:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                 Standby circuitry. SRAM2 content can be preserved if the bit RRS is set in PWR_CR3 
+ 266:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                 To enable this feature, the user can resort to HAL_PWREx_EnableSRAM2ContentRetentio
+ 267:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                 to set RRS bit.   
+ 268:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           
+ 269:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (++) Exit:
+ 270:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (+++) WKUP pin rising edge, RTC alarm or wakeup, tamper event, time-stamp event, 
+ 271:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                 external reset in NRST pin, IWDG reset.
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                 
+ 273:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       [..]    After waking up from Standby mode, program execution restarts in the same way as afte
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           
+ 275:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 276:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     *** Shutdown mode ***
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    ======================
+ 278:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****      [..]
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       In Shutdown mode, 
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         voltage regulator is disabled, all clocks are off except LSE, RRS bit is cleared.
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         SRAM and registers contents are lost except for backup domain registers.
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 283:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Entry:                                    
+ 284:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           The Shutdown mode is entered thru HAL_PWREx_EnterSHUTDOWNMode() API.
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           
+ 286:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) Exit:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 8
+
+
+ 287:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****           (++) WKUP pin rising edge, RTC alarm or wakeup, tamper event, time-stamp event, 
+ 288:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                external reset in NRST pin.
+ 289:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****                
+ 290:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****          [..] After waking up from Shutdown mode, program execution restarts in the same way as aft
+ 291:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 292:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 293:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    *** Auto-wakeup (AWU) from low-power mode ***
+ 294:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    =============================================
+ 295:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     [..]
+ 296:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       The MCU can be woken up from low-power mode by an RTC Alarm event, an RTC
+ 297:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       Wakeup event, a tamper event or a time-stamp event, without depending on
+ 298:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       an external interrupt (Auto-wakeup mode).
+ 299:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 300:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       (+) RTC auto-wakeup (AWU) from the Stop, Standby and Shutdown modes
+ 301:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 302:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 303:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         (++) To wake up from the Stop mode with an RTC alarm event, it is necessary to
+ 304:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****              configure the RTC to generate the RTC alarm using the HAL_RTC_SetAlarm_IT() function.
+ 305:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 306:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         (++) To wake up from the Stop mode with an RTC Tamper or time stamp event, it
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****              is necessary to configure the RTC to detect the tamper or time stamp event using the
+ 308:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****              HAL_RTCEx_SetTimeStamp_IT() or HAL_RTCEx_SetTamper_IT() functions.
+ 309:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 310:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****         (++) To wake up from the Stop mode with an RTC WakeUp event, it is necessary to
+ 311:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****               configure the RTC to generate the RTC WakeUp event using the HAL_RTCEx_SetWakeUpTimer
+ 312:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 313:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** @endverbatim
+ 314:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @{
+ 315:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 316:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 317:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 318:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 320:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Configure the voltage threshold detected by the Power Voltage Detector (PVD).
+ 321:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @param sConfigPVD: pointer to a PWR_PVDTypeDef structure that contains the PVD 
+ 322:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        configuration information.
+ 323:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note Refer to the electrical characteristics of your device datasheet for
+ 324:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         more details about the voltage thresholds corresponding to each
+ 325:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         detection level.
+ 326:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 327:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 328:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** HAL_StatusTypeDef HAL_PWR_ConfigPVD(PWR_PVDTypeDef *sConfigPVD)
+ 329:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 121              		.loc 1 329 1 is_stmt 1 view -0
+ 122              		.cfi_startproc
+ 123              		@ args = 0, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		@ link register save eliminated.
+ 330:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Check the parameters */
+ 331:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   assert_param(IS_PWR_PVD_LEVEL(sConfigPVD->PVDLevel));
+ 126              		.loc 1 331 3 view .LVU11
+ 332:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   assert_param(IS_PWR_PVD_MODE(sConfigPVD->Mode));
+ 127              		.loc 1 332 3 view .LVU12
+ 333:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 334:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Set PLS bits according to PVDLevel value */
+ 335:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   MODIFY_REG(PWR->CR2, PWR_CR2_PLS, sConfigPVD->PVDLevel);
+ 128              		.loc 1 335 3 view .LVU13
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 9
+
+
+ 129 0000 194A     		ldr	r2, .L27
+ 130 0002 0168     		ldr	r1, [r0]
+ 131 0004 5368     		ldr	r3, [r2, #4]
+ 132 0006 23F00E03 		bic	r3, r3, #14
+ 133 000a 0B43     		orrs	r3, r3, r1
+ 134 000c 5360     		str	r3, [r2, #4]
+ 336:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 337:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Clear any previous config. Keep it clear if no event or IT mode is selected */
+ 338:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   __HAL_PWR_PVD_EXTI_DISABLE_EVENT();
+ 135              		.loc 1 338 3 view .LVU14
+ 136 000e 174B     		ldr	r3, .L27+4
+ 137 0010 5A68     		ldr	r2, [r3, #4]
+ 138 0012 22F48032 		bic	r2, r2, #65536
+ 139 0016 5A60     		str	r2, [r3, #4]
+ 339:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   __HAL_PWR_PVD_EXTI_DISABLE_IT();
+ 140              		.loc 1 339 3 view .LVU15
+ 141 0018 1A68     		ldr	r2, [r3]
+ 142 001a 22F48032 		bic	r2, r2, #65536
+ 143 001e 1A60     		str	r2, [r3]
+ 340:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   __HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE(); 
+ 144              		.loc 1 340 3 view .LVU16
+ 145 0020 DA68     		ldr	r2, [r3, #12]
+ 146 0022 22F48032 		bic	r2, r2, #65536
+ 147 0026 DA60     		str	r2, [r3, #12]
+ 341:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   __HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE();
+ 148              		.loc 1 341 3 view .LVU17
+ 149 0028 9A68     		ldr	r2, [r3, #8]
+ 150 002a 22F48032 		bic	r2, r2, #65536
+ 151 002e 9A60     		str	r2, [r3, #8]
+ 342:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 343:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Configure interrupt mode */
+ 344:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_MODE_IT) == PVD_MODE_IT)
+ 152              		.loc 1 344 3 view .LVU18
+ 153              		.loc 1 344 17 is_stmt 0 view .LVU19
+ 154 0030 4268     		ldr	r2, [r0, #4]
+ 155              		.loc 1 344 5 view .LVU20
+ 156 0032 D103     		lsls	r1, r2, #15
+ 345:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 346:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_ENABLE_IT();
+ 157              		.loc 1 346 5 is_stmt 1 view .LVU21
+ 158 0034 42BF     		ittt	mi
+ 159 0036 1968     		ldrmi	r1, [r3]
+ 160 0038 41F48031 		orrmi	r1, r1, #65536
+ 161 003c 1960     		strmi	r1, [r3]
+ 347:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 348:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 349:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Configure event mode */
+ 350:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_MODE_EVT) == PVD_MODE_EVT)
+ 162              		.loc 1 350 3 view .LVU22
+ 163              		.loc 1 350 5 is_stmt 0 view .LVU23
+ 164 003e 9003     		lsls	r0, r2, #14
+ 165              	.LVL1:
+ 351:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 352:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_ENABLE_EVENT();
+ 166              		.loc 1 352 5 is_stmt 1 view .LVU24
+ 167 0040 42BF     		ittt	mi
+ 168 0042 5968     		ldrmi	r1, [r3, #4]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 10
+
+
+ 169 0044 41F48031 		orrmi	r1, r1, #65536
+ 170 0048 5960     		strmi	r1, [r3, #4]
+ 353:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 354:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 355:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Configure the edge */
+ 356:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_RISING_EDGE) == PVD_RISING_EDGE)
+ 171              		.loc 1 356 3 view .LVU25
+ 172              		.loc 1 356 5 is_stmt 0 view .LVU26
+ 173 004a D107     		lsls	r1, r2, #31
+ 357:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE();
+ 174              		.loc 1 358 5 is_stmt 1 view .LVU27
+ 175 004c 42BF     		ittt	mi
+ 176 004e 9968     		ldrmi	r1, [r3, #8]
+ 177 0050 41F48031 		orrmi	r1, r1, #65536
+ 178 0054 9960     		strmi	r1, [r3, #8]
+ 359:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 360:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 361:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_FALLING_EDGE) == PVD_FALLING_EDGE)
+ 179              		.loc 1 361 3 view .LVU28
+ 180              		.loc 1 361 5 is_stmt 0 view .LVU29
+ 181 0056 9207     		lsls	r2, r2, #30
+ 362:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 363:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE();
+ 182              		.loc 1 363 5 is_stmt 1 view .LVU30
+ 183 0058 42BF     		ittt	mi
+ 184 005a DA68     		ldrmi	r2, [r3, #12]
+ 185 005c 42F48032 		orrmi	r2, r2, #65536
+ 186 0060 DA60     		strmi	r2, [r3, #12]
+ 364:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 365:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 366:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   return HAL_OK;
+ 187              		.loc 1 366 3 view .LVU31
+ 367:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 188              		.loc 1 367 1 is_stmt 0 view .LVU32
+ 189 0062 0020     		movs	r0, #0
+ 190 0064 7047     		bx	lr
+ 191              	.L28:
+ 192 0066 00BF     		.align	2
+ 193              	.L27:
+ 194 0068 00700040 		.word	1073770496
+ 195 006c 00040140 		.word	1073808384
+ 196              		.cfi_endproc
+ 197              	.LFE290:
+ 199              		.section	.text.HAL_PWR_EnablePVD,"ax",%progbits
+ 200              		.align	1
+ 201              		.global	HAL_PWR_EnablePVD
+ 202              		.syntax unified
+ 203              		.thumb
+ 204              		.thumb_func
+ 205              		.fpu fpv4-sp-d16
+ 207              	HAL_PWR_EnablePVD:
+ 208              	.LFB291:
+ 368:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 369:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 370:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Enable the Power Voltage Detector (PVD).
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 11
+
+
+ 372:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 373:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 374:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_EnablePVD(void)
+ 375:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 209              		.loc 1 375 1 is_stmt 1 view -0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+ 376:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   SET_BIT(PWR->CR2, PWR_CR2_PVDE);  
+ 214              		.loc 1 376 3 view .LVU34
+ 215 0000 024A     		ldr	r2, .L30
+ 216 0002 5368     		ldr	r3, [r2, #4]
+ 217 0004 43F00103 		orr	r3, r3, #1
+ 218 0008 5360     		str	r3, [r2, #4]
+ 377:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 219              		.loc 1 377 1 is_stmt 0 view .LVU35
+ 220 000a 7047     		bx	lr
+ 221              	.L31:
+ 222              		.align	2
+ 223              	.L30:
+ 224 000c 00700040 		.word	1073770496
+ 225              		.cfi_endproc
+ 226              	.LFE291:
+ 228              		.section	.text.HAL_PWR_DisablePVD,"ax",%progbits
+ 229              		.align	1
+ 230              		.global	HAL_PWR_DisablePVD
+ 231              		.syntax unified
+ 232              		.thumb
+ 233              		.thumb_func
+ 234              		.fpu fpv4-sp-d16
+ 236              	HAL_PWR_DisablePVD:
+ 237              	.LFB292:
+ 378:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 379:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 380:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Disable the Power Voltage Detector (PVD).
+ 381:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 382:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 383:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_DisablePVD(void)
+ 384:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 238              		.loc 1 384 1 is_stmt 1 view -0
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 0
+ 241              		@ frame_needed = 0, uses_anonymous_args = 0
+ 242              		@ link register save eliminated.
+ 385:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   CLEAR_BIT(PWR->CR2, PWR_CR2_PVDE);   
+ 243              		.loc 1 385 3 view .LVU37
+ 244 0000 024A     		ldr	r2, .L33
+ 245 0002 5368     		ldr	r3, [r2, #4]
+ 246 0004 23F00103 		bic	r3, r3, #1
+ 247 0008 5360     		str	r3, [r2, #4]
+ 386:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 248              		.loc 1 386 1 is_stmt 0 view .LVU38
+ 249 000a 7047     		bx	lr
+ 250              	.L34:
+ 251              		.align	2
+ 252              	.L33:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 12
+
+
+ 253 000c 00700040 		.word	1073770496
+ 254              		.cfi_endproc
+ 255              	.LFE292:
+ 257              		.section	.text.HAL_PWR_EnableWakeUpPin,"ax",%progbits
+ 258              		.align	1
+ 259              		.global	HAL_PWR_EnableWakeUpPin
+ 260              		.syntax unified
+ 261              		.thumb
+ 262              		.thumb_func
+ 263              		.fpu fpv4-sp-d16
+ 265              	HAL_PWR_EnableWakeUpPin:
+ 266              	.LVL2:
+ 267              	.LFB293:
+ 387:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 388:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 389:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 390:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 391:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 392:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Enable the WakeUp PINx functionality.
+ 393:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @param WakeUpPinPolarity: Specifies which Wake-Up pin to enable.
+ 394:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         This parameter can be one of the following legacy values which set the default polarity
+ 395:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         i.e. detection on high level (rising edge):
+ 396:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           @arg @ref PWR_WAKEUP_PIN1, PWR_WAKEUP_PIN2, PWR_WAKEUP_PIN3, PWR_WAKEUP_PIN4, PWR_WAK
+ 397:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *             
+ 398:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         or one of the following value where the user can explicitly specify the enabled pin and
+ 399:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         the chosen polarity:  
+ 400:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           @arg @ref PWR_WAKEUP_PIN1_HIGH or PWR_WAKEUP_PIN1_LOW 
+ 401:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           @arg @ref PWR_WAKEUP_PIN2_HIGH or PWR_WAKEUP_PIN2_LOW 
+ 402:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           @arg @ref PWR_WAKEUP_PIN3_HIGH or PWR_WAKEUP_PIN3_LOW 
+ 403:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           @arg @ref PWR_WAKEUP_PIN4_HIGH or PWR_WAKEUP_PIN4_LOW
+ 404:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           @arg @ref PWR_WAKEUP_PIN5_HIGH or PWR_WAKEUP_PIN5_LOW 
+ 405:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  PWR_WAKEUP_PINx and PWR_WAKEUP_PINx_HIGH are equivalent.               
+ 406:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 407:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 408:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinPolarity)
+ 409:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 268              		.loc 1 409 1 is_stmt 1 view -0
+ 269              		.cfi_startproc
+ 270              		@ args = 0, pretend = 0, frame = 0
+ 271              		@ frame_needed = 0, uses_anonymous_args = 0
+ 272              		@ link register save eliminated.
+ 410:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   assert_param(IS_PWR_WAKEUP_PIN(WakeUpPinPolarity)); 
+ 273              		.loc 1 410 3 view .LVU40
+ 411:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 412:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Specifies the Wake-Up pin polarity for the event detection 
+ 413:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     (rising or falling edge) */
+ 414:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   MODIFY_REG(PWR->CR4, (PWR_CR3_EWUP & WakeUpPinPolarity), (WakeUpPinPolarity >> PWR_WUP_POLARITY_S
+ 274              		.loc 1 414 3 view .LVU41
+ 275 0000 064A     		ldr	r2, .L36
+ 276 0002 D368     		ldr	r3, [r2, #12]
+ 277 0004 00F01F01 		and	r1, r0, #31
+ 278 0008 23EA0103 		bic	r3, r3, r1
+ 279 000c 43EA5010 		orr	r0, r3, r0, lsr #5
+ 280              	.LVL3:
+ 281              		.loc 1 414 3 is_stmt 0 view .LVU42
+ 282 0010 D060     		str	r0, [r2, #12]
+ 415:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 13
+
+
+ 416:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Enable wake-up pin */
+ 417:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   SET_BIT(PWR->CR3, (PWR_CR3_EWUP & WakeUpPinPolarity));
+ 283              		.loc 1 417 3 is_stmt 1 view .LVU43
+ 284 0012 9368     		ldr	r3, [r2, #8]
+ 285 0014 1943     		orrs	r1, r1, r3
+ 286 0016 9160     		str	r1, [r2, #8]
+ 418:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 419:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     
+ 420:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 287              		.loc 1 420 1 is_stmt 0 view .LVU44
+ 288 0018 7047     		bx	lr
+ 289              	.L37:
+ 290 001a 00BF     		.align	2
+ 291              	.L36:
+ 292 001c 00700040 		.word	1073770496
+ 293              		.cfi_endproc
+ 294              	.LFE293:
+ 296              		.section	.text.HAL_PWR_DisableWakeUpPin,"ax",%progbits
+ 297              		.align	1
+ 298              		.global	HAL_PWR_DisableWakeUpPin
+ 299              		.syntax unified
+ 300              		.thumb
+ 301              		.thumb_func
+ 302              		.fpu fpv4-sp-d16
+ 304              	HAL_PWR_DisableWakeUpPin:
+ 305              	.LVL4:
+ 306              	.LFB294:
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 422:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 423:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Disable the WakeUp PINx functionality.
+ 424:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @param WakeUpPinx: Specifies the Power Wake-Up pin to disable.
+ 425:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         This parameter can be one of the following values:
+ 426:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           @arg @ref PWR_WAKEUP_PIN1, PWR_WAKEUP_PIN2, PWR_WAKEUP_PIN3, PWR_WAKEUP_PIN4, PWR_WAK
+ 427:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 428:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 429:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_DisableWakeUpPin(uint32_t WakeUpPinx)
+ 430:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 307              		.loc 1 430 1 is_stmt 1 view -0
+ 308              		.cfi_startproc
+ 309              		@ args = 0, pretend = 0, frame = 0
+ 310              		@ frame_needed = 0, uses_anonymous_args = 0
+ 311              		@ link register save eliminated.
+ 431:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   assert_param(IS_PWR_WAKEUP_PIN(WakeUpPinx));
+ 312              		.loc 1 431 3 view .LVU46
+ 432:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 433:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   CLEAR_BIT(PWR->CR3, (PWR_CR3_EWUP & WakeUpPinx)); 
+ 313              		.loc 1 433 3 view .LVU47
+ 314 0000 034A     		ldr	r2, .L39
+ 315 0002 9368     		ldr	r3, [r2, #8]
+ 316 0004 00F01F00 		and	r0, r0, #31
+ 317              	.LVL5:
+ 318              		.loc 1 433 3 is_stmt 0 view .LVU48
+ 319 0008 23EA0003 		bic	r3, r3, r0
+ 320 000c 9360     		str	r3, [r2, #8]
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 321              		.loc 1 434 1 view .LVU49
+ 322 000e 7047     		bx	lr
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 14
+
+
+ 323              	.L40:
+ 324              		.align	2
+ 325              	.L39:
+ 326 0010 00700040 		.word	1073770496
+ 327              		.cfi_endproc
+ 328              	.LFE294:
+ 330              		.section	.text.HAL_PWR_EnterSLEEPMode,"ax",%progbits
+ 331              		.align	1
+ 332              		.global	HAL_PWR_EnterSLEEPMode
+ 333              		.syntax unified
+ 334              		.thumb
+ 335              		.thumb_func
+ 336              		.fpu fpv4-sp-d16
+ 338              	HAL_PWR_EnterSLEEPMode:
+ 339              	.LVL6:
+ 340              	.LFB295:
+ 435:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 436:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 437:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 438:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Enter Sleep or Low-power Sleep mode.
+ 439:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  In Sleep/Low-power Sleep mode, all I/O pins keep the same state as in Run mode.
+ 440:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @param Regulator: Specifies the regulator state in Sleep/Low-power Sleep mode.
+ 441:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *          This parameter can be one of the following values:
+ 442:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *            @arg @ref PWR_MAINREGULATOR_ON Sleep mode (regulator in main mode)
+ 443:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *            @arg @ref PWR_LOWPOWERREGULATOR_ON Low-power Sleep mode (regulator in low-power mode
+ 444:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  Low-power Sleep mode is entered from Low-power Run mode. Therefore, if not yet 
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        in Low-power Run mode before calling HAL_PWR_EnterSLEEPMode() with Regulator set 
+ 446:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        to PWR_LOWPOWERREGULATOR_ON, the user can optionally configure the    
+ 447:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        Flash in power-down monde in setting the SLEEP_PD bit in FLASH_ACR register.
+ 448:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        Additionally, the clock frequency must be reduced below 2 MHz.
+ 449:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        Setting SLEEP_PD in FLASH_ACR then appropriately reducing the clock frequency must 
+ 450:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        be done before calling HAL_PWR_EnterSLEEPMode() API. 
+ 451:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  When exiting Low-power Sleep mode, the MCU is in Low-power Run mode. To move in 
+ 452:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        Run mode, the user must resort to HAL_PWREx_DisableLowPowerRunMode() API.       
+ 453:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @param SLEEPEntry: Specifies if Sleep mode is entered with WFI or WFE instruction.
+ 454:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *           This parameter can be one of the following values:
+ 455:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *            @arg @ref PWR_SLEEPENTRY_WFI enter Sleep or Low-power Sleep mode with WFI instructio
+ 456:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *            @arg @ref PWR_SLEEPENTRY_WFE enter Sleep or Low-power Sleep mode with WFE instructio
+ 457:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  When WFI entry is used, tick interrupt have to be disabled if not desired as 
+ 458:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        the interrupt wake up source.   
+ 459:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 461:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 341              		.loc 1 462 1 is_stmt 1 view -0
+ 342              		.cfi_startproc
+ 343              		@ args = 0, pretend = 0, frame = 0
+ 344              		@ frame_needed = 0, uses_anonymous_args = 0
+ 463:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Check the parameters */
+ 464:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   assert_param(IS_PWR_REGULATOR(Regulator));
+ 345              		.loc 1 464 3 view .LVU51
+ 465:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   assert_param(IS_PWR_SLEEP_ENTRY(SLEEPEntry));
+ 346              		.loc 1 465 3 view .LVU52
+ 466:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 467:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Set Regulator parameter */
+ 468:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   if (Regulator == PWR_MAINREGULATOR_ON)
+ 347              		.loc 1 468 3 view .LVU53
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 15
+
+
+ 348 0000 0D4B     		ldr	r3, .L49
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Check the parameters */
+ 349              		.loc 1 462 1 is_stmt 0 view .LVU54
+ 350 0002 10B5     		push	{r4, lr}
+ 351              	.LCFI0:
+ 352              		.cfi_def_cfa_offset 8
+ 353              		.cfi_offset 4, -8
+ 354              		.cfi_offset 14, -4
+ 469:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 470:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     /* If in low-power run mode at this point, exit it */
+ 471:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     if (HAL_IS_BIT_SET(PWR->SR2, PWR_SR2_REGLPF))
+ 355              		.loc 1 471 9 view .LVU55
+ 356 0004 5B69     		ldr	r3, [r3, #20]
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Check the parameters */
+ 357              		.loc 1 462 1 view .LVU56
+ 358 0006 0C46     		mov	r4, r1
+ 468:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 359              		.loc 1 468 6 view .LVU57
+ 360 0008 60B9     		cbnz	r0, .L42
+ 361              		.loc 1 471 5 is_stmt 1 view .LVU58
+ 362              		.loc 1 471 8 is_stmt 0 view .LVU59
+ 363 000a 9A05     		lsls	r2, r3, #22
+ 364 000c 01D5     		bpl	.L43
+ 472:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     {
+ 473:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       HAL_PWREx_DisableLowPowerRunMode();  
+ 365              		.loc 1 473 7 is_stmt 1 view .LVU60
+ 366 000e FFF7FEFF 		bl	HAL_PWREx_DisableLowPowerRunMode
+ 367              	.LVL7:
+ 368              	.L43:
+ 474:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     } 
+ 475:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     /* Regulator now in main mode. */
+ 476:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 477:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   else
+ 478:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 479:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     /* If in run mode, first move to low-power run mode.
+ 480:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****        The system clock frequency must be below 2 MHz at this point. */
+ 481:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     if (HAL_IS_BIT_SET(PWR->SR2, PWR_SR2_REGLPF) == RESET)
+ 482:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     {
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****       HAL_PWREx_EnableLowPowerRunMode();  
+ 484:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     } 
+ 485:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   } 
+ 486:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     
+ 487:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Clear SLEEPDEEP bit of Cortex System Control Register */
+ 488:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
+ 369              		.loc 1 488 3 view .LVU61
+ 370 0012 0A4A     		ldr	r2, .L49+4
+ 371 0014 1369     		ldr	r3, [r2, #16]
+ 489:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 490:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Select SLEEP mode entry -------------------------------------------------*/
+ 491:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   if(SLEEPEntry == PWR_SLEEPENTRY_WFI)
+ 372              		.loc 1 491 5 is_stmt 0 view .LVU62
+ 373 0016 012C     		cmp	r4, #1
+ 488:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 374              		.loc 1 488 3 view .LVU63
+ 375 0018 23F00403 		bic	r3, r3, #4
+ 376 001c 1361     		str	r3, [r2, #16]
+ 377              		.loc 1 491 3 is_stmt 1 view .LVU64
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 16
+
+
+ 378              		.loc 1 491 5 is_stmt 0 view .LVU65
+ 379 001e 06D1     		bne	.L44
+ 492:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     /* Request Wait For Interrupt */
+ 494:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __WFI();
+ 380              		.loc 1 494 5 is_stmt 1 view .LVU66
+ 381              		.syntax unified
+ 382              	@ 494 "C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src/stm32l
+ 383 0020 30BF     		wfi
+ 384              	@ 0 "" 2
+ 385              		.thumb
+ 386              		.syntax unified
+ 387              	.L41:
+ 495:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 496:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   else
+ 497:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 498:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     /* Request Wait For Event */
+ 499:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __SEV();
+ 500:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __WFE();
+ 501:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __WFE();
+ 502:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 503:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 504:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 388              		.loc 1 504 1 is_stmt 0 view .LVU67
+ 389 0022 10BD     		pop	{r4, pc}
+ 390              	.LVL8:
+ 391              	.L42:
+ 481:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     {
+ 392              		.loc 1 481 5 is_stmt 1 view .LVU68
+ 481:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     {
+ 393              		.loc 1 481 8 is_stmt 0 view .LVU69
+ 394 0024 9B05     		lsls	r3, r3, #22
+ 395 0026 F4D4     		bmi	.L43
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     } 
+ 396              		.loc 1 483 7 is_stmt 1 view .LVU70
+ 397 0028 FFF7FEFF 		bl	HAL_PWREx_EnableLowPowerRunMode
+ 398              	.LVL9:
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     } 
+ 399              		.loc 1 483 7 is_stmt 0 view .LVU71
+ 400 002c F1E7     		b	.L43
+ 401              	.L44:
+ 499:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __WFE();
+ 402              		.loc 1 499 5 is_stmt 1 view .LVU72
+ 403              		.syntax unified
+ 404              	@ 499 "C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src/stm32l
+ 405 002e 40BF     		sev
+ 406              	@ 0 "" 2
+ 500:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     __WFE();
+ 407              		.loc 1 500 5 view .LVU73
+ 408              	@ 500 "C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src/stm32l
+ 409 0030 20BF     		wfe
+ 410              	@ 0 "" 2
+ 501:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 411              		.loc 1 501 5 view .LVU74
+ 412              	@ 501 "C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src/stm32l
+ 413 0032 20BF     		wfe
+ 414              	@ 0 "" 2
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 17
+
+
+ 415              		.loc 1 504 1 is_stmt 0 view .LVU75
+ 416              		.thumb
+ 417              		.syntax unified
+ 418 0034 F5E7     		b	.L41
+ 419              	.L50:
+ 420 0036 00BF     		.align	2
+ 421              	.L49:
+ 422 0038 00700040 		.word	1073770496
+ 423 003c 00ED00E0 		.word	-536810240
+ 424              		.cfi_endproc
+ 425              	.LFE295:
+ 427              		.section	.text.HAL_PWR_EnterSTOPMode,"ax",%progbits
+ 428              		.align	1
+ 429              		.global	HAL_PWR_EnterSTOPMode
+ 430              		.syntax unified
+ 431              		.thumb
+ 432              		.thumb_func
+ 433              		.fpu fpv4-sp-d16
+ 435              	HAL_PWR_EnterSTOPMode:
+ 436              	.LVL10:
+ 437              	.LFB296:
+ 505:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 506:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 507:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 508:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Enter Stop mode
+ 509:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  This API is named HAL_PWR_EnterSTOPMode to ensure compatibility with legacy code running
+ 510:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        on devices where only "Stop mode" is mentioned with main or low power regulator ON.
+ 511:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  In Stop mode, all I/O pins keep the same state as in Run mode.          
+ 512:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  All clocks in the VCORE domain are stopped; the PLL, the MSI, 
+ 513:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        the HSI and the HSE oscillators are disabled. Some peripherals with the wakeup capabilit
+ 514:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        (I2Cx, USARTx and LPUART) can switch on the HSI to receive a frame, and switch off the H
+ 515:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        after receiving the frame if it is not a wakeup frame. In this case, the HSI clock is pr
+ 516:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        only to the peripheral requesting it.
+ 517:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        SRAM1, SRAM2 and register contents are preserved.
+ 518:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        The BOR is available.
+ 519:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        The voltage regulator can be configured either in normal (Stop 0) or low-power mode (Sto
+ 520:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  When exiting Stop 0 or Stop 1 mode by issuing an interrupt or a wakeup event,
+ 521:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         the HSI RC oscillator is selected as system clock if STOPWUCK bit in RCC_CFGR register
+ 522:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         is set; the MSI oscillator is selected if STOPWUCK is cleared.  
+ 523:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  When the voltage regulator operates in low power mode (Stop 1), an additional
+ 524:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         startup delay is incurred when waking up.
+ 525:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         By keeping the internal regulator ON during Stop mode (Stop 0), the consumption
+ 526:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *         is higher although the startup time is reduced.
+ 527:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @param Regulator: Specifies the regulator state in Stop mode.
+ 528:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *          This parameter can be one of the following values:
+ 529:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *            @arg @ref PWR_MAINREGULATOR_ON  Stop 0 mode (main regulator ON)
+ 530:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *            @arg @ref PWR_LOWPOWERREGULATOR_ON  Stop 1 mode (low power regulator ON) 
+ 531:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @param STOPEntry: Specifies Stop 0 or Stop 1 mode is entered with WFI or WFE instruction.
+ 532:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *          This parameter can be one of the following values:
+ 533:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *            @arg @ref PWR_STOPENTRY_WFI  Enter Stop 0 or Stop 1 mode with WFI instruction.
+ 534:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *            @arg @ref PWR_STOPENTRY_WFE  Enter Stop 0 or Stop 1 mode with WFE instruction.
+ 535:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 536:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 537:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_EnterSTOPMode(uint32_t Regulator, uint8_t STOPEntry)
+ 538:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 438              		.loc 1 538 1 is_stmt 1 view -0
+ 439              		.cfi_startproc
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 18
+
+
+ 440              		@ args = 0, pretend = 0, frame = 0
+ 441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 442              		@ link register save eliminated.
+ 539:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Check the parameters */
+ 540:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   assert_param(IS_PWR_REGULATOR(Regulator));
+ 443              		.loc 1 540 3 view .LVU77
+ 541:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   
+ 542:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   if(Regulator == PWR_LOWPOWERREGULATOR_ON)
+ 444              		.loc 1 542 3 view .LVU78
+ 538:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Check the parameters */
+ 445              		.loc 1 538 1 is_stmt 0 view .LVU79
+ 446 0000 0346     		mov	r3, r0
+ 447              		.loc 1 542 5 view .LVU80
+ 448 0002 B3F5804F 		cmp	r3, #16384
+ 538:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Check the parameters */
+ 449              		.loc 1 538 1 view .LVU81
+ 450 0006 0846     		mov	r0, r1
+ 451              	.LVL11:
+ 452              		.loc 1 542 5 view .LVU82
+ 453 0008 01D1     		bne	.L52
+ 543:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 544:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     HAL_PWREx_EnterSTOP1Mode(STOPEntry);
+ 454              		.loc 1 544 5 is_stmt 1 view .LVU83
+ 455 000a FFF7FEBF 		b	HAL_PWREx_EnterSTOP1Mode
+ 456              	.LVL12:
+ 457              	.L52:
+ 545:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 546:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   else
+ 547:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   {
+ 548:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****     HAL_PWREx_EnterSTOP0Mode(STOPEntry);
+ 458              		.loc 1 548 5 view .LVU84
+ 459 000e FFF7FEBF 		b	HAL_PWREx_EnterSTOP0Mode
+ 460              	.LVL13:
+ 461              		.loc 1 548 5 is_stmt 0 view .LVU85
+ 462              		.cfi_endproc
+ 463              	.LFE296:
+ 465              		.section	.text.HAL_PWR_EnterSTANDBYMode,"ax",%progbits
+ 466              		.align	1
+ 467              		.global	HAL_PWR_EnterSTANDBYMode
+ 468              		.syntax unified
+ 469              		.thumb
+ 470              		.thumb_func
+ 471              		.fpu fpv4-sp-d16
+ 473              	HAL_PWR_EnterSTANDBYMode:
+ 474              	.LFB297:
+ 549:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   }
+ 550:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 551:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 552:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 553:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Enter Standby mode.
+ 554:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  In Standby mode, the PLL, the HSI, the MSI and the HSE oscillators are switched 
+ 555:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        off. The voltage regulator is disabled, except when SRAM2 content is preserved
+ 556:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        in which case the regulator is in low-power mode. 
+ 557:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        SRAM1 and register contents are lost except for registers in the Backup domain and 
+ 558:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        Standby circuitry. SRAM2 content can be preserved if the bit RRS is set in PWR_CR3 regis
+ 559:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        To enable this feature, the user can resort to HAL_PWREx_EnableSRAM2ContentRetention() A
+ 560:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        to set RRS bit.   
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 19
+
+
+ 561:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        The BOR is available.  
+ 562:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note  The I/Os can be configured either with a pull-up or pull-down or can be kept in analog s
+ 563:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        HAL_PWREx_EnableGPIOPullUp() and HAL_PWREx_EnableGPIOPullDown() respectively enable Pull
+ 564:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        Pull Down state, HAL_PWREx_DisableGPIOPullUp() and HAL_PWREx_DisableGPIOPullDown() disab
+ 565:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        same.
+ 566:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        These states are effective in Standby mode only if APC bit is set through
+ 567:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *        HAL_PWREx_EnablePullUpPullDownConfig() API.        
+ 568:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 569:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 570:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_EnterSTANDBYMode(void)
+ 571:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 475              		.loc 1 571 1 is_stmt 1 view -0
+ 476              		.cfi_startproc
+ 477              		@ args = 0, pretend = 0, frame = 0
+ 478              		@ frame_needed = 0, uses_anonymous_args = 0
+ 479              		@ link register save eliminated.
+ 572:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Set Stand-by mode */
+ 573:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   MODIFY_REG(PWR->CR1, PWR_CR1_LPMS, PWR_CR1_LPMS_STANDBY);
+ 480              		.loc 1 573 3 view .LVU87
+ 481 0000 064A     		ldr	r2, .L54
+ 482 0002 1368     		ldr	r3, [r2]
+ 483 0004 23F00703 		bic	r3, r3, #7
+ 484 0008 43F00303 		orr	r3, r3, #3
+ 485 000c 1360     		str	r3, [r2]
+ 574:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 575:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Set SLEEPDEEP bit of Cortex System Control Register */
+ 576:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
+ 486              		.loc 1 576 3 view .LVU88
+ 487 000e 044A     		ldr	r2, .L54+4
+ 488 0010 1369     		ldr	r3, [r2, #16]
+ 489 0012 43F00403 		orr	r3, r3, #4
+ 490 0016 1361     		str	r3, [r2, #16]
+ 577:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 578:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /* This option is used to ensure that store operations are completed */
+ 579:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** #if defined ( __CC_ARM)
+ 580:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   __force_stores();
+ 581:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** #endif
+ 582:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Request Wait For Interrupt */
+ 583:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   __WFI();
+ 491              		.loc 1 583 3 view .LVU89
+ 492              		.syntax unified
+ 493              	@ 583 "C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src/stm32l
+ 494 0018 30BF     		wfi
+ 495              	@ 0 "" 2
+ 584:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 496              		.loc 1 584 1 is_stmt 0 view .LVU90
+ 497              		.thumb
+ 498              		.syntax unified
+ 499 001a 7047     		bx	lr
+ 500              	.L55:
+ 501              		.align	2
+ 502              	.L54:
+ 503 001c 00700040 		.word	1073770496
+ 504 0020 00ED00E0 		.word	-536810240
+ 505              		.cfi_endproc
+ 506              	.LFE297:
+ 508              		.section	.text.HAL_PWR_EnableSleepOnExit,"ax",%progbits
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 20
+
+
+ 509              		.align	1
+ 510              		.global	HAL_PWR_EnableSleepOnExit
+ 511              		.syntax unified
+ 512              		.thumb
+ 513              		.thumb_func
+ 514              		.fpu fpv4-sp-d16
+ 516              	HAL_PWR_EnableSleepOnExit:
+ 517              	.LFB298:
+ 585:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 586:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 587:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 588:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 589:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Indicate Sleep-On-Exit when returning from Handler mode to Thread mode. 
+ 590:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note Set SLEEPONEXIT bit of SCR register. When this bit is set, the processor 
+ 591:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *       re-enters SLEEP mode when an interruption handling is over.
+ 592:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *       Setting this bit is useful when the processor is expected to run only on
+ 593:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *       interruptions handling.         
+ 594:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 595:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 596:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_EnableSleepOnExit(void)
+ 597:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 518              		.loc 1 597 1 is_stmt 1 view -0
+ 519              		.cfi_startproc
+ 520              		@ args = 0, pretend = 0, frame = 0
+ 521              		@ frame_needed = 0, uses_anonymous_args = 0
+ 522              		@ link register save eliminated.
+ 598:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Set SLEEPONEXIT bit of Cortex System Control Register */
+ 599:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPONEXIT_Msk));
+ 523              		.loc 1 599 3 view .LVU92
+ 524 0000 024A     		ldr	r2, .L57
+ 525 0002 1369     		ldr	r3, [r2, #16]
+ 526 0004 43F00203 		orr	r3, r3, #2
+ 527 0008 1361     		str	r3, [r2, #16]
+ 600:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 528              		.loc 1 600 1 is_stmt 0 view .LVU93
+ 529 000a 7047     		bx	lr
+ 530              	.L58:
+ 531              		.align	2
+ 532              	.L57:
+ 533 000c 00ED00E0 		.word	-536810240
+ 534              		.cfi_endproc
+ 535              	.LFE298:
+ 537              		.section	.text.HAL_PWR_DisableSleepOnExit,"ax",%progbits
+ 538              		.align	1
+ 539              		.global	HAL_PWR_DisableSleepOnExit
+ 540              		.syntax unified
+ 541              		.thumb
+ 542              		.thumb_func
+ 543              		.fpu fpv4-sp-d16
+ 545              	HAL_PWR_DisableSleepOnExit:
+ 546              	.LFB299:
+ 601:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 602:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 603:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 604:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Disable Sleep-On-Exit feature when returning from Handler mode to Thread mode. 
+ 605:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note Clear SLEEPONEXIT bit of SCR register. When this bit is set, the processor 
+ 606:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *       re-enters SLEEP mode when an interruption handling is over.          
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 21
+
+
+ 607:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 608:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 609:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_DisableSleepOnExit(void)
+ 610:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 547              		.loc 1 610 1 is_stmt 1 view -0
+ 548              		.cfi_startproc
+ 549              		@ args = 0, pretend = 0, frame = 0
+ 550              		@ frame_needed = 0, uses_anonymous_args = 0
+ 551              		@ link register save eliminated.
+ 611:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Clear SLEEPONEXIT bit of Cortex System Control Register */
+ 612:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPONEXIT_Msk));
+ 552              		.loc 1 612 3 view .LVU95
+ 553 0000 024A     		ldr	r2, .L60
+ 554 0002 1369     		ldr	r3, [r2, #16]
+ 555 0004 23F00203 		bic	r3, r3, #2
+ 556 0008 1361     		str	r3, [r2, #16]
+ 613:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 557              		.loc 1 613 1 is_stmt 0 view .LVU96
+ 558 000a 7047     		bx	lr
+ 559              	.L61:
+ 560              		.align	2
+ 561              	.L60:
+ 562 000c 00ED00E0 		.word	-536810240
+ 563              		.cfi_endproc
+ 564              	.LFE299:
+ 566              		.section	.text.HAL_PWR_EnableSEVOnPend,"ax",%progbits
+ 567              		.align	1
+ 568              		.global	HAL_PWR_EnableSEVOnPend
+ 569              		.syntax unified
+ 570              		.thumb
+ 571              		.thumb_func
+ 572              		.fpu fpv4-sp-d16
+ 574              	HAL_PWR_EnableSEVOnPend:
+ 575              	.LFB300:
+ 614:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 615:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 616:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 617:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 618:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Enable CORTEX M4 SEVONPEND bit. 
+ 619:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note Set SEVONPEND bit of SCR register. When this bit is set, this causes 
+ 620:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *       WFE to wake up when an interrupt moves from inactive to pended.
+ 621:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 622:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 623:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_EnableSEVOnPend(void)
+ 624:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 576              		.loc 1 624 1 is_stmt 1 view -0
+ 577              		.cfi_startproc
+ 578              		@ args = 0, pretend = 0, frame = 0
+ 579              		@ frame_needed = 0, uses_anonymous_args = 0
+ 580              		@ link register save eliminated.
+ 625:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Set SEVONPEND bit of Cortex System Control Register */
+ 626:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SEVONPEND_Msk));
+ 581              		.loc 1 626 3 view .LVU98
+ 582 0000 024A     		ldr	r2, .L63
+ 583 0002 1369     		ldr	r3, [r2, #16]
+ 584 0004 43F01003 		orr	r3, r3, #16
+ 585 0008 1361     		str	r3, [r2, #16]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 22
+
+
+ 627:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 586              		.loc 1 627 1 is_stmt 0 view .LVU99
+ 587 000a 7047     		bx	lr
+ 588              	.L64:
+ 589              		.align	2
+ 590              	.L63:
+ 591 000c 00ED00E0 		.word	-536810240
+ 592              		.cfi_endproc
+ 593              	.LFE300:
+ 595              		.section	.text.HAL_PWR_DisableSEVOnPend,"ax",%progbits
+ 596              		.align	1
+ 597              		.global	HAL_PWR_DisableSEVOnPend
+ 598              		.syntax unified
+ 599              		.thumb
+ 600              		.thumb_func
+ 601              		.fpu fpv4-sp-d16
+ 603              	HAL_PWR_DisableSEVOnPend:
+ 604              	.LFB301:
+ 628:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 629:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 630:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 631:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief Disable CORTEX M4 SEVONPEND bit. 
+ 632:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @note Clear SEVONPEND bit of SCR register. When this bit is set, this causes 
+ 633:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   *       WFE to wake up when an interrupt moves from inactive to pended.         
+ 634:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 635:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 636:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** void HAL_PWR_DisableSEVOnPend(void)
+ 637:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 605              		.loc 1 637 1 is_stmt 1 view -0
+ 606              		.cfi_startproc
+ 607              		@ args = 0, pretend = 0, frame = 0
+ 608              		@ frame_needed = 0, uses_anonymous_args = 0
+ 609              		@ link register save eliminated.
+ 638:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* Clear SEVONPEND bit of Cortex System Control Register */
+ 639:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SEVONPEND_Msk));
+ 610              		.loc 1 639 3 view .LVU101
+ 611 0000 024A     		ldr	r2, .L66
+ 612 0002 1369     		ldr	r3, [r2, #16]
+ 613 0004 23F01003 		bic	r3, r3, #16
+ 614 0008 1361     		str	r3, [r2, #16]
+ 640:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 615              		.loc 1 640 1 is_stmt 0 view .LVU102
+ 616 000a 7047     		bx	lr
+ 617              	.L67:
+ 618              		.align	2
+ 619              	.L66:
+ 620 000c 00ED00E0 		.word	-536810240
+ 621              		.cfi_endproc
+ 622              	.LFE301:
+ 624              		.section	.text.HAL_PWR_PVDCallback,"ax",%progbits
+ 625              		.align	1
+ 626              		.weak	HAL_PWR_PVDCallback
+ 627              		.syntax unified
+ 628              		.thumb
+ 629              		.thumb_func
+ 630              		.fpu fpv4-sp-d16
+ 632              	HAL_PWR_PVDCallback:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 23
+
+
+ 633              	.LFB302:
+ 641:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 642:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 643:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 644:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 645:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** 
+ 646:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** /**
+ 647:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @brief PWR PVD interrupt callback
+ 648:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   * @retval None
+ 649:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   */
+ 650:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** __weak void HAL_PWR_PVDCallback(void)
+ 651:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** {
+ 634              		.loc 1 651 1 is_stmt 1 view -0
+ 635              		.cfi_startproc
+ 636              		@ args = 0, pretend = 0, frame = 0
+ 637              		@ frame_needed = 0, uses_anonymous_args = 0
+ 638              		@ link register save eliminated.
+ 652:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****   /* NOTE : This function should not be modified; when the callback is needed,
+ 653:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****             the HAL_PWR_PVDCallback can be implemented in the user file
+ 654:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c ****    */
+ 655:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_pwr.c **** }
+ 639              		.loc 1 655 1 view .LVU104
+ 640 0000 7047     		bx	lr
+ 641              		.cfi_endproc
+ 642              	.LFE302:
+ 644              		.text
+ 645              	.Letext0:
+ 646              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 647              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 648              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 649              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 650              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 651              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 652              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 653              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 654              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 655              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 656              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 657              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 658              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 659              		.file 15 "d:/liteos/code/WIFI2/Inc/stm32l4xx.h"
+ 660              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 661              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 662              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32l4xx_hal_pwr.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:18     .text.HAL_PWR_DeInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:26     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:48     .text.HAL_PWR_DeInit:00000014 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:53     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:60     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:77     .text.HAL_PWR_EnableBkUpAccess:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:82     .text.HAL_PWR_DisableBkUpAccess:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:89     .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:106    .text.HAL_PWR_DisableBkUpAccess:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:111    .text.HAL_PWR_ConfigPVD:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:118    .text.HAL_PWR_ConfigPVD:00000000 HAL_PWR_ConfigPVD
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:194    .text.HAL_PWR_ConfigPVD:00000068 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:200    .text.HAL_PWR_EnablePVD:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:207    .text.HAL_PWR_EnablePVD:00000000 HAL_PWR_EnablePVD
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:224    .text.HAL_PWR_EnablePVD:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:229    .text.HAL_PWR_DisablePVD:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:236    .text.HAL_PWR_DisablePVD:00000000 HAL_PWR_DisablePVD
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:253    .text.HAL_PWR_DisablePVD:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:258    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:265    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:292    .text.HAL_PWR_EnableWakeUpPin:0000001c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:297    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:304    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:326    .text.HAL_PWR_DisableWakeUpPin:00000010 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:331    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:338    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:422    .text.HAL_PWR_EnterSLEEPMode:00000038 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:428    .text.HAL_PWR_EnterSTOPMode:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:435    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:466    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:473    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:503    .text.HAL_PWR_EnterSTANDBYMode:0000001c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:509    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:516    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:533    .text.HAL_PWR_EnableSleepOnExit:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:538    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:545    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:562    .text.HAL_PWR_DisableSleepOnExit:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:567    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:574    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:591    .text.HAL_PWR_EnableSEVOnPend:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:596    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:603    .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:620    .text.HAL_PWR_DisableSEVOnPend:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:625    .text.HAL_PWR_PVDCallback:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccRMDGGK.s:632    .text.HAL_PWR_PVDCallback:00000000 HAL_PWR_PVDCallback
+
+UNDEFINED SYMBOLS
+HAL_PWREx_DisableLowPowerRunMode
+HAL_PWREx_EnableLowPowerRunMode
+HAL_PWREx_EnterSTOP1Mode
+HAL_PWREx_EnterSTOP0Mode

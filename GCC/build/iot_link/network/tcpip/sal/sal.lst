@@ -1,0 +1,2834 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"sal.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.__sal_sockcb_malloc,"ax",%progbits
+  18              		.align	1
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	__sal_sockcb_malloc:
+  26              	.LFB6:
+  27              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal/sal.c"
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** /*
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****  * sal.c
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****  *
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****  *  Created on: 2019ï¿½ï¿½4ï¿½ï¿½26ï¿½ï¿½
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****  *      Author: zhangqf
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****  */
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** ///< attention that this file is the main implement
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** #include <osal.h>
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** #include <sal.h>
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** #include <sal_imp.h>
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** #define CN_LINK_SOCKET_NUM 10
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** typedef struct
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     const tag_tcpip_ops    *ops;
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int                     fd;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int                     sock;          ///< returned by the implement functions
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }tag_sock_cb;
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** typedef struct
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     const tag_tcpip_domain *domain;         ///< tcpip stack operations
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int                     sock_cb_num;    ///< how many socket control block could be used
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     osal_mutex_t            sock_cb_mutex;  ///< used to protect the sock control block
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     void                  **sock_cb_tab;    ///< which used to
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }tag_sal_cb;
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 2
+
+
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** static tag_sal_cb   s_sal_cb;
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** __attribute__((weak))  int link_tcpip_imp_init(void)
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     LINK_LOG_DEBUG("%s:###please implement this function by yourself####\n\r",__FUNCTION__);
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int link_tcpip_init(void)
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != s_sal_cb.sock_cb_tab)
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         goto EXIT_INIT_ERR;
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(false == osal_mutex_create(&s_sal_cb.sock_cb_mutex))
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         goto EXIT_MUTEX_ERR;
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.sock_cb_tab = osal_malloc(CN_LINK_SOCKET_NUM*sizeof(void *));
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL == s_sal_cb.sock_cb_tab)
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         goto EXIT_MEM_ERR;
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     (void) memset(s_sal_cb.sock_cb_tab,0,CN_LINK_SOCKET_NUM*sizeof(void *));
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.sock_cb_num = CN_LINK_SOCKET_NUM;
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.domain = NULL;
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     ret = link_tcpip_imp_init();
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     LINK_LOG_DEBUG("IOT_LINK:DO TCPIP LOAD-IMPLEMENT RET:%d",ret);
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** EXIT_MEM_ERR:
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     (void) osal_mutex_del(s_sal_cb.sock_cb_mutex);
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.sock_cb_mutex = cn_mutex_invalid;
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** EXIT_MUTEX_ERR:
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** EXIT_INIT_ERR:
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int link_sal_install(const tag_tcpip_domain *domain)
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL == s_sal_cb.domain)
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         s_sal_cb.domain = domain;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 3
+
+
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         ret = 0;
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** ///< malloc a sock fd and memory
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** static void * __sal_sockcb_malloc()
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+  28              		.loc 1 99 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int i =  0;
+  32              		.loc 1 100 5 view .LVU1
+  33              	.LVL0:
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+  34              		.loc 1 102 5 view .LVU2
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = osal_malloc(sizeof(tag_sock_cb));
+  35              		.loc 1 104 5 view .LVU3
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int i =  0;
+  36              		.loc 1 99 1 is_stmt 0 view .LVU4
+  37 0000 70B5     		push	{r4, r5, r6, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 16
+  40              		.cfi_offset 4, -16
+  41              		.cfi_offset 5, -12
+  42              		.cfi_offset 6, -8
+  43              		.cfi_offset 14, -4
+  44              		.loc 1 104 14 view .LVU5
+  45 0002 0C20     		movs	r0, #12
+  46 0004 FFF7FEFF 		bl	osal_malloc
+  47              	.LVL1:
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL == sockcb)
+  48              		.loc 1 106 5 is_stmt 1 view .LVU6
+  49              		.loc 1 106 7 is_stmt 0 view .LVU7
+  50 0008 0446     		mov	r4, r0
+  51 000a F8B1     		cbz	r0, .L1
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         return sockcb;
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(osal_mutex_lock(s_sal_cb.sock_cb_mutex))
+  52              		.loc 1 111 5 is_stmt 1 view .LVU8
+  53              		.loc 1 111 8 is_stmt 0 view .LVU9
+  54 000c 114D     		ldr	r5, .L13
+  55 000e A868     		ldr	r0, [r5, #8]
+  56              	.LVL2:
+  57              		.loc 1 111 8 view .LVU10
+  58 0010 FFF7FEFF 		bl	osal_mutex_lock
+  59              	.LVL3:
+  60              		.loc 1 111 7 view .LVU11
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 4
+
+
+  61 0014 D0B1     		cbz	r0, .L1
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         for(i = 0;i<s_sal_cb.sock_cb_num;i++ )
+  62              		.loc 1 113 29 view .LVU12
+  63 0016 6968     		ldr	r1, [r5, #4]
+  64 0018 EB68     		ldr	r3, [r5, #12]
+  65              		.loc 1 113 15 view .LVU13
+  66 001a 0026     		movs	r6, #0
+  67              	.LVL4:
+  68              	.L3:
+  69              		.loc 1 113 19 is_stmt 1 discriminator 1 view .LVU14
+  70              		.loc 1 113 9 is_stmt 0 discriminator 1 view .LVU15
+  71 001c B142     		cmp	r1, r6
+  72 001e 0BDD     		ble	.L5
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             if(s_sal_cb.sock_cb_tab[i] == NULL)
+  73              		.loc 1 115 13 is_stmt 1 view .LVU16
+  74              		.loc 1 115 36 is_stmt 0 view .LVU17
+  75 0020 1A46     		mov	r2, r3
+  76 0022 0433     		adds	r3, r3, #4
+  77              		.loc 1 115 15 view .LVU18
+  78 0024 1068     		ldr	r0, [r2]
+  79 0026 98B9     		cbnz	r0, .L4
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             {
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****                 sockcb->ops = s_sal_cb.domain->ops;
+  80              		.loc 1 117 17 is_stmt 1 view .LVU19
+  81              		.loc 1 117 46 is_stmt 0 view .LVU20
+  82 0028 2B68     		ldr	r3, [r5]
+  83              		.loc 1 117 29 view .LVU21
+  84 002a 9B68     		ldr	r3, [r3, #8]
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****                 sockcb->fd = i;
+  85              		.loc 1 118 28 view .LVU22
+  86 002c C4E90036 		strd	r3, r6, [r4]
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****                 sockcb->sock = -1;
+  87              		.loc 1 119 17 is_stmt 1 view .LVU23
+  88              		.loc 1 119 30 is_stmt 0 view .LVU24
+  89 0030 4FF0FF33 		mov	r3, #-1
+  90 0034 A360     		str	r3, [r4, #8]
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****                 s_sal_cb.sock_cb_tab[i] = sockcb;
+  91              		.loc 1 121 17 is_stmt 1 view .LVU25
+  92              		.loc 1 121 41 is_stmt 0 view .LVU26
+  93 0036 1460     		str	r4, [r2]
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****                 break;
+  94              		.loc 1 123 17 is_stmt 1 view .LVU27
+  95              	.L5:
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             }
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         (void) osal_mutex_unlock(s_sal_cb.sock_cb_mutex);
+  96              		.loc 1 127 9 view .LVU28
+  97              		.loc 1 127 16 is_stmt 0 view .LVU29
+  98 0038 A868     		ldr	r0, [r5, #8]
+  99 003a FFF7FEFF 		bl	osal_mutex_unlock
+ 100              	.LVL5:
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 5
+
+
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if(i == s_sal_cb.sock_cb_num)
+ 101              		.loc 1 129 9 is_stmt 1 view .LVU30
+ 102              		.loc 1 129 11 is_stmt 0 view .LVU31
+ 103 003e 6B68     		ldr	r3, [r5, #4]
+ 104 0040 B342     		cmp	r3, r6
+ 105 0042 03D1     		bne	.L1
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             osal_free(sockcb);
+ 106              		.loc 1 131 13 is_stmt 1 view .LVU32
+ 107 0044 2046     		mov	r0, r4
+ 108 0046 FFF7FEFF 		bl	osal_free
+ 109              	.LVL6:
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             sockcb = NULL;
+ 110              		.loc 1 133 13 view .LVU33
+ 111              		.loc 1 133 20 is_stmt 0 view .LVU34
+ 112 004a 0024     		movs	r4, #0
+ 113              	.LVL7:
+ 114              	.L1:
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return sockcb;
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 115              		.loc 1 139 1 view .LVU35
+ 116 004c 2046     		mov	r0, r4
+ 117 004e 70BD     		pop	{r4, r5, r6, pc}
+ 118              	.LVL8:
+ 119              	.L4:
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 120              		.loc 1 113 42 is_stmt 1 discriminator 2 view .LVU36
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 121              		.loc 1 113 43 is_stmt 0 discriminator 2 view .LVU37
+ 122 0050 0136     		adds	r6, r6, #1
+ 123              	.LVL9:
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 124              		.loc 1 113 43 discriminator 2 view .LVU38
+ 125 0052 E3E7     		b	.L3
+ 126              	.L14:
+ 127              		.align	2
+ 128              	.L13:
+ 129 0054 00000000 		.word	.LANCHOR0
+ 130              		.cfi_endproc
+ 131              	.LFE6:
+ 133              		.section	.text.__sal_sockcb_getcb,"ax",%progbits
+ 134              		.align	1
+ 135              		.syntax unified
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.fpu fpv4-sp-d16
+ 140              	__sal_sockcb_getcb:
+ 141              	.LVL10:
+ 142              	.LFB8:
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** ///< free the sockfd and the memory in it
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** static void __sal_sockcb_free(int sockfd)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 6
+
+
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb = NULL;
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if((sockfd <0 ) || (sockfd >= s_sal_cb.sock_cb_num))
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         return;
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(osal_mutex_lock(s_sal_cb.sock_cb_mutex))
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         sockcb = s_sal_cb.sock_cb_tab[sockfd];
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         s_sal_cb.sock_cb_tab[sockfd]= NULL;
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         (void) osal_mutex_unlock(s_sal_cb.sock_cb_mutex);
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         osal_free(sockcb);
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return;
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** ///< use this function to get the sockcb
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** static tag_sock_cb * __sal_sockcb_getcb(int sockfd)
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 143              		.loc 1 168 1 is_stmt 1 view -0
+ 144              		.cfi_startproc
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147              		@ link register save eliminated.
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb = NULL;
+ 148              		.loc 1 169 5 view .LVU40
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if((sockfd >=0 ) && (sockfd < s_sal_cb.sock_cb_num))
+ 149              		.loc 1 171 5 view .LVU41
+ 150              		.loc 1 171 7 is_stmt 0 view .LVU42
+ 151 0000 0028     		cmp	r0, #0
+ 152              		.loc 1 171 7 view .LVU43
+ 153 0002 07DB     		blt	.L18
+ 154              		.loc 1 171 43 discriminator 1 view .LVU44
+ 155 0004 044B     		ldr	r3, .L19
+ 156              		.loc 1 171 22 discriminator 1 view .LVU45
+ 157 0006 5A68     		ldr	r2, [r3, #4]
+ 158 0008 8242     		cmp	r2, r0
+ 159 000a 03DD     		ble	.L18
+ 160              	.LVL11:
+ 161              	.LBB8:
+ 162              	.LBI8:
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 163              		.loc 1 167 22 is_stmt 1 view .LVU46
+ 164              	.LBB9:
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         sockcb = s_sal_cb.sock_cb_tab[sockfd];
+ 165              		.loc 1 173 9 view .LVU47
+ 166              		.loc 1 173 16 is_stmt 0 view .LVU48
+ 167 000c DB68     		ldr	r3, [r3, #12]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 7
+
+
+ 168 000e 53F82000 		ldr	r0, [r3, r0, lsl #2]
+ 169              	.LVL12:
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return sockcb;
+ 170              		.loc 1 176 5 is_stmt 1 view .LVU49
+ 171              		.loc 1 176 5 is_stmt 0 view .LVU50
+ 172 0012 7047     		bx	lr
+ 173              	.LVL13:
+ 174              	.L18:
+ 175              		.loc 1 176 5 view .LVU51
+ 176              	.LBE9:
+ 177              	.LBE8:
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 178              		.loc 1 169 18 view .LVU52
+ 179 0014 0020     		movs	r0, #0
+ 180              	.LVL14:
+ 181              		.loc 1 176 5 is_stmt 1 view .LVU53
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 182              		.loc 1 177 1 is_stmt 0 view .LVU54
+ 183 0016 7047     		bx	lr
+ 184              	.L20:
+ 185              		.align	2
+ 186              	.L19:
+ 187 0018 00000000 		.word	.LANCHOR0
+ 188              		.cfi_endproc
+ 189              	.LFE8:
+ 191              		.section	.text.__sal_sockcb_free,"ax",%progbits
+ 192              		.align	1
+ 193              		.syntax unified
+ 194              		.thumb
+ 195              		.thumb_func
+ 196              		.fpu fpv4-sp-d16
+ 198              	__sal_sockcb_free:
+ 199              	.LVL15:
+ 200              	.LFB7:
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb = NULL;
+ 201              		.loc 1 143 1 is_stmt 1 view -0
+ 202              		.cfi_startproc
+ 203              		@ args = 0, pretend = 0, frame = 0
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 205              		.loc 1 144 5 view .LVU56
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 206              		.loc 1 146 5 view .LVU57
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb = NULL;
+ 207              		.loc 1 143 1 is_stmt 0 view .LVU58
+ 208 0000 70B5     		push	{r4, r5, r6, lr}
+ 209              	.LCFI1:
+ 210              		.cfi_def_cfa_offset 16
+ 211              		.cfi_offset 4, -16
+ 212              		.cfi_offset 5, -12
+ 213              		.cfi_offset 6, -8
+ 214              		.cfi_offset 14, -4
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 215              		.loc 1 146 7 view .LVU59
+ 216 0002 041E     		subs	r4, r0, #0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 8
+
+
+ 217 0004 15DB     		blt	.L21
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 218              		.loc 1 146 43 discriminator 1 view .LVU60
+ 219 0006 0B4D     		ldr	r5, .L28
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 220              		.loc 1 146 21 discriminator 1 view .LVU61
+ 221 0008 6B68     		ldr	r3, [r5, #4]
+ 222 000a A342     		cmp	r3, r4
+ 223 000c 11DD     		ble	.L21
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 224              		.loc 1 151 5 is_stmt 1 view .LVU62
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 225              		.loc 1 151 8 is_stmt 0 view .LVU63
+ 226 000e A868     		ldr	r0, [r5, #8]
+ 227              	.LVL16:
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 228              		.loc 1 151 8 view .LVU64
+ 229 0010 FFF7FEFF 		bl	osal_mutex_lock
+ 230              	.LVL17:
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 231              		.loc 1 151 7 view .LVU65
+ 232 0014 68B1     		cbz	r0, .L21
+ 233              	.LVL18:
+ 234              	.LBB12:
+ 235              	.LBI12:
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 236              		.loc 1 142 13 is_stmt 1 view .LVU66
+ 237              	.LBB13:
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         s_sal_cb.sock_cb_tab[sockfd]= NULL;
+ 238              		.loc 1 154 9 view .LVU67
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         s_sal_cb.sock_cb_tab[sockfd]= NULL;
+ 239              		.loc 1 154 38 is_stmt 0 view .LVU68
+ 240 0016 EB68     		ldr	r3, [r5, #12]
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 241              		.loc 1 155 37 view .LVU69
+ 242 0018 0022     		movs	r2, #0
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         s_sal_cb.sock_cb_tab[sockfd]= NULL;
+ 243              		.loc 1 154 16 view .LVU70
+ 244 001a 53F82460 		ldr	r6, [r3, r4, lsl #2]
+ 245              	.LVL19:
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 246              		.loc 1 155 9 is_stmt 1 view .LVU71
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 247              		.loc 1 155 37 is_stmt 0 view .LVU72
+ 248 001e 43F82420 		str	r2, [r3, r4, lsl #2]
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 249              		.loc 1 157 9 is_stmt 1 view .LVU73
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 250              		.loc 1 157 16 is_stmt 0 view .LVU74
+ 251 0022 A868     		ldr	r0, [r5, #8]
+ 252 0024 FFF7FEFF 		bl	osal_mutex_unlock
+ 253              	.LVL20:
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 254              		.loc 1 159 9 is_stmt 1 view .LVU75
+ 255 0028 3046     		mov	r0, r6
+ 256              	.LBE13:
+ 257              	.LBE12:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 9
+
+
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 258              		.loc 1 163 1 is_stmt 0 view .LVU76
+ 259 002a BDE87040 		pop	{r4, r5, r6, lr}
+ 260              	.LCFI2:
+ 261              		.cfi_remember_state
+ 262              		.cfi_restore 14
+ 263              		.cfi_restore 6
+ 264              		.cfi_restore 5
+ 265              		.cfi_restore 4
+ 266              		.cfi_def_cfa_offset 0
+ 267              	.LVL21:
+ 268              	.LBB15:
+ 269              	.LBB14:
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 270              		.loc 1 159 9 view .LVU77
+ 271 002e FFF7FEBF 		b	osal_free
+ 272              	.LVL22:
+ 273              	.L21:
+ 274              	.LCFI3:
+ 275              		.cfi_restore_state
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 276              		.loc 1 159 9 view .LVU78
+ 277              	.LBE14:
+ 278              	.LBE15:
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 279              		.loc 1 163 1 view .LVU79
+ 280 0032 70BD     		pop	{r4, r5, r6, pc}
+ 281              	.LVL23:
+ 282              	.L29:
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 283              		.loc 1 163 1 view .LVU80
+ 284              		.align	2
+ 285              	.L28:
+ 286 0034 00000000 		.word	.LANCHOR0
+ 287              		.cfi_endproc
+ 288              	.LFE7:
+ 290              		.section	.rodata.link_tcpip_imp_init.str1.1,"aMS",%progbits,1
+ 291              	.LC0:
+ 292 0000 5B25735D 		.ascii	"[%s][%u][%s] %s:###please implement this function b"
+ 292      5B25755D 
+ 292      5B25735D 
+ 292      2025733A 
+ 292      23232370 
+ 293 0033 7920796F 		.ascii	"y yourself####\012\015\015\012\000"
+ 293      75727365 
+ 293      6C662323 
+ 293      23230A0D 
+ 293      0D0A00
+ 294              		.section	.text.link_tcpip_imp_init,"ax",%progbits
+ 295              		.align	1
+ 296              		.weak	link_tcpip_imp_init
+ 297              		.syntax unified
+ 298              		.thumb
+ 299              		.thumb_func
+ 300              		.fpu fpv4-sp-d16
+ 302              	link_tcpip_imp_init:
+ 303              	.LFB3:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 10
+
+
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     LINK_LOG_DEBUG("%s:###please implement this function by yourself####\n\r",__FUNCTION__);
+ 304              		.loc 1 36 1 is_stmt 1 view -0
+ 305              		.cfi_startproc
+ 306              		@ args = 0, pretend = 0, frame = 0
+ 307              		@ frame_needed = 0, uses_anonymous_args = 0
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 308              		.loc 1 37 5 view .LVU82
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 309              		.loc 1 37 5 view .LVU83
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     LINK_LOG_DEBUG("%s:###please implement this function by yourself####\n\r",__FUNCTION__);
+ 310              		.loc 1 36 1 is_stmt 0 view .LVU84
+ 311 0000 13B5     		push	{r0, r1, r4, lr}
+ 312              	.LCFI4:
+ 313              		.cfi_def_cfa_offset 16
+ 314              		.cfi_offset 4, -8
+ 315              		.cfi_offset 14, -4
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 316              		.loc 1 37 5 view .LVU85
+ 317 0002 FFF7FEFF 		bl	link_log_level_get
+ 318              	.LVL24:
+ 319 0006 0128     		cmp	r0, #1
+ 320 0008 11D8     		bhi	.L31
+ 321              	.LBB18:
+ 322              	.LBI18:
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 323              		.loc 1 35 28 is_stmt 1 view .LVU86
+ 324              	.LBB19:
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 325              		.loc 1 37 5 view .LVU87
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 326              		.loc 1 37 5 view .LVU88
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 327              		.loc 1 37 5 view .LVU89
+ 328 000a 0120     		movs	r0, #1
+ 329 000c FFF7FEFF 		bl	link_log_level_name
+ 330              	.LVL25:
+ 331 0010 0446     		mov	r4, r0
+ 332 0012 FFF7FEFF 		bl	osal_sys_time
+ 333              	.LVL26:
+ 334 0016 084B     		ldr	r3, .L32
+ 335 0018 0093     		str	r3, [sp]
+ 336 001a 0246     		mov	r2, r0
+ 337 001c 2146     		mov	r1, r4
+ 338 001e 0748     		ldr	r0, .L32+4
+ 339 0020 FFF7FEFF 		bl	printf
+ 340              	.LVL27:
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 341              		.loc 1 37 5 view .LVU90
+ 342 0024 064B     		ldr	r3, .L32+8
+ 343 0026 1B68     		ldr	r3, [r3]
+ 344 0028 9868     		ldr	r0, [r3, #8]
+ 345 002a FFF7FEFF 		bl	fflush
+ 346              	.LVL28:
+ 347              	.L31:
+ 348              	.LBE19:
+ 349              	.LBE18:
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 11
+
+
+ 350              		.loc 1 37 5 discriminator 3 view .LVU91
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 351              		.loc 1 37 5 discriminator 3 view .LVU92
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return -1;
+ 352              		.loc 1 37 5 discriminator 3 view .LVU93
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 353              		.loc 1 38 5 discriminator 3 view .LVU94
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 354              		.loc 1 39 1 is_stmt 0 discriminator 3 view .LVU95
+ 355 002e 4FF0FF30 		mov	r0, #-1
+ 356 0032 02B0     		add	sp, sp, #8
+ 357              	.LCFI5:
+ 358              		.cfi_def_cfa_offset 8
+ 359              		@ sp needed
+ 360 0034 10BD     		pop	{r4, pc}
+ 361              	.L33:
+ 362 0036 00BF     		.align	2
+ 363              	.L32:
+ 364 0038 00000000 		.word	.LANCHOR1
+ 365 003c 00000000 		.word	.LC0
+ 366 0040 00000000 		.word	_impure_ptr
+ 367              		.cfi_endproc
+ 368              	.LFE3:
+ 370              		.section	.rodata.link_tcpip_init.str1.1,"aMS",%progbits,1
+ 371              	.LC1:
+ 372 0000 5B25735D 		.ascii	"[%s][%u][%s] IOT_LINK:DO TCPIP LOAD-IMPLEMENT RET:%"
+ 372      5B25755D 
+ 372      5B25735D 
+ 372      20494F54 
+ 372      5F4C494E 
+ 373 0033 640D0A00 		.ascii	"d\015\012\000"
+ 374              		.section	.text.link_tcpip_init,"ax",%progbits
+ 375              		.align	1
+ 376              		.global	link_tcpip_init
+ 377              		.syntax unified
+ 378              		.thumb
+ 379              		.thumb_func
+ 380              		.fpu fpv4-sp-d16
+ 382              	link_tcpip_init:
+ 383              	.LFB4:
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 384              		.loc 1 42 1 is_stmt 1 view -0
+ 385              		.cfi_startproc
+ 386              		@ args = 0, pretend = 0, frame = 0
+ 387              		@ frame_needed = 0, uses_anonymous_args = 0
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 388              		.loc 1 43 5 view .LVU97
+ 389              	.LVL29:
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 390              		.loc 1 45 5 view .LVU98
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 391              		.loc 1 42 1 is_stmt 0 view .LVU99
+ 392 0000 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 393              	.LCFI6:
+ 394              		.cfi_def_cfa_offset 24
+ 395              		.cfi_offset 4, -12
+ 396              		.cfi_offset 5, -8
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 12
+
+
+ 397              		.cfi_offset 14, -4
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 398              		.loc 1 45 24 view .LVU100
+ 399 0002 1D4D     		ldr	r5, .L42
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 400              		.loc 1 45 7 view .LVU101
+ 401 0004 EC68     		ldr	r4, [r5, #12]
+ 402 0006 24B1     		cbz	r4, .L35
+ 403              	.L37:
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 404              		.loc 1 78 12 view .LVU102
+ 405 0008 4FF0FF34 		mov	r4, #-1
+ 406              	.LVL30:
+ 407              	.L34:
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 408              		.loc 1 80 1 view .LVU103
+ 409 000c 2046     		mov	r0, r4
+ 410 000e 03B0     		add	sp, sp, #12
+ 411              	.LCFI7:
+ 412              		.cfi_remember_state
+ 413              		.cfi_def_cfa_offset 12
+ 414              		@ sp needed
+ 415 0010 30BD     		pop	{r4, r5, pc}
+ 416              	.LVL31:
+ 417              	.L35:
+ 418              	.LCFI8:
+ 419              		.cfi_restore_state
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 420              		.loc 1 50 5 is_stmt 1 view .LVU104
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 421              		.loc 1 50 17 is_stmt 0 view .LVU105
+ 422 0012 05F10800 		add	r0, r5, #8
+ 423 0016 FFF7FEFF 		bl	osal_mutex_create
+ 424              	.LVL32:
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 425              		.loc 1 50 7 view .LVU106
+ 426 001a 0028     		cmp	r0, #0
+ 427 001c F4D0     		beq	.L37
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL == s_sal_cb.sock_cb_tab)
+ 428              		.loc 1 55 5 is_stmt 1 view .LVU107
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL == s_sal_cb.sock_cb_tab)
+ 429              		.loc 1 55 28 is_stmt 0 view .LVU108
+ 430 001e 2820     		movs	r0, #40
+ 431 0020 FFF7FEFF 		bl	osal_malloc
+ 432              	.LVL33:
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL == s_sal_cb.sock_cb_tab)
+ 433              		.loc 1 55 26 view .LVU109
+ 434 0024 E860     		str	r0, [r5, #12]
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 435              		.loc 1 56 5 is_stmt 1 view .LVU110
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 436              		.loc 1 56 7 is_stmt 0 view .LVU111
+ 437 0026 30B9     		cbnz	r0, .L38
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 438              		.loc 1 58 9 is_stmt 1 view .LVU112
+ 439              	.LDL1:
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.sock_cb_mutex = cn_mutex_invalid;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 13
+
+
+ 440              		.loc 1 73 5 view .LVU113
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.sock_cb_mutex = cn_mutex_invalid;
+ 441              		.loc 1 73 12 is_stmt 0 view .LVU114
+ 442 0028 A868     		ldr	r0, [r5, #8]
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 443              		.loc 1 74 28 view .LVU115
+ 444 002a 4FF0FF34 		mov	r4, #-1
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.sock_cb_mutex = cn_mutex_invalid;
+ 445              		.loc 1 73 12 view .LVU116
+ 446 002e FFF7FEFF 		bl	osal_mutex_del
+ 447              	.LVL34:
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 448              		.loc 1 74 5 is_stmt 1 view .LVU117
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 449              		.loc 1 74 28 is_stmt 0 view .LVU118
+ 450 0032 AC60     		str	r4, [r5, #8]
+ 451 0034 EAE7     		b	.L34
+ 452              	.L38:
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.sock_cb_num = CN_LINK_SOCKET_NUM;
+ 453              		.loc 1 61 5 is_stmt 1 view .LVU119
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.sock_cb_num = CN_LINK_SOCKET_NUM;
+ 454              		.loc 1 61 12 is_stmt 0 view .LVU120
+ 455 0036 2146     		mov	r1, r4
+ 456 0038 2822     		movs	r2, #40
+ 457 003a FFF7FEFF 		bl	memset
+ 458              	.LVL35:
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.domain = NULL;
+ 459              		.loc 1 62 5 is_stmt 1 view .LVU121
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     s_sal_cb.domain = NULL;
+ 460              		.loc 1 62 26 is_stmt 0 view .LVU122
+ 461 003e 0A23     		movs	r3, #10
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 462              		.loc 1 63 21 view .LVU123
+ 463 0040 C5E90043 		strd	r4, r3, [r5]
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     LINK_LOG_DEBUG("IOT_LINK:DO TCPIP LOAD-IMPLEMENT RET:%d",ret);
+ 464              		.loc 1 65 5 is_stmt 1 view .LVU124
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     LINK_LOG_DEBUG("IOT_LINK:DO TCPIP LOAD-IMPLEMENT RET:%d",ret);
+ 465              		.loc 1 65 11 is_stmt 0 view .LVU125
+ 466 0044 FFF7FEFF 		bl	link_tcpip_imp_init
+ 467              	.LVL36:
+ 468 0048 0446     		mov	r4, r0
+ 469              	.LVL37:
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 470              		.loc 1 66 5 is_stmt 1 view .LVU126
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 471              		.loc 1 66 5 view .LVU127
+ 472 004a FFF7FEFF 		bl	link_log_level_get
+ 473              	.LVL38:
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 474              		.loc 1 66 5 is_stmt 0 view .LVU128
+ 475 004e 0128     		cmp	r0, #1
+ 476 0050 DCD8     		bhi	.L34
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 477              		.loc 1 66 5 is_stmt 1 discriminator 1 view .LVU129
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 478              		.loc 1 66 5 discriminator 1 view .LVU130
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 14
+
+
+ 479              		.loc 1 66 5 discriminator 1 view .LVU131
+ 480 0052 0120     		movs	r0, #1
+ 481 0054 FFF7FEFF 		bl	link_log_level_name
+ 482              	.LVL39:
+ 483 0058 0546     		mov	r5, r0
+ 484 005a FFF7FEFF 		bl	osal_sys_time
+ 485              	.LVL40:
+ 486 005e 074B     		ldr	r3, .L42+4
+ 487 0060 0094     		str	r4, [sp]
+ 488 0062 0246     		mov	r2, r0
+ 489 0064 2946     		mov	r1, r5
+ 490 0066 0648     		ldr	r0, .L42+8
+ 491 0068 FFF7FEFF 		bl	printf
+ 492              	.LVL41:
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 493              		.loc 1 66 5 discriminator 1 view .LVU132
+ 494 006c 054B     		ldr	r3, .L42+12
+ 495 006e 1B68     		ldr	r3, [r3]
+ 496 0070 9868     		ldr	r0, [r3, #8]
+ 497 0072 FFF7FEFF 		bl	fflush
+ 498              	.LVL42:
+ 499 0076 C9E7     		b	.L34
+ 500              	.L43:
+ 501              		.align	2
+ 502              	.L42:
+ 503 0078 00000000 		.word	.LANCHOR0
+ 504 007c 00000000 		.word	.LANCHOR2
+ 505 0080 00000000 		.word	.LC1
+ 506 0084 00000000 		.word	_impure_ptr
+ 507              		.cfi_endproc
+ 508              	.LFE4:
+ 510              		.section	.text.link_sal_install,"ax",%progbits
+ 511              		.align	1
+ 512              		.global	link_sal_install
+ 513              		.syntax unified
+ 514              		.thumb
+ 515              		.thumb_func
+ 516              		.fpu fpv4-sp-d16
+ 518              	link_sal_install:
+ 519              	.LVL43:
+ 520              	.LFB5:
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 521              		.loc 1 83 1 view -0
+ 522              		.cfi_startproc
+ 523              		@ args = 0, pretend = 0, frame = 0
+ 524              		@ frame_needed = 0, uses_anonymous_args = 0
+ 525              		@ link register save eliminated.
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 526              		.loc 1 84 5 view .LVU134
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 527              		.loc 1 86 5 view .LVU135
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 528              		.loc 1 86 24 is_stmt 0 view .LVU136
+ 529 0000 044A     		ldr	r2, .L47
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 530              		.loc 1 86 7 view .LVU137
+ 531 0002 1368     		ldr	r3, [r2]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 15
+
+
+ 532 0004 13B9     		cbnz	r3, .L46
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 533              		.loc 1 88 9 is_stmt 1 view .LVU138
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 534              		.loc 1 88 25 is_stmt 0 view .LVU139
+ 535 0006 1060     		str	r0, [r2]
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 536              		.loc 1 90 9 is_stmt 1 view .LVU140
+ 537              	.LVL44:
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 538              		.loc 1 90 13 is_stmt 0 view .LVU141
+ 539 0008 1846     		mov	r0, r3
+ 540              	.LVL45:
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 541              		.loc 1 90 13 view .LVU142
+ 542 000a 7047     		bx	lr
+ 543              	.LVL46:
+ 544              	.L46:
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 545              		.loc 1 84 9 view .LVU143
+ 546 000c 4FF0FF30 		mov	r0, #-1
+ 547              	.LVL47:
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 548              		.loc 1 93 5 is_stmt 1 view .LVU144
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 549              		.loc 1 95 1 is_stmt 0 view .LVU145
+ 550 0010 7047     		bx	lr
+ 551              	.L48:
+ 552 0012 00BF     		.align	2
+ 553              	.L47:
+ 554 0014 00000000 		.word	.LANCHOR0
+ 555              		.cfi_endproc
+ 556              	.LFE5:
+ 558              		.section	.text.sal_socket,"ax",%progbits
+ 559              		.align	1
+ 560              		.global	sal_socket
+ 561              		.syntax unified
+ 562              		.thumb
+ 563              		.thumb_func
+ 564              		.fpu fpv4-sp-d16
+ 566              	sal_socket:
+ 567              	.LVL48:
+ 568              	.LFB10:
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** static int   __sal_sockcb_getfd(tag_sock_cb *sockcb)
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sockfd = -1;
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         sockfd = sockcb->fd;
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return sockfd;
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 16
+
+
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_socket(int domain, int type, int protocol)
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 569              		.loc 1 193 1 is_stmt 1 view -0
+ 570              		.cfi_startproc
+ 571              		@ args = 0, pretend = 0, frame = 8
+ 572              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sockfd = -1;
+ 573              		.loc 1 194 5 view .LVU147
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sock = -1;
+ 574              		.loc 1 195 5 view .LVU148
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 575              		.loc 1 197 5 view .LVU149
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_malloc();
+ 576              		.loc 1 199 5 view .LVU150
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sockfd = -1;
+ 577              		.loc 1 193 1 is_stmt 0 view .LVU151
+ 578 0000 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 579              	.LCFI9:
+ 580              		.cfi_def_cfa_offset 24
+ 581              		.cfi_offset 4, -12
+ 582              		.cfi_offset 5, -8
+ 583              		.cfi_offset 14, -4
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sockfd = -1;
+ 584              		.loc 1 193 1 view .LVU152
+ 585 0002 0546     		mov	r5, r0
+ 586 0004 CDE90021 		strd	r2, r1, [sp]
+ 587              		.loc 1 199 14 view .LVU153
+ 588 0008 FFF7FEFF 		bl	__sal_sockcb_malloc
+ 589              	.LVL49:
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 590              		.loc 1 201 5 is_stmt 1 view .LVU154
+ 591              		.loc 1 201 7 is_stmt 0 view .LVU155
+ 592 000c 0446     		mov	r4, r0
+ 593 000e 98B1     		cbz	r0, .L52
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != s_sal_cb.domain)&&(NULL != s_sal_cb.domain->ops) &&\
+ 594              		.loc 1 203 9 is_stmt 1 view .LVU156
+ 595              		.loc 1 203 29 is_stmt 0 view .LVU157
+ 596 0010 0B4B     		ldr	r3, .L65
+ 597 0012 1B68     		ldr	r3, [r3]
+ 598              		.loc 1 203 11 view .LVU158
+ 599 0014 6BB1     		cbz	r3, .L51
+ 600              		.loc 1 203 63 discriminator 1 view .LVU159
+ 601 0016 9B68     		ldr	r3, [r3, #8]
+ 602              		.loc 1 203 37 discriminator 1 view .LVU160
+ 603 0018 5BB1     		cbz	r3, .L51
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****            (NULL != s_sal_cb.domain->ops->socket))
+ 604              		.loc 1 204 41 discriminator 2 view .LVU161
+ 605 001a 1B68     		ldr	r3, [r3]
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****            (NULL != s_sal_cb.domain->ops->socket))
+ 606              		.loc 1 203 70 discriminator 2 view .LVU162
+ 607 001c 4BB1     		cbz	r3, .L51
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             sock = s_sal_cb.domain->ops->socket(domain,type,protocol);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 17
+
+
+ 608              		.loc 1 206 13 is_stmt 1 view .LVU163
+ 609              		.loc 1 206 20 is_stmt 0 view .LVU164
+ 610 001e DDE90021 		ldrd	r2, r1, [sp]
+ 611 0022 2846     		mov	r0, r5
+ 612              	.LVL50:
+ 613              		.loc 1 206 20 view .LVU165
+ 614 0024 9847     		blx	r3
+ 615              	.LVL51:
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if(-1 != sock)
+ 616              		.loc 1 208 9 is_stmt 1 view .LVU166
+ 617              		.loc 1 208 11 is_stmt 0 view .LVU167
+ 618 0026 431C     		adds	r3, r0, #1
+ 619 0028 03D0     		beq	.L51
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             sockcb->sock = sock;
+ 620              		.loc 1 210 13 is_stmt 1 view .LVU168
+ 621              		.loc 1 210 26 is_stmt 0 view .LVU169
+ 622 002a A060     		str	r0, [r4, #8]
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             sockfd = __sal_sockcb_getfd(sockcb);
+ 623              		.loc 1 211 13 is_stmt 1 view .LVU170
+ 624              	.LVL52:
+ 625              	.LBB20:
+ 626              	.LBI20:
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 627              		.loc 1 179 14 view .LVU171
+ 628              	.LBB21:
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 629              		.loc 1 181 5 view .LVU172
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 630              		.loc 1 183 5 view .LVU173
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 631              		.loc 1 185 9 view .LVU174
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 632              		.loc 1 185 16 is_stmt 0 view .LVU175
+ 633 002c 6068     		ldr	r0, [r4, #4]
+ 634              	.LVL53:
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 635              		.loc 1 188 5 is_stmt 1 view .LVU176
+ 636              	.L49:
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 637              		.loc 1 188 5 is_stmt 0 view .LVU177
+ 638              	.LBE21:
+ 639              	.LBE20:
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         else
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             __sal_sockcb_free(sockcb->fd);
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return sockfd;
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 640              		.loc 1 221 1 view .LVU178
+ 641 002e 03B0     		add	sp, sp, #12
+ 642              	.LCFI10:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 18
+
+
+ 643              		.cfi_remember_state
+ 644              		.cfi_def_cfa_offset 12
+ 645              	.LVL54:
+ 646              		.loc 1 221 1 view .LVU179
+ 647              		@ sp needed
+ 648 0030 30BD     		pop	{r4, r5, pc}
+ 649              	.LVL55:
+ 650              	.L51:
+ 651              	.LCFI11:
+ 652              		.cfi_restore_state
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 653              		.loc 1 215 13 is_stmt 1 view .LVU180
+ 654 0032 6068     		ldr	r0, [r4, #4]
+ 655 0034 FFF7FEFF 		bl	__sal_sockcb_free
+ 656              	.LVL56:
+ 657              	.L52:
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sock = -1;
+ 658              		.loc 1 194 9 is_stmt 0 view .LVU181
+ 659 0038 4FF0FF30 		mov	r0, #-1
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 660              		.loc 1 220 5 is_stmt 1 view .LVU182
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 661              		.loc 1 220 12 is_stmt 0 view .LVU183
+ 662 003c F7E7     		b	.L49
+ 663              	.L66:
+ 664 003e 00BF     		.align	2
+ 665              	.L65:
+ 666 0040 00000000 		.word	.LANCHOR0
+ 667              		.cfi_endproc
+ 668              	.LFE10:
+ 670              		.section	.text.sal_bind,"ax",%progbits
+ 671              		.align	1
+ 672              		.global	sal_bind
+ 673              		.syntax unified
+ 674              		.thumb
+ 675              		.thumb_func
+ 676              		.fpu fpv4-sp-d16
+ 678              	sal_bind:
+ 679              	.LVL57:
+ 680              	.LFB11:
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_bind(int sockfd,const struct sockaddr *addr,socklen_t addrlen)
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 681              		.loc 1 224 1 is_stmt 1 view -0
+ 682              		.cfi_startproc
+ 683              		@ args = 0, pretend = 0, frame = 8
+ 684              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 685              		.loc 1 225 5 view .LVU185
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 686              		.loc 1 226 5 view .LVU186
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 687              		.loc 1 228 5 view .LVU187
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 688              		.loc 1 224 1 is_stmt 0 view .LVU188
+ 689 0000 07B5     		push	{r0, r1, r2, lr}
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 19
+
+
+ 690              	.LCFI12:
+ 691              		.cfi_def_cfa_offset 16
+ 692              		.cfi_offset 14, -4
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 693              		.loc 1 224 1 view .LVU189
+ 694 0002 0192     		str	r2, [sp, #4]
+ 695              		.loc 1 228 14 view .LVU190
+ 696 0004 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 697              	.LVL58:
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 698              		.loc 1 229 5 is_stmt 1 view .LVU191
+ 699              		.loc 1 229 7 is_stmt 0 view .LVU192
+ 700 0008 48B1     		cbz	r0, .L67
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops) && (NULL != sockcb->ops->bind))
+ 701              		.loc 1 231 9 is_stmt 1 view .LVU193
+ 702              		.loc 1 231 27 is_stmt 0 view .LVU194
+ 703 000a 0368     		ldr	r3, [r0]
+ 704              		.loc 1 231 11 view .LVU195
+ 705 000c 3BB1     		cbz	r3, .L67
+ 706              		.loc 1 231 57 discriminator 1 view .LVU196
+ 707 000e 5B68     		ldr	r3, [r3, #4]
+ 708              		.loc 1 231 34 discriminator 1 view .LVU197
+ 709 0010 2BB1     		cbz	r3, .L67
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->bind(sockcb->sock,addr,addrlen);
+ 710              		.loc 1 233 13 is_stmt 1 view .LVU198
+ 711              		.loc 1 233 19 is_stmt 0 view .LVU199
+ 712 0012 019A     		ldr	r2, [sp, #4]
+ 713 0014 8068     		ldr	r0, [r0, #8]
+ 714              	.LVL59:
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 715              		.loc 1 238 1 view .LVU200
+ 716 0016 03B0     		add	sp, sp, #12
+ 717              	.LCFI13:
+ 718              		.cfi_remember_state
+ 719              		.cfi_def_cfa_offset 4
+ 720              		@ sp needed
+ 721 0018 5DF804EB 		ldr	lr, [sp], #4
+ 722              	.LCFI14:
+ 723              		.cfi_restore 14
+ 724              		.cfi_def_cfa_offset 0
+ 725              	.LVL60:
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 726              		.loc 1 233 19 view .LVU201
+ 727 001c 1847     		bx	r3
+ 728              	.LVL61:
+ 729              	.L67:
+ 730              	.LCFI15:
+ 731              		.cfi_restore_state
+ 732              		.loc 1 238 1 view .LVU202
+ 733 001e 4FF0FF30 		mov	r0, #-1
+ 734              	.LVL62:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 20
+
+
+ 735              		.loc 1 238 1 view .LVU203
+ 736 0022 03B0     		add	sp, sp, #12
+ 737              	.LCFI16:
+ 738              		.cfi_def_cfa_offset 4
+ 739              		@ sp needed
+ 740 0024 5DF804FB 		ldr	pc, [sp], #4
+ 741              		.loc 1 238 1 view .LVU204
+ 742              		.cfi_endproc
+ 743              	.LFE11:
+ 745              		.section	.text.sal_listen,"ax",%progbits
+ 746              		.align	1
+ 747              		.global	sal_listen
+ 748              		.syntax unified
+ 749              		.thumb
+ 750              		.thumb_func
+ 751              		.fpu fpv4-sp-d16
+ 753              	sal_listen:
+ 754              	.LVL63:
+ 755              	.LFB12:
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_listen(int sockfd,  int backlog)
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 756              		.loc 1 242 1 is_stmt 1 view -0
+ 757              		.cfi_startproc
+ 758              		@ args = 0, pretend = 0, frame = 0
+ 759              		@ frame_needed = 0, uses_anonymous_args = 0
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 760              		.loc 1 243 5 view .LVU206
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 761              		.loc 1 244 5 view .LVU207
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 762              		.loc 1 246 5 view .LVU208
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 763              		.loc 1 242 1 is_stmt 0 view .LVU209
+ 764 0000 10B5     		push	{r4, lr}
+ 765              	.LCFI17:
+ 766              		.cfi_def_cfa_offset 8
+ 767              		.cfi_offset 4, -8
+ 768              		.cfi_offset 14, -4
+ 769              		.loc 1 246 14 view .LVU210
+ 770 0002 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 771              	.LVL64:
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 772              		.loc 1 247 5 is_stmt 1 view .LVU211
+ 773              		.loc 1 247 7 is_stmt 0 view .LVU212
+ 774 0006 38B1     		cbz	r0, .L75
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->listen))
+ 775              		.loc 1 249 9 is_stmt 1 view .LVU213
+ 776              		.loc 1 249 27 is_stmt 0 view .LVU214
+ 777 0008 0368     		ldr	r3, [r0]
+ 778              		.loc 1 249 11 view .LVU215
+ 779 000a 2BB1     		cbz	r3, .L75
+ 780              		.loc 1 249 55 discriminator 1 view .LVU216
+ 781 000c 9B68     		ldr	r3, [r3, #8]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 21
+
+
+ 782              		.loc 1 249 33 discriminator 1 view .LVU217
+ 783 000e 1BB1     		cbz	r3, .L75
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->listen(sockcb->sock,backlog);
+ 784              		.loc 1 251 13 is_stmt 1 view .LVU218
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 254:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 785              		.loc 1 256 1 is_stmt 0 view .LVU219
+ 786 0010 BDE81040 		pop	{r4, lr}
+ 787              	.LCFI18:
+ 788              		.cfi_remember_state
+ 789              		.cfi_restore 14
+ 790              		.cfi_restore 4
+ 791              		.cfi_def_cfa_offset 0
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 792              		.loc 1 251 19 view .LVU220
+ 793 0014 8068     		ldr	r0, [r0, #8]
+ 794              	.LVL65:
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 795              		.loc 1 251 19 view .LVU221
+ 796 0016 1847     		bx	r3
+ 797              	.LVL66:
+ 798              	.L75:
+ 799              	.LCFI19:
+ 800              		.cfi_restore_state
+ 801              		.loc 1 256 1 view .LVU222
+ 802 0018 4FF0FF30 		mov	r0, #-1
+ 803              	.LVL67:
+ 804              		.loc 1 256 1 view .LVU223
+ 805 001c 10BD     		pop	{r4, pc}
+ 806              		.cfi_endproc
+ 807              	.LFE12:
+ 809              		.section	.text.sal_accept,"ax",%progbits
+ 810              		.align	1
+ 811              		.global	sal_accept
+ 812              		.syntax unified
+ 813              		.thumb
+ 814              		.thumb_func
+ 815              		.fpu fpv4-sp-d16
+ 817              	sal_accept:
+ 818              	.LVL68:
+ 819              	.LFB13:
+ 257:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_accept(int sockfd,struct sockaddr *addr,socklen_t *addrlen)
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 820              		.loc 1 259 1 is_stmt 1 view -0
+ 821              		.cfi_startproc
+ 822              		@ args = 0, pretend = 0, frame = 0
+ 823              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sockfd_client = -1;
+ 824              		.loc 1 260 5 view .LVU225
+ 261:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sock_client = -1;
+ 825              		.loc 1 261 5 view .LVU226
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb_client;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 22
+
+
+ 826              		.loc 1 262 5 view .LVU227
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb_server;
+ 827              		.loc 1 264 5 view .LVU228
+ 265:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 266:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb_server = __sal_sockcb_getcb(sockfd);
+ 828              		.loc 1 266 5 view .LVU229
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sockfd_client = -1;
+ 829              		.loc 1 259 1 is_stmt 0 view .LVU230
+ 830 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 831              	.LCFI20:
+ 832              		.cfi_def_cfa_offset 24
+ 833              		.cfi_offset 3, -24
+ 834              		.cfi_offset 4, -20
+ 835              		.cfi_offset 5, -16
+ 836              		.cfi_offset 6, -12
+ 837              		.cfi_offset 7, -8
+ 838              		.cfi_offset 14, -4
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sockfd_client = -1;
+ 839              		.loc 1 259 1 view .LVU231
+ 840 0002 0E46     		mov	r6, r1
+ 841 0004 1746     		mov	r7, r2
+ 842              		.loc 1 266 21 view .LVU232
+ 843 0006 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 844              	.LVL69:
+ 267:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL == sockcb_server)
+ 845              		.loc 1 267 5 is_stmt 1 view .LVU233
+ 846              		.loc 1 267 7 is_stmt 0 view .LVU234
+ 847 000a 0546     		mov	r5, r0
+ 848 000c 10B9     		cbnz	r0, .L84
+ 849              	.LVL70:
+ 850              	.L100:
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sock_client = -1;
+ 851              		.loc 1 260 9 view .LVU235
+ 852 000e 4FF0FF30 		mov	r0, #-1
+ 853              	.LVL71:
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int sock_client = -1;
+ 854              		.loc 1 260 9 view .LVU236
+ 855 0012 10E0     		b	.L83
+ 856              	.LVL72:
+ 857              	.L84:
+ 268:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 269:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         return sockfd_client;
+ 270:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 271:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb_client = __sal_sockcb_malloc();
+ 858              		.loc 1 272 5 is_stmt 1 view .LVU237
+ 859              		.loc 1 272 21 is_stmt 0 view .LVU238
+ 860 0014 FFF7FEFF 		bl	__sal_sockcb_malloc
+ 861              	.LVL73:
+ 273:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb_client)
+ 862              		.loc 1 274 5 is_stmt 1 view .LVU239
+ 863              		.loc 1 274 7 is_stmt 0 view .LVU240
+ 864 0018 0446     		mov	r4, r0
+ 865 001a 0028     		cmp	r0, #0
+ 866 001c F7D0     		beq	.L100
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 23
+
+
+ 275:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 276:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb_server->ops)&&(NULL != sockcb_server->ops->accept))
+ 867              		.loc 1 276 9 is_stmt 1 view .LVU241
+ 868              		.loc 1 276 34 is_stmt 0 view .LVU242
+ 869 001e 2B68     		ldr	r3, [r5]
+ 870              		.loc 1 276 11 view .LVU243
+ 871 0020 53B1     		cbz	r3, .L87
+ 872              		.loc 1 276 69 discriminator 1 view .LVU244
+ 873 0022 DB68     		ldr	r3, [r3, #12]
+ 874              		.loc 1 276 40 discriminator 1 view .LVU245
+ 875 0024 43B1     		cbz	r3, .L87
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 278:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             sock_client = sockcb_server->ops->accept(sockcb_server->sock,addr,addrlen);
+ 876              		.loc 1 278 13 is_stmt 1 view .LVU246
+ 877              		.loc 1 278 27 is_stmt 0 view .LVU247
+ 878 0026 A868     		ldr	r0, [r5, #8]
+ 879              	.LVL74:
+ 880              		.loc 1 278 27 view .LVU248
+ 881 0028 3A46     		mov	r2, r7
+ 882 002a 3146     		mov	r1, r6
+ 883 002c 9847     		blx	r3
+ 884              	.LVL75:
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if(-1 != sock_client)
+ 885              		.loc 1 280 9 is_stmt 1 view .LVU249
+ 886              		.loc 1 280 11 is_stmt 0 view .LVU250
+ 887 002e 431C     		adds	r3, r0, #1
+ 888 0030 02D0     		beq	.L87
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             sockcb_client->sock = sock_client;
+ 889              		.loc 1 282 13 is_stmt 1 view .LVU251
+ 890              		.loc 1 282 33 is_stmt 0 view .LVU252
+ 891 0032 A060     		str	r0, [r4, #8]
+ 283:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             sockfd_client = __sal_sockcb_getfd(sockcb_client);
+ 892              		.loc 1 283 13 is_stmt 1 view .LVU253
+ 893              	.LVL76:
+ 894              	.LBB22:
+ 895              	.LBI22:
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 896              		.loc 1 179 14 view .LVU254
+ 897              	.LBB23:
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 898              		.loc 1 181 5 view .LVU255
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 899              		.loc 1 183 5 view .LVU256
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 900              		.loc 1 185 9 view .LVU257
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 901              		.loc 1 185 16 is_stmt 0 view .LVU258
+ 902 0034 6068     		ldr	r0, [r4, #4]
+ 903              	.LVL77:
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 904              		.loc 1 188 5 is_stmt 1 view .LVU259
+ 905              	.L83:
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 906              		.loc 1 188 5 is_stmt 0 view .LVU260
+ 907              	.LBE23:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 24
+
+
+ 908              	.LBE22:
+ 284:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         else
+ 286:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 287:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             __sal_sockcb_free(sockcb_client->fd);
+ 288:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 289:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 290:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 291:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 292:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return sockfd_client;
+ 293:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 909              		.loc 1 293 1 view .LVU261
+ 910 0036 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 911              	.LVL78:
+ 912              	.L87:
+ 287:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 913              		.loc 1 287 13 is_stmt 1 view .LVU262
+ 914 0038 6068     		ldr	r0, [r4, #4]
+ 915 003a FFF7FEFF 		bl	__sal_sockcb_free
+ 916              	.LVL79:
+ 917 003e E6E7     		b	.L100
+ 918              		.cfi_endproc
+ 919              	.LFE13:
+ 921              		.section	.text.sal_connect,"ax",%progbits
+ 922              		.align	1
+ 923              		.global	sal_connect
+ 924              		.syntax unified
+ 925              		.thumb
+ 926              		.thumb_func
+ 927              		.fpu fpv4-sp-d16
+ 929              	sal_connect:
+ 930              	.LVL80:
+ 931              	.LFB14:
+ 294:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 295:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 296:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_connect(int sockfd, const struct sockaddr *addr,socklen_t addrlen)
+ 297:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 932              		.loc 1 297 1 view -0
+ 933              		.cfi_startproc
+ 934              		@ args = 0, pretend = 0, frame = 8
+ 935              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 299:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 936              		.loc 1 299 5 view .LVU264
+ 300:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 937              		.loc 1 300 5 view .LVU265
+ 301:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 302:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 938              		.loc 1 302 5 view .LVU266
+ 297:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 939              		.loc 1 297 1 is_stmt 0 view .LVU267
+ 940 0000 07B5     		push	{r0, r1, r2, lr}
+ 941              	.LCFI21:
+ 942              		.cfi_def_cfa_offset 16
+ 943              		.cfi_offset 14, -4
+ 297:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 944              		.loc 1 297 1 view .LVU268
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 25
+
+
+ 945 0002 0192     		str	r2, [sp, #4]
+ 946              		.loc 1 302 14 view .LVU269
+ 947 0004 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 948              	.LVL81:
+ 303:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 949              		.loc 1 303 5 is_stmt 1 view .LVU270
+ 950              		.loc 1 303 7 is_stmt 0 view .LVU271
+ 951 0008 48B1     		cbz	r0, .L101
+ 304:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 305:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->connect))
+ 952              		.loc 1 305 9 is_stmt 1 view .LVU272
+ 953              		.loc 1 305 27 is_stmt 0 view .LVU273
+ 954 000a 0368     		ldr	r3, [r0]
+ 955              		.loc 1 305 11 view .LVU274
+ 956 000c 3BB1     		cbz	r3, .L101
+ 957              		.loc 1 305 55 discriminator 1 view .LVU275
+ 958 000e 1B69     		ldr	r3, [r3, #16]
+ 959              		.loc 1 305 33 discriminator 1 view .LVU276
+ 960 0010 2BB1     		cbz	r3, .L101
+ 306:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->connect(sockcb->sock,addr,addrlen);
+ 961              		.loc 1 307 13 is_stmt 1 view .LVU277
+ 962              		.loc 1 307 19 is_stmt 0 view .LVU278
+ 963 0012 019A     		ldr	r2, [sp, #4]
+ 964 0014 8068     		ldr	r0, [r0, #8]
+ 965              	.LVL82:
+ 308:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 309:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 310:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 311:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 312:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 966              		.loc 1 312 1 view .LVU279
+ 967 0016 03B0     		add	sp, sp, #12
+ 968              	.LCFI22:
+ 969              		.cfi_remember_state
+ 970              		.cfi_def_cfa_offset 4
+ 971              		@ sp needed
+ 972 0018 5DF804EB 		ldr	lr, [sp], #4
+ 973              	.LCFI23:
+ 974              		.cfi_restore 14
+ 975              		.cfi_def_cfa_offset 0
+ 976              	.LVL83:
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 977              		.loc 1 307 19 view .LVU280
+ 978 001c 1847     		bx	r3
+ 979              	.LVL84:
+ 980              	.L101:
+ 981              	.LCFI24:
+ 982              		.cfi_restore_state
+ 983              		.loc 1 312 1 view .LVU281
+ 984 001e 4FF0FF30 		mov	r0, #-1
+ 985              	.LVL85:
+ 986              		.loc 1 312 1 view .LVU282
+ 987 0022 03B0     		add	sp, sp, #12
+ 988              	.LCFI25:
+ 989              		.cfi_def_cfa_offset 4
+ 990              		@ sp needed
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 26
+
+
+ 991 0024 5DF804FB 		ldr	pc, [sp], #4
+ 992              		.loc 1 312 1 view .LVU283
+ 993              		.cfi_endproc
+ 994              	.LFE14:
+ 996              		.section	.text.sal_getsockname,"ax",%progbits
+ 997              		.align	1
+ 998              		.global	sal_getsockname
+ 999              		.syntax unified
+ 1000              		.thumb
+ 1001              		.thumb_func
+ 1002              		.fpu fpv4-sp-d16
+ 1004              	sal_getsockname:
+ 1005              	.LVL86:
+ 1006              	.LFB15:
+ 313:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 314:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_getsockname(int sockfd, struct sockaddr *addr,socklen_t *addrlen)
+ 315:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1007              		.loc 1 315 1 is_stmt 1 view -0
+ 1008              		.cfi_startproc
+ 1009              		@ args = 0, pretend = 0, frame = 8
+ 1010              		@ frame_needed = 0, uses_anonymous_args = 0
+ 316:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 317:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1011              		.loc 1 317 5 view .LVU285
+ 318:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1012              		.loc 1 318 5 view .LVU286
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 320:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1013              		.loc 1 320 5 view .LVU287
+ 315:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1014              		.loc 1 315 1 is_stmt 0 view .LVU288
+ 1015 0000 07B5     		push	{r0, r1, r2, lr}
+ 1016              	.LCFI26:
+ 1017              		.cfi_def_cfa_offset 16
+ 1018              		.cfi_offset 14, -4
+ 315:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1019              		.loc 1 315 1 view .LVU289
+ 1020 0002 0192     		str	r2, [sp, #4]
+ 1021              		.loc 1 320 14 view .LVU290
+ 1022 0004 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1023              	.LVL87:
+ 321:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1024              		.loc 1 321 5 is_stmt 1 view .LVU291
+ 1025              		.loc 1 321 7 is_stmt 0 view .LVU292
+ 1026 0008 48B1     		cbz	r0, .L109
+ 322:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 323:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->getsockname))
+ 1027              		.loc 1 323 9 is_stmt 1 view .LVU293
+ 1028              		.loc 1 323 27 is_stmt 0 view .LVU294
+ 1029 000a 0368     		ldr	r3, [r0]
+ 1030              		.loc 1 323 11 view .LVU295
+ 1031 000c 3BB1     		cbz	r3, .L109
+ 1032              		.loc 1 323 55 discriminator 1 view .LVU296
+ 1033 000e 5B69     		ldr	r3, [r3, #20]
+ 1034              		.loc 1 323 33 discriminator 1 view .LVU297
+ 1035 0010 2BB1     		cbz	r3, .L109
+ 324:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 27
+
+
+ 325:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->getsockname(sockcb->sock,addr,addrlen);
+ 1036              		.loc 1 325 13 is_stmt 1 view .LVU298
+ 1037              		.loc 1 325 19 is_stmt 0 view .LVU299
+ 1038 0012 019A     		ldr	r2, [sp, #4]
+ 1039 0014 8068     		ldr	r0, [r0, #8]
+ 1040              	.LVL88:
+ 326:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 327:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 328:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 329:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 330:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1041              		.loc 1 330 1 view .LVU300
+ 1042 0016 03B0     		add	sp, sp, #12
+ 1043              	.LCFI27:
+ 1044              		.cfi_remember_state
+ 1045              		.cfi_def_cfa_offset 4
+ 1046              		@ sp needed
+ 1047 0018 5DF804EB 		ldr	lr, [sp], #4
+ 1048              	.LCFI28:
+ 1049              		.cfi_restore 14
+ 1050              		.cfi_def_cfa_offset 0
+ 1051              	.LVL89:
+ 325:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1052              		.loc 1 325 19 view .LVU301
+ 1053 001c 1847     		bx	r3
+ 1054              	.LVL90:
+ 1055              	.L109:
+ 1056              	.LCFI29:
+ 1057              		.cfi_restore_state
+ 1058              		.loc 1 330 1 view .LVU302
+ 1059 001e 4FF0FF30 		mov	r0, #-1
+ 1060              	.LVL91:
+ 1061              		.loc 1 330 1 view .LVU303
+ 1062 0022 03B0     		add	sp, sp, #12
+ 1063              	.LCFI30:
+ 1064              		.cfi_def_cfa_offset 4
+ 1065              		@ sp needed
+ 1066 0024 5DF804FB 		ldr	pc, [sp], #4
+ 1067              		.loc 1 330 1 view .LVU304
+ 1068              		.cfi_endproc
+ 1069              	.LFE15:
+ 1071              		.section	.text.sal_getpeername,"ax",%progbits
+ 1072              		.align	1
+ 1073              		.global	sal_getpeername
+ 1074              		.syntax unified
+ 1075              		.thumb
+ 1076              		.thumb_func
+ 1077              		.fpu fpv4-sp-d16
+ 1079              	sal_getpeername:
+ 1080              	.LVL92:
+ 1081              	.LFB16:
+ 331:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 332:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 333:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_getpeername(int sockfd, struct sockaddr *addr,socklen_t *addrlen)
+ 334:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1082              		.loc 1 334 1 is_stmt 1 view -0
+ 1083              		.cfi_startproc
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 28
+
+
+ 1084              		@ args = 0, pretend = 0, frame = 8
+ 1085              		@ frame_needed = 0, uses_anonymous_args = 0
+ 335:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 336:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1086              		.loc 1 336 5 view .LVU306
+ 337:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1087              		.loc 1 337 5 view .LVU307
+ 338:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 339:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1088              		.loc 1 339 5 view .LVU308
+ 334:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1089              		.loc 1 334 1 is_stmt 0 view .LVU309
+ 1090 0000 07B5     		push	{r0, r1, r2, lr}
+ 1091              	.LCFI31:
+ 1092              		.cfi_def_cfa_offset 16
+ 1093              		.cfi_offset 14, -4
+ 334:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1094              		.loc 1 334 1 view .LVU310
+ 1095 0002 0192     		str	r2, [sp, #4]
+ 1096              		.loc 1 339 14 view .LVU311
+ 1097 0004 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1098              	.LVL93:
+ 340:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1099              		.loc 1 340 5 is_stmt 1 view .LVU312
+ 1100              		.loc 1 340 7 is_stmt 0 view .LVU313
+ 1101 0008 48B1     		cbz	r0, .L117
+ 341:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 342:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->getpeername))
+ 1102              		.loc 1 342 9 is_stmt 1 view .LVU314
+ 1103              		.loc 1 342 27 is_stmt 0 view .LVU315
+ 1104 000a 0368     		ldr	r3, [r0]
+ 1105              		.loc 1 342 11 view .LVU316
+ 1106 000c 3BB1     		cbz	r3, .L117
+ 1107              		.loc 1 342 55 discriminator 1 view .LVU317
+ 1108 000e 9B69     		ldr	r3, [r3, #24]
+ 1109              		.loc 1 342 33 discriminator 1 view .LVU318
+ 1110 0010 2BB1     		cbz	r3, .L117
+ 343:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 344:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->getpeername(sockcb->sock,addr,addrlen);
+ 1111              		.loc 1 344 13 is_stmt 1 view .LVU319
+ 1112              		.loc 1 344 19 is_stmt 0 view .LVU320
+ 1113 0012 019A     		ldr	r2, [sp, #4]
+ 1114 0014 8068     		ldr	r0, [r0, #8]
+ 1115              	.LVL94:
+ 345:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 346:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 347:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 348:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 349:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1116              		.loc 1 349 1 view .LVU321
+ 1117 0016 03B0     		add	sp, sp, #12
+ 1118              	.LCFI32:
+ 1119              		.cfi_remember_state
+ 1120              		.cfi_def_cfa_offset 4
+ 1121              		@ sp needed
+ 1122 0018 5DF804EB 		ldr	lr, [sp], #4
+ 1123              	.LCFI33:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 29
+
+
+ 1124              		.cfi_restore 14
+ 1125              		.cfi_def_cfa_offset 0
+ 1126              	.LVL95:
+ 344:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1127              		.loc 1 344 19 view .LVU322
+ 1128 001c 1847     		bx	r3
+ 1129              	.LVL96:
+ 1130              	.L117:
+ 1131              	.LCFI34:
+ 1132              		.cfi_restore_state
+ 1133              		.loc 1 349 1 view .LVU323
+ 1134 001e 4FF0FF30 		mov	r0, #-1
+ 1135              	.LVL97:
+ 1136              		.loc 1 349 1 view .LVU324
+ 1137 0022 03B0     		add	sp, sp, #12
+ 1138              	.LCFI35:
+ 1139              		.cfi_def_cfa_offset 4
+ 1140              		@ sp needed
+ 1141 0024 5DF804FB 		ldr	pc, [sp], #4
+ 1142              		.loc 1 349 1 view .LVU325
+ 1143              		.cfi_endproc
+ 1144              	.LFE16:
+ 1146              		.section	.text.sal_getsockopt,"ax",%progbits
+ 1147              		.align	1
+ 1148              		.global	sal_getsockopt
+ 1149              		.syntax unified
+ 1150              		.thumb
+ 1151              		.thumb_func
+ 1152              		.fpu fpv4-sp-d16
+ 1154              	sal_getsockopt:
+ 1155              	.LVL98:
+ 1156              	.LFB17:
+ 350:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 351:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 352:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_getsockopt (int sockfd, int level, int optname, void *optval, int *optlen)
+ 353:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1157              		.loc 1 353 1 is_stmt 1 view -0
+ 1158              		.cfi_startproc
+ 1159              		@ args = 4, pretend = 0, frame = 8
+ 1160              		@ frame_needed = 0, uses_anonymous_args = 0
+ 354:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 355:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1161              		.loc 1 355 5 view .LVU327
+ 356:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1162              		.loc 1 356 5 view .LVU328
+ 357:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1163              		.loc 1 358 5 view .LVU329
+ 353:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1164              		.loc 1 353 1 is_stmt 0 view .LVU330
+ 1165 0000 13B5     		push	{r0, r1, r4, lr}
+ 1166              	.LCFI36:
+ 1167              		.cfi_def_cfa_offset 16
+ 1168              		.cfi_offset 4, -8
+ 1169              		.cfi_offset 14, -4
+ 353:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1170              		.loc 1 353 1 view .LVU331
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 30
+
+
+ 1171 0002 CDE90032 		strd	r3, r2, [sp]
+ 1172              		.loc 1 358 14 view .LVU332
+ 1173 0006 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1174              	.LVL99:
+ 359:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1175              		.loc 1 359 5 is_stmt 1 view .LVU333
+ 1176              		.loc 1 359 7 is_stmt 0 view .LVU334
+ 1177 000a 58B1     		cbz	r0, .L125
+ 360:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 361:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->getsockopt))
+ 1178              		.loc 1 361 9 is_stmt 1 view .LVU335
+ 1179              		.loc 1 361 27 is_stmt 0 view .LVU336
+ 1180 000c 0468     		ldr	r4, [r0]
+ 1181              		.loc 1 361 11 view .LVU337
+ 1182 000e 4CB1     		cbz	r4, .L125
+ 1183              		.loc 1 361 55 discriminator 1 view .LVU338
+ 1184 0010 246A     		ldr	r4, [r4, #32]
+ 1185              		.loc 1 361 33 discriminator 1 view .LVU339
+ 1186 0012 3CB1     		cbz	r4, .L125
+ 362:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 363:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->getsockopt(sockcb->sock,level,optname,optval,optlen);
+ 1187              		.loc 1 363 13 is_stmt 1 view .LVU340
+ 1188              		.loc 1 363 19 is_stmt 0 view .LVU341
+ 1189 0014 DDE90032 		ldrd	r3, r2, [sp]
+ 1190 0018 8068     		ldr	r0, [r0, #8]
+ 1191              	.LVL100:
+ 1192              		.loc 1 363 19 view .LVU342
+ 1193 001a A446     		mov	ip, r4
+ 364:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 365:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 366:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 367:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 368:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1194              		.loc 1 368 1 view .LVU343
+ 1195 001c 02B0     		add	sp, sp, #8
+ 1196              	.LCFI37:
+ 1197              		.cfi_remember_state
+ 1198              		.cfi_def_cfa_offset 8
+ 1199              	.LVL101:
+ 1200              		.loc 1 368 1 view .LVU344
+ 1201              		@ sp needed
+ 1202 001e BDE81040 		pop	{r4, lr}
+ 1203              	.LCFI38:
+ 1204              		.cfi_restore 14
+ 1205              		.cfi_restore 4
+ 1206              		.cfi_def_cfa_offset 0
+ 1207              	.LVL102:
+ 363:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1208              		.loc 1 363 19 view .LVU345
+ 1209 0022 6047     		bx	ip
+ 1210              	.LVL103:
+ 1211              	.L125:
+ 1212              	.LCFI39:
+ 1213              		.cfi_restore_state
+ 1214              		.loc 1 368 1 view .LVU346
+ 1215 0024 4FF0FF30 		mov	r0, #-1
+ 1216              	.LVL104:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 31
+
+
+ 1217              		.loc 1 368 1 view .LVU347
+ 1218 0028 02B0     		add	sp, sp, #8
+ 1219              	.LCFI40:
+ 1220              		.cfi_def_cfa_offset 8
+ 1221              	.LVL105:
+ 1222              		.loc 1 368 1 view .LVU348
+ 1223              		@ sp needed
+ 1224 002a 10BD     		pop	{r4, pc}
+ 1225              		.loc 1 368 1 view .LVU349
+ 1226              		.cfi_endproc
+ 1227              	.LFE17:
+ 1229              		.section	.text.sal_setsockopt,"ax",%progbits
+ 1230              		.align	1
+ 1231              		.global	sal_setsockopt
+ 1232              		.syntax unified
+ 1233              		.thumb
+ 1234              		.thumb_func
+ 1235              		.fpu fpv4-sp-d16
+ 1237              	sal_setsockopt:
+ 1238              	.LVL106:
+ 1239              	.LFB18:
+ 369:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 370:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_setsockopt (int sockfd, int level, int optname, const void *optval, int optlen)
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1240              		.loc 1 371 1 is_stmt 1 view -0
+ 1241              		.cfi_startproc
+ 1242              		@ args = 4, pretend = 0, frame = 8
+ 1243              		@ frame_needed = 0, uses_anonymous_args = 0
+ 372:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 373:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1244              		.loc 1 373 5 view .LVU351
+ 374:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1245              		.loc 1 374 5 view .LVU352
+ 375:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 376:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1246              		.loc 1 376 5 view .LVU353
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1247              		.loc 1 371 1 is_stmt 0 view .LVU354
+ 1248 0000 13B5     		push	{r0, r1, r4, lr}
+ 1249              	.LCFI41:
+ 1250              		.cfi_def_cfa_offset 16
+ 1251              		.cfi_offset 4, -8
+ 1252              		.cfi_offset 14, -4
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1253              		.loc 1 371 1 view .LVU355
+ 1254 0002 CDE90032 		strd	r3, r2, [sp]
+ 1255              		.loc 1 376 14 view .LVU356
+ 1256 0006 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1257              	.LVL107:
+ 377:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1258              		.loc 1 377 5 is_stmt 1 view .LVU357
+ 1259              		.loc 1 377 7 is_stmt 0 view .LVU358
+ 1260 000a 58B1     		cbz	r0, .L133
+ 378:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 379:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->setsockopt))
+ 1261              		.loc 1 379 9 is_stmt 1 view .LVU359
+ 1262              		.loc 1 379 27 is_stmt 0 view .LVU360
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 32
+
+
+ 1263 000c 0468     		ldr	r4, [r0]
+ 1264              		.loc 1 379 11 view .LVU361
+ 1265 000e 4CB1     		cbz	r4, .L133
+ 1266              		.loc 1 379 55 discriminator 1 view .LVU362
+ 1267 0010 E469     		ldr	r4, [r4, #28]
+ 1268              		.loc 1 379 33 discriminator 1 view .LVU363
+ 1269 0012 3CB1     		cbz	r4, .L133
+ 380:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 381:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->setsockopt(sockcb->sock,level,optname,optval,optlen);
+ 1270              		.loc 1 381 13 is_stmt 1 view .LVU364
+ 1271              		.loc 1 381 19 is_stmt 0 view .LVU365
+ 1272 0014 DDE90032 		ldrd	r3, r2, [sp]
+ 1273 0018 8068     		ldr	r0, [r0, #8]
+ 1274              	.LVL108:
+ 1275              		.loc 1 381 19 view .LVU366
+ 1276 001a A446     		mov	ip, r4
+ 382:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 383:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 384:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 385:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 386:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1277              		.loc 1 386 1 view .LVU367
+ 1278 001c 02B0     		add	sp, sp, #8
+ 1279              	.LCFI42:
+ 1280              		.cfi_remember_state
+ 1281              		.cfi_def_cfa_offset 8
+ 1282              	.LVL109:
+ 1283              		.loc 1 386 1 view .LVU368
+ 1284              		@ sp needed
+ 1285 001e BDE81040 		pop	{r4, lr}
+ 1286              	.LCFI43:
+ 1287              		.cfi_restore 14
+ 1288              		.cfi_restore 4
+ 1289              		.cfi_def_cfa_offset 0
+ 1290              	.LVL110:
+ 381:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1291              		.loc 1 381 19 view .LVU369
+ 1292 0022 6047     		bx	ip
+ 1293              	.LVL111:
+ 1294              	.L133:
+ 1295              	.LCFI44:
+ 1296              		.cfi_restore_state
+ 1297              		.loc 1 386 1 view .LVU370
+ 1298 0024 4FF0FF30 		mov	r0, #-1
+ 1299              	.LVL112:
+ 1300              		.loc 1 386 1 view .LVU371
+ 1301 0028 02B0     		add	sp, sp, #8
+ 1302              	.LCFI45:
+ 1303              		.cfi_def_cfa_offset 8
+ 1304              	.LVL113:
+ 1305              		.loc 1 386 1 view .LVU372
+ 1306              		@ sp needed
+ 1307 002a 10BD     		pop	{r4, pc}
+ 1308              		.loc 1 386 1 view .LVU373
+ 1309              		.cfi_endproc
+ 1310              	.LFE18:
+ 1312              		.section	.text.sal_recv,"ax",%progbits
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 33
+
+
+ 1313              		.align	1
+ 1314              		.global	sal_recv
+ 1315              		.syntax unified
+ 1316              		.thumb
+ 1317              		.thumb_func
+ 1318              		.fpu fpv4-sp-d16
+ 1320              	sal_recv:
+ 1321              	.LVL114:
+ 1322              	.LFB19:
+ 387:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 388:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_recv(int sockfd,void *buf,size_t len,int flags)
+ 389:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1323              		.loc 1 389 1 is_stmt 1 view -0
+ 1324              		.cfi_startproc
+ 1325              		@ args = 0, pretend = 0, frame = 8
+ 1326              		@ frame_needed = 0, uses_anonymous_args = 0
+ 390:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 391:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1327              		.loc 1 391 5 view .LVU375
+ 392:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1328              		.loc 1 392 5 view .LVU376
+ 393:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 394:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1329              		.loc 1 394 5 view .LVU377
+ 389:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1330              		.loc 1 389 1 is_stmt 0 view .LVU378
+ 1331 0000 13B5     		push	{r0, r1, r4, lr}
+ 1332              	.LCFI46:
+ 1333              		.cfi_def_cfa_offset 16
+ 1334              		.cfi_offset 4, -8
+ 1335              		.cfi_offset 14, -4
+ 389:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1336              		.loc 1 389 1 view .LVU379
+ 1337 0002 CDE90032 		strd	r3, r2, [sp]
+ 1338              		.loc 1 394 14 view .LVU380
+ 1339 0006 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1340              	.LVL115:
+ 395:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1341              		.loc 1 395 5 is_stmt 1 view .LVU381
+ 1342              		.loc 1 395 7 is_stmt 0 view .LVU382
+ 1343 000a 58B1     		cbz	r0, .L141
+ 396:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 397:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->recv))
+ 1344              		.loc 1 397 9 is_stmt 1 view .LVU383
+ 1345              		.loc 1 397 27 is_stmt 0 view .LVU384
+ 1346 000c 0468     		ldr	r4, [r0]
+ 1347              		.loc 1 397 11 view .LVU385
+ 1348 000e 4CB1     		cbz	r4, .L141
+ 1349              		.loc 1 397 55 discriminator 1 view .LVU386
+ 1350 0010 E46A     		ldr	r4, [r4, #44]
+ 1351              		.loc 1 397 33 discriminator 1 view .LVU387
+ 1352 0012 3CB1     		cbz	r4, .L141
+ 398:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 399:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->recv(sockcb->sock,buf,len,flags);
+ 1353              		.loc 1 399 13 is_stmt 1 view .LVU388
+ 1354              		.loc 1 399 19 is_stmt 0 view .LVU389
+ 1355 0014 DDE90032 		ldrd	r3, r2, [sp]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 34
+
+
+ 1356 0018 8068     		ldr	r0, [r0, #8]
+ 1357              	.LVL116:
+ 1358              		.loc 1 399 19 view .LVU390
+ 1359 001a A446     		mov	ip, r4
+ 400:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 401:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 402:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 403:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 404:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1360              		.loc 1 404 1 view .LVU391
+ 1361 001c 02B0     		add	sp, sp, #8
+ 1362              	.LCFI47:
+ 1363              		.cfi_remember_state
+ 1364              		.cfi_def_cfa_offset 8
+ 1365              	.LVL117:
+ 1366              		.loc 1 404 1 view .LVU392
+ 1367              		@ sp needed
+ 1368 001e BDE81040 		pop	{r4, lr}
+ 1369              	.LCFI48:
+ 1370              		.cfi_restore 14
+ 1371              		.cfi_restore 4
+ 1372              		.cfi_def_cfa_offset 0
+ 1373              	.LVL118:
+ 399:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1374              		.loc 1 399 19 view .LVU393
+ 1375 0022 6047     		bx	ip
+ 1376              	.LVL119:
+ 1377              	.L141:
+ 1378              	.LCFI49:
+ 1379              		.cfi_restore_state
+ 1380              		.loc 1 404 1 view .LVU394
+ 1381 0024 4FF0FF30 		mov	r0, #-1
+ 1382              	.LVL120:
+ 1383              		.loc 1 404 1 view .LVU395
+ 1384 0028 02B0     		add	sp, sp, #8
+ 1385              	.LCFI50:
+ 1386              		.cfi_def_cfa_offset 8
+ 1387              	.LVL121:
+ 1388              		.loc 1 404 1 view .LVU396
+ 1389              		@ sp needed
+ 1390 002a 10BD     		pop	{r4, pc}
+ 1391              		.loc 1 404 1 view .LVU397
+ 1392              		.cfi_endproc
+ 1393              	.LFE19:
+ 1395              		.section	.text.sal_recvfrom,"ax",%progbits
+ 1396              		.align	1
+ 1397              		.global	sal_recvfrom
+ 1398              		.syntax unified
+ 1399              		.thumb
+ 1400              		.thumb_func
+ 1401              		.fpu fpv4-sp-d16
+ 1403              	sal_recvfrom:
+ 1404              	.LVL122:
+ 1405              	.LFB20:
+ 405:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 406:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_recvfrom(int sockfd, void *buf, size_t len, int flags,
+ 407:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****       struct sockaddr *from, socklen_t *fromlen)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 35
+
+
+ 408:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1406              		.loc 1 408 1 is_stmt 1 view -0
+ 1407              		.cfi_startproc
+ 1408              		@ args = 8, pretend = 0, frame = 8
+ 1409              		@ frame_needed = 0, uses_anonymous_args = 0
+ 409:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 410:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1410              		.loc 1 410 5 view .LVU399
+ 411:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1411              		.loc 1 411 5 view .LVU400
+ 412:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 413:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1412              		.loc 1 413 5 view .LVU401
+ 408:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1413              		.loc 1 408 1 is_stmt 0 view .LVU402
+ 1414 0000 13B5     		push	{r0, r1, r4, lr}
+ 1415              	.LCFI51:
+ 1416              		.cfi_def_cfa_offset 16
+ 1417              		.cfi_offset 4, -8
+ 1418              		.cfi_offset 14, -4
+ 408:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1419              		.loc 1 408 1 view .LVU403
+ 1420 0002 CDE90032 		strd	r3, r2, [sp]
+ 1421              		.loc 1 413 14 view .LVU404
+ 1422 0006 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1423              	.LVL123:
+ 414:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1424              		.loc 1 414 5 is_stmt 1 view .LVU405
+ 1425              		.loc 1 414 7 is_stmt 0 view .LVU406
+ 1426 000a 58B1     		cbz	r0, .L149
+ 415:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 416:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->recvfrom))
+ 1427              		.loc 1 416 9 is_stmt 1 view .LVU407
+ 1428              		.loc 1 416 27 is_stmt 0 view .LVU408
+ 1429 000c 0468     		ldr	r4, [r0]
+ 1430              		.loc 1 416 11 view .LVU409
+ 1431 000e 4CB1     		cbz	r4, .L149
+ 1432              		.loc 1 416 55 discriminator 1 view .LVU410
+ 1433 0010 246B     		ldr	r4, [r4, #48]
+ 1434              		.loc 1 416 33 discriminator 1 view .LVU411
+ 1435 0012 3CB1     		cbz	r4, .L149
+ 417:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 418:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->recvfrom(sockcb->sock,buf,len,flags,from,fromlen);
+ 1436              		.loc 1 418 13 is_stmt 1 view .LVU412
+ 1437              		.loc 1 418 19 is_stmt 0 view .LVU413
+ 1438 0014 DDE90032 		ldrd	r3, r2, [sp]
+ 1439 0018 8068     		ldr	r0, [r0, #8]
+ 1440              	.LVL124:
+ 1441              		.loc 1 418 19 view .LVU414
+ 1442 001a A446     		mov	ip, r4
+ 419:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 420:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 422:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 423:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1443              		.loc 1 423 1 view .LVU415
+ 1444 001c 02B0     		add	sp, sp, #8
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 36
+
+
+ 1445              	.LCFI52:
+ 1446              		.cfi_remember_state
+ 1447              		.cfi_def_cfa_offset 8
+ 1448              	.LVL125:
+ 1449              		.loc 1 423 1 view .LVU416
+ 1450              		@ sp needed
+ 1451 001e BDE81040 		pop	{r4, lr}
+ 1452              	.LCFI53:
+ 1453              		.cfi_restore 14
+ 1454              		.cfi_restore 4
+ 1455              		.cfi_def_cfa_offset 0
+ 1456              	.LVL126:
+ 418:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1457              		.loc 1 418 19 view .LVU417
+ 1458 0022 6047     		bx	ip
+ 1459              	.LVL127:
+ 1460              	.L149:
+ 1461              	.LCFI54:
+ 1462              		.cfi_restore_state
+ 1463              		.loc 1 423 1 view .LVU418
+ 1464 0024 4FF0FF30 		mov	r0, #-1
+ 1465              	.LVL128:
+ 1466              		.loc 1 423 1 view .LVU419
+ 1467 0028 02B0     		add	sp, sp, #8
+ 1468              	.LCFI55:
+ 1469              		.cfi_def_cfa_offset 8
+ 1470              	.LVL129:
+ 1471              		.loc 1 423 1 view .LVU420
+ 1472              		@ sp needed
+ 1473 002a 10BD     		pop	{r4, pc}
+ 1474              		.loc 1 423 1 view .LVU421
+ 1475              		.cfi_endproc
+ 1476              	.LFE20:
+ 1478              		.section	.text.sal_send,"ax",%progbits
+ 1479              		.align	1
+ 1480              		.global	sal_send
+ 1481              		.syntax unified
+ 1482              		.thumb
+ 1483              		.thumb_func
+ 1484              		.fpu fpv4-sp-d16
+ 1486              	sal_send:
+ 1487              	.LVL130:
+ 1488              	.LFB21:
+ 424:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 425:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_send(int sockfd,const void *buf,size_t len,int flags)
+ 426:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1489              		.loc 1 426 1 is_stmt 1 view -0
+ 1490              		.cfi_startproc
+ 1491              		@ args = 0, pretend = 0, frame = 8
+ 1492              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 428:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1493              		.loc 1 428 5 view .LVU423
+ 429:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1494              		.loc 1 429 5 view .LVU424
+ 430:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 431:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 37
+
+
+ 1495              		.loc 1 431 5 view .LVU425
+ 426:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1496              		.loc 1 426 1 is_stmt 0 view .LVU426
+ 1497 0000 13B5     		push	{r0, r1, r4, lr}
+ 1498              	.LCFI56:
+ 1499              		.cfi_def_cfa_offset 16
+ 1500              		.cfi_offset 4, -8
+ 1501              		.cfi_offset 14, -4
+ 426:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1502              		.loc 1 426 1 view .LVU427
+ 1503 0002 CDE90032 		strd	r3, r2, [sp]
+ 1504              		.loc 1 431 14 view .LVU428
+ 1505 0006 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1506              	.LVL131:
+ 432:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1507              		.loc 1 432 5 is_stmt 1 view .LVU429
+ 1508              		.loc 1 432 7 is_stmt 0 view .LVU430
+ 1509 000a 58B1     		cbz	r0, .L157
+ 433:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->send))
+ 1510              		.loc 1 434 9 is_stmt 1 view .LVU431
+ 1511              		.loc 1 434 27 is_stmt 0 view .LVU432
+ 1512 000c 0468     		ldr	r4, [r0]
+ 1513              		.loc 1 434 11 view .LVU433
+ 1514 000e 4CB1     		cbz	r4, .L157
+ 1515              		.loc 1 434 55 discriminator 1 view .LVU434
+ 1516 0010 646A     		ldr	r4, [r4, #36]
+ 1517              		.loc 1 434 33 discriminator 1 view .LVU435
+ 1518 0012 3CB1     		cbz	r4, .L157
+ 435:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 436:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->send(sockcb->sock,buf,len,flags);
+ 1519              		.loc 1 436 13 is_stmt 1 view .LVU436
+ 1520              		.loc 1 436 19 is_stmt 0 view .LVU437
+ 1521 0014 DDE90032 		ldrd	r3, r2, [sp]
+ 1522 0018 8068     		ldr	r0, [r0, #8]
+ 1523              	.LVL132:
+ 1524              		.loc 1 436 19 view .LVU438
+ 1525 001a A446     		mov	ip, r4
+ 437:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 438:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 439:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 440:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 441:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1526              		.loc 1 441 1 view .LVU439
+ 1527 001c 02B0     		add	sp, sp, #8
+ 1528              	.LCFI57:
+ 1529              		.cfi_remember_state
+ 1530              		.cfi_def_cfa_offset 8
+ 1531              	.LVL133:
+ 1532              		.loc 1 441 1 view .LVU440
+ 1533              		@ sp needed
+ 1534 001e BDE81040 		pop	{r4, lr}
+ 1535              	.LCFI58:
+ 1536              		.cfi_restore 14
+ 1537              		.cfi_restore 4
+ 1538              		.cfi_def_cfa_offset 0
+ 1539              	.LVL134:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 38
+
+
+ 436:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1540              		.loc 1 436 19 view .LVU441
+ 1541 0022 6047     		bx	ip
+ 1542              	.LVL135:
+ 1543              	.L157:
+ 1544              	.LCFI59:
+ 1545              		.cfi_restore_state
+ 1546              		.loc 1 441 1 view .LVU442
+ 1547 0024 4FF0FF30 		mov	r0, #-1
+ 1548              	.LVL136:
+ 1549              		.loc 1 441 1 view .LVU443
+ 1550 0028 02B0     		add	sp, sp, #8
+ 1551              	.LCFI60:
+ 1552              		.cfi_def_cfa_offset 8
+ 1553              	.LVL137:
+ 1554              		.loc 1 441 1 view .LVU444
+ 1555              		@ sp needed
+ 1556 002a 10BD     		pop	{r4, pc}
+ 1557              		.loc 1 441 1 view .LVU445
+ 1558              		.cfi_endproc
+ 1559              	.LFE21:
+ 1561              		.section	.text.sal_sendto,"ax",%progbits
+ 1562              		.align	1
+ 1563              		.global	sal_sendto
+ 1564              		.syntax unified
+ 1565              		.thumb
+ 1566              		.thumb_func
+ 1567              		.fpu fpv4-sp-d16
+ 1569              	sal_sendto:
+ 1570              	.LVL138:
+ 1571              	.LFB22:
+ 442:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 443:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_sendto(int sockfd, const void *buf, size_t len, int flags,
+ 444:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     const struct sockaddr *to, socklen_t tolen)
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1572              		.loc 1 445 1 is_stmt 1 view -0
+ 1573              		.cfi_startproc
+ 1574              		@ args = 8, pretend = 0, frame = 8
+ 1575              		@ frame_needed = 0, uses_anonymous_args = 0
+ 446:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 447:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1576              		.loc 1 447 5 view .LVU447
+ 448:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1577              		.loc 1 448 5 view .LVU448
+ 449:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 450:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1578              		.loc 1 450 5 view .LVU449
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1579              		.loc 1 445 1 is_stmt 0 view .LVU450
+ 1580 0000 13B5     		push	{r0, r1, r4, lr}
+ 1581              	.LCFI61:
+ 1582              		.cfi_def_cfa_offset 16
+ 1583              		.cfi_offset 4, -8
+ 1584              		.cfi_offset 14, -4
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1585              		.loc 1 445 1 view .LVU451
+ 1586 0002 CDE90032 		strd	r3, r2, [sp]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 39
+
+
+ 1587              		.loc 1 450 14 view .LVU452
+ 1588 0006 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1589              	.LVL139:
+ 451:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1590              		.loc 1 451 5 is_stmt 1 view .LVU453
+ 1591              		.loc 1 451 7 is_stmt 0 view .LVU454
+ 1592 000a 58B1     		cbz	r0, .L165
+ 452:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 453:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->sendto))
+ 1593              		.loc 1 453 9 is_stmt 1 view .LVU455
+ 1594              		.loc 1 453 27 is_stmt 0 view .LVU456
+ 1595 000c 0468     		ldr	r4, [r0]
+ 1596              		.loc 1 453 11 view .LVU457
+ 1597 000e 4CB1     		cbz	r4, .L165
+ 1598              		.loc 1 453 55 discriminator 1 view .LVU458
+ 1599 0010 A46A     		ldr	r4, [r4, #40]
+ 1600              		.loc 1 453 33 discriminator 1 view .LVU459
+ 1601 0012 3CB1     		cbz	r4, .L165
+ 454:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 455:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->sendto(sockcb->sock,buf,len,flags,to,tolen);
+ 1602              		.loc 1 455 13 is_stmt 1 view .LVU460
+ 1603              		.loc 1 455 19 is_stmt 0 view .LVU461
+ 1604 0014 DDE90032 		ldrd	r3, r2, [sp]
+ 1605 0018 8068     		ldr	r0, [r0, #8]
+ 1606              	.LVL140:
+ 1607              		.loc 1 455 19 view .LVU462
+ 1608 001a A446     		mov	ip, r4
+ 456:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 457:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 458:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 459:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1609              		.loc 1 460 1 view .LVU463
+ 1610 001c 02B0     		add	sp, sp, #8
+ 1611              	.LCFI62:
+ 1612              		.cfi_remember_state
+ 1613              		.cfi_def_cfa_offset 8
+ 1614              	.LVL141:
+ 1615              		.loc 1 460 1 view .LVU464
+ 1616              		@ sp needed
+ 1617 001e BDE81040 		pop	{r4, lr}
+ 1618              	.LCFI63:
+ 1619              		.cfi_restore 14
+ 1620              		.cfi_restore 4
+ 1621              		.cfi_def_cfa_offset 0
+ 1622              	.LVL142:
+ 455:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1623              		.loc 1 455 19 view .LVU465
+ 1624 0022 6047     		bx	ip
+ 1625              	.LVL143:
+ 1626              	.L165:
+ 1627              	.LCFI64:
+ 1628              		.cfi_restore_state
+ 1629              		.loc 1 460 1 view .LVU466
+ 1630 0024 4FF0FF30 		mov	r0, #-1
+ 1631              	.LVL144:
+ 1632              		.loc 1 460 1 view .LVU467
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 40
+
+
+ 1633 0028 02B0     		add	sp, sp, #8
+ 1634              	.LCFI65:
+ 1635              		.cfi_def_cfa_offset 8
+ 1636              	.LVL145:
+ 1637              		.loc 1 460 1 view .LVU468
+ 1638              		@ sp needed
+ 1639 002a 10BD     		pop	{r4, pc}
+ 1640              		.loc 1 460 1 view .LVU469
+ 1641              		.cfi_endproc
+ 1642              	.LFE22:
+ 1644              		.section	.text.sal_shutdown,"ax",%progbits
+ 1645              		.align	1
+ 1646              		.global	sal_shutdown
+ 1647              		.syntax unified
+ 1648              		.thumb
+ 1649              		.thumb_func
+ 1650              		.fpu fpv4-sp-d16
+ 1652              	sal_shutdown:
+ 1653              	.LVL146:
+ 1654              	.LFB23:
+ 461:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 463:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_shutdown(int sockfd, int how)
+ 464:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1655              		.loc 1 464 1 is_stmt 1 view -0
+ 1656              		.cfi_startproc
+ 1657              		@ args = 0, pretend = 0, frame = 0
+ 1658              		@ frame_needed = 0, uses_anonymous_args = 0
+ 465:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 466:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1659              		.loc 1 466 5 view .LVU471
+ 467:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1660              		.loc 1 467 5 view .LVU472
+ 468:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 469:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1661              		.loc 1 469 5 view .LVU473
+ 464:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1662              		.loc 1 464 1 is_stmt 0 view .LVU474
+ 1663 0000 10B5     		push	{r4, lr}
+ 1664              	.LCFI66:
+ 1665              		.cfi_def_cfa_offset 8
+ 1666              		.cfi_offset 4, -8
+ 1667              		.cfi_offset 14, -4
+ 1668              		.loc 1 469 14 view .LVU475
+ 1669 0002 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1670              	.LVL147:
+ 470:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1671              		.loc 1 470 5 is_stmt 1 view .LVU476
+ 1672              		.loc 1 470 7 is_stmt 0 view .LVU477
+ 1673 0006 38B1     		cbz	r0, .L173
+ 471:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 472:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->shutdown))
+ 1674              		.loc 1 472 9 is_stmt 1 view .LVU478
+ 1675              		.loc 1 472 27 is_stmt 0 view .LVU479
+ 1676 0008 0368     		ldr	r3, [r0]
+ 1677              		.loc 1 472 11 view .LVU480
+ 1678 000a 2BB1     		cbz	r3, .L173
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 41
+
+
+ 1679              		.loc 1 472 55 discriminator 1 view .LVU481
+ 1680 000c 5B6B     		ldr	r3, [r3, #52]
+ 1681              		.loc 1 472 33 discriminator 1 view .LVU482
+ 1682 000e 1BB1     		cbz	r3, .L173
+ 473:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 474:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->shutdown(sockcb->sock,how);
+ 1683              		.loc 1 474 13 is_stmt 1 view .LVU483
+ 475:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 476:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 477:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 478:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 479:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1684              		.loc 1 479 1 is_stmt 0 view .LVU484
+ 1685 0010 BDE81040 		pop	{r4, lr}
+ 1686              	.LCFI67:
+ 1687              		.cfi_remember_state
+ 1688              		.cfi_restore 14
+ 1689              		.cfi_restore 4
+ 1690              		.cfi_def_cfa_offset 0
+ 474:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1691              		.loc 1 474 19 view .LVU485
+ 1692 0014 8068     		ldr	r0, [r0, #8]
+ 1693              	.LVL148:
+ 474:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1694              		.loc 1 474 19 view .LVU486
+ 1695 0016 1847     		bx	r3
+ 1696              	.LVL149:
+ 1697              	.L173:
+ 1698              	.LCFI68:
+ 1699              		.cfi_restore_state
+ 1700              		.loc 1 479 1 view .LVU487
+ 1701 0018 4FF0FF30 		mov	r0, #-1
+ 1702              	.LVL150:
+ 1703              		.loc 1 479 1 view .LVU488
+ 1704 001c 10BD     		pop	{r4, pc}
+ 1705              		.cfi_endproc
+ 1706              	.LFE23:
+ 1708              		.section	.text.sal_closesocket,"ax",%progbits
+ 1709              		.align	1
+ 1710              		.global	sal_closesocket
+ 1711              		.syntax unified
+ 1712              		.thumb
+ 1713              		.thumb_func
+ 1714              		.fpu fpv4-sp-d16
+ 1716              	sal_closesocket:
+ 1717              	.LVL151:
+ 1718              	.LFB24:
+ 480:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 481:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_closesocket(int sockfd)
+ 482:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1719              		.loc 1 482 1 is_stmt 1 view -0
+ 1720              		.cfi_startproc
+ 1721              		@ args = 0, pretend = 0, frame = 0
+ 1722              		@ frame_needed = 0, uses_anonymous_args = 0
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 484:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1723              		.loc 1 484 5 view .LVU490
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 42
+
+
+ 485:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1724              		.loc 1 485 5 view .LVU491
+ 486:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 487:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(sockfd);
+ 1725              		.loc 1 487 5 view .LVU492
+ 482:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 1726              		.loc 1 482 1 is_stmt 0 view .LVU493
+ 1727 0000 38B5     		push	{r3, r4, r5, lr}
+ 1728              	.LCFI69:
+ 1729              		.cfi_def_cfa_offset 16
+ 1730              		.cfi_offset 3, -16
+ 1731              		.cfi_offset 4, -12
+ 1732              		.cfi_offset 5, -8
+ 1733              		.cfi_offset 14, -4
+ 1734              		.loc 1 487 14 view .LVU494
+ 1735 0002 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1736              	.LVL152:
+ 488:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1737              		.loc 1 488 5 is_stmt 1 view .LVU495
+ 1738              		.loc 1 488 7 is_stmt 0 view .LVU496
+ 1739 0006 0546     		mov	r5, r0
+ 1740 0008 70B1     		cbz	r0, .L184
+ 489:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 490:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->closesocket))
+ 1741              		.loc 1 490 9 is_stmt 1 view .LVU497
+ 1742              		.loc 1 490 27 is_stmt 0 view .LVU498
+ 1743 000a 0368     		ldr	r3, [r0]
+ 1744              		.loc 1 490 11 view .LVU499
+ 1745 000c 4BB1     		cbz	r3, .L186
+ 1746              		.loc 1 490 55 discriminator 1 view .LVU500
+ 1747 000e 9B6B     		ldr	r3, [r3, #56]
+ 1748              		.loc 1 490 33 discriminator 1 view .LVU501
+ 1749 0010 3BB1     		cbz	r3, .L186
+ 491:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 492:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->closesocket(sockcb->sock);
+ 1750              		.loc 1 492 13 is_stmt 1 view .LVU502
+ 1751              		.loc 1 492 19 is_stmt 0 view .LVU503
+ 1752 0012 8068     		ldr	r0, [r0, #8]
+ 1753              	.LVL153:
+ 1754              		.loc 1 492 19 view .LVU504
+ 1755 0014 9847     		blx	r3
+ 1756              	.LVL154:
+ 1757 0016 0446     		mov	r4, r0
+ 1758              	.LVL155:
+ 1759              	.L183:
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 494:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 495:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         __sal_sockcb_free(sockcb->fd);
+ 1760              		.loc 1 495 9 is_stmt 1 view .LVU505
+ 1761 0018 6868     		ldr	r0, [r5, #4]
+ 1762 001a FFF7FEFF 		bl	__sal_sockcb_free
+ 1763              	.LVL156:
+ 1764              	.L181:
+ 496:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 497:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 498:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 499:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 43
+
+
+ 1765              		.loc 1 499 1 is_stmt 0 view .LVU506
+ 1766 001e 2046     		mov	r0, r4
+ 1767 0020 38BD     		pop	{r3, r4, r5, pc}
+ 1768              	.LVL157:
+ 1769              	.L186:
+ 484:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1770              		.loc 1 484 9 view .LVU507
+ 1771 0022 4FF0FF34 		mov	r4, #-1
+ 1772 0026 F7E7     		b	.L183
+ 1773              	.L184:
+ 1774 0028 4FF0FF34 		mov	r4, #-1
+ 498:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1775              		.loc 1 498 5 is_stmt 1 view .LVU508
+ 498:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1776              		.loc 1 498 12 is_stmt 0 view .LVU509
+ 1777 002c F7E7     		b	.L181
+ 1778              		.cfi_endproc
+ 1779              	.LFE24:
+ 1781              		.section	.text.sal_gethostbyname,"ax",%progbits
+ 1782              		.align	1
+ 1783              		.global	sal_gethostbyname
+ 1784              		.syntax unified
+ 1785              		.thumb
+ 1786              		.thumb_func
+ 1787              		.fpu fpv4-sp-d16
+ 1789              	sal_gethostbyname:
+ 1790              	.LVL158:
+ 1791              	.LFB25:
+ 500:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 501:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** struct hostent * sal_gethostbyname(const char *name)
+ 502:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1792              		.loc 1 502 1 is_stmt 1 view -0
+ 1793              		.cfi_startproc
+ 1794              		@ args = 0, pretend = 0, frame = 0
+ 1795              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1796              		@ link register save eliminated.
+ 503:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     struct hostent *ret =NULL;
+ 1797              		.loc 1 503 5 view .LVU511
+ 504:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if((NULL != s_sal_cb.domain)&&(NULL != s_sal_cb.domain->ops) &&\
+ 1798              		.loc 1 504 5 view .LVU512
+ 1799              		.loc 1 504 25 is_stmt 0 view .LVU513
+ 1800 0000 044B     		ldr	r3, .L197
+ 1801 0002 1B68     		ldr	r3, [r3]
+ 1802              		.loc 1 504 7 view .LVU514
+ 1803 0004 23B1     		cbz	r3, .L187
+ 1804              		.loc 1 504 59 discriminator 1 view .LVU515
+ 1805 0006 9B68     		ldr	r3, [r3, #8]
+ 1806              		.loc 1 504 33 discriminator 1 view .LVU516
+ 1807 0008 13B1     		cbz	r3, .L187
+ 505:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****        (NULL != s_sal_cb.domain->ops->gethostbyname))
+ 1808              		.loc 1 505 37 discriminator 2 view .LVU517
+ 1809 000a DB6B     		ldr	r3, [r3, #60]
+ 504:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if((NULL != s_sal_cb.domain)&&(NULL != s_sal_cb.domain->ops) &&\
+ 1810              		.loc 1 504 66 discriminator 2 view .LVU518
+ 1811 000c 03B1     		cbz	r3, .L187
+ 506:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 507:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         ret = (struct hostent *)s_sal_cb.domain->ops->gethostbyname(name);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 44
+
+
+ 1812              		.loc 1 507 9 is_stmt 1 view .LVU519
+ 1813              		.loc 1 507 33 is_stmt 0 view .LVU520
+ 1814 000e 1847     		bx	r3
+ 1815              	.LVL159:
+ 1816              	.L187:
+ 508:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 509:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 510:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1817              		.loc 1 510 1 view .LVU521
+ 1818 0010 0020     		movs	r0, #0
+ 1819              	.LVL160:
+ 1820              		.loc 1 510 1 view .LVU522
+ 1821 0012 7047     		bx	lr
+ 1822              	.L198:
+ 1823              		.align	2
+ 1824              	.L197:
+ 1825 0014 00000000 		.word	.LANCHOR0
+ 1826              		.cfi_endproc
+ 1827              	.LFE25:
+ 1829              		.section	.text.sal_select,"ax",%progbits
+ 1830              		.align	1
+ 1831              		.global	sal_select
+ 1832              		.syntax unified
+ 1833              		.thumb
+ 1834              		.thumb_func
+ 1835              		.fpu fpv4-sp-d16
+ 1837              	sal_select:
+ 1838              	.LVL161:
+ 1839              	.LFB26:
+ 511:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 512:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** int sal_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *time
+ 513:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** {
+ 1840              		.loc 1 513 1 is_stmt 1 view -0
+ 1841              		.cfi_startproc
+ 1842              		@ args = 4, pretend = 0, frame = 8
+ 1843              		@ frame_needed = 0, uses_anonymous_args = 0
+ 514:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1844              		.loc 1 514 5 view .LVU524
+ 515:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     tag_sock_cb *sockcb;
+ 1845              		.loc 1 515 5 view .LVU525
+ 516:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 517:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     sockcb = __sal_sockcb_getcb(nfds-1);
+ 1846              		.loc 1 517 5 view .LVU526
+ 513:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1847              		.loc 1 513 1 is_stmt 0 view .LVU527
+ 1848 0000 13B5     		push	{r0, r1, r4, lr}
+ 1849              	.LCFI70:
+ 1850              		.cfi_def_cfa_offset 16
+ 1851              		.cfi_offset 4, -8
+ 1852              		.cfi_offset 14, -4
+ 1853              		.loc 1 517 14 view .LVU528
+ 1854 0002 0138     		subs	r0, r0, #1
+ 1855              	.LVL162:
+ 513:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     int ret = -1;
+ 1856              		.loc 1 513 1 view .LVU529
+ 1857 0004 CDE90032 		strd	r3, r2, [sp]
+ 1858              		.loc 1 517 14 view .LVU530
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 45
+
+
+ 1859 0008 FFF7FEFF 		bl	__sal_sockcb_getcb
+ 1860              	.LVL163:
+ 518:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     if(NULL != sockcb)
+ 1861              		.loc 1 518 5 is_stmt 1 view .LVU531
+ 1862              		.loc 1 518 7 is_stmt 0 view .LVU532
+ 1863 000c 60B1     		cbz	r0, .L199
+ 519:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     {
+ 520:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         if((NULL != sockcb->ops)&&(NULL != sockcb->ops->select))
+ 1864              		.loc 1 520 9 is_stmt 1 view .LVU533
+ 1865              		.loc 1 520 27 is_stmt 0 view .LVU534
+ 1866 000e 0468     		ldr	r4, [r0]
+ 1867              		.loc 1 520 11 view .LVU535
+ 1868 0010 54B1     		cbz	r4, .L199
+ 1869              		.loc 1 520 55 discriminator 1 view .LVU536
+ 1870 0012 246C     		ldr	r4, [r4, #64]
+ 1871              		.loc 1 520 33 discriminator 1 view .LVU537
+ 1872 0014 44B1     		cbz	r4, .L199
+ 521:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         {
+ 522:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****             ret = sockcb->ops->select(sockcb->sock+1, readfds, writefds, exceptfds, timeout);
+ 1873              		.loc 1 522 13 is_stmt 1 view .LVU538
+ 1874              		.loc 1 522 19 is_stmt 0 view .LVU539
+ 1875 0016 8068     		ldr	r0, [r0, #8]
+ 1876              	.LVL164:
+ 1877              		.loc 1 522 19 view .LVU540
+ 1878 0018 DDE90032 		ldrd	r3, r2, [sp]
+ 1879 001c 0130     		adds	r0, r0, #1
+ 1880 001e A446     		mov	ip, r4
+ 523:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 524:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     }
+ 525:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** 
+ 526:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****     return ret;
+ 527:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c **** }
+ 1881              		.loc 1 527 1 view .LVU541
+ 1882 0020 02B0     		add	sp, sp, #8
+ 1883              	.LCFI71:
+ 1884              		.cfi_remember_state
+ 1885              		.cfi_def_cfa_offset 8
+ 1886              	.LVL165:
+ 1887              		.loc 1 527 1 view .LVU542
+ 1888              		@ sp needed
+ 1889 0022 BDE81040 		pop	{r4, lr}
+ 1890              	.LCFI72:
+ 1891              		.cfi_restore 14
+ 1892              		.cfi_restore 4
+ 1893              		.cfi_def_cfa_offset 0
+ 1894              	.LVL166:
+ 522:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/tcpip/sal\sal.c ****         }
+ 1895              		.loc 1 522 19 view .LVU543
+ 1896 0026 6047     		bx	ip
+ 1897              	.LVL167:
+ 1898              	.L199:
+ 1899              	.LCFI73:
+ 1900              		.cfi_restore_state
+ 1901              		.loc 1 527 1 view .LVU544
+ 1902 0028 4FF0FF30 		mov	r0, #-1
+ 1903              	.LVL168:
+ 1904              		.loc 1 527 1 view .LVU545
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 46
+
+
+ 1905 002c 02B0     		add	sp, sp, #8
+ 1906              	.LCFI74:
+ 1907              		.cfi_def_cfa_offset 8
+ 1908              	.LVL169:
+ 1909              		.loc 1 527 1 view .LVU546
+ 1910              		@ sp needed
+ 1911 002e 10BD     		pop	{r4, pc}
+ 1912              		.loc 1 527 1 view .LVU547
+ 1913              		.cfi_endproc
+ 1914              	.LFE26:
+ 1916              		.section	.bss.s_sal_cb,"aw",%nobits
+ 1917              		.align	2
+ 1918              		.set	.LANCHOR0,. + 0
+ 1921              	s_sal_cb:
+ 1922 0000 00000000 		.space	16
+ 1922      00000000 
+ 1922      00000000 
+ 1922      00000000 
+ 1923              		.section	.rodata.__FUNCTION__.7168,"a"
+ 1924              		.set	.LANCHOR1,. + 0
+ 1927              	__FUNCTION__.7168:
+ 1928 0000 6C696E6B 		.ascii	"link_tcpip_imp_init\000"
+ 1928      5F746370 
+ 1928      69705F69 
+ 1928      6D705F69 
+ 1928      6E697400 
+ 1929              		.section	.rodata.__FUNCTION__.7176,"a"
+ 1930              		.set	.LANCHOR2,. + 0
+ 1933              	__FUNCTION__.7176:
+ 1934 0000 6C696E6B 		.ascii	"link_tcpip_init\000"
+ 1934      5F746370 
+ 1934      69705F69 
+ 1934      6E697400 
+ 1935              		.text
+ 1936              	.Letext0:
+ 1937              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1938              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1939              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 1940              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1941              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1942              		.file 7 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1943              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1944              		.file 9 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1945              		.file 10 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal_types.h"
+ 1946              		.file 11 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/inc/sal_types.h"
+ 1947              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/inc/sal_imp.h"
+ 1948              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal.h"
+ 1949              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/inc/link_log.h"
+ 1950              		.file 15 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 1951              		.file 16 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 47
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sal.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:18     .text.__sal_sockcb_malloc:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:25     .text.__sal_sockcb_malloc:00000000 __sal_sockcb_malloc
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:129    .text.__sal_sockcb_malloc:00000054 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:134    .text.__sal_sockcb_getcb:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:140    .text.__sal_sockcb_getcb:00000000 __sal_sockcb_getcb
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:187    .text.__sal_sockcb_getcb:00000018 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:192    .text.__sal_sockcb_free:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:198    .text.__sal_sockcb_free:00000000 __sal_sockcb_free
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:286    .text.__sal_sockcb_free:00000034 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:295    .text.link_tcpip_imp_init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:302    .text.link_tcpip_imp_init:00000000 link_tcpip_imp_init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:364    .text.link_tcpip_imp_init:00000038 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:375    .text.link_tcpip_init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:382    .text.link_tcpip_init:00000000 link_tcpip_init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:503    .text.link_tcpip_init:00000078 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:511    .text.link_sal_install:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:518    .text.link_sal_install:00000000 link_sal_install
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:554    .text.link_sal_install:00000014 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:559    .text.sal_socket:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:566    .text.sal_socket:00000000 sal_socket
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:666    .text.sal_socket:00000040 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:671    .text.sal_bind:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:678    .text.sal_bind:00000000 sal_bind
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:746    .text.sal_listen:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:753    .text.sal_listen:00000000 sal_listen
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:810    .text.sal_accept:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:817    .text.sal_accept:00000000 sal_accept
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:922    .text.sal_connect:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:929    .text.sal_connect:00000000 sal_connect
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:997    .text.sal_getsockname:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1004   .text.sal_getsockname:00000000 sal_getsockname
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1072   .text.sal_getpeername:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1079   .text.sal_getpeername:00000000 sal_getpeername
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1147   .text.sal_getsockopt:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1154   .text.sal_getsockopt:00000000 sal_getsockopt
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1230   .text.sal_setsockopt:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1237   .text.sal_setsockopt:00000000 sal_setsockopt
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1313   .text.sal_recv:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1320   .text.sal_recv:00000000 sal_recv
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1396   .text.sal_recvfrom:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1403   .text.sal_recvfrom:00000000 sal_recvfrom
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1479   .text.sal_send:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1486   .text.sal_send:00000000 sal_send
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1562   .text.sal_sendto:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1569   .text.sal_sendto:00000000 sal_sendto
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1645   .text.sal_shutdown:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1652   .text.sal_shutdown:00000000 sal_shutdown
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1709   .text.sal_closesocket:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1716   .text.sal_closesocket:00000000 sal_closesocket
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1782   .text.sal_gethostbyname:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1789   .text.sal_gethostbyname:00000000 sal_gethostbyname
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1825   .text.sal_gethostbyname:00000014 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1830   .text.sal_select:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1837   .text.sal_select:00000000 sal_select
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1917   .bss.s_sal_cb:00000000 $d
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s 			page 48
+
+
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1921   .bss.s_sal_cb:00000000 s_sal_cb
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1927   .rodata.__FUNCTION__.7168:00000000 __FUNCTION__.7168
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccdw9Ur9.s:1933   .rodata.__FUNCTION__.7176:00000000 __FUNCTION__.7176
+
+UNDEFINED SYMBOLS
+osal_malloc
+osal_mutex_lock
+osal_mutex_unlock
+osal_free
+link_log_level_get
+link_log_level_name
+osal_sys_time
+printf
+fflush
+_impure_ptr
+osal_mutex_create
+osal_mutex_del
+memset

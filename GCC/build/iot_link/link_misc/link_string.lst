@@ -1,0 +1,1014 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"link_string.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.string_to_arg,"ax",%progbits
+  18              		.align	1
+  19              		.global	string_to_arg
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	string_to_arg:
+  27              	.LVL0:
+  28              	.LFB3:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/link_misc/link_string.c"
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** /**
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  *  2019-04-29 09:50  zhangqianfu  The first version  
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  *
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****  */
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** #include <stdint.h>
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** #include <stddef.h>
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** #include <string.h>
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** #include <osal.h>
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** //this function is used to format the char string to the argc mode
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** //this function will changed the original string, used it carefully
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** //return how many arguments has been
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** int string_to_arg(int *argc, const char *argv[],char *string)
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** {
+  30              		.loc 1 49 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int argvlen = 0;
+  34              		.loc 1 50 5 view .LVU1
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int paramnum = 0;
+  35              		.loc 1 51 5 view .LVU2
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     char *tmp = NULL;
+  36              		.loc 1 52 5 view .LVU3
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     char bak;
+  37              		.loc 1 53 5 view .LVU4
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int len;
+  38              		.loc 1 54 5 view .LVU5
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     argvlen = *argc;
+  39              		.loc 1 56 5 view .LVU6
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int argvlen = 0;
+  40              		.loc 1 49 1 is_stmt 0 view .LVU7
+  41 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  42              	.LCFI0:
+  43              		.cfi_def_cfa_offset 24
+  44              		.cfi_offset 4, -24
+  45              		.cfi_offset 5, -20
+  46              		.cfi_offset 6, -16
+  47              		.cfi_offset 7, -12
+  48              		.cfi_offset 8, -8
+  49              		.cfi_offset 14, -4
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     *argc = paramnum;
+  50              		.loc 1 57 11 view .LVU8
+  51 0004 0026     		movs	r6, #0
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     *argc = paramnum;
+  52              		.loc 1 56 13 view .LVU9
+  53 0006 D0F80080 		ldr	r8, [r0]
+  54              	.LVL1:
+  55              		.loc 1 57 5 is_stmt 1 view .LVU10
+  56              		.loc 1 57 11 is_stmt 0 view .LVU11
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 3
+
+
+  57 000a 0660     		str	r6, [r0]
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if(NULL == string)
+  58              		.loc 1 58 5 is_stmt 1 view .LVU12
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int argvlen = 0;
+  59              		.loc 1 49 1 is_stmt 0 view .LVU13
+  60 000c 0546     		mov	r5, r0
+  61 000e 0F46     		mov	r7, r1
+  62              		.loc 1 58 7 view .LVU14
+  63 0010 1446     		mov	r4, r2
+  64 0012 FAB1     		cbz	r2, .L9
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         return paramnum;
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     //use the '\0' to replace the ' '
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     len = strlen(string);
+  65              		.loc 1 64 5 is_stmt 1 view .LVU15
+  66              		.loc 1 64 11 is_stmt 0 view .LVU16
+  67 0014 1046     		mov	r0, r2
+  68              	.LVL2:
+  69              		.loc 1 64 11 view .LVU17
+  70 0016 FFF7FEFF 		bl	strlen
+  71              	.LVL3:
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     tmp = string;
+  72              		.loc 1 65 5 is_stmt 1 view .LVU18
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     while(tmp < (string + len))
+  73              		.loc 1 66 5 view .LVU19
+  74              		.loc 1 66 10 is_stmt 0 view .LVU20
+  75 001a 2346     		mov	r3, r4
+  76              		.loc 1 66 25 view .LVU21
+  77 001c 2044     		add	r0, r0, r4
+  78              	.LVL4:
+  79              	.L3:
+  80              		.loc 1 66 10 is_stmt 1 view .LVU22
+  81 001e 9842     		cmp	r0, r3
+  82 0020 07D8     		bhi	.L5
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         if(*tmp == ' ')
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             *tmp = '\0';
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp++;
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     bak = '\0';
+  83              		.loc 1 74 9 is_stmt 0 view .LVU23
+  84 0022 0022     		movs	r2, #0
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     char *tmp = NULL;
+  85              		.loc 1 51 9 view .LVU24
+  86 0024 1346     		mov	r3, r2
+  87              	.LVL5:
+  88              	.L6:
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     tmp = string;
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     while(tmp < (string + len))
+  89              		.loc 1 76 10 is_stmt 1 view .LVU25
+  90 0026 A042     		cmp	r0, r4
+  91 0028 09D8     		bhi	.L8
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 4
+
+
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         if((*tmp != '\0')&&(bak =='\0'))
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             if(paramnum < argvlen)
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             {
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****                 argv[paramnum] = tmp;
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****                 paramnum++;
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             }
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bak = *tmp;
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp++;
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     *argc = paramnum;
+  92              		.loc 1 89 5 view .LVU26
+  93              		.loc 1 89 11 is_stmt 0 view .LVU27
+  94 002a 2B60     		str	r3, [r5]
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     return paramnum;
+  95              		.loc 1 91 5 is_stmt 1 view .LVU28
+  96              	.LVL6:
+  97              	.L1:
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** }
+  98              		.loc 1 92 1 is_stmt 0 view .LVU29
+  99 002c 1846     		mov	r0, r3
+ 100 002e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 101              	.LVL7:
+ 102              	.L5:
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 103              		.loc 1 68 9 is_stmt 1 view .LVU30
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 104              		.loc 1 68 11 is_stmt 0 view .LVU31
+ 105 0032 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 106 0034 202A     		cmp	r2, #32
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 107              		.loc 1 70 13 is_stmt 1 view .LVU32
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 108              		.loc 1 70 18 is_stmt 0 view .LVU33
+ 109 0036 08BF     		it	eq
+ 110 0038 1E70     		strbeq	r6, [r3]
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 111              		.loc 1 72 9 is_stmt 1 view .LVU34
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 112              		.loc 1 72 12 is_stmt 0 view .LVU35
+ 113 003a 0133     		adds	r3, r3, #1
+ 114              	.LVL8:
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 115              		.loc 1 72 12 view .LVU36
+ 116 003c EFE7     		b	.L3
+ 117              	.LVL9:
+ 118              	.L8:
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 119              		.loc 1 78 9 is_stmt 1 view .LVU37
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 120              		.loc 1 78 11 is_stmt 0 view .LVU38
+ 121 003e 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
+ 122 0040 29B1     		cbz	r1, .L7
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 123              		.loc 1 78 26 discriminator 1 view .LVU39
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 5
+
+
+ 124 0042 22B9     		cbnz	r2, .L7
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             {
+ 125              		.loc 1 80 13 is_stmt 1 view .LVU40
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             {
+ 126              		.loc 1 80 15 is_stmt 0 view .LVU41
+ 127 0044 4345     		cmp	r3, r8
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****                 paramnum++;
+ 128              		.loc 1 82 17 is_stmt 1 view .LVU42
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****                 paramnum++;
+ 129              		.loc 1 82 32 is_stmt 0 view .LVU43
+ 130 0046 BCBF     		itt	lt
+ 131 0048 47F82340 		strlt	r4, [r7, r3, lsl #2]
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             }
+ 132              		.loc 1 83 17 is_stmt 1 view .LVU44
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             }
+ 133              		.loc 1 83 25 is_stmt 0 view .LVU45
+ 134 004c 0133     		addlt	r3, r3, #1
+ 135              	.LVL10:
+ 136              	.L7:
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp++;
+ 137              		.loc 1 86 9 is_stmt 1 view .LVU46
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp++;
+ 138              		.loc 1 86 13 is_stmt 0 view .LVU47
+ 139 004e 14F8012B 		ldrb	r2, [r4], #1	@ zero_extendqisi2
+ 140              	.LVL11:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 141              		.loc 1 87 9 is_stmt 1 view .LVU48
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 142              		.loc 1 87 9 is_stmt 0 view .LVU49
+ 143 0052 E8E7     		b	.L6
+ 144              	.LVL12:
+ 145              	.L9:
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 146              		.loc 1 60 16 view .LVU50
+ 147 0054 1346     		mov	r3, r2
+ 148 0056 E9E7     		b	.L1
+ 149              		.cfi_endproc
+ 150              	.LFE3:
+ 152              		.section	.text.osal_strdup,"ax",%progbits
+ 153              		.align	1
+ 154              		.global	osal_strdup
+ 155              		.syntax unified
+ 156              		.thumb
+ 157              		.thumb_func
+ 158              		.fpu fpv4-sp-d16
+ 160              	osal_strdup:
+ 161              	.LVL13:
+ 162              	.LFB4:
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** char *osal_strdup(const char *ch)
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** {
+ 163              		.loc 1 96 1 is_stmt 1 view -0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     char *copy;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 6
+
+
+ 167              		.loc 1 97 5 view .LVU52
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     size_t length;
+ 168              		.loc 1 98 5 view .LVU53
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if(NULL == ch)
+ 169              		.loc 1 100 5 view .LVU54
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     char *copy;
+ 170              		.loc 1 96 1 is_stmt 0 view .LVU55
+ 171 0000 70B5     		push	{r4, r5, r6, lr}
+ 172              	.LCFI1:
+ 173              		.cfi_def_cfa_offset 16
+ 174              		.cfi_offset 4, -16
+ 175              		.cfi_offset 5, -12
+ 176              		.cfi_offset 6, -8
+ 177              		.cfi_offset 14, -4
+ 178              		.loc 1 100 7 view .LVU56
+ 179 0002 0546     		mov	r5, r0
+ 180 0004 78B1     		cbz	r0, .L15
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         return NULL;
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     length = strlen(ch);
+ 181              		.loc 1 103 5 is_stmt 1 view .LVU57
+ 182              		.loc 1 103 14 is_stmt 0 view .LVU58
+ 183 0006 FFF7FEFF 		bl	strlen
+ 184              	.LVL14:
+ 185              		.loc 1 103 14 view .LVU59
+ 186 000a 0646     		mov	r6, r0
+ 187              	.LVL15:
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     copy = (char *)osal_malloc(length + 1);
+ 188              		.loc 1 104 5 is_stmt 1 view .LVU60
+ 189              		.loc 1 104 20 is_stmt 0 view .LVU61
+ 190 000c 0130     		adds	r0, r0, #1
+ 191              	.LVL16:
+ 192              		.loc 1 104 20 view .LVU62
+ 193 000e FFF7FEFF 		bl	osal_malloc
+ 194              	.LVL17:
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if(NULL == copy)
+ 195              		.loc 1 105 5 is_stmt 1 view .LVU63
+ 196              		.loc 1 105 7 is_stmt 0 view .LVU64
+ 197 0012 0446     		mov	r4, r0
+ 198 0014 28B1     		cbz	r0, .L13
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         return NULL;
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     (void) strncpy(copy, ch, length);
+ 199              		.loc 1 107 5 is_stmt 1 view .LVU65
+ 200              		.loc 1 107 12 is_stmt 0 view .LVU66
+ 201 0016 3246     		mov	r2, r6
+ 202 0018 2946     		mov	r1, r5
+ 203 001a FFF7FEFF 		bl	strncpy
+ 204              	.LVL18:
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     copy[length] = '\0';
+ 205              		.loc 1 108 5 is_stmt 1 view .LVU67
+ 206              		.loc 1 108 18 is_stmt 0 view .LVU68
+ 207 001e 0023     		movs	r3, #0
+ 208 0020 A355     		strb	r3, [r4, r6]
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     return copy;
+ 209              		.loc 1 110 5 is_stmt 1 view .LVU69
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 7
+
+
+ 210              	.LVL19:
+ 211              	.L13:
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** }
+ 212              		.loc 1 111 1 is_stmt 0 view .LVU70
+ 213 0022 2046     		mov	r0, r4
+ 214 0024 70BD     		pop	{r4, r5, r6, pc}
+ 215              	.LVL20:
+ 216              	.L15:
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 217              		.loc 1 101 16 view .LVU71
+ 218 0026 0446     		mov	r4, r0
+ 219 0028 FBE7     		b	.L13
+ 220              		.cfi_endproc
+ 221              	.LFE4:
+ 223              		.section	.text.osal_strcat,"ax",%progbits
+ 224              		.align	1
+ 225              		.global	osal_strcat
+ 226              		.syntax unified
+ 227              		.thumb
+ 228              		.thumb_func
+ 229              		.fpu fpv4-sp-d16
+ 231              	osal_strcat:
+ 232              	.LVL21:
+ 233              	.LFB5:
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** char *osal_strcat(char *str[])
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** {
+ 234              		.loc 1 114 1 is_stmt 1 view -0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 8
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     char *ret = NULL;
+ 238              		.loc 1 115 5 view .LVU73
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int str_tnum = 0;
+ 239              		.loc 1 116 5 view .LVU74
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int str_tlen = 0;
+ 240              		.loc 1 117 5 view .LVU75
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int str_off = 0;
+ 241              		.loc 1 118 5 view .LVU76
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int i = 0;
+ 242              		.loc 1 119 5 view .LVU77
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if(NULL == str)
+ 243              		.loc 1 121 5 view .LVU78
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     char *ret = NULL;
+ 244              		.loc 1 114 1 is_stmt 0 view .LVU79
+ 245 0000 2DE9F341 		push	{r0, r1, r4, r5, r6, r7, r8, lr}
+ 246              	.LCFI2:
+ 247              		.cfi_def_cfa_offset 32
+ 248              		.cfi_offset 4, -24
+ 249              		.cfi_offset 5, -20
+ 250              		.cfi_offset 6, -16
+ 251              		.cfi_offset 7, -12
+ 252              		.cfi_offset 8, -8
+ 253              		.cfi_offset 14, -4
+ 254              		.loc 1 121 7 view .LVU80
+ 255 0004 0446     		mov	r4, r0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 8
+
+
+ 256 0006 E8B9     		cbnz	r0, .L26
+ 257              	.LVL22:
+ 258              	.L23:
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         return ret;
+ 259              		.loc 1 123 16 view .LVU81
+ 260 0008 0027     		movs	r7, #0
+ 261              	.LVL23:
+ 262              	.L19:
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     while(NULL != str[i])
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         str_tlen += strlen(str[i]);
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         str_tnum++;
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         i++;
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     ret = osal_malloc(str_tlen);
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if(NULL != ret)
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         for(i =0;i< str_tnum;i++)
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             (void) memcpy(ret + str_off,str[i],strlen(str[i]));
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             str_off += strlen(str[i]);
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         ret[str_off] = '\0';
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     return ret;
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** }
+ 263              		.loc 1 146 1 view .LVU82
+ 264 000a 3846     		mov	r0, r7
+ 265 000c 02B0     		add	sp, sp, #8
+ 266              	.LCFI3:
+ 267              		.cfi_remember_state
+ 268              		.cfi_def_cfa_offset 24
+ 269              		@ sp needed
+ 270 000e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 271              	.LVL24:
+ 272              	.L22:
+ 273              	.LCFI4:
+ 274              		.cfi_restore_state
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         str_tnum++;
+ 275              		.loc 1 128 9 is_stmt 1 view .LVU83
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         str_tnum++;
+ 276              		.loc 1 128 21 is_stmt 0 view .LVU84
+ 277 0012 2846     		mov	r0, r5
+ 278 0014 FFF7FEFF 		bl	strlen
+ 279              	.LVL25:
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         i++;
+ 280              		.loc 1 129 17 view .LVU85
+ 281 0018 0136     		adds	r6, r6, #1
+ 282              	.LVL26:
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         str_tnum++;
+ 283              		.loc 1 128 18 view .LVU86
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 9
+
+
+ 284 001a 0744     		add	r7, r7, r0
+ 285              	.LVL27:
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         i++;
+ 286              		.loc 1 129 9 is_stmt 1 view .LVU87
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 287              		.loc 1 130 9 view .LVU88
+ 288              	.L20:
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 289              		.loc 1 126 10 view .LVU89
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 290              		.loc 1 126 22 is_stmt 0 view .LVU90
+ 291 001c 54F82650 		ldr	r5, [r4, r6, lsl #2]
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 292              		.loc 1 126 10 view .LVU91
+ 293 0020 002D     		cmp	r5, #0
+ 294 0022 F6D1     		bne	.L22
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if(NULL != ret)
+ 295              		.loc 1 133 5 is_stmt 1 view .LVU92
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if(NULL != ret)
+ 296              		.loc 1 133 11 is_stmt 0 view .LVU93
+ 297 0024 3846     		mov	r0, r7
+ 298 0026 FFF7FEFF 		bl	osal_malloc
+ 299              	.LVL28:
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 300              		.loc 1 134 5 is_stmt 1 view .LVU94
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 301              		.loc 1 134 7 is_stmt 0 view .LVU95
+ 302 002a 0746     		mov	r7, r0
+ 303              	.LVL29:
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 304              		.loc 1 134 7 view .LVU96
+ 305 002c 0028     		cmp	r0, #0
+ 306 002e EBD0     		beq	.L23
+ 307 0030 04EB8606 		add	r6, r4, r6, lsl #2
+ 308              	.LVL30:
+ 309              	.L24:
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 310              		.loc 1 136 18 is_stmt 1 discriminator 1 view .LVU97
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 311              		.loc 1 136 9 is_stmt 0 discriminator 1 view .LVU98
+ 312 0034 A642     		cmp	r6, r4
+ 313 0036 07EB0508 		add	r8, r7, r5
+ 314 003a 06D1     		bne	.L25
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 315              		.loc 1 142 9 is_stmt 1 view .LVU99
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 316              		.loc 1 142 22 is_stmt 0 view .LVU100
+ 317 003c 0023     		movs	r3, #0
+ 318 003e 88F80030 		strb	r3, [r8]
+ 319 0042 E2E7     		b	.L19
+ 320              	.LVL31:
+ 321              	.L26:
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int str_off = 0;
+ 322              		.loc 1 117 9 view .LVU101
+ 323 0044 0027     		movs	r7, #0
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int str_tlen = 0;
+ 324              		.loc 1 116 9 view .LVU102
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 10
+
+
+ 325 0046 3E46     		mov	r6, r7
+ 326 0048 E8E7     		b	.L20
+ 327              	.LVL32:
+ 328              	.L25:
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             str_off += strlen(str[i]);
+ 329              		.loc 1 139 13 is_stmt 1 discriminator 3 view .LVU103
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             str_off += strlen(str[i]);
+ 330              		.loc 1 139 20 is_stmt 0 discriminator 3 view .LVU104
+ 331 004a 2168     		ldr	r1, [r4]
+ 332 004c 0191     		str	r1, [sp, #4]
+ 333 004e 0846     		mov	r0, r1
+ 334 0050 FFF7FEFF 		bl	strlen
+ 335              	.LVL33:
+ 336 0054 0199     		ldr	r1, [sp, #4]
+ 337 0056 0246     		mov	r2, r0
+ 338 0058 4046     		mov	r0, r8
+ 339 005a FFF7FEFF 		bl	memcpy
+ 340              	.LVL34:
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 341              		.loc 1 140 13 is_stmt 1 discriminator 3 view .LVU105
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 342              		.loc 1 140 24 is_stmt 0 discriminator 3 view .LVU106
+ 343 005e 54F8040B 		ldr	r0, [r4], #4
+ 344 0062 FFF7FEFF 		bl	strlen
+ 345              	.LVL35:
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 346              		.loc 1 140 21 discriminator 3 view .LVU107
+ 347 0066 0544     		add	r5, r5, r0
+ 348              	.LVL36:
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 349              		.loc 1 136 30 is_stmt 1 discriminator 3 view .LVU108
+ 350 0068 E4E7     		b	.L24
+ 351              		.cfi_endproc
+ 352              	.LFE5:
+ 354              		.section	.text.hexstr2byte,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	hexstr2byte
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 360              		.fpu fpv4-sp-d16
+ 362              	hexstr2byte:
+ 363              	.LVL37:
+ 364              	.LFB6:
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** /*
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** int hexstr2byte(const char *bufin, int len, char *bufout)
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** {
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int i = 0;
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     unsigned char tmp2 = 0x0;
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     unsigned int tmp = 0;
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     char cc;
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if (NULL == bufin || len <= 0 || NULL == bufout)
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         return -1;
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 11
+
+
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     for(i = 0; i < len; i = i+2)
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp2 =  (unsigned char )bufin[i];
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp2 =  tmp2 <= '9'?(unsigned char)(unsigned int)(tmp2-0x30):(unsigned char)(unsigned int)(
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         cc = bufin[i+1];
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp =  (unsigned int)(unsigned char)cc;
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp =  tmp <= '9'?(unsigned int)(tmp-0x30):(unsigned int)(tmp-0x37);
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[i/2] =(tmp2<<4)|(tmp&0x0F);
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     return 0;
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** }
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** */
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** int hexstr2byte(const char *buf, int len, char *bufout)
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** {
+ 365              		.loc 1 175 1 view -0
+ 366              		.cfi_startproc
+ 367              		@ args = 0, pretend = 0, frame = 0
+ 368              		@ frame_needed = 0, uses_anonymous_args = 0
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int ret = -1;
+ 369              		.loc 1 176 5 view .LVU110
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int i = 0;
+ 370              		.loc 1 177 5 view .LVU111
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     uint8_t low;
+ 371              		.loc 1 178 5 view .LVU112
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     uint8_t high;
+ 372              		.loc 1 179 5 view .LVU113
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if (NULL == buf || len <= 0 || NULL == bufout)
+ 373              		.loc 1 181 5 view .LVU114
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int ret = -1;
+ 374              		.loc 1 175 1 is_stmt 0 view .LVU115
+ 375 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 376              	.LCFI5:
+ 377              		.cfi_def_cfa_offset 20
+ 378              		.cfi_offset 4, -20
+ 379              		.cfi_offset 5, -16
+ 380              		.cfi_offset 6, -12
+ 381              		.cfi_offset 7, -8
+ 382              		.cfi_offset 14, -4
+ 383              		.loc 1 181 8 view .LVU116
+ 384 0002 A0B3     		cbz	r0, .L31
+ 385              		.loc 1 181 21 discriminator 1 view .LVU117
+ 386 0004 0029     		cmp	r1, #0
+ 387 0006 32DD     		ble	.L31
+ 388              		.loc 1 181 33 discriminator 2 view .LVU118
+ 389 0008 8AB3     		cbz	r2, .L31
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         return ret;
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     ret = 0;
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     for(i = 0; i < len; i = i+2)
+ 390              		.loc 1 187 11 view .LVU119
+ 391 000a 0026     		movs	r6, #0
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 12
+
+
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         if(((buf[i]) >= '0') && (buf[i] <= '9'))
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             high = (uint8_t)( buf[i] - '0');
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         else if((buf[i] >= 'A') && (buf[i] <= 'F'))
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             high = (uint8_t)( buf[i] - 'A') + 10;
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         else if((buf[i] >= 'a') && (buf[i] <= 'f'))
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             high = (uint8_t)( buf[i] - 'a') + 10;
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         else
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             ret = -1;
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             break;
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         if(((buf[i+1]) >= '0') && (buf[i+1] <= '9'))
+ 392              		.loc 1 207 17 view .LVU120
+ 393 000c 471C     		adds	r7, r0, #1
+ 394              	.LVL38:
+ 395              	.L36:
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 396              		.loc 1 189 9 is_stmt 1 view .LVU121
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 397              		.loc 1 189 17 is_stmt 0 view .LVU122
+ 398 000e 845D     		ldrb	r4, [r0, r6]	@ zero_extendqisi2
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 399              		.loc 1 189 30 view .LVU123
+ 400 0010 A4F13003 		sub	r3, r4, #48
+ 401 0014 5FFA83FC 		uxtb	ip, r3
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 402              		.loc 1 189 11 view .LVU124
+ 403 0018 BCF1090F 		cmp	ip, #9
+ 404 001c 06D9     		bls	.L32
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 405              		.loc 1 193 14 is_stmt 1 view .LVU125
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 406              		.loc 1 193 16 is_stmt 0 view .LVU126
+ 407 001e A4F14103 		sub	r3, r4, #65
+ 408 0022 052B     		cmp	r3, #5
+ 409 0024 17D8     		bhi	.L33
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 410              		.loc 1 195 13 is_stmt 1 view .LVU127
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 411              		.loc 1 195 18 is_stmt 0 view .LVU128
+ 412 0026 373C     		subs	r4, r4, #55
+ 413              	.L45:
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 414              		.loc 1 199 18 view .LVU129
+ 415 0028 5FFA84FC 		uxtb	ip, r4
+ 416              	.LVL39:
+ 417              	.L32:
+ 418              		.loc 1 207 9 is_stmt 1 view .LVU130
+ 419              		.loc 1 207 17 is_stmt 0 view .LVU131
+ 420 002c BB5D     		ldrb	r3, [r7, r6]	@ zero_extendqisi2
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 13
+
+
+ 421              		.loc 1 207 32 view .LVU132
+ 422 002e A3F13005 		sub	r5, r3, #48
+ 423 0032 EDB2     		uxtb	r5, r5
+ 424              		.loc 1 207 11 view .LVU133
+ 425 0034 092D     		cmp	r5, #9
+ 426 0036 05D9     		bls	.L34
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             low = (uint8_t)( buf[i+1] - '0');
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         else if((buf[i+1] >= 'A') && (buf[i+1] <= 'F'))
+ 427              		.loc 1 211 14 is_stmt 1 view .LVU134
+ 428              		.loc 1 211 16 is_stmt 0 view .LVU135
+ 429 0038 A3F14104 		sub	r4, r3, #65
+ 430 003c 052C     		cmp	r4, #5
+ 431 003e 10D8     		bhi	.L35
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             low = (uint8_t)( buf[i+1] - 'A') + 10;
+ 432              		.loc 1 213 13 is_stmt 1 view .LVU136
+ 433              		.loc 1 213 17 is_stmt 0 view .LVU137
+ 434 0040 373B     		subs	r3, r3, #55
+ 435              	.L46:
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         else if((buf[i+1] >= 'a') && (buf[i+1] <= 'f'))
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             low = (uint8_t)( buf[i+1] - 'a') + 10;
+ 436              		.loc 1 217 17 view .LVU138
+ 437 0042 DDB2     		uxtb	r5, r3
+ 438              	.LVL40:
+ 439              	.L34:
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         else
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             ret = -1;
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****             break;
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[i/2] = (char)((high<<4)|(low&0x0F));
+ 440              		.loc 1 225 9 is_stmt 1 discriminator 2 view .LVU139
+ 441              		.loc 1 225 17 is_stmt 0 discriminator 2 view .LVU140
+ 442 0044 7410     		asrs	r4, r6, #1
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 443              		.loc 1 187 27 discriminator 2 view .LVU141
+ 444 0046 0236     		adds	r6, r6, #2
+ 445              	.LVL41:
+ 446              		.loc 1 225 39 discriminator 2 view .LVU142
+ 447 0048 45EA0C13 		orr	r3, r5, ip, lsl #4
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 448              		.loc 1 187 5 discriminator 2 view .LVU143
+ 449 004c B142     		cmp	r1, r6
+ 450              		.loc 1 225 21 discriminator 2 view .LVU144
+ 451 004e 1355     		strb	r3, [r2, r4]
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 452              		.loc 1 187 25 is_stmt 1 discriminator 2 view .LVU145
+ 453              	.LVL42:
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 454              		.loc 1 187 16 discriminator 2 view .LVU146
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 14
+
+
+ 455              		.loc 1 187 5 is_stmt 0 discriminator 2 view .LVU147
+ 456 0050 DDDC     		bgt	.L36
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     for(i = 0; i < len; i = i+2)
+ 457              		.loc 1 186 9 view .LVU148
+ 458 0052 0020     		movs	r0, #0
+ 459              	.LVL43:
+ 460              	.L30:
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     return ret;
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** }
+ 461              		.loc 1 228 1 view .LVU149
+ 462 0054 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 463              	.LVL44:
+ 464              	.L33:
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 465              		.loc 1 197 14 is_stmt 1 view .LVU150
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 466              		.loc 1 197 16 is_stmt 0 view .LVU151
+ 467 0056 A4F16103 		sub	r3, r4, #97
+ 468 005a 052B     		cmp	r3, #5
+ 469 005c 07D8     		bhi	.L31
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 470              		.loc 1 199 13 is_stmt 1 view .LVU152
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 471              		.loc 1 199 18 is_stmt 0 view .LVU153
+ 472 005e 573C     		subs	r4, r4, #87
+ 473 0060 E2E7     		b	.L45
+ 474              	.LVL45:
+ 475              	.L35:
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 476              		.loc 1 215 14 is_stmt 1 view .LVU154
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         {
+ 477              		.loc 1 215 16 is_stmt 0 view .LVU155
+ 478 0062 A3F16104 		sub	r4, r3, #97
+ 479 0066 052C     		cmp	r4, #5
+ 480 0068 01D8     		bhi	.L31
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 481              		.loc 1 217 13 is_stmt 1 view .LVU156
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         }
+ 482              		.loc 1 217 17 is_stmt 0 view .LVU157
+ 483 006a 573B     		subs	r3, r3, #87
+ 484 006c E9E7     		b	.L46
+ 485              	.LVL46:
+ 486              	.L31:
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 487              		.loc 1 183 16 view .LVU158
+ 488 006e 4FF0FF30 		mov	r0, #-1
+ 489              	.LVL47:
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 490              		.loc 1 183 16 view .LVU159
+ 491 0072 EFE7     		b	.L30
+ 492              		.cfi_endproc
+ 493              	.LFE6:
+ 495              		.section	.text.byte2hexstr,"ax",%progbits
+ 496              		.align	1
+ 497              		.global	byte2hexstr
+ 498              		.syntax unified
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 15
+
+
+ 499              		.thumb
+ 500              		.thumb_func
+ 501              		.fpu fpv4-sp-d16
+ 503              	byte2hexstr:
+ 504              	.LVL48:
+ 505              	.LFB7:
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** //make a byte to 2 ascii hex
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** int byte2hexstr(uint8_t *bufin, int len, char *bufout)
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** {
+ 506              		.loc 1 234 1 is_stmt 1 view -0
+ 507              		.cfi_startproc
+ 508              		@ args = 0, pretend = 0, frame = 0
+ 509              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int i = 0;
+ 510              		.loc 1 235 5 view .LVU161
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     uint8_t tmp_l = 0x0;
+ 511              		.loc 1 236 5 view .LVU162
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     uint8_t tmp_h = 0;
+ 512              		.loc 1 237 5 view .LVU163
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     if ((NULL == bufin )|| (len <= 0 )||( NULL == bufout))
+ 513              		.loc 1 238 5 view .LVU164
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     int i = 0;
+ 514              		.loc 1 234 1 is_stmt 0 view .LVU165
+ 515 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 516              	.LCFI6:
+ 517              		.cfi_def_cfa_offset 20
+ 518              		.cfi_offset 4, -20
+ 519              		.cfi_offset 5, -16
+ 520              		.cfi_offset 6, -12
+ 521              		.cfi_offset 7, -8
+ 522              		.cfi_offset 14, -4
+ 523              		.loc 1 238 8 view .LVU166
+ 524 0002 D8B1     		cbz	r0, .L56
+ 525              		.loc 1 238 25 discriminator 1 view .LVU167
+ 526 0004 0029     		cmp	r1, #0
+ 527 0006 19DD     		ble	.L56
+ 528              		.loc 1 238 39 discriminator 2 view .LVU168
+ 529 0008 C2B1     		cbz	r2, .L56
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         return -1;
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     for(i = 0; i < len; i++)
+ 530              		.loc 1 242 11 view .LVU169
+ 531 000a 0023     		movs	r3, #0
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp_h = (bufin[i]>>4)&0X0F;
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp_l = bufin[i] &0x0F;
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[2*i] = (tmp_h > 9)? (tmp_h - 10 + 'a'):(tmp_h +'0');
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[2*i + 1] = (tmp_l > 9)? (tmp_l - 10 + 'a'):(tmp_l +'0');
+ 532              		.loc 1 247 25 view .LVU170
+ 533 000c 571C     		adds	r7, r2, #1
+ 534              	.LVL49:
+ 535              	.L53:
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp_l = bufin[i] &0x0F;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 16
+
+
+ 536              		.loc 1 244 9 is_stmt 1 view .LVU171
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp_l = bufin[i] &0x0F;
+ 537              		.loc 1 244 23 is_stmt 0 view .LVU172
+ 538 000e C65C     		ldrb	r6, [r0, r3]	@ zero_extendqisi2
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[2*i] = (tmp_h > 9)? (tmp_h - 10 + 'a'):(tmp_h +'0');
+ 539              		.loc 1 245 15 view .LVU173
+ 540 0010 06F00F04 		and	r4, r6, #15
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         tmp_l = bufin[i] &0x0F;
+ 541              		.loc 1 244 15 view .LVU174
+ 542 0014 3509     		lsrs	r5, r6, #4
+ 543              	.LVL50:
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[2*i] = (tmp_h > 9)? (tmp_h - 10 + 'a'):(tmp_h +'0');
+ 544              		.loc 1 245 9 is_stmt 1 view .LVU175
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[2*i + 1] = (tmp_l > 9)? (tmp_l - 10 + 'a'):(tmp_l +'0');
+ 545              		.loc 1 246 9 view .LVU176
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[2*i + 1] = (tmp_l > 9)? (tmp_l - 10 + 'a'):(tmp_l +'0');
+ 546              		.loc 1 246 21 is_stmt 0 view .LVU177
+ 547 0016 9F2E     		cmp	r6, #159
+ 548 0018 8CBF     		ite	hi
+ 549 001a 5735     		addhi	r5, r5, #87
+ 550              	.LVL51:
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[2*i + 1] = (tmp_l > 9)? (tmp_l - 10 + 'a'):(tmp_l +'0');
+ 551              		.loc 1 246 21 view .LVU178
+ 552 001c 3035     		addls	r5, r5, #48
+ 553              		.loc 1 247 25 view .LVU179
+ 554 001e 092C     		cmp	r4, #9
+ 555 0020 8CBF     		ite	hi
+ 556 0022 5734     		addhi	r4, r4, #87
+ 557              	.LVL52:
+ 558              		.loc 1 247 25 view .LVU180
+ 559 0024 3034     		addls	r4, r4, #48
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****         bufout[2*i + 1] = (tmp_l > 9)? (tmp_l - 10 + 'a'):(tmp_l +'0');
+ 560              		.loc 1 246 21 view .LVU181
+ 561 0026 02F81350 		strb	r5, [r2, r3, lsl #1]
+ 562              		.loc 1 247 9 is_stmt 1 view .LVU182
+ 563              		.loc 1 247 25 is_stmt 0 view .LVU183
+ 564 002a 07F81340 		strb	r4, [r7, r3, lsl #1]
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 565              		.loc 1 242 25 is_stmt 1 view .LVU184
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 566              		.loc 1 242 26 is_stmt 0 view .LVU185
+ 567 002e 0133     		adds	r3, r3, #1
+ 568              	.LVL53:
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 569              		.loc 1 242 16 is_stmt 1 view .LVU186
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     {
+ 570              		.loc 1 242 5 is_stmt 0 view .LVU187
+ 571 0030 9942     		cmp	r1, r3
+ 572 0032 ECD1     		bne	.L53
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     bufout[2*len] = '\0';
+ 573              		.loc 1 249 5 is_stmt 1 view .LVU188
+ 574              		.loc 1 249 19 is_stmt 0 view .LVU189
+ 575 0034 0020     		movs	r0, #0
+ 576              	.LVL54:
+ 577              		.loc 1 249 19 view .LVU190
+ 578 0036 02F81100 		strb	r0, [r2, r1, lsl #1]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 17
+
+
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** 
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     return 0;
+ 579              		.loc 1 251 5 is_stmt 1 view .LVU191
+ 580              	.LVL55:
+ 581              	.L47:
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c **** }
+ 582              		.loc 1 252 1 is_stmt 0 view .LVU192
+ 583 003a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 584              	.LVL56:
+ 585              	.L56:
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 586              		.loc 1 240 16 view .LVU193
+ 587 003c 4FF0FF30 		mov	r0, #-1
+ 588              	.LVL57:
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_string.c ****     }
+ 589              		.loc 1 240 16 view .LVU194
+ 590 0040 FBE7     		b	.L47
+ 591              		.cfi_endproc
+ 592              	.LFE7:
+ 594              		.text
+ 595              	.Letext0:
+ 596              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 597              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 598              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 599              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 600              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 601              		.file 7 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 602              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 603              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal.h"
+ 604              		.file 10 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s 			page 18
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 link_string.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:18     .text.string_to_arg:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:26     .text.string_to_arg:00000000 string_to_arg
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:153    .text.osal_strdup:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:160    .text.osal_strdup:00000000 osal_strdup
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:224    .text.osal_strcat:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:231    .text.osal_strcat:00000000 osal_strcat
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:355    .text.hexstr2byte:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:362    .text.hexstr2byte:00000000 hexstr2byte
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:496    .text.byte2hexstr:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc146FLd.s:503    .text.byte2hexstr:00000000 byte2hexstr
+
+UNDEFINED SYMBOLS
+strlen
+osal_malloc
+strncpy
+memcpy

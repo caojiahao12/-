@@ -1,0 +1,246 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_timeslice.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.osTimesliceInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	osTimesliceInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	osTimesliceInit:
+  27              	.LFB289:
+  28              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core/los_
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s 			page 2
+
+
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** 
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #include "los_sys.ph"
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #include "los_task.ph"
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #include "los_tick.ph"
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #include "los_typedef.ph"
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #include "los_timeslice.ph"
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** 
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #ifdef __cplusplus
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #if __cplusplus
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** extern "C" {
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #endif /* __cplusplus */
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #endif /* __cplusplus */
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** 
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** #if(LOSCFG_BASE_CORE_TIMESLICE == YES)
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** LITE_OS_SEC_BSS OS_TASK_ROBIN_S        g_stTaskTimeSlice;
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** 
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** /*****************************************************************************
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Function     : osTimesliceInit
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Description  : Initialztion Timeslice
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Input        : None
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Output       : None
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Return       : None
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  *****************************************************************************/
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** LITE_OS_SEC_TEXT_INIT VOID osTimesliceInit(VOID)
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** {
+  29              		.loc 1 58 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****     g_stTaskTimeSlice.pstTask = (LOS_TASK_CB *)NULL;
+  34              		.loc 1 59 5 view .LVU1
+  35              		.loc 1 59 31 is_stmt 0 view .LVU2
+  36 0000 024B     		ldr	r3, .L2
+  37 0002 0022     		movs	r2, #0
+  38 0004 1A60     		str	r2, [r3]
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****     g_stTaskTimeSlice.usTout = LOSCFG_BASE_CORE_TIMESLICE_TIMEOUT;
+  39              		.loc 1 60 5 is_stmt 1 view .LVU3
+  40              		.loc 1 60 30 is_stmt 0 view .LVU4
+  41 0006 0A22     		movs	r2, #10
+  42 0008 DA80     		strh	r2, [r3, #6]	@ movhi
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** }
+  43              		.loc 1 61 1 view .LVU5
+  44 000a 7047     		bx	lr
+  45              	.L3:
+  46              		.align	2
+  47              	.L2:
+  48 000c 00000000 		.word	g_stTaskTimeSlice
+  49              		.cfi_endproc
+  50              	.LFE289:
+  52              		.section	.text.osTimesliceCheck,"ax",%progbits
+  53              		.align	1
+  54              		.global	osTimesliceCheck
+  55              		.syntax unified
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s 			page 3
+
+
+  56              		.thumb
+  57              		.thumb_func
+  58              		.fpu fpv4-sp-d16
+  60              	osTimesliceCheck:
+  61              	.LFB290:
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** 
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** /*****************************************************************************
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Function     : osTimesliceCheck
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Description  : check Timeslice
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Input        : None
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Output       : None
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  Return       : None
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****  *****************************************************************************/
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** LITE_OS_SEC_TEXT VOID osTimesliceCheck(VOID)
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** {
+  62              		.loc 1 71 1 is_stmt 1 view -0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****     if (g_stTaskTimeSlice.pstTask != g_stLosTask.pstRunTask)
+  67              		.loc 1 72 5 view .LVU7
+  68              		.loc 1 72 49 is_stmt 0 view .LVU8
+  69 0000 0A4B     		ldr	r3, .L7
+  70 0002 1A68     		ldr	r2, [r3]
+  71 0004 0A4B     		ldr	r3, .L7+4
+  72 0006 1988     		ldrh	r1, [r3]
+  73              		.loc 1 72 26 view .LVU9
+  74 0008 0A4B     		ldr	r3, .L7+8
+  75              		.loc 1 72 8 view .LVU10
+  76 000a 1868     		ldr	r0, [r3]
+  77 000c 9042     		cmp	r0, r2
+  78 000e 04D0     		beq	.L5
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****     {
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****         g_stTaskTimeSlice.pstTask = g_stLosTask.pstRunTask;
+  79              		.loc 1 74 9 is_stmt 1 view .LVU11
+  80              		.loc 1 74 35 is_stmt 0 view .LVU12
+  81 0010 1A60     		str	r2, [r3]
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****         g_stTaskTimeSlice.usTime = (UINT16)g_ullTickCount + g_stTaskTimeSlice.usTout - 1;
+  82              		.loc 1 75 9 is_stmt 1 view .LVU13
+  83              		.loc 1 75 86 is_stmt 0 view .LVU14
+  84 0012 DA88     		ldrh	r2, [r3, #6]
+  85 0014 013A     		subs	r2, r2, #1
+  86 0016 0A44     		add	r2, r2, r1
+  87              		.loc 1 75 34 view .LVU15
+  88 0018 9A80     		strh	r2, [r3, #4]	@ movhi
+  89              	.L5:
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****     }
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** 
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****     if (g_stTaskTimeSlice.usTime == (UINT16)g_ullTickCount)
+  90              		.loc 1 78 5 is_stmt 1 view .LVU16
+  91              		.loc 1 78 8 is_stmt 0 view .LVU17
+  92 001a 9A88     		ldrh	r2, [r3, #4]
+  93 001c 8A42     		cmp	r2, r1
+  94 001e 03D1     		bne	.L4
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****     {
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****         g_stTaskTimeSlice.pstTask = (LOS_TASK_CB *)NULL;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s 			page 4
+
+
+  95              		.loc 1 80 9 is_stmt 1 view .LVU18
+  96              		.loc 1 80 35 is_stmt 0 view .LVU19
+  97 0020 0022     		movs	r2, #0
+  98 0022 1A60     		str	r2, [r3]
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****         if (LOS_TaskYield() != LOS_OK)
+  99              		.loc 1 81 9 is_stmt 1 view .LVU20
+ 100              		.loc 1 81 13 is_stmt 0 view .LVU21
+ 101 0024 FFF7FEBF 		b	LOS_TaskYield
+ 102              	.LVL0:
+ 103              	.L4:
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****         {
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****             PRINT_INFO("%s, %d\n", __FUNCTION__, __LINE__);
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****         }
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c ****     } /*lint !e548*/
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/core\los_timeslice.c **** }
+ 104              		.loc 1 86 1 view .LVU22
+ 105 0028 7047     		bx	lr
+ 106              	.L8:
+ 107 002a 00BF     		.align	2
+ 108              	.L7:
+ 109 002c 00000000 		.word	g_stLosTask
+ 110 0030 00000000 		.word	g_ullTickCount
+ 111 0034 00000000 		.word	g_stTaskTimeSlice
+ 112              		.cfi_endproc
+ 113              	.LFE290:
+ 115              		.comm	g_stTaskTimeSlice,8,4
+ 116              		.text
+ 117              	.Letext0:
+ 118              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 119              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 120              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 121              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 122              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 123              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 124              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 125              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 126              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 127              		.file 11 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 128              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_l
+ 129              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 130              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 131              		.file 15 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 132              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_t
+ 133              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_t
+ 134              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 135              		.file 19 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_timeslice.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s:18     .text.osTimesliceInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s:26     .text.osTimesliceInit:00000000 osTimesliceInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s:48     .text.osTimesliceInit:0000000c $d
+                            *COM*:00000008 g_stTaskTimeSlice
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s:53     .text.osTimesliceCheck:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s:60     .text.osTimesliceCheck:00000000 osTimesliceCheck
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccM6M0HA.s:109    .text.osTimesliceCheck:0000002c $d
+
+UNDEFINED SYMBOLS
+LOS_TaskYield
+g_stLosTask
+g_ullTickCount

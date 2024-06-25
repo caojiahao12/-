@@ -1,0 +1,576 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"list.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.lwm2m_list_add,"ax",%progbits
+  18              		.align	1
+  19              		.global	lwm2m_list_add
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	lwm2m_list_add:
+  27              	.LVL0:
+  28              	.LFB4:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lw
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** /*******************************************************************************
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  *
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  * Copyright (c) 2013 Intel Corporation and others.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  * All rights reserved. This program and the accompanying materials
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  * are made available under the terms of the Eclipse Public License v1.0
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  *
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  * The Eclipse Public License is available at
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  * The Eclipse Distribution License is available at
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  *
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  * Contributors:
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  *
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****  *******************************************************************************/
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** #include "internals.h"
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** lwm2m_list_t *lwm2m_list_add(lwm2m_list_t *head,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****                              lwm2m_list_t *node)
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** {
+  30              		.loc 1 23 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     lwm2m_list_t *target;
+  34              		.loc 1 24 5 view .LVU1
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 2
+
+
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     if (NULL == head) return node;
+  35              		.loc 1 26 5 view .LVU2
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     lwm2m_list_t *target;
+  36              		.loc 1 23 1 is_stmt 0 view .LVU3
+  37 0000 30B5     		push	{r4, r5, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 12
+  40              		.cfi_offset 4, -12
+  41              		.cfi_offset 5, -8
+  42              		.cfi_offset 14, -4
+  43              		.loc 1 26 8 view .LVU4
+  44 0002 20B1     		cbz	r0, .L2
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     if (head->id > node->id)
+  45              		.loc 1 28 5 is_stmt 1 view .LVU5
+  46              		.loc 1 28 24 is_stmt 0 view .LVU6
+  47 0004 8A88     		ldrh	r2, [r1, #4]
+  48              		.loc 1 28 8 view .LVU7
+  49 0006 8388     		ldrh	r3, [r0, #4]
+  50 0008 9342     		cmp	r3, r2
+  51 000a 02D9     		bls	.L5
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         node->next = head;
+  52              		.loc 1 30 9 is_stmt 1 view .LVU8
+  53              		.loc 1 30 20 is_stmt 0 view .LVU9
+  54 000c 0860     		str	r0, [r1]
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         return node;
+  55              		.loc 1 31 9 is_stmt 1 view .LVU10
+  56              	.LVL1:
+  57              	.L2:
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     target = head;
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     while (NULL != target->next && target->next->id < node->id)
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target = target->next;
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     node->next = target->next;
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     target->next = node;
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     return head;
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+  58              		.loc 1 44 1 is_stmt 0 view .LVU11
+  59 000e 0846     		mov	r0, r1
+  60              	.LVL2:
+  61              		.loc 1 44 1 view .LVU12
+  62 0010 30BD     		pop	{r4, r5, pc}
+  63              	.LVL3:
+  64              	.L5:
+  65              		.loc 1 44 1 view .LVU13
+  66 0012 0346     		mov	r3, r0
+  67              	.L3:
+  68              	.LVL4:
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  69              		.loc 1 35 11 is_stmt 1 view .LVU14
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 3
+
+
+  70 0014 1C46     		mov	r4, r3
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  71              		.loc 1 35 26 is_stmt 0 view .LVU15
+  72 0016 1B68     		ldr	r3, [r3]
+  73              	.LVL5:
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  74              		.loc 1 35 11 view .LVU16
+  75 0018 13B1     		cbz	r3, .L4
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  76              		.loc 1 35 33 discriminator 1 view .LVU17
+  77 001a 9D88     		ldrh	r5, [r3, #4]
+  78 001c 9542     		cmp	r5, r2
+  79 001e F9D3     		bcc	.L3
+  80              	.L4:
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     target->next = node;
+  81              		.loc 1 40 5 is_stmt 1 view .LVU18
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     target->next = node;
+  82              		.loc 1 40 16 is_stmt 0 view .LVU19
+  83 0020 0B60     		str	r3, [r1]
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  84              		.loc 1 41 5 is_stmt 1 view .LVU20
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  85              		.loc 1 41 18 is_stmt 0 view .LVU21
+  86 0022 2160     		str	r1, [r4]
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+  87              		.loc 1 43 5 is_stmt 1 view .LVU22
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+  88              		.loc 1 43 12 is_stmt 0 view .LVU23
+  89 0024 0146     		mov	r1, r0
+  90              	.LVL6:
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+  91              		.loc 1 43 12 view .LVU24
+  92 0026 F2E7     		b	.L2
+  93              		.cfi_endproc
+  94              	.LFE4:
+  96              		.section	.text.lwm2m_list_find,"ax",%progbits
+  97              		.align	1
+  98              		.global	lwm2m_list_find
+  99              		.syntax unified
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.fpu fpv4-sp-d16
+ 104              	lwm2m_list_find:
+ 105              	.LVL7:
+ 106              	.LFB5:
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** lwm2m_list_t *lwm2m_list_find(lwm2m_list_t *head,
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****                               uint16_t id)
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** {
+ 107              		.loc 1 49 1 is_stmt 1 view -0
+ 108              		.cfi_startproc
+ 109              		@ args = 0, pretend = 0, frame = 0
+ 110              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111              		@ link register save eliminated.
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     while (NULL != head && head->id < id)
+ 112              		.loc 1 50 5 view .LVU26
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 4
+
+
+ 113              	.L14:
+ 114              		.loc 1 50 11 view .LVU27
+ 115 0000 18B1     		cbz	r0, .L13
+ 116              		.loc 1 50 32 is_stmt 0 discriminator 1 view .LVU28
+ 117 0002 8388     		ldrh	r3, [r0, #4]
+ 118              		.loc 1 50 25 discriminator 1 view .LVU29
+ 119 0004 8B42     		cmp	r3, r1
+ 120 0006 01D3     		bcc	.L16
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         head = head->next;
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     if (NULL != head && head->id == id) return head;
+ 121              		.loc 1 55 5 is_stmt 1 view .LVU30
+ 122              		.loc 1 55 22 is_stmt 0 view .LVU31
+ 123 0008 02D1     		bne	.L18
+ 124              	.L13:
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     return NULL;
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+ 125              		.loc 1 58 1 view .LVU32
+ 126 000a 7047     		bx	lr
+ 127              	.L16:
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 128              		.loc 1 52 9 is_stmt 1 view .LVU33
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 129              		.loc 1 52 14 is_stmt 0 view .LVU34
+ 130 000c 0068     		ldr	r0, [r0]
+ 131              	.LVL8:
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 132              		.loc 1 52 14 view .LVU35
+ 133 000e F7E7     		b	.L14
+ 134              	.L18:
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+ 135              		.loc 1 57 12 view .LVU36
+ 136 0010 0020     		movs	r0, #0
+ 137              	.LVL9:
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+ 138              		.loc 1 57 12 view .LVU37
+ 139 0012 7047     		bx	lr
+ 140              		.cfi_endproc
+ 141              	.LFE5:
+ 143              		.section	.text.lwm2m_list_remove,"ax",%progbits
+ 144              		.align	1
+ 145              		.global	lwm2m_list_remove
+ 146              		.syntax unified
+ 147              		.thumb
+ 148              		.thumb_func
+ 149              		.fpu fpv4-sp-d16
+ 151              	lwm2m_list_remove:
+ 152              	.LVL10:
+ 153              	.LFB6:
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** lwm2m_list_t *lwm2m_list_remove(lwm2m_list_t *head,
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****                                 uint16_t id,
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****                                 lwm2m_list_t **nodeP)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 5
+
+
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** {
+ 154              		.loc 1 64 1 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     lwm2m_list_t *target;
+ 158              		.loc 1 65 5 view .LVU39
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     if (head == NULL)
+ 159              		.loc 1 67 5 view .LVU40
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     lwm2m_list_t *target;
+ 160              		.loc 1 64 1 is_stmt 0 view .LVU41
+ 161 0000 30B5     		push	{r4, r5, lr}
+ 162              	.LCFI1:
+ 163              		.cfi_def_cfa_offset 12
+ 164              		.cfi_offset 4, -12
+ 165              		.cfi_offset 5, -8
+ 166              		.cfi_offset 14, -4
+ 167              		.loc 1 67 8 view .LVU42
+ 168 0002 10B9     		cbnz	r0, .L24
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         if (nodeP) *nodeP = NULL;
+ 169              		.loc 1 69 9 is_stmt 1 view .LVU43
+ 170              		.loc 1 69 12 is_stmt 0 view .LVU44
+ 171 0004 02B1     		cbz	r2, .L38
+ 172              		.loc 1 69 20 is_stmt 1 discriminator 1 view .LVU45
+ 173              		.loc 1 69 27 is_stmt 0 discriminator 1 view .LVU46
+ 174 0006 1060     		str	r0, [r2]
+ 175              	.LVL11:
+ 176              	.L38:
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         return NULL;
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     if (head->id == id)
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         if (nodeP) *nodeP = head;
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         return head->next;
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     target = head;
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     while (NULL != target->next && target->next->id < id)
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target = target->next;
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     if (NULL != target->next && target->next->id == id)
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         if (nodeP) *nodeP = target->next;
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target->next = target->next->next;
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     else
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         if (nodeP) *nodeP = NULL;
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     return head;
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 6
+
+
+ 177              		.loc 1 96 1 view .LVU47
+ 178 0008 30BD     		pop	{r4, r5, pc}
+ 179              	.LVL12:
+ 180              	.L24:
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 181              		.loc 1 73 5 is_stmt 1 view .LVU48
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 182              		.loc 1 73 8 is_stmt 0 view .LVU49
+ 183 000a 8388     		ldrh	r3, [r0, #4]
+ 184 000c 8B42     		cmp	r3, r1
+ 185 000e 03D1     		bne	.L33
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         return head->next;
+ 186              		.loc 1 75 9 is_stmt 1 view .LVU50
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         return head->next;
+ 187              		.loc 1 75 12 is_stmt 0 view .LVU51
+ 188 0010 02B1     		cbz	r2, .L27
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         return head->next;
+ 189              		.loc 1 75 20 is_stmt 1 discriminator 1 view .LVU52
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         return head->next;
+ 190              		.loc 1 75 27 is_stmt 0 discriminator 1 view .LVU53
+ 191 0012 1060     		str	r0, [r2]
+ 192              	.L27:
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 193              		.loc 1 76 9 is_stmt 1 view .LVU54
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 194              		.loc 1 76 20 is_stmt 0 view .LVU55
+ 195 0014 0068     		ldr	r0, [r0]
+ 196              	.LVL13:
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 197              		.loc 1 76 20 view .LVU56
+ 198 0016 F7E7     		b	.L38
+ 199              	.LVL14:
+ 200              	.L33:
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 201              		.loc 1 76 20 view .LVU57
+ 202 0018 0346     		mov	r3, r0
+ 203              	.L26:
+ 204              	.LVL15:
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 205              		.loc 1 80 11 is_stmt 1 view .LVU58
+ 206 001a 1C46     		mov	r4, r3
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 207              		.loc 1 80 26 is_stmt 0 view .LVU59
+ 208 001c 1B68     		ldr	r3, [r3]
+ 209              	.LVL16:
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 210              		.loc 1 80 11 view .LVU60
+ 211 001e 4BB1     		cbz	r3, .L28
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 212              		.loc 1 80 48 discriminator 1 view .LVU61
+ 213 0020 9D88     		ldrh	r5, [r3, #4]
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 214              		.loc 1 80 33 discriminator 1 view .LVU62
+ 215 0022 8D42     		cmp	r5, r1
+ 216 0024 F9D3     		bcc	.L26
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 217              		.loc 1 85 5 is_stmt 1 view .LVU63
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 7
+
+
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 218              		.loc 1 85 30 is_stmt 0 view .LVU64
+ 219 0026 05D1     		bne	.L28
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target->next = target->next->next;
+ 220              		.loc 1 87 9 is_stmt 1 view .LVU65
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target->next = target->next->next;
+ 221              		.loc 1 87 12 is_stmt 0 view .LVU66
+ 222 0028 02B1     		cbz	r2, .L30
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target->next = target->next->next;
+ 223              		.loc 1 87 20 is_stmt 1 discriminator 1 view .LVU67
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target->next = target->next->next;
+ 224              		.loc 1 87 27 is_stmt 0 discriminator 1 view .LVU68
+ 225 002a 1360     		str	r3, [r2]
+ 226              	.L30:
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 227              		.loc 1 88 9 is_stmt 1 view .LVU69
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 228              		.loc 1 88 36 is_stmt 0 view .LVU70
+ 229 002c 2368     		ldr	r3, [r4]
+ 230 002e 1B68     		ldr	r3, [r3]
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 231              		.loc 1 88 22 view .LVU71
+ 232 0030 2360     		str	r3, [r4]
+ 233 0032 E9E7     		b	.L38
+ 234              	.L28:
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 235              		.loc 1 92 9 is_stmt 1 view .LVU72
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 236              		.loc 1 92 12 is_stmt 0 view .LVU73
+ 237 0034 002A     		cmp	r2, #0
+ 238 0036 E7D0     		beq	.L38
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 239              		.loc 1 92 20 is_stmt 1 discriminator 1 view .LVU74
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 240              		.loc 1 92 27 is_stmt 0 discriminator 1 view .LVU75
+ 241 0038 0023     		movs	r3, #0
+ 242 003a 1360     		str	r3, [r2]
+ 243 003c E4E7     		b	.L38
+ 244              		.cfi_endproc
+ 245              	.LFE6:
+ 247              		.section	.text.lwm2m_list_newId,"ax",%progbits
+ 248              		.align	1
+ 249              		.global	lwm2m_list_newId
+ 250              		.syntax unified
+ 251              		.thumb
+ 252              		.thumb_func
+ 253              		.fpu fpv4-sp-d16
+ 255              	lwm2m_list_newId:
+ 256              	.LVL17:
+ 257              	.LFB7:
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** uint16_t lwm2m_list_newId(lwm2m_list_t *head)
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** {
+ 258              		.loc 1 99 1 is_stmt 1 view -0
+ 259              		.cfi_startproc
+ 260              		@ args = 0, pretend = 0, frame = 0
+ 261              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 8
+
+
+ 262              		@ link register save eliminated.
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     uint16_t id;
+ 263              		.loc 1 100 5 view .LVU77
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     lwm2m_list_t *target;
+ 264              		.loc 1 101 5 view .LVU78
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     id = 0;
+ 265              		.loc 1 103 5 view .LVU79
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     target = head;
+ 266              		.loc 1 104 5 view .LVU80
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     uint16_t id;
+ 267              		.loc 1 99 1 is_stmt 0 view .LVU81
+ 268 0000 0246     		mov	r2, r0
+ 269              	.LVL18:
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     while (target != NULL && id == target->id)
+ 270              		.loc 1 106 5 is_stmt 1 view .LVU82
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     target = head;
+ 271              		.loc 1 103 8 is_stmt 0 view .LVU83
+ 272 0002 0020     		movs	r0, #0
+ 273              	.LVL19:
+ 274              	.L52:
+ 275              		.loc 1 106 11 is_stmt 1 view .LVU84
+ 276 0004 12B1     		cbz	r2, .L56
+ 277              		.loc 1 106 27 is_stmt 0 discriminator 1 view .LVU85
+ 278 0006 9388     		ldrh	r3, [r2, #4]
+ 279 0008 8342     		cmp	r3, r0
+ 280 000a 00D0     		beq	.L54
+ 281              	.L56:
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         id = target->id + 1;
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target = target->next;
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     return id;
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+ 282              		.loc 1 113 1 view .LVU86
+ 283 000c 7047     		bx	lr
+ 284              	.L54:
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target = target->next;
+ 285              		.loc 1 108 9 is_stmt 1 view .LVU87
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target = target->next;
+ 286              		.loc 1 108 12 is_stmt 0 view .LVU88
+ 287 000e 431C     		adds	r3, r0, #1
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 288              		.loc 1 109 16 view .LVU89
+ 289 0010 1268     		ldr	r2, [r2]
+ 290              	.LVL20:
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         target = target->next;
+ 291              		.loc 1 108 12 view .LVU90
+ 292 0012 98B2     		uxth	r0, r3
+ 293              	.LVL21:
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 294              		.loc 1 109 9 is_stmt 1 view .LVU91
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 295              		.loc 1 109 9 is_stmt 0 view .LVU92
+ 296 0014 F6E7     		b	.L52
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 9
+
+
+ 297              		.cfi_endproc
+ 298              	.LFE7:
+ 300              		.section	.text.lwm2m_list_free,"ax",%progbits
+ 301              		.align	1
+ 302              		.global	lwm2m_list_free
+ 303              		.syntax unified
+ 304              		.thumb
+ 305              		.thumb_func
+ 306              		.fpu fpv4-sp-d16
+ 308              	lwm2m_list_free:
+ 309              	.LFB8:
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** void lwm2m_list_free(lwm2m_list_t *head)
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** {
+ 310              		.loc 1 116 1 is_stmt 1 view -0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314              	.LVL22:
+ 315              		.loc 1 116 1 is_stmt 0 view .LVU94
+ 316 0000 10B5     		push	{r4, lr}
+ 317              	.LCFI2:
+ 318              		.cfi_def_cfa_offset 8
+ 319              		.cfi_offset 4, -8
+ 320              		.cfi_offset 14, -4
+ 321              	.LVL23:
+ 322              	.L59:
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     if (head != NULL)
+ 323              		.loc 1 117 5 is_stmt 1 view .LVU95
+ 324              		.loc 1 117 8 is_stmt 0 view .LVU96
+ 325 0002 20B1     		cbz	r0, .L57
+ 326              	.LBB2:
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     {
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         lwm2m_list_t *nextP;
+ 327              		.loc 1 119 9 is_stmt 1 view .LVU97
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** 
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         nextP = head->next;
+ 328              		.loc 1 121 9 view .LVU98
+ 329              		.loc 1 121 15 is_stmt 0 view .LVU99
+ 330 0004 0468     		ldr	r4, [r0]
+ 331              	.LVL24:
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         lwm2m_free(head);
+ 332              		.loc 1 122 9 is_stmt 1 view .LVU100
+ 333 0006 FFF7FEFF 		bl	lwm2m_free
+ 334              	.LVL25:
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****         lwm2m_list_free(nextP);
+ 335              		.loc 1 123 9 view .LVU101
+ 336 000a 2046     		mov	r0, r4
+ 337 000c F9E7     		b	.L59
+ 338              	.LVL26:
+ 339              	.L57:
+ 340              		.loc 1 123 9 is_stmt 0 view .LVU102
+ 341              	.LBE2:
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c ****     }
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/wakaama-master/core\list.c **** }
+ 342              		.loc 1 125 1 view .LVU103
+ 343 000e 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 10
+
+
+ 344              		.cfi_endproc
+ 345              	.LFE8:
+ 347              		.text
+ 348              	.Letext0:
+ 349              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 350              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 351              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 352              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 353              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 354              		.file 7 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 355              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 356              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lw
+ 357              		.file 10 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_l
+ 358              		.file 11 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 359              		.file 12 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 list.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:18     .text.lwm2m_list_add:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:26     .text.lwm2m_list_add:00000000 lwm2m_list_add
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:97     .text.lwm2m_list_find:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:104    .text.lwm2m_list_find:00000000 lwm2m_list_find
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:144    .text.lwm2m_list_remove:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:151    .text.lwm2m_list_remove:00000000 lwm2m_list_remove
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:248    .text.lwm2m_list_newId:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:255    .text.lwm2m_list_newId:00000000 lwm2m_list_newId
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:301    .text.lwm2m_list_free:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc6t61da.s:308    .text.lwm2m_list_free:00000000 lwm2m_list_free
+
+UNDEFINED SYMBOLS
+lwm2m_free

@@ -1,0 +1,185 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc8m66oA.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"app_demo_main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata.standard_app_demo_main.str1.1,"aMS",%progbits,1
+  18              	.LC0:
+  19 0000 5B25735D 		.ascii	"[%s][%u][%s] %s:###please implement app demo by you"
+  19      5B25755D 
+  19      5B25735D 
+  19      2025733A 
+  19      23232370 
+  20 0033 7273656C 		.ascii	"rself####\012\015\015\012\000"
+  20      66232323 
+  20      230A0D0D 
+  20      0A00
+  21              		.section	.text.standard_app_demo_main,"ax",%progbits
+  22              		.align	1
+  23              		.weak	standard_app_demo_main
+  24              		.arch armv7e-m
+  25              		.syntax unified
+  26              		.thumb
+  27              		.thumb_func
+  28              		.fpu fpv4-sp-d16
+  30              	standard_app_demo_main:
+  31              	.LFB3:
+  32              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/demos/app_demo_main.c"
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc8m66oA.s 			page 2
+
+
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c **** /**
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  *  2020-04-05 20:54  zhangqianfu  The first version
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  *
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****  */
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c **** #include <link_log.h>
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c **** 
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c **** __attribute__ ((weak)) int standard_app_demo_main(void)
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c **** {
+  33              		.loc 1 42 1 view -0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****     LINK_LOG_DEBUG("%s:###please implement app demo by yourself####\n\r",__FUNCTION__);
+  37              		.loc 1 43 5 view .LVU1
+  38              		.loc 1 43 5 view .LVU2
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****     LINK_LOG_DEBUG("%s:###please implement app demo by yourself####\n\r",__FUNCTION__);
+  39              		.loc 1 42 1 is_stmt 0 view .LVU3
+  40 0000 13B5     		push	{r0, r1, r4, lr}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 16
+  43              		.cfi_offset 4, -8
+  44              		.cfi_offset 14, -4
+  45              		.loc 1 43 5 view .LVU4
+  46 0002 FFF7FEFF 		bl	link_log_level_get
+  47              	.LVL0:
+  48 0006 0128     		cmp	r0, #1
+  49 0008 11D8     		bhi	.L2
+  50              		.loc 1 43 5 is_stmt 1 discriminator 1 view .LVU5
+  51              		.loc 1 43 5 discriminator 1 view .LVU6
+  52              		.loc 1 43 5 discriminator 1 view .LVU7
+  53 000a 0120     		movs	r0, #1
+  54 000c FFF7FEFF 		bl	link_log_level_name
+  55              	.LVL1:
+  56 0010 0446     		mov	r4, r0
+  57 0012 FFF7FEFF 		bl	osal_sys_time
+  58              	.LVL2:
+  59 0016 084B     		ldr	r3, .L3
+  60 0018 0093     		str	r3, [sp]
+  61 001a 0246     		mov	r2, r0
+  62 001c 2146     		mov	r1, r4
+  63 001e 0748     		ldr	r0, .L3+4
+  64 0020 FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc8m66oA.s 			page 3
+
+
+  65              	.LVL3:
+  66              		.loc 1 43 5 discriminator 1 view .LVU8
+  67 0024 064B     		ldr	r3, .L3+8
+  68 0026 1B68     		ldr	r3, [r3]
+  69 0028 9868     		ldr	r0, [r3, #8]
+  70 002a FFF7FEFF 		bl	fflush
+  71              	.LVL4:
+  72              	.L2:
+  73              		.loc 1 43 5 discriminator 3 view .LVU9
+  74              		.loc 1 43 5 discriminator 3 view .LVU10
+  75              		.loc 1 43 5 discriminator 3 view .LVU11
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c ****     return -1;
+  76              		.loc 1 44 5 discriminator 3 view .LVU12
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/demos\app_demo_main.c **** }
+  77              		.loc 1 45 1 is_stmt 0 discriminator 3 view .LVU13
+  78 002e 4FF0FF30 		mov	r0, #-1
+  79 0032 02B0     		add	sp, sp, #8
+  80              	.LCFI1:
+  81              		.cfi_def_cfa_offset 8
+  82              		@ sp needed
+  83 0034 10BD     		pop	{r4, pc}
+  84              	.L4:
+  85 0036 00BF     		.align	2
+  86              	.L3:
+  87 0038 00000000 		.word	.LANCHOR0
+  88 003c 00000000 		.word	.LC0
+  89 0040 00000000 		.word	_impure_ptr
+  90              		.cfi_endproc
+  91              	.LFE3:
+  93              		.section	.rodata.__FUNCTION__.6593,"a"
+  94              		.set	.LANCHOR0,. + 0
+  97              	__FUNCTION__.6593:
+  98 0000 7374616E 		.ascii	"standard_app_demo_main\000"
+  98      64617264 
+  98      5F617070 
+  98      5F64656D 
+  98      6F5F6D61 
+  99              		.text
+ 100              	.Letext0:
+ 101              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 102              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 103              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 104              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 105              		.file 6 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/inc/link_log.h"
+ 106              		.file 7 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc8m66oA.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 app_demo_main.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc8m66oA.s:22     .text.standard_app_demo_main:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc8m66oA.s:30     .text.standard_app_demo_main:00000000 standard_app_demo_main
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc8m66oA.s:87     .text.standard_app_demo_main:00000038 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc8m66oA.s:97     .rodata.__FUNCTION__.6593:00000000 __FUNCTION__.6593
+
+UNDEFINED SYMBOLS
+link_log_level_get
+link_log_level_name
+osal_sys_time
+printf
+fflush
+_impure_ptr

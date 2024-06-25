@@ -1,0 +1,1015 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"queue.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.queue_create,"ax",%progbits
+  18              		.align	1
+  19              		.global	queue_create
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	queue_create:
+  27              	.LVL0:
+  28              	.LFB3:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/queue/queue.c"
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** /**
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  *  2019-09-16 18:27  zhangqianfu  The first version
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  *
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****  */
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** #include <stdlib.h>
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** #include <stdio.h>
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** #include <string.h>
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** #include <osal.h>
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** #include "queue.h"
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** queue_t* queue_create(const char *name,int len,int syncmode)
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+  30              		.loc 1 48 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     queue_t *ret;
+  34              		.loc 1 49 5 view .LVU1
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret = osal_malloc(sizeof(queue_t) + len*sizeof(void *));
+  35              		.loc 1 51 5 view .LVU2
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     queue_t *ret;
+  36              		.loc 1 48 1 is_stmt 0 view .LVU3
+  37 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 24
+  40              		.cfi_offset 3, -24
+  41              		.cfi_offset 4, -20
+  42              		.cfi_offset 5, -16
+  43              		.cfi_offset 6, -12
+  44              		.cfi_offset 7, -8
+  45              		.cfi_offset 14, -4
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     queue_t *ret;
+  46              		.loc 1 48 1 view .LVU4
+  47 0002 0746     		mov	r7, r0
+  48              		.loc 1 51 39 view .LVU5
+  49 0004 01F10A00 		add	r0, r1, #10
+  50              	.LVL1:
+  51              		.loc 1 51 11 view .LVU6
+  52 0008 8000     		lsls	r0, r0, #2
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     queue_t *ret;
+  53              		.loc 1 48 1 view .LVU7
+  54 000a 0D46     		mov	r5, r1
+  55 000c 1646     		mov	r6, r2
+  56              		.loc 1 51 11 view .LVU8
+  57 000e FFF7FEFF 		bl	osal_malloc
+  58              	.LVL2:
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(NULL == ret)
+  59              		.loc 1 53 5 is_stmt 1 view .LVU9
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 3
+
+
+  60              		.loc 1 53 7 is_stmt 0 view .LVU10
+  61 0012 0446     		mov	r4, r0
+  62 0014 40B3     		cbz	r0, .L1
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         goto EXIT_MEM;
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     (void) memset(ret,0,sizeof(queue_t));
+  63              		.loc 1 58 5 is_stmt 1 view .LVU11
+  64              		.loc 1 58 12 is_stmt 0 view .LVU12
+  65 0016 1C22     		movs	r2, #28
+  66 0018 0021     		movs	r1, #0
+  67 001a 0C30     		adds	r0, r0, #12
+  68              	.LVL3:
+  69              		.loc 1 58 12 view .LVU13
+  70 001c FFF7FEFF 		bl	memset
+  71              	.LVL4:
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret->name = name;
+  72              		.loc 1 59 5 is_stmt 1 view .LVU14
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret->msg_buflen = len;
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret->msg_buf = (void **)(uintptr_t)((uint8_t *)ret + sizeof(queue_t));
+  73              		.loc 1 61 20 is_stmt 0 view .LVU15
+  74 0020 04F12803 		add	r3, r4, #40
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret->msg_buflen = len;
+  75              		.loc 1 60 21 view .LVU16
+  76 0024 C4E90075 		strd	r7, r5, [r4]
+  77              		.loc 1 61 5 is_stmt 1 view .LVU17
+  78              		.loc 1 61 18 is_stmt 0 view .LVU18
+  79 0028 A360     		str	r3, [r4, #8]
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret->sync_mode = syncmode;
+  80              		.loc 1 62 5 is_stmt 1 view .LVU19
+  81              		.loc 1 62 20 is_stmt 0 view .LVU20
+  82 002a A661     		str	r6, [r4, #24]
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(0 == syncmode)
+  83              		.loc 1 64 5 is_stmt 1 view .LVU21
+  84              		.loc 1 64 7 is_stmt 0 view .LVU22
+  85 002c E6B1     		cbz	r6, .L1
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         goto EXIT_OK;
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(false == osal_semp_create(&ret->sync_read,len,0))
+  86              		.loc 1 69 5 is_stmt 1 view .LVU23
+  87              		.loc 1 69 17 is_stmt 0 view .LVU24
+  88 002e 0022     		movs	r2, #0
+  89 0030 2946     		mov	r1, r5
+  90 0032 04F11C00 		add	r0, r4, #28
+  91 0036 FFF7FEFF 		bl	osal_semp_create
+  92              	.LVL5:
+  93              		.loc 1 69 7 view .LVU25
+  94 003a 88B1     		cbz	r0, .L3
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         goto EXIT_SYNCREAD;
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(false == osal_semp_create(&ret->sync_write,len,len))
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 4
+
+
+  95              		.loc 1 74 5 is_stmt 1 view .LVU26
+  96              		.loc 1 74 17 is_stmt 0 view .LVU27
+  97 003c 2A46     		mov	r2, r5
+  98 003e 2946     		mov	r1, r5
+  99 0040 04F12000 		add	r0, r4, #32
+ 100 0044 FFF7FEFF 		bl	osal_semp_create
+ 101              	.LVL6:
+ 102              		.loc 1 74 7 view .LVU28
+ 103 0048 38B1     		cbz	r0, .L4
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         goto EXIT_SYNCWRITE;
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(false == osal_mutex_create(&ret->lock))
+ 104              		.loc 1 79 5 is_stmt 1 view .LVU29
+ 105              		.loc 1 79 17 is_stmt 0 view .LVU30
+ 106 004a 04F12400 		add	r0, r4, #36
+ 107 004e FFF7FEFF 		bl	osal_mutex_create
+ 108              	.LVL7:
+ 109              		.loc 1 79 7 view .LVU31
+ 110 0052 48B9     		cbnz	r0, .L1
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         goto EXIT_LOCK;
+ 111              		.loc 1 81 9 is_stmt 1 view .LVU32
+ 112              	.LDL1:
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** EXIT_OK:
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     return ret;
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** EXIT_LOCK:
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     (void) osal_semp_del(ret->sync_write);
+ 113              		.loc 1 89 5 view .LVU33
+ 114              		.loc 1 89 12 is_stmt 0 view .LVU34
+ 115 0054 206A     		ldr	r0, [r4, #32]
+ 116 0056 FFF7FEFF 		bl	osal_semp_del
+ 117              	.LVL8:
+ 118              	.L4:
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** EXIT_SYNCWRITE:
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     (void) osal_semp_del(ret->sync_read);
+ 119              		.loc 1 91 5 is_stmt 1 view .LVU35
+ 120              		.loc 1 91 12 is_stmt 0 view .LVU36
+ 121 005a E069     		ldr	r0, [r4, #28]
+ 122 005c FFF7FEFF 		bl	osal_semp_del
+ 123              	.LVL9:
+ 124              	.L3:
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** EXIT_SYNCREAD:
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     osal_free(ret);
+ 125              		.loc 1 93 5 is_stmt 1 view .LVU37
+ 126 0060 2046     		mov	r0, r4
+ 127 0062 FFF7FEFF 		bl	osal_free
+ 128              	.LVL10:
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret = NULL;
+ 129              		.loc 1 94 5 view .LVU38
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** EXIT_MEM:
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret = NULL;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 5
+
+
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     return ret;
+ 130              		.loc 1 97 12 is_stmt 0 view .LVU39
+ 131 0066 0024     		movs	r4, #0
+ 132              	.LVL11:
+ 133              	.L1:
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 134              		.loc 1 99 1 view .LVU40
+ 135 0068 2046     		mov	r0, r4
+ 136 006a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 137              		.loc 1 99 1 view .LVU41
+ 138              		.cfi_endproc
+ 139              	.LFE3:
+ 141              		.section	.text.queue_push,"ax",%progbits
+ 142              		.align	1
+ 143              		.global	queue_push
+ 144              		.syntax unified
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.fpu fpv4-sp-d16
+ 149              	queue_push:
+ 150              	.LVL12:
+ 151              	.LFB5:
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** static int raw_queue_pushdata(queue_t *queue,void *data)
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num < queue->msg_buflen)
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_buf[queue->cur_write] = data;
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_write = (queue->cur_write + 1)%queue->msg_buflen;
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     return ret;
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** ///< push a data to the queue, 0 success while -1 failed
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** int queue_push(queue_t *queue,void *data,int timeout)
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 152              		.loc 1 118 1 is_stmt 1 view -0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 156              		.loc 1 119 5 view .LVU43
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if((NULL == queue) || (NULL == data))
+ 157              		.loc 1 121 5 view .LVU44
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 158              		.loc 1 118 1 is_stmt 0 view .LVU45
+ 159 0000 70B5     		push	{r4, r5, r6, lr}
+ 160              	.LCFI1:
+ 161              		.cfi_def_cfa_offset 16
+ 162              		.cfi_offset 4, -16
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 6
+
+
+ 163              		.cfi_offset 5, -12
+ 164              		.cfi_offset 6, -8
+ 165              		.cfi_offset 14, -4
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 166              		.loc 1 118 1 view .LVU46
+ 167 0002 0E46     		mov	r6, r1
+ 168              		.loc 1 121 7 view .LVU47
+ 169 0004 0446     		mov	r4, r0
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 170              		.loc 1 118 1 view .LVU48
+ 171 0006 1146     		mov	r1, r2
+ 172              	.LVL13:
+ 173              		.loc 1 121 7 view .LVU49
+ 174 0008 18B9     		cbnz	r0, .L18
+ 175              	.LVL14:
+ 176              	.L20:
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         return ret;
+ 177              		.loc 1 123 16 view .LVU50
+ 178 000a 4FF0FF35 		mov	r5, #-1
+ 179              	.L17:
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->sync_mode)
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         if(osal_semp_pend(queue->sync_write,timeout))
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             if(osal_mutex_lock(queue->lock))
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****                 ret = raw_queue_pushdata(queue,data);
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****                 (void) osal_mutex_unlock(queue->lock);
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             if(0 == ret)
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****                 (void) osal_semp_post(queue->sync_read);
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         }
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     else
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = raw_queue_pushdata(queue,data);
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     return ret;
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 180              		.loc 1 147 1 view .LVU51
+ 181 000e 2846     		mov	r0, r5
+ 182 0010 70BD     		pop	{r4, r5, r6, pc}
+ 183              	.LVL15:
+ 184              	.L18:
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 185              		.loc 1 121 24 discriminator 1 view .LVU52
+ 186 0012 002E     		cmp	r6, #0
+ 187 0014 F9D0     		beq	.L20
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 188              		.loc 1 125 5 is_stmt 1 view .LVU53
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 7
+
+
+ 189              		.loc 1 125 13 is_stmt 0 view .LVU54
+ 190 0016 8569     		ldr	r5, [r0, #24]
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 191              		.loc 1 125 7 view .LVU55
+ 192 0018 35B3     		cbz	r5, .L21
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 193              		.loc 1 127 9 is_stmt 1 view .LVU56
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 194              		.loc 1 127 12 is_stmt 0 view .LVU57
+ 195 001a 006A     		ldr	r0, [r0, #32]
+ 196              	.LVL16:
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 197              		.loc 1 127 12 view .LVU58
+ 198 001c FFF7FEFF 		bl	osal_semp_pend
+ 199              	.LVL17:
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 200              		.loc 1 127 11 view .LVU59
+ 201 0020 0028     		cmp	r0, #0
+ 202 0022 F2D0     		beq	.L20
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 203              		.loc 1 129 13 is_stmt 1 view .LVU60
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 204              		.loc 1 129 16 is_stmt 0 view .LVU61
+ 205 0024 606A     		ldr	r0, [r4, #36]
+ 206 0026 FFF7FEFF 		bl	osal_mutex_lock
+ 207              	.LVL18:
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 208              		.loc 1 129 15 view .LVU62
+ 209 002a 0028     		cmp	r0, #0
+ 210 002c EDD0     		beq	.L20
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****                 (void) osal_mutex_unlock(queue->lock);
+ 211              		.loc 1 131 17 is_stmt 1 view .LVU63
+ 212              	.LVL19:
+ 213              	.LBB6:
+ 214              	.LBI6:
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 215              		.loc 1 102 12 view .LVU64
+ 216              	.LBB7:
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num < queue->msg_buflen)
+ 217              		.loc 1 104 5 view .LVU65
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 218              		.loc 1 105 5 view .LVU66
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 219              		.loc 1 105 13 is_stmt 0 view .LVU67
+ 220 002e 6269     		ldr	r2, [r4, #20]
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 221              		.loc 1 105 30 view .LVU68
+ 222 0030 6068     		ldr	r0, [r4, #4]
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 223              		.loc 1 105 7 view .LVU69
+ 224 0032 8242     		cmp	r2, r0
+ 225 0034 15DA     		bge	.L23
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_write = (queue->cur_write + 1)%queue->msg_buflen;
+ 226              		.loc 1 107 9 is_stmt 1 view .LVU70
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_write = (queue->cur_write + 1)%queue->msg_buflen;
+ 227              		.loc 1 107 42 is_stmt 0 view .LVU71
+ 228 0036 D4E90213 		ldrd	r1, r3, [r4, #8]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 8
+
+
+ 229 003a 41F82360 		str	r6, [r1, r3, lsl #2]
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 230              		.loc 1 108 9 is_stmt 1 view .LVU72
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 231              		.loc 1 108 46 is_stmt 0 view .LVU73
+ 232 003e 0133     		adds	r3, r3, #1
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 233              		.loc 1 109 24 view .LVU74
+ 234 0040 0132     		adds	r2, r2, #1
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 235              		.loc 1 108 50 view .LVU75
+ 236 0042 93FBF0F1 		sdiv	r1, r3, r0
+ 237 0046 00FB1133 		mls	r3, r0, r1, r3
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 238              		.loc 1 108 26 view .LVU76
+ 239 004a E360     		str	r3, [r4, #12]
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 240              		.loc 1 109 9 is_stmt 1 view .LVU77
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 241              		.loc 1 109 24 is_stmt 0 view .LVU78
+ 242 004c 6261     		str	r2, [r4, #20]
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 243              		.loc 1 110 9 is_stmt 1 view .LVU79
+ 244              	.LVL20:
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 245              		.loc 1 110 13 is_stmt 0 view .LVU80
+ 246 004e 0025     		movs	r5, #0
+ 247              	.LVL21:
+ 248              	.L22:
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 249              		.loc 1 113 5 is_stmt 1 view .LVU81
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 250              		.loc 1 113 5 is_stmt 0 view .LVU82
+ 251              	.LBE7:
+ 252              	.LBE6:
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 253              		.loc 1 132 17 is_stmt 1 view .LVU83
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 254              		.loc 1 132 24 is_stmt 0 view .LVU84
+ 255 0050 606A     		ldr	r0, [r4, #36]
+ 256 0052 FFF7FEFF 		bl	osal_mutex_unlock
+ 257              	.LVL22:
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 258              		.loc 1 135 13 is_stmt 1 view .LVU85
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 259              		.loc 1 135 15 is_stmt 0 view .LVU86
+ 260 0056 002D     		cmp	r5, #0
+ 261 0058 D7D1     		bne	.L20
+ 262              	.LVL23:
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 263              		.loc 1 137 17 is_stmt 1 view .LVU87
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 264              		.loc 1 137 24 is_stmt 0 view .LVU88
+ 265 005a E069     		ldr	r0, [r4, #28]
+ 266 005c FFF7FEFF 		bl	osal_semp_post
+ 267              	.LVL24:
+ 268 0060 D5E7     		b	.L17
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 9
+
+
+ 269              	.LVL25:
+ 270              	.L23:
+ 271              	.LBB9:
+ 272              	.LBB8:
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num < queue->msg_buflen)
+ 273              		.loc 1 104 9 view .LVU89
+ 274 0062 4FF0FF35 		mov	r5, #-1
+ 275 0066 F3E7     		b	.L22
+ 276              	.LVL26:
+ 277              	.L21:
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num < queue->msg_buflen)
+ 278              		.loc 1 104 9 view .LVU90
+ 279              	.LBE8:
+ 280              	.LBE9:
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 281              		.loc 1 143 9 is_stmt 1 view .LVU91
+ 282              	.LBB10:
+ 283              	.LBI10:
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 284              		.loc 1 102 12 view .LVU92
+ 285              	.LBB11:
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num < queue->msg_buflen)
+ 286              		.loc 1 104 5 view .LVU93
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 287              		.loc 1 105 5 view .LVU94
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 288              		.loc 1 105 13 is_stmt 0 view .LVU95
+ 289 0068 4269     		ldr	r2, [r0, #20]
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 290              		.loc 1 105 30 view .LVU96
+ 291 006a 4068     		ldr	r0, [r0, #4]
+ 292              	.LVL27:
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 293              		.loc 1 105 7 view .LVU97
+ 294 006c 8242     		cmp	r2, r0
+ 295 006e CCDA     		bge	.L20
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_write = (queue->cur_write + 1)%queue->msg_buflen;
+ 296              		.loc 1 107 9 is_stmt 1 view .LVU98
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_write = (queue->cur_write + 1)%queue->msg_buflen;
+ 297              		.loc 1 107 42 is_stmt 0 view .LVU99
+ 298 0070 D4E90213 		ldrd	r1, r3, [r4, #8]
+ 299              	.LVL28:
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_write = (queue->cur_write + 1)%queue->msg_buflen;
+ 300              		.loc 1 107 42 view .LVU100
+ 301 0074 41F82360 		str	r6, [r1, r3, lsl #2]
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 302              		.loc 1 108 9 is_stmt 1 view .LVU101
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 303              		.loc 1 108 46 is_stmt 0 view .LVU102
+ 304 0078 0133     		adds	r3, r3, #1
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 305              		.loc 1 109 24 view .LVU103
+ 306 007a 0132     		adds	r2, r2, #1
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 307              		.loc 1 108 50 view .LVU104
+ 308 007c 93FBF0F1 		sdiv	r1, r3, r0
+ 309 0080 00FB1133 		mls	r3, r0, r1, r3
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 10
+
+
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num ++;
+ 310              		.loc 1 108 26 view .LVU105
+ 311 0084 E360     		str	r3, [r4, #12]
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 312              		.loc 1 109 9 is_stmt 1 view .LVU106
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 313              		.loc 1 109 24 is_stmt 0 view .LVU107
+ 314 0086 6261     		str	r2, [r4, #20]
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 315              		.loc 1 110 9 is_stmt 1 view .LVU108
+ 316              	.LVL29:
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 317              		.loc 1 110 9 is_stmt 0 view .LVU109
+ 318 0088 C1E7     		b	.L17
+ 319              	.LBE11:
+ 320              	.LBE10:
+ 321              		.cfi_endproc
+ 322              	.LFE5:
+ 324              		.section	.text.queue_pop,"ax",%progbits
+ 325              		.align	1
+ 326              		.global	queue_pop
+ 327              		.syntax unified
+ 328              		.thumb
+ 329              		.thumb_func
+ 330              		.fpu fpv4-sp-d16
+ 332              	queue_pop:
+ 333              	.LVL30:
+ 334              	.LFB7:
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** ///< pop a data from the queue
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** static int raw_queue_pop(queue_t *queue,void **buf)
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num > 0)
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         *buf = queue->msg_buf[queue->cur_read];
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     return ret;
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** int queue_pop(queue_t *queue,void **buf, int timeout)
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 335              		.loc 1 165 1 is_stmt 1 view -0
+ 336              		.cfi_startproc
+ 337              		@ args = 0, pretend = 0, frame = 0
+ 338              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 339              		.loc 1 166 5 view .LVU111
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if((NULL == queue) || (NULL == buf))
+ 340              		.loc 1 167 5 view .LVU112
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 341              		.loc 1 165 1 is_stmt 0 view .LVU113
+ 342 0000 70B5     		push	{r4, r5, r6, lr}
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 11
+
+
+ 343              	.LCFI2:
+ 344              		.cfi_def_cfa_offset 16
+ 345              		.cfi_offset 4, -16
+ 346              		.cfi_offset 5, -12
+ 347              		.cfi_offset 6, -8
+ 348              		.cfi_offset 14, -4
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 349              		.loc 1 165 1 view .LVU114
+ 350 0002 0E46     		mov	r6, r1
+ 351              		.loc 1 167 7 view .LVU115
+ 352 0004 0446     		mov	r4, r0
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 353              		.loc 1 165 1 view .LVU116
+ 354 0006 1146     		mov	r1, r2
+ 355              	.LVL31:
+ 356              		.loc 1 167 7 view .LVU117
+ 357 0008 18B9     		cbnz	r0, .L34
+ 358              	.LVL32:
+ 359              	.L36:
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         return ret;
+ 360              		.loc 1 169 16 view .LVU118
+ 361 000a 4FF0FF35 		mov	r5, #-1
+ 362              	.L33:
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->sync_mode)
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         if(osal_semp_pend(queue->sync_read,timeout))
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             if(osal_mutex_lock(queue->lock))
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****                 ret = raw_queue_pop(queue,buf);
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****                 (void) osal_mutex_unlock(queue->lock);
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             if(0 == ret)
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****                 (void) osal_semp_post(queue->sync_write);
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         }
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     else
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = raw_queue_pop(queue,buf);
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     return ret;
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 363              		.loc 1 192 1 view .LVU119
+ 364 000e 2846     		mov	r0, r5
+ 365 0010 70BD     		pop	{r4, r5, r6, pc}
+ 366              	.LVL33:
+ 367              	.L34:
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 368              		.loc 1 167 24 discriminator 1 view .LVU120
+ 369 0012 002E     		cmp	r6, #0
+ 370 0014 F9D0     		beq	.L36
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 12
+
+
+ 371              		.loc 1 172 5 is_stmt 1 view .LVU121
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 372              		.loc 1 172 13 is_stmt 0 view .LVU122
+ 373 0016 8569     		ldr	r5, [r0, #24]
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 374              		.loc 1 172 7 view .LVU123
+ 375 0018 3DB3     		cbz	r5, .L37
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 376              		.loc 1 174 9 is_stmt 1 view .LVU124
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 377              		.loc 1 174 12 is_stmt 0 view .LVU125
+ 378 001a C069     		ldr	r0, [r0, #28]
+ 379              	.LVL34:
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 380              		.loc 1 174 12 view .LVU126
+ 381 001c FFF7FEFF 		bl	osal_semp_pend
+ 382              	.LVL35:
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         {
+ 383              		.loc 1 174 11 view .LVU127
+ 384 0020 0028     		cmp	r0, #0
+ 385 0022 F2D0     		beq	.L36
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 386              		.loc 1 176 13 is_stmt 1 view .LVU128
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 387              		.loc 1 176 16 is_stmt 0 view .LVU129
+ 388 0024 606A     		ldr	r0, [r4, #36]
+ 389 0026 FFF7FEFF 		bl	osal_mutex_lock
+ 390              	.LVL36:
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 391              		.loc 1 176 15 view .LVU130
+ 392 002a 0028     		cmp	r0, #0
+ 393 002c EDD0     		beq	.L36
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****                 (void) osal_mutex_unlock(queue->lock);
+ 394              		.loc 1 178 17 is_stmt 1 view .LVU131
+ 395              	.LVL37:
+ 396              	.LBB16:
+ 397              	.LBI16:
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 398              		.loc 1 150 12 view .LVU132
+ 399              	.LBB17:
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num > 0)
+ 400              		.loc 1 152 5 view .LVU133
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 401              		.loc 1 153 5 view .LVU134
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 402              		.loc 1 153 13 is_stmt 0 view .LVU135
+ 403 002e 6269     		ldr	r2, [r4, #20]
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 404              		.loc 1 153 7 view .LVU136
+ 405 0030 002A     		cmp	r2, #0
+ 406 0032 17DD     		ble	.L39
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 407              		.loc 1 155 9 is_stmt 1 view .LVU137
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 408              		.loc 1 155 36 is_stmt 0 view .LVU138
+ 409 0034 2369     		ldr	r3, [r4, #16]
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 13
+
+
+ 410              		.loc 1 155 30 view .LVU139
+ 411 0036 A168     		ldr	r1, [r4, #8]
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 412              		.loc 1 156 47 view .LVU140
+ 413 0038 6068     		ldr	r0, [r4, #4]
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 414              		.loc 1 155 30 view .LVU141
+ 415 003a 51F82310 		ldr	r1, [r1, r3, lsl #2]
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 416              		.loc 1 155 14 view .LVU142
+ 417 003e 3160     		str	r1, [r6]
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 418              		.loc 1 156 9 is_stmt 1 view .LVU143
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 419              		.loc 1 156 44 is_stmt 0 view .LVU144
+ 420 0040 0133     		adds	r3, r3, #1
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 421              		.loc 1 157 23 view .LVU145
+ 422 0042 013A     		subs	r2, r2, #1
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 423              		.loc 1 156 47 view .LVU146
+ 424 0044 93FBF0F1 		sdiv	r1, r3, r0
+ 425 0048 00FB1133 		mls	r3, r0, r1, r3
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 426              		.loc 1 156 25 view .LVU147
+ 427 004c 2361     		str	r3, [r4, #16]
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 428              		.loc 1 157 9 is_stmt 1 view .LVU148
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 429              		.loc 1 157 23 is_stmt 0 view .LVU149
+ 430 004e 6261     		str	r2, [r4, #20]
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 431              		.loc 1 158 9 is_stmt 1 view .LVU150
+ 432              	.LVL38:
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 433              		.loc 1 158 13 is_stmt 0 view .LVU151
+ 434 0050 0025     		movs	r5, #0
+ 435              	.LVL39:
+ 436              	.L38:
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 437              		.loc 1 160 5 is_stmt 1 view .LVU152
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ 438              		.loc 1 160 5 is_stmt 0 view .LVU153
+ 439              	.LBE17:
+ 440              	.LBE16:
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 441              		.loc 1 179 17 is_stmt 1 view .LVU154
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 442              		.loc 1 179 24 is_stmt 0 view .LVU155
+ 443 0052 606A     		ldr	r0, [r4, #36]
+ 444 0054 FFF7FEFF 		bl	osal_mutex_unlock
+ 445              	.LVL40:
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 446              		.loc 1 181 13 is_stmt 1 view .LVU156
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             {
+ 447              		.loc 1 181 15 is_stmt 0 view .LVU157
+ 448 0058 002D     		cmp	r5, #0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 14
+
+
+ 449 005a D6D1     		bne	.L36
+ 450              	.LVL41:
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 451              		.loc 1 183 17 is_stmt 1 view .LVU158
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****             }
+ 452              		.loc 1 183 24 is_stmt 0 view .LVU159
+ 453 005c 206A     		ldr	r0, [r4, #32]
+ 454 005e FFF7FEFF 		bl	osal_semp_post
+ 455              	.LVL42:
+ 456 0062 D4E7     		b	.L33
+ 457              	.LVL43:
+ 458              	.L39:
+ 459              	.LBB19:
+ 460              	.LBB18:
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num > 0)
+ 461              		.loc 1 152 9 view .LVU160
+ 462 0064 4FF0FF35 		mov	r5, #-1
+ 463 0068 F3E7     		b	.L38
+ 464              	.LVL44:
+ 465              	.L37:
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num > 0)
+ 466              		.loc 1 152 9 view .LVU161
+ 467              	.LBE18:
+ 468              	.LBE19:
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 469              		.loc 1 189 9 is_stmt 1 view .LVU162
+ 470              	.LBB20:
+ 471              	.LBI20:
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 472              		.loc 1 150 12 view .LVU163
+ 473              	.LBB21:
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->msg_num > 0)
+ 474              		.loc 1 152 5 view .LVU164
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 475              		.loc 1 153 5 view .LVU165
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 476              		.loc 1 153 13 is_stmt 0 view .LVU166
+ 477 006a 4269     		ldr	r2, [r0, #20]
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 478              		.loc 1 153 7 view .LVU167
+ 479 006c 002A     		cmp	r2, #0
+ 480 006e CCDD     		ble	.L36
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 481              		.loc 1 155 9 is_stmt 1 view .LVU168
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 482              		.loc 1 155 36 is_stmt 0 view .LVU169
+ 483 0070 0369     		ldr	r3, [r0, #16]
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 484              		.loc 1 155 30 view .LVU170
+ 485 0072 8168     		ldr	r1, [r0, #8]
+ 486              	.LVL45:
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 487              		.loc 1 156 47 view .LVU171
+ 488 0074 4068     		ldr	r0, [r0, #4]
+ 489              	.LVL46:
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 490              		.loc 1 155 30 view .LVU172
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 15
+
+
+ 491 0076 51F82310 		ldr	r1, [r1, r3, lsl #2]
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 492              		.loc 1 155 14 view .LVU173
+ 493 007a 3160     		str	r1, [r6]
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 494              		.loc 1 156 9 is_stmt 1 view .LVU174
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 495              		.loc 1 156 44 is_stmt 0 view .LVU175
+ 496 007c 0133     		adds	r3, r3, #1
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 497              		.loc 1 157 23 view .LVU176
+ 498 007e 013A     		subs	r2, r2, #1
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 499              		.loc 1 156 47 view .LVU177
+ 500 0080 93FBF0F1 		sdiv	r1, r3, r0
+ 501 0084 00FB1133 		mls	r3, r0, r1, r3
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         queue->msg_num--;
+ 502              		.loc 1 156 25 view .LVU178
+ 503 0088 2361     		str	r3, [r4, #16]
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 504              		.loc 1 157 9 is_stmt 1 view .LVU179
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         ret = 0;
+ 505              		.loc 1 157 23 is_stmt 0 view .LVU180
+ 506 008a 6261     		str	r2, [r4, #20]
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 507              		.loc 1 158 9 is_stmt 1 view .LVU181
+ 508              	.LVL47:
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 509              		.loc 1 158 9 is_stmt 0 view .LVU182
+ 510 008c BFE7     		b	.L33
+ 511              	.LBE21:
+ 512              	.LBE20:
+ 513              		.cfi_endproc
+ 514              	.LFE7:
+ 516              		.section	.text.queue_delete,"ax",%progbits
+ 517              		.align	1
+ 518              		.global	queue_delete
+ 519              		.syntax unified
+ 520              		.thumb
+ 521              		.thumb_func
+ 522              		.fpu fpv4-sp-d16
+ 524              	queue_delete:
+ 525              	.LVL48:
+ 526              	.LFB8:
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** ///< delete the queue,if any data in the queue, which means could not kill it
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** int queue_delete(queue_t *queue)
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** {
+ 527              		.loc 1 196 1 is_stmt 1 view -0
+ 528              		.cfi_startproc
+ 529              		@ args = 0, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 531              		.loc 1 197 5 view .LVU184
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if((NULL == queue))
+ 532              		.loc 1 199 5 view .LVU185
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 16
+
+
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     int ret = -1;
+ 533              		.loc 1 196 1 is_stmt 0 view .LVU186
+ 534 0000 10B5     		push	{r4, lr}
+ 535              	.LCFI3:
+ 536              		.cfi_def_cfa_offset 8
+ 537              		.cfi_offset 4, -8
+ 538              		.cfi_offset 14, -4
+ 539              		.loc 1 199 7 view .LVU187
+ 540 0002 0446     		mov	r4, r0
+ 541 0004 78B1     		cbz	r0, .L52
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         return ret;
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     if(queue->sync_mode)
+ 542              		.loc 1 203 5 is_stmt 1 view .LVU188
+ 543              		.loc 1 203 7 is_stmt 0 view .LVU189
+ 544 0006 8369     		ldr	r3, [r0, #24]
+ 545 0008 43B1     		cbz	r3, .L51
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     {
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         (void) osal_semp_del(queue->sync_read);
+ 546              		.loc 1 205 9 is_stmt 1 view .LVU190
+ 547              		.loc 1 205 16 is_stmt 0 view .LVU191
+ 548 000a C069     		ldr	r0, [r0, #28]
+ 549              	.LVL49:
+ 550              		.loc 1 205 16 view .LVU192
+ 551 000c FFF7FEFF 		bl	osal_semp_del
+ 552              	.LVL50:
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         (void) osal_semp_del(queue->sync_write);
+ 553              		.loc 1 206 9 is_stmt 1 view .LVU193
+ 554              		.loc 1 206 16 is_stmt 0 view .LVU194
+ 555 0010 206A     		ldr	r0, [r4, #32]
+ 556 0012 FFF7FEFF 		bl	osal_semp_del
+ 557              	.LVL51:
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****         (void) osal_mutex_del(queue->lock);
+ 558              		.loc 1 207 9 is_stmt 1 view .LVU195
+ 559              		.loc 1 207 16 is_stmt 0 view .LVU196
+ 560 0016 606A     		ldr	r0, [r4, #36]
+ 561 0018 FFF7FEFF 		bl	osal_mutex_del
+ 562              	.LVL52:
+ 563              	.L51:
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     osal_free(queue);
+ 564              		.loc 1 209 5 is_stmt 1 view .LVU197
+ 565 001c 2046     		mov	r0, r4
+ 566 001e FFF7FEFF 		bl	osal_free
+ 567              	.LVL53:
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     ret = 0;
+ 568              		.loc 1 210 5 view .LVU198
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     return ret;
+ 569              		.loc 1 212 5 view .LVU199
+ 570              		.loc 1 212 12 is_stmt 0 view .LVU200
+ 571 0022 0020     		movs	r0, #0
+ 572              	.LVL54:
+ 573              	.L49:
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** 
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c **** }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 17
+
+
+ 574              		.loc 1 214 1 view .LVU201
+ 575 0024 10BD     		pop	{r4, pc}
+ 576              	.LVL55:
+ 577              	.L52:
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 578              		.loc 1 201 16 view .LVU202
+ 579 0026 4FF0FF30 		mov	r0, #-1
+ 580              	.LVL56:
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/queue\queue.c ****     }
+ 581              		.loc 1 201 16 view .LVU203
+ 582 002a FBE7     		b	.L49
+ 583              		.cfi_endproc
+ 584              	.LFE8:
+ 586              		.text
+ 587              	.Letext0:
+ 588              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 589              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 590              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 591              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 592              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 593              		.file 7 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 594              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 595              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal_types.h"
+ 596              		.file 10 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/queue/queue.h"
+ 597              		.file 11 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal.h"
+ 598              		.file 12 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s 			page 18
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 queue.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s:18     .text.queue_create:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s:26     .text.queue_create:00000000 queue_create
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s:142    .text.queue_push:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s:149    .text.queue_push:00000000 queue_push
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s:325    .text.queue_pop:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s:332    .text.queue_pop:00000000 queue_pop
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s:517    .text.queue_delete:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccFc5OQo.s:524    .text.queue_delete:00000000 queue_delete
+
+UNDEFINED SYMBOLS
+osal_malloc
+memset
+osal_semp_create
+osal_mutex_create
+osal_semp_del
+osal_free
+osal_semp_pend
+osal_mutex_lock
+osal_mutex_unlock
+osal_semp_post
+osal_mutex_del

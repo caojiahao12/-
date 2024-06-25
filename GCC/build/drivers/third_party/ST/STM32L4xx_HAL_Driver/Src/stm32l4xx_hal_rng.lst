@@ -1,0 +1,1377 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_hal_rng.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HAL_RNG_MspInit,"ax",%progbits
+  18              		.align	1
+  19              		.weak	HAL_RNG_MspInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	HAL_RNG_MspInit:
+  27              	.LVL0:
+  28              	.LFB289:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   ******************************************************************************
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @file    stm32l4xx_hal_rng.c
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @author  MCD Application Team
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief   RNG HAL module driver.
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *          This file provides firmware functions to manage the following 
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *          functionalities of the Random Number Generator (RNG) peripheral:
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *           + Initialization/de-initialization functions
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *           + Peripheral Control functions 
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *           + Peripheral State functions
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   @verbatim
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   ==============================================================================
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****                      ##### How to use this driver #####
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   ==============================================================================
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   [..]
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       The RNG HAL driver can be used as follows:
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (#) Enable the RNG controller clock using __HAL_RCC_RNG_CLK_ENABLE() macro 
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****           in HAL_RNG_MspInit().
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (#) Activate the RNG peripheral using HAL_RNG_Init() function.
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (#) Wait until the 32-bit Random Number Generator contains a valid 
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****           random data using (polling/interrupt) mode.   
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (#) Get the 32 bit random number using HAL_RNG_GenerateRandomNumber() function.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   @endverbatim
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   ******************************************************************************
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @attention
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * are permitted provided that the following conditions are met:
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *      this list of conditions and the following disclaimer.
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *      this list of conditions and the following disclaimer in the documentation
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *      and/or other materials provided with the distribution.
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *      may be used to endorse or promote products derived from this software
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *      without specific prior written permission.
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   ******************************************************************************
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */ 
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /* Includes ------------------------------------------------------------------*/
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #include "stm32l4xx_hal.h"
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /** @addtogroup STM32L4xx_HAL_Driver
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @{
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /** @defgroup RNG RNG
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief RNG HAL module driver.
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @{
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #ifdef HAL_RNG_MODULE_ENABLED
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /* Private types -------------------------------------------------------------*/
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /* Private defines -----------------------------------------------------------*/
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /** @defgroup RNG_Private_Constants RNG_Private_Constants
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @{
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #define RNG_TIMEOUT_VALUE     2
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @}
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */ 
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /* Private macros ------------------------------------------------------------*/
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /* Private variables ---------------------------------------------------------*/
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /* Private function prototypes -----------------------------------------------*/
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /* Private functions ---------------------------------------------------------*/
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 3
+
+
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /* Exported functions --------------------------------------------------------*/
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /** @addtogroup RNG_Exported_Functions
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @{
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /** @addtogroup RNG_Exported_Functions_Group1
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  *  @brief   Initialization and de-initialization functions
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  *
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** @verbatim
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  ===============================================================================
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****           ##### Initialization and de-initialization functions #####
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  ===============================================================================
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     [..]  This section provides functions allowing to:
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (+) Initialize the RNG according to the specified parameters 
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****           in the RNG_InitTypeDef and create the associated handle
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (+) DeInitialize the RNG peripheral
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (+) Initialize the RNG MSP (MCU Specific Package)
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (+) DeInitialize the RNG MSP 
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** @endverbatim
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @{
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Initialize the RNG peripheral and initialize the associated handle.
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval HAL status
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** HAL_StatusTypeDef HAL_RNG_Init(RNG_HandleTypeDef *hrng)
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** { 
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check the RNG handle allocation */
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(hrng == NULL)
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     return HAL_ERROR;
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   assert_param(IS_RNG_ALL_INSTANCE(hrng->Instance));
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #if defined(RNG_CR_CED)
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   assert_param(IS_RNG_CED(hrng->Init.ClockErrorDetection));
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #endif /* defined(RNG_CR_CED) */
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(hrng->State == HAL_RNG_STATE_RESET)
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {  
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Allocate lock resource and initialize it */
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     hrng->Lock = HAL_UNLOCKED;
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Init the low level hardware */
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     HAL_RNG_MspInit(hrng);
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Change RNG peripheral state */
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   hrng->State = HAL_RNG_STATE_BUSY;
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #if defined(RNG_CR_CED)
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Clock Error Detection configuration */
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   MODIFY_REG(hrng->Instance->CR, RNG_CR_CED, hrng->Init.ClockErrorDetection);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 4
+
+
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #endif /* defined(RNG_CR_CED) */
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Enable the RNG Peripheral */
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   __HAL_RNG_ENABLE(hrng);
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Initialize the RNG state */
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   hrng->State = HAL_RNG_STATE_READY;
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Return function status */
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   return HAL_OK;
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  DeInitialize the RNG peripheral. 
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval HAL status
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** HAL_StatusTypeDef HAL_RNG_DeInit(RNG_HandleTypeDef *hrng)
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** { 
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check the RNG handle allocation */
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(hrng == NULL)
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     return HAL_ERROR;
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #if defined(RNG_CR_CED)
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Clear Clock Error Detection bit */
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   CLEAR_BIT(hrng->Instance->CR, RNG_CR_CED);
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #endif /* defined(RNG_CR_CED) */
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Disable the RNG Peripheral */
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   CLEAR_BIT(hrng->Instance->CR, RNG_CR_IE | RNG_CR_RNGEN);
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Clear RNG interrupt status flags */
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   CLEAR_BIT(hrng->Instance->SR, RNG_SR_CEIS | RNG_SR_SEIS);
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* DeInit the low level hardware */
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   HAL_RNG_MspDeInit(hrng);
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Update the RNG state */
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   hrng->State = HAL_RNG_STATE_RESET; 
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Release Lock */
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   __HAL_UNLOCK(hrng);
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Return the function status */
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   return HAL_OK;
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Initialize the RNG MSP.
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval None
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** __weak void HAL_RNG_MspInit(RNG_HandleTypeDef *hrng)
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+  30              		.loc 1 199 1 view -0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 5
+
+
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Prevent unused argument(s) compilation warning */
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   UNUSED(hrng);
+  35              		.loc 1 201 3 view .LVU1
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* NOTE : This function should not be modified. When the callback is needed,
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****             function HAL_RNG_MspInit must be implemented in the user file.
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****    */
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+  36              		.loc 1 206 1 is_stmt 0 view .LVU2
+  37 0000 7047     		bx	lr
+  38              		.cfi_endproc
+  39              	.LFE289:
+  41              		.section	.text.HAL_RNG_Init,"ax",%progbits
+  42              		.align	1
+  43              		.global	HAL_RNG_Init
+  44              		.syntax unified
+  45              		.thumb
+  46              		.thumb_func
+  47              		.fpu fpv4-sp-d16
+  49              	HAL_RNG_Init:
+  50              	.LVL1:
+  51              	.LFB287:
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check the RNG handle allocation */
+  52              		.loc 1 117 1 is_stmt 1 view -0
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+  56              		.loc 1 119 3 view .LVU4
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check the RNG handle allocation */
+  57              		.loc 1 117 1 is_stmt 0 view .LVU5
+  58 0000 10B5     		push	{r4, lr}
+  59              	.LCFI0:
+  60              		.cfi_def_cfa_offset 8
+  61              		.cfi_offset 4, -8
+  62              		.cfi_offset 14, -4
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+  63              		.loc 1 119 5 view .LVU6
+  64 0002 0446     		mov	r4, r0
+  65 0004 88B1     		cbz	r0, .L5
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** #if defined(RNG_CR_CED)
+  66              		.loc 1 124 3 is_stmt 1 view .LVU7
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {  
+  67              		.loc 1 129 3 view .LVU8
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {  
+  68              		.loc 1 129 10 is_stmt 0 view .LVU9
+  69 0006 4379     		ldrb	r3, [r0, #5]	@ zero_extendqisi2
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {  
+  70              		.loc 1 129 5 view .LVU10
+  71 0008 03F0FF02 		and	r2, r3, #255
+  72 000c 13B9     		cbnz	r3, .L4
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  73              		.loc 1 132 5 is_stmt 1 view .LVU11
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 6
+
+
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  74              		.loc 1 132 16 is_stmt 0 view .LVU12
+  75 000e 0271     		strb	r2, [r0, #4]
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+  76              		.loc 1 135 5 is_stmt 1 view .LVU13
+  77 0010 FFF7FEFF 		bl	HAL_RNG_MspInit
+  78              	.LVL2:
+  79              	.L4:
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  80              		.loc 1 139 3 view .LVU14
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  81              		.loc 1 147 3 is_stmt 0 view .LVU15
+  82 0014 2268     		ldr	r2, [r4]
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  83              		.loc 1 139 15 view .LVU16
+  84 0016 0223     		movs	r3, #2
+  85 0018 6371     		strb	r3, [r4, #5]
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  86              		.loc 1 147 3 is_stmt 1 view .LVU17
+  87 001a 1368     		ldr	r3, [r2]
+  88 001c 43F00403 		orr	r3, r3, #4
+  89 0020 1360     		str	r3, [r2]
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+  90              		.loc 1 150 3 view .LVU18
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+  91              		.loc 1 150 15 is_stmt 0 view .LVU19
+  92 0022 0123     		movs	r3, #1
+  93 0024 6371     		strb	r3, [r4, #5]
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+  94              		.loc 1 153 3 is_stmt 1 view .LVU20
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+  95              		.loc 1 153 10 is_stmt 0 view .LVU21
+  96 0026 0020     		movs	r0, #0
+  97              	.L3:
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+  98              		.loc 1 154 1 view .LVU22
+  99 0028 10BD     		pop	{r4, pc}
+ 100              	.LVL3:
+ 101              	.L5:
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 102              		.loc 1 121 12 view .LVU23
+ 103 002a 0120     		movs	r0, #1
+ 104              	.LVL4:
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 105              		.loc 1 121 12 view .LVU24
+ 106 002c FCE7     		b	.L3
+ 107              		.cfi_endproc
+ 108              	.LFE287:
+ 110              		.section	.text.HAL_RNG_MspDeInit,"ax",%progbits
+ 111              		.align	1
+ 112              		.weak	HAL_RNG_MspDeInit
+ 113              		.syntax unified
+ 114              		.thumb
+ 115              		.thumb_func
+ 116              		.fpu fpv4-sp-d16
+ 118              	HAL_RNG_MspDeInit:
+ 119              	.LFB301:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 7
+
+
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124 0000 7047     		bx	lr
+ 125              		.cfi_endproc
+ 126              	.LFE301:
+ 128              		.section	.text.HAL_RNG_DeInit,"ax",%progbits
+ 129              		.align	1
+ 130              		.global	HAL_RNG_DeInit
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.fpu fpv4-sp-d16
+ 136              	HAL_RNG_DeInit:
+ 137              	.LVL5:
+ 138              	.LFB288:
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check the RNG handle allocation */
+ 139              		.loc 1 162 1 is_stmt 1 view -0
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 0
+ 142              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 143              		.loc 1 164 3 view .LVU26
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check the RNG handle allocation */
+ 144              		.loc 1 162 1 is_stmt 0 view .LVU27
+ 145 0000 10B5     		push	{r4, lr}
+ 146              	.LCFI1:
+ 147              		.cfi_def_cfa_offset 8
+ 148              		.cfi_offset 4, -8
+ 149              		.cfi_offset 14, -4
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 150              		.loc 1 164 5 view .LVU28
+ 151 0002 0446     		mov	r4, r0
+ 152 0004 78B1     		cbz	r0, .L9
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 153              		.loc 1 175 3 is_stmt 1 view .LVU29
+ 154 0006 0368     		ldr	r3, [r0]
+ 155 0008 1A68     		ldr	r2, [r3]
+ 156 000a 22F00C02 		bic	r2, r2, #12
+ 157 000e 1A60     		str	r2, [r3]
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 158              		.loc 1 178 3 view .LVU30
+ 159 0010 5A68     		ldr	r2, [r3, #4]
+ 160 0012 22F06002 		bic	r2, r2, #96
+ 161 0016 5A60     		str	r2, [r3, #4]
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 162              		.loc 1 181 3 view .LVU31
+ 163 0018 FFF7FEFF 		bl	HAL_RNG_MspDeInit
+ 164              	.LVL6:
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 165              		.loc 1 184 3 view .LVU32
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 166              		.loc 1 184 15 is_stmt 0 view .LVU33
+ 167 001c 0023     		movs	r3, #0
+ 168 001e 6371     		strb	r3, [r4, #5]
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 8
+
+
+ 169              		.loc 1 187 3 is_stmt 1 view .LVU34
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 170              		.loc 1 187 3 view .LVU35
+ 171 0020 2371     		strb	r3, [r4, #4]
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 172              		.loc 1 187 3 view .LVU36
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 173              		.loc 1 190 3 view .LVU37
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 174              		.loc 1 190 10 is_stmt 0 view .LVU38
+ 175 0022 1846     		mov	r0, r3
+ 176              	.L8:
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 177              		.loc 1 191 1 view .LVU39
+ 178 0024 10BD     		pop	{r4, pc}
+ 179              	.LVL7:
+ 180              	.L9:
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 181              		.loc 1 166 12 view .LVU40
+ 182 0026 0120     		movs	r0, #1
+ 183              	.LVL8:
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 184              		.loc 1 166 12 view .LVU41
+ 185 0028 FCE7     		b	.L8
+ 186              		.cfi_endproc
+ 187              	.LFE288:
+ 189              		.section	.text.HAL_RNG_GenerateRandomNumber,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	HAL_RNG_GenerateRandomNumber
+ 192              		.syntax unified
+ 193              		.thumb
+ 194              		.thumb_func
+ 195              		.fpu fpv4-sp-d16
+ 197              	HAL_RNG_GenerateRandomNumber:
+ 198              	.LVL9:
+ 199              	.LFB291:
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  DeInitialize the RNG MSP.
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval None
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** __weak void HAL_RNG_MspDeInit(RNG_HandleTypeDef *hrng)
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Prevent unused argument(s) compilation warning */
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   UNUSED(hrng);
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* NOTE : This function should not be modified. When the callback is needed,
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****             function HAL_RNG_MspDeInit must be implemented in the user file.
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****    */
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @}
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /** @addtogroup RNG_Exported_Functions_Group2
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 9
+
+
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  *  @brief    Management functions. 
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  *
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** @verbatim   
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  ===============================================================================
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****                       ##### Peripheral Control functions #####
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  ===============================================================================  
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     [..]  This section provides functions allowing to:
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (+) Get the 32 bit Random number
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (+) Get the 32 bit Random number with interrupt enabled
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       (+) Handle RNG interrupt request 
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** @endverbatim
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @{
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Generate a 32-bit random number.
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @note   Each time the random number data is read the RNG_FLAG_DRDY flag 
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         is automatically cleared.
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  random32bit: pointer to generated random number variable if successful.
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval HAL status
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** HAL_StatusTypeDef HAL_RNG_GenerateRandomNumber(RNG_HandleTypeDef *hrng, uint32_t *random32bit)
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 200              		.loc 1 253 1 is_stmt 1 view -0
+ 201              		.cfi_startproc
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 254:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   uint32_t tickstart = 0;    
+ 204              		.loc 1 254 3 view .LVU43
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 205              		.loc 1 255 3 view .LVU44
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 257:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Process Locked */
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   __HAL_LOCK(hrng); 
+ 206              		.loc 1 258 3 view .LVU45
+ 207              		.loc 1 258 3 view .LVU46
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   uint32_t tickstart = 0;    
+ 208              		.loc 1 253 1 is_stmt 0 view .LVU47
+ 209 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 210              	.LCFI2:
+ 211              		.cfi_def_cfa_offset 24
+ 212              		.cfi_offset 3, -24
+ 213              		.cfi_offset 4, -20
+ 214              		.cfi_offset 5, -16
+ 215              		.cfi_offset 6, -12
+ 216              		.cfi_offset 7, -8
+ 217              		.cfi_offset 14, -4
+ 218              		.loc 1 258 3 view .LVU48
+ 219 0002 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+ 220 0004 012B     		cmp	r3, #1
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   uint32_t tickstart = 0;    
+ 221              		.loc 1 253 1 view .LVU49
+ 222 0006 0446     		mov	r4, r0
+ 223 0008 0E46     		mov	r6, r1
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 10
+
+
+ 224              		.loc 1 258 3 view .LVU50
+ 225 000a 21D0     		beq	.L15
+ 226              		.loc 1 258 3 is_stmt 1 discriminator 2 view .LVU51
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check RNS peripheral state */
+ 261:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(hrng->State == HAL_RNG_STATE_READY)
+ 227              		.loc 1 261 10 is_stmt 0 discriminator 2 view .LVU52
+ 228 000c 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 229              		.loc 1 258 3 discriminator 2 view .LVU53
+ 230 000e 0120     		movs	r0, #1
+ 231              	.LVL10:
+ 232              		.loc 1 261 5 discriminator 2 view .LVU54
+ 233 0010 8342     		cmp	r3, r0
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 234              		.loc 1 258 3 discriminator 2 view .LVU55
+ 235 0012 2071     		strb	r0, [r4, #4]
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 236              		.loc 1 258 3 is_stmt 1 discriminator 2 view .LVU56
+ 237              		.loc 1 261 3 discriminator 2 view .LVU57
+ 238              		.loc 1 261 5 is_stmt 0 discriminator 2 view .LVU58
+ 239 0014 0FD1     		bne	.L12
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Change RNG peripheral state */  
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     hrng->State = HAL_RNG_STATE_BUSY;  
+ 240              		.loc 1 264 5 is_stmt 1 view .LVU59
+ 241              		.loc 1 264 17 is_stmt 0 view .LVU60
+ 242 0016 0223     		movs	r3, #2
+ 243 0018 6371     		strb	r3, [r4, #5]
+ 265:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 266:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Get tick */
+ 267:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     tickstart = HAL_GetTick();
+ 244              		.loc 1 267 5 is_stmt 1 view .LVU61
+ 245              		.loc 1 267 17 is_stmt 0 view .LVU62
+ 246 001a FFF7FEFF 		bl	HAL_GetTick
+ 247              	.LVL11:
+ 248              		.loc 1 267 17 view .LVU63
+ 249 001e 0746     		mov	r7, r0
+ 250              	.LVL12:
+ 268:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 269:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Check if data register contains valid random data */
+ 270:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     while(__HAL_RNG_GET_FLAG(hrng, RNG_FLAG_DRDY) == RESET)
+ 251              		.loc 1 270 5 is_stmt 1 view .LVU64
+ 252              	.L13:
+ 253              		.loc 1 270 10 view .LVU65
+ 254              		.loc 1 270 11 is_stmt 0 view .LVU66
+ 255 0020 2268     		ldr	r2, [r4]
+ 256 0022 5568     		ldr	r5, [r2, #4]
+ 257              		.loc 1 270 10 view .LVU67
+ 258 0024 15F00105 		ands	r5, r5, #1
+ 259 0028 08D0     		beq	.L14
+ 271:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     {
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       if((HAL_GetTick() - tickstart ) > RNG_TIMEOUT_VALUE)
+ 273:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       {    
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****         hrng->State = HAL_RNG_STATE_ERROR;
+ 275:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 276:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****         /* Process Unlocked */
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 11
+
+
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****         __HAL_UNLOCK(hrng);
+ 278:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****         return HAL_TIMEOUT;
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       } 
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     }
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 283:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Get a 32bit Random number */
+ 284:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     hrng->RandomNumber = hrng->Instance->DR;
+ 260              		.loc 1 284 5 is_stmt 1 view .LVU68
+ 261              		.loc 1 284 40 is_stmt 0 view .LVU69
+ 262 002a 9368     		ldr	r3, [r2, #8]
+ 263              		.loc 1 284 24 view .LVU70
+ 264 002c A360     		str	r3, [r4, #8]
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     *random32bit = hrng->RandomNumber;
+ 265              		.loc 1 285 5 is_stmt 1 view .LVU71
+ 266              		.loc 1 285 18 is_stmt 0 view .LVU72
+ 267 002e 3360     		str	r3, [r6]
+ 286:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 287:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     hrng->State = HAL_RNG_STATE_READY;
+ 268              		.loc 1 287 5 is_stmt 1 view .LVU73
+ 269              		.loc 1 287 17 is_stmt 0 view .LVU74
+ 270 0030 0123     		movs	r3, #1
+ 271 0032 6371     		strb	r3, [r4, #5]
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 272              		.loc 1 255 21 view .LVU75
+ 273 0034 0020     		movs	r0, #0
+ 274              	.LVL13:
+ 275              	.L12:
+ 288:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 289:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   else
+ 290:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 291:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     status = HAL_ERROR;
+ 292:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 293:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 294:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Process Unlocked */
+ 295:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   __HAL_UNLOCK(hrng);
+ 276              		.loc 1 295 3 is_stmt 1 view .LVU76
+ 277              		.loc 1 295 3 view .LVU77
+ 278 0036 0023     		movs	r3, #0
+ 279 0038 2371     		strb	r3, [r4, #4]
+ 280              		.loc 1 295 3 view .LVU78
+ 296:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 297:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   return status;
+ 281              		.loc 1 297 3 view .LVU79
+ 282              		.loc 1 297 10 is_stmt 0 view .LVU80
+ 283 003a 08E0     		b	.L11
+ 284              	.LVL14:
+ 285              	.L14:
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       {    
+ 286              		.loc 1 272 7 is_stmt 1 view .LVU81
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       {    
+ 287              		.loc 1 272 11 is_stmt 0 view .LVU82
+ 288 003c FFF7FEFF 		bl	HAL_GetTick
+ 289              	.LVL15:
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       {    
+ 290              		.loc 1 272 25 view .LVU83
+ 291 0040 C01B     		subs	r0, r0, r7
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 12
+
+
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       {    
+ 292              		.loc 1 272 9 view .LVU84
+ 293 0042 0228     		cmp	r0, #2
+ 294 0044 ECD9     		bls	.L13
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 295              		.loc 1 274 9 is_stmt 1 view .LVU85
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 296              		.loc 1 274 21 is_stmt 0 view .LVU86
+ 297 0046 0423     		movs	r3, #4
+ 298 0048 6371     		strb	r3, [r4, #5]
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       
+ 299              		.loc 1 277 9 is_stmt 1 view .LVU87
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       
+ 300              		.loc 1 277 9 view .LVU88
+ 301 004a 2571     		strb	r5, [r4, #4]
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       
+ 302              		.loc 1 277 9 view .LVU89
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       } 
+ 303              		.loc 1 279 9 view .LVU90
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       } 
+ 304              		.loc 1 279 16 is_stmt 0 view .LVU91
+ 305 004c 0320     		movs	r0, #3
+ 306              	.LVL16:
+ 307              	.L11:
+ 298:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 308              		.loc 1 298 1 view .LVU92
+ 309 004e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 310              	.LVL17:
+ 311              	.L15:
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 312              		.loc 1 258 3 view .LVU93
+ 313 0050 0220     		movs	r0, #2
+ 314              	.LVL18:
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 315              		.loc 1 258 3 view .LVU94
+ 316 0052 FCE7     		b	.L11
+ 317              		.cfi_endproc
+ 318              	.LFE291:
+ 320              		.section	.text.HAL_RNG_GenerateRandomNumber_IT,"ax",%progbits
+ 321              		.align	1
+ 322              		.global	HAL_RNG_GenerateRandomNumber_IT
+ 323              		.syntax unified
+ 324              		.thumb
+ 325              		.thumb_func
+ 326              		.fpu fpv4-sp-d16
+ 328              	HAL_RNG_GenerateRandomNumber_IT:
+ 329              	.LVL19:
+ 330              	.LFB292:
+ 299:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 300:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 301:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Generate a 32-bit random number in interrupt mode.
+ 302:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 303:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval HAL status
+ 304:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 305:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** HAL_StatusTypeDef HAL_RNG_GenerateRandomNumber_IT(RNG_HandleTypeDef *hrng)
+ 306:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 331              		.loc 1 306 1 is_stmt 1 view -0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 13
+
+
+ 332              		.cfi_startproc
+ 333              		@ args = 0, pretend = 0, frame = 0
+ 334              		@ frame_needed = 0, uses_anonymous_args = 0
+ 335              		@ link register save eliminated.
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 336              		.loc 1 307 3 view .LVU96
+ 308:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 309:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Process Locked */
+ 310:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   __HAL_LOCK(hrng);
+ 337              		.loc 1 310 3 view .LVU97
+ 338              		.loc 1 310 3 view .LVU98
+ 339 0000 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+ 340 0002 012B     		cmp	r3, #1
+ 341 0004 11D0     		beq	.L21
+ 342              		.loc 1 310 3 discriminator 2 view .LVU99
+ 343              		.loc 1 310 3 discriminator 2 view .LVU100
+ 311:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 312:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check RNG peripheral state */
+ 313:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(hrng->State == HAL_RNG_STATE_READY)
+ 344              		.loc 1 313 3 discriminator 2 view .LVU101
+ 345              		.loc 1 313 10 is_stmt 0 discriminator 2 view .LVU102
+ 346 0006 4379     		ldrb	r3, [r0, #5]	@ zero_extendqisi2
+ 347              		.loc 1 313 5 discriminator 2 view .LVU103
+ 348 0008 012B     		cmp	r3, #1
+ 349 000a 4FF00003 		mov	r3, #0
+ 350 000e 09D1     		bne	.L20
+ 314:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 315:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Change RNG peripheral state */  
+ 316:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     hrng->State = HAL_RNG_STATE_BUSY;  
+ 351              		.loc 1 316 5 is_stmt 1 view .LVU104
+ 317:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 318:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Process Unlocked */
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     __HAL_UNLOCK(hrng);
+ 320:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 321:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Enable the RNG Interrupts: Data Ready, Clock error, Seed error */ 
+ 322:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     __HAL_RNG_ENABLE_IT(hrng);
+ 352              		.loc 1 322 5 is_stmt 0 view .LVU105
+ 353 0010 0168     		ldr	r1, [r0]
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 354              		.loc 1 319 5 view .LVU106
+ 355 0012 0371     		strb	r3, [r0, #4]
+ 316:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 356              		.loc 1 316 17 view .LVU107
+ 357 0014 0222     		movs	r2, #2
+ 358 0016 4271     		strb	r2, [r0, #5]
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 359              		.loc 1 319 5 is_stmt 1 view .LVU108
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 360              		.loc 1 319 5 view .LVU109
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 361              		.loc 1 319 5 view .LVU110
+ 362              		.loc 1 322 5 view .LVU111
+ 363 0018 0A68     		ldr	r2, [r1]
+ 364 001a 42F00802 		orr	r2, r2, #8
+ 365 001e 0A60     		str	r2, [r1]
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 366              		.loc 1 307 21 is_stmt 0 view .LVU112
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 14
+
+
+ 367 0020 1846     		mov	r0, r3
+ 368              	.LVL20:
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 369              		.loc 1 307 21 view .LVU113
+ 370 0022 7047     		bx	lr
+ 371              	.LVL21:
+ 372              	.L20:
+ 323:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 324:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   else
+ 325:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 326:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Process Unlocked */
+ 327:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     __HAL_UNLOCK(hrng);
+ 373              		.loc 1 327 5 is_stmt 1 view .LVU114
+ 374              		.loc 1 327 5 view .LVU115
+ 375 0024 0371     		strb	r3, [r0, #4]
+ 376              		.loc 1 327 5 view .LVU116
+ 328:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 329:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     status = HAL_ERROR;
+ 377              		.loc 1 329 5 view .LVU117
+ 378              	.LVL22:
+ 379              		.loc 1 329 12 is_stmt 0 view .LVU118
+ 380 0026 0120     		movs	r0, #1
+ 381              	.LVL23:
+ 382              		.loc 1 329 12 view .LVU119
+ 383 0028 7047     		bx	lr
+ 384              	.LVL24:
+ 385              	.L21:
+ 310:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 386              		.loc 1 310 3 view .LVU120
+ 387 002a 0220     		movs	r0, #2
+ 388              	.LVL25:
+ 330:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 331:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 332:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   return status;
+ 333:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 389              		.loc 1 333 1 view .LVU121
+ 390 002c 7047     		bx	lr
+ 391              		.cfi_endproc
+ 392              	.LFE292:
+ 394              		.section	.text.HAL_RNG_GetRandomNumber,"ax",%progbits
+ 395              		.align	1
+ 396              		.global	HAL_RNG_GetRandomNumber
+ 397              		.syntax unified
+ 398              		.thumb
+ 399              		.thumb_func
+ 400              		.fpu fpv4-sp-d16
+ 402              	HAL_RNG_GetRandomNumber:
+ 403              	.LVL26:
+ 404              	.LFB294:
+ 334:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 335:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 336:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Handle RNG interrupt request.
+ 337:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @note   In the case of a clock error, the RNG is no more able to generate 
+ 338:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         random numbers because the PLL48CLK clock is not correct. User has 
+ 339:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         to check that the clock controller is correctly configured to provide
+ 340:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         the RNG clock and clear the CEIS bit using __HAL_RNG_CLEAR_IT(). 
+ 341:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         The clock error has no impact on the previously generated 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 15
+
+
+ 342:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         random numbers, and the RNG_DR register contents can be used.
+ 343:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @note   In the case of a seed error, the generation of random numbers is 
+ 344:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         interrupted as long as the SECS bit is '1'. If a number is 
+ 345:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         available in the RNG_DR register, it must not be used because it may 
+ 346:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         not have enough entropy. In this case, it is recommended to clear the 
+ 347:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         SEIS bit using __HAL_RNG_CLEAR_IT(), then disable and enable 
+ 348:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         the RNG peripheral to reinitialize and restart the RNG.
+ 349:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @note   User-written HAL_RNG_ErrorCallback() API is called once whether SEIS
+ 350:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *         or CEIS are set.  
+ 351:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 352:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval None
+ 353:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 354:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 355:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** void HAL_RNG_IRQHandler(RNG_HandleTypeDef *hrng)
+ 356:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 357:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* RNG clock error interrupt occurred */
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if((__HAL_RNG_GET_IT(hrng, RNG_IT_CEI) != RESET) ||  (__HAL_RNG_GET_IT(hrng, RNG_IT_SEI) != RESET
+ 359:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   { 
+ 360:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Change RNG peripheral state */
+ 361:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     hrng->State = HAL_RNG_STATE_ERROR;
+ 362:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 363:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     HAL_RNG_ErrorCallback(hrng);
+ 364:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 365:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Clear the clock error flag */
+ 366:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     __HAL_RNG_CLEAR_IT(hrng, RNG_IT_CEI|RNG_IT_SEI);
+ 367:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 368:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 369:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 370:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Check RNG data ready interrupt occurred */    
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(__HAL_RNG_GET_IT(hrng, RNG_IT_DRDY) != RESET)
+ 372:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 373:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Generate random number once, so disable the IT */
+ 374:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     __HAL_RNG_DISABLE_IT(hrng);
+ 375:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 376:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     /* Get the 32bit Random number (DRDY flag automatically cleared) */ 
+ 377:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     hrng->RandomNumber = hrng->Instance->DR;
+ 378:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 379:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     if(hrng->State != HAL_RNG_STATE_ERROR)
+ 380:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     {
+ 381:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       /* Change RNG peripheral state */
+ 382:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       hrng->State = HAL_RNG_STATE_READY; 
+ 383:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       
+ 384:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       /* Data Ready callback */ 
+ 385:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       HAL_RNG_ReadyDataCallback(hrng, hrng->RandomNumber);
+ 386:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     } 
+ 387:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 388:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** } 
+ 389:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 390:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 391:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Return generated random number in polling mode (Obsolete).
+ 392:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @note   Use HAL_RNG_GenerateRandomNumber() API instead.
+ 393:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure that contains
+ 394:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   *                the configuration information for RNG.
+ 395:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval random value
+ 396:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 397:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** uint32_t HAL_RNG_GetRandomNumber(RNG_HandleTypeDef *hrng)
+ 398:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 16
+
+
+ 405              		.loc 1 398 1 is_stmt 1 view -0
+ 406              		.cfi_startproc
+ 407              		@ args = 0, pretend = 0, frame = 0
+ 408              		@ frame_needed = 0, uses_anonymous_args = 0
+ 399:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(HAL_RNG_GenerateRandomNumber(hrng, &(hrng->RandomNumber)) == HAL_OK)
+ 409              		.loc 1 399 3 view .LVU123
+ 398:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(HAL_RNG_GenerateRandomNumber(hrng, &(hrng->RandomNumber)) == HAL_OK)
+ 410              		.loc 1 398 1 is_stmt 0 view .LVU124
+ 411 0000 10B5     		push	{r4, lr}
+ 412              	.LCFI3:
+ 413              		.cfi_def_cfa_offset 8
+ 414              		.cfi_offset 4, -8
+ 415              		.cfi_offset 14, -4
+ 416              		.loc 1 399 6 view .LVU125
+ 417 0002 00F10801 		add	r1, r0, #8
+ 398:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   if(HAL_RNG_GenerateRandomNumber(hrng, &(hrng->RandomNumber)) == HAL_OK)
+ 418              		.loc 1 398 1 view .LVU126
+ 419 0006 0446     		mov	r4, r0
+ 420              		.loc 1 399 6 view .LVU127
+ 421 0008 FFF7FEFF 		bl	HAL_RNG_GenerateRandomNumber
+ 422              	.LVL27:
+ 423              		.loc 1 399 5 view .LVU128
+ 424 000c 08B9     		cbnz	r0, .L24
+ 400:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 401:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     return hrng->RandomNumber; 
+ 425              		.loc 1 401 5 is_stmt 1 view .LVU129
+ 426              		.loc 1 401 16 is_stmt 0 view .LVU130
+ 427 000e A068     		ldr	r0, [r4, #8]
+ 428              	.L22:
+ 402:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 403:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   else
+ 404:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 405:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     return 0;
+ 406:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 407:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 429              		.loc 1 407 1 view .LVU131
+ 430 0010 10BD     		pop	{r4, pc}
+ 431              	.LVL28:
+ 432              	.L24:
+ 405:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   }
+ 433              		.loc 1 405 12 view .LVU132
+ 434 0012 0020     		movs	r0, #0
+ 435 0014 FCE7     		b	.L22
+ 436              		.cfi_endproc
+ 437              	.LFE294:
+ 439              		.section	.text.HAL_RNG_GetRandomNumber_IT,"ax",%progbits
+ 440              		.align	1
+ 441              		.global	HAL_RNG_GetRandomNumber_IT
+ 442              		.syntax unified
+ 443              		.thumb
+ 444              		.thumb_func
+ 445              		.fpu fpv4-sp-d16
+ 447              	HAL_RNG_GetRandomNumber_IT:
+ 448              	.LVL29:
+ 449              	.LFB295:
+ 408:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 409:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 17
+
+
+ 410:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 411:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Return a 32-bit random number with interrupt enabled (Obsolete).
+ 412:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @note   Use HAL_RNG_GenerateRandomNumber_IT() API instead.
+ 413:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: RNG handle
+ 414:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval 32-bit random number
+ 415:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 416:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** uint32_t HAL_RNG_GetRandomNumber_IT(RNG_HandleTypeDef *hrng)
+ 417:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 450              		.loc 1 417 1 is_stmt 1 view -0
+ 451              		.cfi_startproc
+ 452              		@ args = 0, pretend = 0, frame = 0
+ 453              		@ frame_needed = 0, uses_anonymous_args = 0
+ 454              		@ link register save eliminated.
+ 418:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   uint32_t random32bit = 0;
+ 455              		.loc 1 418 3 view .LVU134
+ 419:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 420:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Process locked */
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   __HAL_LOCK(hrng);
+ 456              		.loc 1 421 3 view .LVU135
+ 457              		.loc 1 421 3 view .LVU136
+ 458 0000 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+ 459 0002 012B     		cmp	r3, #1
+ 460 0004 4FF00203 		mov	r3, #2
+ 461 0008 09D0     		beq	.L27
+ 462              		.loc 1 421 3 discriminator 2 view .LVU137
+ 422:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 423:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Change RNG peripheral state */  
+ 424:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   hrng->State = HAL_RNG_STATE_BUSY;  
+ 463              		.loc 1 424 15 is_stmt 0 discriminator 2 view .LVU138
+ 464 000a 4371     		strb	r3, [r0, #5]
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 465              		.loc 1 421 3 discriminator 2 view .LVU139
+ 466 000c 0122     		movs	r2, #1
+ 425:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 426:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Get a 32bit Random number */ 
+ 427:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   random32bit = hrng->Instance->DR;
+ 467              		.loc 1 427 21 discriminator 2 view .LVU140
+ 468 000e 0368     		ldr	r3, [r0]
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 469              		.loc 1 421 3 discriminator 2 view .LVU141
+ 470 0010 0271     		strb	r2, [r0, #4]
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 471              		.loc 1 421 3 is_stmt 1 discriminator 2 view .LVU142
+ 424:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 472              		.loc 1 424 3 discriminator 2 view .LVU143
+ 473              		.loc 1 427 3 discriminator 2 view .LVU144
+ 474              		.loc 1 427 15 is_stmt 0 discriminator 2 view .LVU145
+ 475 0012 9868     		ldr	r0, [r3, #8]
+ 476              	.LVL30:
+ 428:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 429:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Enable the RNG Interrupts: Data Ready, Clock error, Seed error */ 
+ 430:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   __HAL_RNG_ENABLE_IT(hrng); 
+ 477              		.loc 1 430 3 is_stmt 1 discriminator 2 view .LVU146
+ 478 0014 1A68     		ldr	r2, [r3]
+ 479 0016 42F00802 		orr	r2, r2, #8
+ 480 001a 1A60     		str	r2, [r3]
+ 431:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 18
+
+
+ 432:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Return the 32 bit random number */   
+ 433:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   return random32bit;
+ 481              		.loc 1 433 3 discriminator 2 view .LVU147
+ 482              		.loc 1 433 10 is_stmt 0 discriminator 2 view .LVU148
+ 483 001c 7047     		bx	lr
+ 484              	.LVL31:
+ 485              	.L27:
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 486              		.loc 1 421 3 view .LVU149
+ 487 001e 1846     		mov	r0, r3
+ 488              	.LVL32:
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 489              		.loc 1 434 1 view .LVU150
+ 490 0020 7047     		bx	lr
+ 491              		.cfi_endproc
+ 492              	.LFE295:
+ 494              		.section	.text.HAL_RNG_ReadLastRandomNumber,"ax",%progbits
+ 495              		.align	1
+ 496              		.global	HAL_RNG_ReadLastRandomNumber
+ 497              		.syntax unified
+ 498              		.thumb
+ 499              		.thumb_func
+ 500              		.fpu fpv4-sp-d16
+ 502              	HAL_RNG_ReadLastRandomNumber:
+ 503              	.LVL33:
+ 504              	.LFB296:
+ 435:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 436:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 437:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 438:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 439:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Read latest generated random number. 
+ 440:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 441:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval random value
+ 442:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 443:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** uint32_t HAL_RNG_ReadLastRandomNumber(RNG_HandleTypeDef *hrng)
+ 444:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 505              		.loc 1 444 1 is_stmt 1 view -0
+ 506              		.cfi_startproc
+ 507              		@ args = 0, pretend = 0, frame = 0
+ 508              		@ frame_needed = 0, uses_anonymous_args = 0
+ 509              		@ link register save eliminated.
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   return(hrng->RandomNumber);
+ 510              		.loc 1 445 3 view .LVU152
+ 446:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 511              		.loc 1 446 1 is_stmt 0 view .LVU153
+ 512 0000 8068     		ldr	r0, [r0, #8]
+ 513              	.LVL34:
+ 514              		.loc 1 446 1 view .LVU154
+ 515 0002 7047     		bx	lr
+ 516              		.cfi_endproc
+ 517              	.LFE296:
+ 519              		.section	.text.HAL_RNG_ReadyDataCallback,"ax",%progbits
+ 520              		.align	1
+ 521              		.weak	HAL_RNG_ReadyDataCallback
+ 522              		.syntax unified
+ 523              		.thumb
+ 524              		.thumb_func
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 19
+
+
+ 525              		.fpu fpv4-sp-d16
+ 527              	HAL_RNG_ReadyDataCallback:
+ 528              	.LVL35:
+ 529              	.LFB297:
+ 447:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 448:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 449:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Data Ready callback in non-blocking mode. 
+ 450:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 451:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  random32bit: generated random value
+ 452:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval None
+ 453:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 454:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** __weak void HAL_RNG_ReadyDataCallback(RNG_HandleTypeDef *hrng, uint32_t random32bit)
+ 455:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 530              		.loc 1 455 1 is_stmt 1 view -0
+ 531              		.cfi_startproc
+ 532              		@ args = 0, pretend = 0, frame = 0
+ 533              		@ frame_needed = 0, uses_anonymous_args = 0
+ 534              		@ link register save eliminated.
+ 456:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Prevent unused argument(s) compilation warning */
+ 457:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   UNUSED(hrng);
+ 535              		.loc 1 457 3 view .LVU156
+ 458:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   UNUSED(random32bit);
+ 536              		.loc 1 458 3 view .LVU157
+ 459:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* NOTE : This function should not be modified. When the callback is needed,
+ 461:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****             function HAL_RNG_ReadyDataCallback must be implemented in the user file.
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****    */
+ 463:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 537              		.loc 1 463 1 is_stmt 0 view .LVU158
+ 538 0000 7047     		bx	lr
+ 539              		.cfi_endproc
+ 540              	.LFE297:
+ 542              		.section	.text.HAL_RNG_ErrorCallback,"ax",%progbits
+ 543              		.align	1
+ 544              		.weak	HAL_RNG_ErrorCallback
+ 545              		.syntax unified
+ 546              		.thumb
+ 547              		.thumb_func
+ 548              		.fpu fpv4-sp-d16
+ 550              	HAL_RNG_ErrorCallback:
+ 551              	.LFB303:
+ 552              		.cfi_startproc
+ 553              		@ args = 0, pretend = 0, frame = 0
+ 554              		@ frame_needed = 0, uses_anonymous_args = 0
+ 555              		@ link register save eliminated.
+ 556 0000 7047     		bx	lr
+ 557              		.cfi_endproc
+ 558              	.LFE303:
+ 560              		.section	.text.HAL_RNG_IRQHandler,"ax",%progbits
+ 561              		.align	1
+ 562              		.global	HAL_RNG_IRQHandler
+ 563              		.syntax unified
+ 564              		.thumb
+ 565              		.thumb_func
+ 566              		.fpu fpv4-sp-d16
+ 568              	HAL_RNG_IRQHandler:
+ 569              	.LVL36:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 20
+
+
+ 570              	.LFB293:
+ 356:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* RNG clock error interrupt occurred */
+ 571              		.loc 1 356 1 is_stmt 1 view -0
+ 572              		.cfi_startproc
+ 573              		@ args = 0, pretend = 0, frame = 0
+ 574              		@ frame_needed = 0, uses_anonymous_args = 0
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   { 
+ 575              		.loc 1 358 3 view .LVU160
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   { 
+ 576              		.loc 1 358 7 is_stmt 0 view .LVU161
+ 577 0000 0368     		ldr	r3, [r0]
+ 578 0002 5A68     		ldr	r2, [r3, #4]
+ 356:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* RNG clock error interrupt occurred */
+ 579              		.loc 1 356 1 view .LVU162
+ 580 0004 10B5     		push	{r4, lr}
+ 581              	.LCFI4:
+ 582              		.cfi_def_cfa_offset 8
+ 583              		.cfi_offset 4, -8
+ 584              		.cfi_offset 14, -4
+ 356:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* RNG clock error interrupt occurred */
+ 585              		.loc 1 356 1 view .LVU163
+ 586 0006 0446     		mov	r4, r0
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   { 
+ 587              		.loc 1 358 5 view .LVU164
+ 588 0008 9006     		lsls	r0, r2, #26
+ 589              	.LVL37:
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   { 
+ 590              		.loc 1 358 5 view .LVU165
+ 591 000a 02D4     		bmi	.L32
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   { 
+ 592              		.loc 1 358 57 discriminator 1 view .LVU166
+ 593 000c 5B68     		ldr	r3, [r3, #4]
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   { 
+ 594              		.loc 1 358 52 discriminator 1 view .LVU167
+ 595 000e 5906     		lsls	r1, r3, #25
+ 596 0010 08D5     		bpl	.L33
+ 597              	.L32:
+ 361:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 598              		.loc 1 361 5 is_stmt 1 view .LVU168
+ 361:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   
+ 599              		.loc 1 361 17 is_stmt 0 view .LVU169
+ 600 0012 0423     		movs	r3, #4
+ 601 0014 6371     		strb	r3, [r4, #5]
+ 363:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 602              		.loc 1 363 5 is_stmt 1 view .LVU170
+ 603 0016 2046     		mov	r0, r4
+ 604 0018 FFF7FEFF 		bl	HAL_RNG_ErrorCallback
+ 605              	.LVL38:
+ 366:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 606              		.loc 1 366 5 view .LVU171
+ 607 001c 2368     		ldr	r3, [r4]
+ 608 001e 6FF06002 		mvn	r2, #96
+ 609 0022 5A60     		str	r2, [r3, #4]
+ 610              	.L33:
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 611              		.loc 1 371 3 view .LVU172
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 21
+
+
+ 612              		.loc 1 371 6 is_stmt 0 view .LVU173
+ 613 0024 2368     		ldr	r3, [r4]
+ 614 0026 5A68     		ldr	r2, [r3, #4]
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   {
+ 615              		.loc 1 371 5 view .LVU174
+ 616 0028 D207     		lsls	r2, r2, #31
+ 617 002a 0DD5     		bpl	.L31
+ 374:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 618              		.loc 1 374 5 is_stmt 1 view .LVU175
+ 619 002c 1A68     		ldr	r2, [r3]
+ 620 002e 22F00802 		bic	r2, r2, #8
+ 621 0032 1A60     		str	r2, [r3]
+ 377:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 622              		.loc 1 377 5 view .LVU176
+ 377:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 623              		.loc 1 377 40 is_stmt 0 view .LVU177
+ 624 0034 9968     		ldr	r1, [r3, #8]
+ 379:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     {
+ 625              		.loc 1 379 12 view .LVU178
+ 626 0036 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 377:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     
+ 627              		.loc 1 377 24 view .LVU179
+ 628 0038 A160     		str	r1, [r4, #8]
+ 379:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     {
+ 629              		.loc 1 379 5 is_stmt 1 view .LVU180
+ 379:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     {
+ 630              		.loc 1 379 7 is_stmt 0 view .LVU181
+ 631 003a 042B     		cmp	r3, #4
+ 632 003c 04D0     		beq	.L31
+ 382:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       
+ 633              		.loc 1 382 7 is_stmt 1 view .LVU182
+ 382:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****       
+ 634              		.loc 1 382 19 is_stmt 0 view .LVU183
+ 635 003e 0123     		movs	r3, #1
+ 636 0040 6371     		strb	r3, [r4, #5]
+ 385:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     } 
+ 637              		.loc 1 385 7 is_stmt 1 view .LVU184
+ 638 0042 2046     		mov	r0, r4
+ 639 0044 FFF7FEFF 		bl	HAL_RNG_ReadyDataCallback
+ 640              	.LVL39:
+ 641              	.L31:
+ 388:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 642              		.loc 1 388 1 is_stmt 0 view .LVU185
+ 643 0048 10BD     		pop	{r4, pc}
+ 388:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 644              		.loc 1 388 1 view .LVU186
+ 645              		.cfi_endproc
+ 646              	.LFE293:
+ 648              		.section	.text.HAL_RNG_GetState,"ax",%progbits
+ 649              		.align	1
+ 650              		.global	HAL_RNG_GetState
+ 651              		.syntax unified
+ 652              		.thumb
+ 653              		.thumb_func
+ 654              		.fpu fpv4-sp-d16
+ 656              	HAL_RNG_GetState:
+ 657              	.LVL40:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 22
+
+
+ 658              	.LFB299:
+ 464:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 465:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 466:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  RNG error callback.
+ 467:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 468:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval None
+ 469:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 470:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** __weak void HAL_RNG_ErrorCallback(RNG_HandleTypeDef *hrng)
+ 471:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 472:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Prevent unused argument(s) compilation warning */
+ 473:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   UNUSED(hrng);
+ 474:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 475:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* NOTE : This function should not be modified. When the callback is needed,
+ 476:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****             function HAL_RNG_ErrorCallback must be implemented in the user file.
+ 477:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****    */
+ 478:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 479:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  
+ 480:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 481:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @}
+ 482:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 484:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /** @addtogroup RNG_Exported_Functions_Group3
+ 485:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  *  @brief    Peripheral State functions. 
+ 486:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  *
+ 487:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** @verbatim   
+ 488:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  ===============================================================================
+ 489:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****                       ##### Peripheral State functions #####
+ 490:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****  ===============================================================================  
+ 491:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     [..]
+ 492:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****     This subsection permits to get in run-time the status of the peripheral.
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 494:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** @endverbatim
+ 495:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @{
+ 496:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 497:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** 
+ 498:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** /**
+ 499:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @brief  Return the RNG handle state.
+ 500:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @param  hrng: pointer to a RNG_HandleTypeDef structure.
+ 501:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   * @retval HAL state
+ 502:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   */
+ 503:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** HAL_RNG_StateTypeDef HAL_RNG_GetState(RNG_HandleTypeDef *hrng)
+ 504:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** {
+ 659              		.loc 1 504 1 is_stmt 1 view -0
+ 660              		.cfi_startproc
+ 661              		@ args = 0, pretend = 0, frame = 0
+ 662              		@ frame_needed = 0, uses_anonymous_args = 0
+ 663              		@ link register save eliminated.
+ 505:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   /* Return RNG handle state */
+ 506:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c ****   return hrng->State;
+ 664              		.loc 1 506 3 view .LVU188
+ 665              		.loc 1 506 14 is_stmt 0 view .LVU189
+ 666 0000 4079     		ldrb	r0, [r0, #5]	@ zero_extendqisi2
+ 667              	.LVL41:
+ 507:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_rng.c **** }
+ 668              		.loc 1 507 1 view .LVU190
+ 669 0002 7047     		bx	lr
+ 670              		.cfi_endproc
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 23
+
+
+ 671              	.LFE299:
+ 673              		.text
+ 674              	.Letext0:
+ 675              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 676              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 677              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 678              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 679              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 680              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 681              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 682              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 683              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 684              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 685              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 686              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 687              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 688              		.file 15 "d:/liteos/code/WIFI2/Inc/stm32l4xx.h"
+ 689              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 690              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 691              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32l4xx_hal_rng.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:18     .text.HAL_RNG_MspInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:26     .text.HAL_RNG_MspInit:00000000 HAL_RNG_MspInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:42     .text.HAL_RNG_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:49     .text.HAL_RNG_Init:00000000 HAL_RNG_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:111    .text.HAL_RNG_MspDeInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:118    .text.HAL_RNG_MspDeInit:00000000 HAL_RNG_MspDeInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:129    .text.HAL_RNG_DeInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:136    .text.HAL_RNG_DeInit:00000000 HAL_RNG_DeInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:190    .text.HAL_RNG_GenerateRandomNumber:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:197    .text.HAL_RNG_GenerateRandomNumber:00000000 HAL_RNG_GenerateRandomNumber
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:321    .text.HAL_RNG_GenerateRandomNumber_IT:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:328    .text.HAL_RNG_GenerateRandomNumber_IT:00000000 HAL_RNG_GenerateRandomNumber_IT
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:395    .text.HAL_RNG_GetRandomNumber:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:402    .text.HAL_RNG_GetRandomNumber:00000000 HAL_RNG_GetRandomNumber
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:440    .text.HAL_RNG_GetRandomNumber_IT:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:447    .text.HAL_RNG_GetRandomNumber_IT:00000000 HAL_RNG_GetRandomNumber_IT
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:495    .text.HAL_RNG_ReadLastRandomNumber:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:502    .text.HAL_RNG_ReadLastRandomNumber:00000000 HAL_RNG_ReadLastRandomNumber
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:520    .text.HAL_RNG_ReadyDataCallback:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:527    .text.HAL_RNG_ReadyDataCallback:00000000 HAL_RNG_ReadyDataCallback
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:543    .text.HAL_RNG_ErrorCallback:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:550    .text.HAL_RNG_ErrorCallback:00000000 HAL_RNG_ErrorCallback
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:561    .text.HAL_RNG_IRQHandler:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:568    .text.HAL_RNG_IRQHandler:00000000 HAL_RNG_IRQHandler
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:649    .text.HAL_RNG_GetState:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccSr2yti.s:656    .text.HAL_RNG_GetState:00000000 HAL_RNG_GetState
+
+UNDEFINED SYMBOLS
+HAL_GetTick

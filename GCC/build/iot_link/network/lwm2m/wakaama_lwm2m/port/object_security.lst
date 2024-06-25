@@ -1,0 +1,1976 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"object_security.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.prv_security_read,"ax",%progbits
+  18              		.align	1
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	prv_security_read:
+  26              	.LVL0:
+  27              	.LFB13:
+  28              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lw
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 2
+
+
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** /*******************************************************************************
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * Copyright (c) 2013, 2014 Intel Corporation and others.
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * The Eclipse Public License is available at
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * Contributors:
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *    Pascal Rieux - Please refer to git log
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *    Ville Skytt? - Please refer to git log
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *******************************************************************************/
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** /*
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Resources:
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *          Name            | ID | Operations | Instances | Mandatory |  Type   |  Range  | Units |
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Server URI              |  0 |            |  Single   |    Yes    | String  |         |       |
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Bootstrap Server        |  1 |            |  Single   |    Yes    | Boolean |         |       |
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Security Mode           |  2 |            |  Single   |    Yes    | Integer |   0-3   |       |
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Public Key or ID        |  3 |            |  Single   |    Yes    | Opaque  |         |       |
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Server Public Key or ID |  4 |            |  Single   |    Yes    | Opaque  |         |       |
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Secret Key              |  5 |            |  Single   |    Yes    | Opaque  |         |       |
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  SMS Security Mode       |  6 |            |  Single   |    No     | Integer |  0-255  |       |
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  SMS Binding Key Param.  |  7 |            |  Single   |    No     | Opaque  |   6 B   |       |
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  SMS Binding Secret Keys |  8 |            |  Single   |    No     | Opaque  | 32-48 B |       |
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Server SMS Number       |  9 |            |  Single   |    No     | String  |         |       |
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Short Server ID         | 10 |            |  Single   |    No     | Integer | 1-65535 |       |
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  Client Hold Off Time    | 11 |            |  Single   |    No     | Integer |         |   s   |
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *  BS Account Timeout      | 12 |            |  Single   |    No     | Integer |         |   s   |
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  *
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  */
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** /*
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  * Here we implement a very basic LWM2M Security Object which only knows NoSec security mode.
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****  */
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #include "internals.h"
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #include "object_comm.h"
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #define URI_MAX_LEN (64)
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** static uint8_t prv_get_value(lwm2m_data_t *dataP,
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                              security_instance_t *targetP)
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     switch (dataP->id)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 3
+
+
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_URI_ID:
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_string(targetP->uri, dataP);
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_BOOTSTRAP_ID:
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_bool(targetP->isBootstrap, dataP);
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_SECURITY_ID:
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_int(targetP->securityMode, dataP);
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_PUBLIC_KEY_ID:
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_opaque((uint8_t *)targetP->publicIdentity, targetP->publicIdLen, data
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_SERVER_PUBLIC_KEY_ID:
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_opaque((uint8_t *)targetP->serverPublicKey, targetP->serverPublicKeyL
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_SECRET_KEY_ID:
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_opaque((uint8_t *)targetP->secretKey, targetP->secretKeyLen, dataP);
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_SMS_SECURITY_ID:
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_int(targetP->smsSecurityMode, dataP);
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_SMS_KEY_PARAM_ID:
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_opaque((uint8_t *)targetP->smsParams, targetP->smsParamsLen, dataP);
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_SMS_SECRET_KEY_ID:
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_opaque((uint8_t *)targetP->smsSecret, targetP->smsSecretLen, dataP);
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_SMS_SERVER_NUMBER_ID:
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_int(0, dataP);
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_SHORT_SERVER_ID:
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_int(targetP->shortID, dataP);
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_HOLD_OFF_ID:
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_int(targetP->clientHoldOffTime, dataP);
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         case LWM2M_SECURITY_BOOTSTRAP_TIMEOUT_ID:
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_data_encode_int(targetP->bootstrapServerAccountTimeout, dataP);
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         default:
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_404_NOT_FOUND;
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 4
+
+
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** static uint8_t prv_security_read(uint16_t instanceId,
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                  int *numDataP,
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                  lwm2m_data_t **dataArrayP,
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                  lwm2m_data_cfg_t *dataCfg,
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                  lwm2m_object_t *objectP)
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+  29              		.loc 1 151 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 4, pretend = 0, frame = 32
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP;
+  33              		.loc 1 152 5 view .LVU1
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     uint8_t result;
+  34              		.loc 1 153 5 view .LVU2
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     int i;
+  35              		.loc 1 154 5 view .LVU3
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     targetP = (security_instance_t *)lwm2m_list_find(objectP->instanceList, instanceId);
+  36              		.loc 1 155 5 view .LVU4
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP;
+  37              		.loc 1 151 1 is_stmt 0 view .LVU5
+  38 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 20
+  41              		.cfi_offset 4, -20
+  42              		.cfi_offset 5, -16
+  43              		.cfi_offset 6, -12
+  44              		.cfi_offset 7, -8
+  45              		.cfi_offset 14, -4
+  46 0002 89B0     		sub	sp, sp, #36
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_offset 56
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP;
+  49              		.loc 1 151 1 view .LVU6
+  50 0004 0D46     		mov	r5, r1
+  51              		.loc 1 155 38 view .LVU7
+  52 0006 0E9B     		ldr	r3, [sp, #56]
+  53              	.LVL1:
+  54              		.loc 1 155 38 view .LVU8
+  55 0008 0146     		mov	r1, r0
+  56              	.LVL2:
+  57              		.loc 1 155 38 view .LVU9
+  58 000a 9868     		ldr	r0, [r3, #8]
+  59              	.LVL3:
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP;
+  60              		.loc 1 151 1 view .LVU10
+  61 000c 1646     		mov	r6, r2
+  62              		.loc 1 155 38 view .LVU11
+  63 000e FFF7FEFF 		bl	lwm2m_list_find
+  64              	.LVL4:
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == targetP) return COAP_404_NOT_FOUND;
+  65              		.loc 1 157 5 is_stmt 1 view .LVU12
+  66              		.loc 1 157 8 is_stmt 0 view .LVU13
+  67 0012 0446     		mov	r4, r0
+  68 0014 0028     		cmp	r0, #0
+  69 0016 69D0     		beq	.L23
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 5
+
+
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     // is the server asking for the full instance ?
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (0 == *numDataP)
+  70              		.loc 1 160 5 is_stmt 1 view .LVU14
+  71              		.loc 1 160 8 is_stmt 0 view .LVU15
+  72 0018 2B68     		ldr	r3, [r5]
+  73 001a 1BBB     		cbnz	r3, .L3
+  74              	.LBB5:
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         uint16_t resList[] = {LWM2M_SECURITY_URI_ID,
+  75              		.loc 1 162 9 is_stmt 1 view .LVU16
+  76              		.loc 1 162 18 is_stmt 0 view .LVU17
+  77 001c 344B     		ldr	r3, .L32
+  78 001e 01AA     		add	r2, sp, #4
+  79 0020 03F1180E 		add	lr, r3, #24
+  80 0024 1746     		mov	r7, r2
+  81              	.LVL5:
+  82              	.L4:
+  83              		.loc 1 162 18 view .LVU18
+  84 0026 1868     		ldr	r0, [r3]	@ unaligned
+  85 0028 5968     		ldr	r1, [r3, #4]	@ unaligned
+  86 002a 9446     		mov	ip, r2
+  87 002c ACE80300 		stmia	ip!, {r0, r1}
+  88 0030 0833     		adds	r3, r3, #8
+  89 0032 7345     		cmp	r3, lr
+  90 0034 6246     		mov	r2, ip
+  91 0036 F6D1     		bne	.L4
+  92 0038 1B88     		ldrh	r3, [r3]	@ unaligned
+  93 003a ACF80030 		strh	r3, [ip]	@ unaligned
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_BOOTSTRAP_ID,
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_SECURITY_ID,
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_PUBLIC_KEY_ID,
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_SERVER_PUBLIC_KEY_ID,
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_SECRET_KEY_ID,
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_SMS_SECURITY_ID,
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_SMS_KEY_PARAM_ID,
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_SMS_SECRET_KEY_ID,
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_SMS_SERVER_NUMBER_ID,
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_SHORT_SERVER_ID,
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_HOLD_OFF_ID,
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                               LWM2M_SECURITY_BOOTSTRAP_TIMEOUT_ID
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                              };
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         int nbRes = sizeof(resList) / sizeof(uint16_t);
+  94              		.loc 1 176 9 is_stmt 1 view .LVU19
+  95              	.LVL6:
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         *dataArrayP = lwm2m_data_new(nbRes);
+  96              		.loc 1 177 9 view .LVU20
+  97              		.loc 1 177 23 is_stmt 0 view .LVU21
+  98 003e 0D20     		movs	r0, #13
+  99 0040 FFF7FEFF 		bl	lwm2m_data_new
+ 100              	.LVL7:
+ 101              		.loc 1 177 21 view .LVU22
+ 102 0044 3060     		str	r0, [r6]
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (NULL == *dataArrayP) return COAP_500_INTERNAL_SERVER_ERROR;
+ 103              		.loc 1 179 9 is_stmt 1 view .LVU23
+ 104              		.loc 1 179 12 is_stmt 0 view .LVU24
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 6
+
+
+ 105 0046 10B9     		cbnz	r0, .L5
+ 106              		.loc 1 179 34 is_stmt 1 discriminator 1 view .LVU25
+ 107              		.loc 1 179 41 is_stmt 0 discriminator 1 view .LVU26
+ 108 0048 A020     		movs	r0, #160
+ 109              	.LVL8:
+ 110              	.L2:
+ 111              		.loc 1 179 41 discriminator 1 view .LVU27
+ 112              	.LBE5:
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         *numDataP = nbRes;
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         for (i = 0 ; i < nbRes ; i++)
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             (*dataArrayP)[i].id = resList[i];
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     i = 0;
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     do
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         result = prv_get_value((*dataArrayP) + i, targetP);
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         i++;
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     while ((i < *numDataP) && (COAP_205_CONTENT == result));
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     return result;
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 113              		.loc 1 199 1 view .LVU28
+ 114 004a 09B0     		add	sp, sp, #36
+ 115              	.LCFI2:
+ 116              		.cfi_remember_state
+ 117              		.cfi_def_cfa_offset 20
+ 118              		@ sp needed
+ 119 004c F0BD     		pop	{r4, r5, r6, r7, pc}
+ 120              	.LVL9:
+ 121              	.L5:
+ 122              	.LCFI3:
+ 123              		.cfi_restore_state
+ 124              	.LBB6:
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 125              		.loc 1 181 9 is_stmt 1 view .LVU29
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 126              		.loc 1 181 19 is_stmt 0 view .LVU30
+ 127 004e 0D23     		movs	r3, #13
+ 128 0050 2B60     		str	r3, [r5]
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 129              		.loc 1 183 9 is_stmt 1 view .LVU31
+ 130              	.LVL10:
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 131              		.loc 1 183 22 view .LVU32
+ 132 0052 00F1D002 		add	r2, r0, #208
+ 133 0056 3B46     		mov	r3, r7
+ 134              	.LVL11:
+ 135              	.L6:
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 136              		.loc 1 185 13 discriminator 3 view .LVU33
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 7
+
+
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 137              		.loc 1 185 42 is_stmt 0 discriminator 3 view .LVU34
+ 138 0058 33F8021B 		ldrh	r1, [r3], #2
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 139              		.loc 1 185 33 discriminator 3 view .LVU35
+ 140 005c 4180     		strh	r1, [r0, #2]	@ movhi
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 141              		.loc 1 183 34 is_stmt 1 discriminator 3 view .LVU36
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 142              		.loc 1 183 22 discriminator 3 view .LVU37
+ 143 005e 1030     		adds	r0, r0, #16
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 144              		.loc 1 183 9 is_stmt 0 discriminator 3 view .LVU38
+ 145 0060 9042     		cmp	r0, r2
+ 146 0062 F9D1     		bne	.L6
+ 147              	.LVL12:
+ 148              	.L3:
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 149              		.loc 1 183 9 discriminator 3 view .LVU39
+ 150              	.LBE6:
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP;
+ 151              		.loc 1 151 1 discriminator 2 view .LVU40
+ 152 0064 0027     		movs	r7, #0
+ 153              	.L22:
+ 154              	.LVL13:
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 155              		.loc 1 191 5 is_stmt 1 discriminator 2 view .LVU41
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         i++;
+ 156              		.loc 1 193 9 discriminator 2 view .LVU42
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         i++;
+ 157              		.loc 1 193 18 is_stmt 0 discriminator 2 view .LVU43
+ 158 0066 3368     		ldr	r3, [r6]
+ 159 0068 03EB0712 		add	r2, r3, r7, lsl #4
+ 160              	.LVL14:
+ 161              	.LBB7:
+ 162              	.LBI7:
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                              security_instance_t *targetP)
+ 163              		.loc 1 84 16 is_stmt 1 discriminator 2 view .LVU44
+ 164              	.LBB8:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 165              		.loc 1 87 5 discriminator 2 view .LVU45
+ 166 006c 5388     		ldrh	r3, [r2, #2]
+ 167 006e 0C2B     		cmp	r3, #12
+ 168 0070 3AD8     		bhi	.L24
+ 169 0072 DFE803F0 		tbb	[pc, r3]
+ 170              	.L9:
+ 171 0076 07       		.byte	(.L21-.L9)/2
+ 172 0077 13       		.byte	(.L20-.L9)/2
+ 173 0078 18       		.byte	(.L19-.L9)/2
+ 174 0079 1D       		.byte	(.L18-.L9)/2
+ 175 007a 22       		.byte	(.L17-.L9)/2
+ 176 007b 25       		.byte	(.L16-.L9)/2
+ 177 007c 28       		.byte	(.L15-.L9)/2
+ 178 007d 2B       		.byte	(.L14-.L9)/2
+ 179 007e 2E       		.byte	(.L13-.L9)/2
+ 180 007f 31       		.byte	(.L12-.L9)/2
+ 181 0080 33       		.byte	(.L11-.L9)/2
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 8
+
+
+ 182 0081 35       		.byte	(.L10-.L9)/2
+ 183 0082 37       		.byte	(.L8-.L9)/2
+ 184 0083 00       		.p2align 1
+ 185              	.L21:
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 186              		.loc 1 90 13 view .LVU46
+ 187 0084 A068     		ldr	r0, [r4, #8]
+ 188 0086 1146     		mov	r1, r2
+ 189 0088 FFF7FEFF 		bl	lwm2m_data_encode_string
+ 190              	.LVL15:
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 191              		.loc 1 91 13 view .LVU47
+ 192              	.L30:
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 193              		.loc 1 139 13 view .LVU48
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 194              		.loc 1 139 20 is_stmt 0 view .LVU49
+ 195 008c 4520     		movs	r0, #69
+ 196              	.L7:
+ 197              	.LVL16:
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 198              		.loc 1 139 20 view .LVU50
+ 199              	.LBE8:
+ 200              	.LBE7:
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 201              		.loc 1 194 9 is_stmt 1 view .LVU51
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 202              		.loc 1 196 5 is_stmt 0 view .LVU52
+ 203 008e 2B68     		ldr	r3, [r5]
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 204              		.loc 1 194 10 view .LVU53
+ 205 0090 0137     		adds	r7, r7, #1
+ 206              	.LVL17:
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 207              		.loc 1 196 11 is_stmt 1 view .LVU54
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 208              		.loc 1 196 5 is_stmt 0 view .LVU55
+ 209 0092 BB42     		cmp	r3, r7
+ 210 0094 D9DD     		ble	.L2
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 211              		.loc 1 196 28 discriminator 1 view .LVU56
+ 212 0096 4528     		cmp	r0, #69
+ 213 0098 E5D0     		beq	.L22
+ 214 009a D6E7     		b	.L2
+ 215              	.LVL18:
+ 216              	.L20:
+ 217              	.LBB10:
+ 218              	.LBB9:
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 219              		.loc 1 94 13 is_stmt 1 view .LVU57
+ 220 009c 207B     		ldrb	r0, [r4, #12]	@ zero_extendqisi2
+ 221 009e 1146     		mov	r1, r2
+ 222 00a0 FFF7FEFF 		bl	lwm2m_data_encode_bool
+ 223              	.LVL19:
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 224              		.loc 1 95 13 view .LVU58
+ 225 00a4 F2E7     		b	.L30
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 9
+
+
+ 226              	.LVL20:
+ 227              	.L19:
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 228              		.loc 1 98 13 view .LVU59
+ 229 00a6 607B     		ldrb	r0, [r4, #13]	@ zero_extendqisi2
+ 230              	.L29:
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 231              		.loc 1 138 13 is_stmt 0 view .LVU60
+ 232 00a8 0021     		movs	r1, #0
+ 233 00aa FFF7FEFF 		bl	lwm2m_data_encode_int
+ 234              	.LVL21:
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 235              		.loc 1 138 13 view .LVU61
+ 236 00ae EDE7     		b	.L30
+ 237              	.LVL22:
+ 238              	.L18:
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 239              		.loc 1 102 13 is_stmt 1 view .LVU62
+ 240 00b0 A18A     		ldrh	r1, [r4, #20]
+ 241 00b2 2069     		ldr	r0, [r4, #16]
+ 242              	.L31:
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 243              		.loc 1 122 13 is_stmt 0 view .LVU63
+ 244 00b4 FFF7FEFF 		bl	lwm2m_data_encode_opaque
+ 245              	.LVL23:
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 246              		.loc 1 123 13 is_stmt 1 view .LVU64
+ 247 00b8 E8E7     		b	.L30
+ 248              	.LVL24:
+ 249              	.L17:
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 250              		.loc 1 106 13 view .LVU65
+ 251 00ba A18B     		ldrh	r1, [r4, #28]
+ 252 00bc A069     		ldr	r0, [r4, #24]
+ 253 00be F9E7     		b	.L31
+ 254              	.L16:
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 255              		.loc 1 110 13 view .LVU66
+ 256 00c0 A18C     		ldrh	r1, [r4, #36]
+ 257 00c2 206A     		ldr	r0, [r4, #32]
+ 258 00c4 F6E7     		b	.L31
+ 259              	.L15:
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 260              		.loc 1 114 13 view .LVU67
+ 261 00c6 94F82600 		ldrb	r0, [r4, #38]	@ zero_extendqisi2
+ 262 00ca EDE7     		b	.L29
+ 263              	.L14:
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 264              		.loc 1 118 13 view .LVU68
+ 265 00cc A18D     		ldrh	r1, [r4, #44]
+ 266 00ce A06A     		ldr	r0, [r4, #40]
+ 267 00d0 F0E7     		b	.L31
+ 268              	.L13:
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 269              		.loc 1 122 13 view .LVU69
+ 270 00d2 A18E     		ldrh	r1, [r4, #52]
+ 271 00d4 206B     		ldr	r0, [r4, #48]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 10
+
+
+ 272 00d6 EDE7     		b	.L31
+ 273              	.L12:
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 274              		.loc 1 126 13 view .LVU70
+ 275 00d8 0020     		movs	r0, #0
+ 276 00da E5E7     		b	.L29
+ 277              	.L11:
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 278              		.loc 1 130 13 view .LVU71
+ 279 00dc E08E     		ldrh	r0, [r4, #54]
+ 280 00de E3E7     		b	.L29
+ 281              	.L10:
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 282              		.loc 1 134 13 view .LVU72
+ 283 00e0 A06B     		ldr	r0, [r4, #56]
+ 284 00e2 E1E7     		b	.L29
+ 285              	.L8:
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return COAP_205_CONTENT;
+ 286              		.loc 1 138 13 view .LVU73
+ 287 00e4 E06B     		ldr	r0, [r4, #60]
+ 288 00e6 DFE7     		b	.L29
+ 289              	.L24:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 290              		.loc 1 87 18 is_stmt 0 view .LVU74
+ 291 00e8 8420     		movs	r0, #132
+ 292 00ea D0E7     		b	.L7
+ 293              	.LVL25:
+ 294              	.L23:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 295              		.loc 1 87 18 view .LVU75
+ 296              	.LBE9:
+ 297              	.LBE10:
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 298              		.loc 1 157 33 view .LVU76
+ 299 00ec 8420     		movs	r0, #132
+ 300              	.LVL26:
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 301              		.loc 1 157 33 view .LVU77
+ 302 00ee ACE7     		b	.L2
+ 303              	.L33:
+ 304              		.align	2
+ 305              	.L32:
+ 306 00f0 00000000 		.word	.LANCHOR0
+ 307              		.cfi_endproc
+ 308              	.LFE13:
+ 310              		.section	.text.copy_security_object,"ax",%progbits
+ 311              		.align	1
+ 312              		.global	copy_security_object
+ 313              		.syntax unified
+ 314              		.thumb
+ 315              		.thumb_func
+ 316              		.fpu fpv4-sp-d16
+ 318              	copy_security_object:
+ 319              	.LVL27:
+ 320              	.LFB14:
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #ifdef LWM2M_BOOTSTRAP
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 11
+
+
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** //static const *s_bs_test_uri = "coap://49.4.85.232:5683";
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** static uint8_t prv_security_write(uint16_t instanceId,
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                   int numData,
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                   lwm2m_data_t *dataArray,
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                   lwm2m_object_t *objectP)
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP;
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     int i;
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     uint8_t result = COAP_204_CHANGED;
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     targetP = (security_instance_t *)lwm2m_list_find(objectP->instanceList, instanceId);
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == targetP)
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         return COAP_404_NOT_FOUND;
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     i = 0;
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     do
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         switch (dataArray[i].id)
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_URI_ID:
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (NULL != targetP->uri) lwm2m_free(targetP->uri);
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 targetP->uri = (char *)lwm2m_malloc(dataArray[i].value.asBuffer.length + 1);
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (NULL != targetP->uri)
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     (void) memset(targetP->uri, 0, dataArray[i].value.asBuffer.length + 1);
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     (void) strncpy(targetP->uri, (char *)dataArray[i].value.asBuffer.buffer, dataAr
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_204_CHANGED;
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 //            targetP->uri = (char *)lwm2m_malloc(strlen(s_bs_test_uri) + 1); ///--
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 //            if (targetP->uri != NULL)
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 //            {
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 //                (void) strncpy(targetP->uri, (char *)s_bs_test_uri, strlen(s_bs_t
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 //                result = COAP_204_CHANGED;
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 //            }
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_500_INTERNAL_SERVER_ERROR;
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_BOOTSTRAP_ID:
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (1 == lwm2m_data_decode_bool(dataArray + i, &(targetP->isBootstrap)))
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 254:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_204_CHANGED;
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 257:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_400_BAD_REQUEST;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 12
+
+
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 261:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_SECURITY_ID:
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             {
+ 265:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 int64_t value;
+ 266:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 267:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (1 == lwm2m_data_decode_int(dataArray + i, &value))
+ 268:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 269:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     if (value >= 0 && value <= 3)
+ 270:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     {
+ 271:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         targetP->securityMode = value;
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         result = COAP_204_CHANGED;
+ 273:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     }
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     else
+ 275:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     {
+ 276:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         result = COAP_406_NOT_ACCEPTABLE;
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     }
+ 278:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_400_BAD_REQUEST;
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 283:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             }
+ 284:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             break;
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 286:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_PUBLIC_KEY_ID:
+ 287:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (NULL != targetP->publicIdentity) lwm2m_free(targetP->publicIdentity);
+ 288:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 289:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 targetP->publicIdentity = (char *)lwm2m_malloc(dataArray[i].value.asBuffer.length +
+ 290:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 291:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (NULL != targetP->publicIdentity)
+ 292:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 293:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     (void) memset(targetP->publicIdentity, 0, dataArray[i].value.asBuffer.length + 
+ 294:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     (void) memcpy(targetP->publicIdentity, (char *)dataArray[i].value.asBuffer.buff
+ 295:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     targetP->publicIdLen = dataArray[i].value.asBuffer.length;
+ 296:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_204_CHANGED;
+ 297:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 298:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 299:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 300:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_500_INTERNAL_SERVER_ERROR;
+ 301:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 302:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 303:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 304:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 305:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_SERVER_PUBLIC_KEY_ID:
+ 306:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (NULL != targetP->serverPublicKey) lwm2m_free(targetP->serverPublicKey);
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 308:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 targetP->serverPublicKey = (char *)lwm2m_malloc(dataArray[i].value.asBuffer.length 
+ 309:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 310:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (NULL != targetP->serverPublicKey)
+ 311:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 312:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     (void) memset(targetP->serverPublicKey, 0, dataArray[i].value.asBuffer.length +
+ 313:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     (void) memcpy(targetP->serverPublicKey, (char *)dataArray[i].value.asBuffer.buf
+ 314:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     targetP->serverPublicKeyLen = dataArray[i].value.asBuffer.length;
+ 315:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_204_CHANGED;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 13
+
+
+ 316:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 317:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 318:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_500_INTERNAL_SERVER_ERROR;
+ 320:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 321:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 322:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 323:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 324:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_SECRET_KEY_ID:
+ 325:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (NULL != targetP->secretKey) lwm2m_free(targetP->secretKey);
+ 326:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 327:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 targetP->secretKey = (char *)lwm2m_malloc(dataArray[i].value.asBuffer.length + 1);
+ 328:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 329:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (NULL != targetP->secretKey)
+ 330:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 331:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     (void) memset(targetP->secretKey, 0, dataArray[i].value.asBuffer.length + 1);
+ 332:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     (void) memcpy(targetP->secretKey, (char *)dataArray[i].value.asBuffer.buffer, d
+ 333:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     targetP->secretKeyLen = dataArray[i].value.asBuffer.length;
+ 334:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_204_CHANGED;
+ 335:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 336:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 337:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 338:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_500_INTERNAL_SERVER_ERROR;
+ 339:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 340:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 341:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 342:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 343:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_SMS_SECURITY_ID:
+ 344:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 // Let just ignore this
+ 345:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 result = COAP_204_CHANGED;
+ 346:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 347:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 348:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_SMS_KEY_PARAM_ID:
+ 349:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 // Let just ignore this
+ 350:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 result = COAP_204_CHANGED;
+ 351:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 352:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 353:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_SMS_SECRET_KEY_ID:
+ 354:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 // Let just ignore this
+ 355:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 result = COAP_204_CHANGED;
+ 356:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 357:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 358:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_SMS_SERVER_NUMBER_ID:
+ 359:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 // Let just ignore this
+ 360:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 result = COAP_204_CHANGED;
+ 361:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 362:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 363:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_SHORT_SERVER_ID:
+ 364:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             {
+ 365:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 int64_t value;
+ 366:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 367:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (1 == lwm2m_data_decode_int(dataArray + i, &value))
+ 368:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 369:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     if (value >= 0 && value <= 0xFFFF)
+ 370:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     {
+ 371:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         targetP->shortID = value;
+ 372:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         result = COAP_204_CHANGED;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 14
+
+
+ 373:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     }
+ 374:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     else
+ 375:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     {
+ 376:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         result = COAP_406_NOT_ACCEPTABLE;
+ 377:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     }
+ 378:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 379:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 380:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 381:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_400_BAD_REQUEST;
+ 382:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 383:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             }
+ 384:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             break;
+ 385:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 386:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_HOLD_OFF_ID:
+ 387:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             {
+ 388:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 int64_t value;
+ 389:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 390:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (1 == lwm2m_data_decode_int(dataArray + i, &value))
+ 391:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 392:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     if (value >= 0 && value <= UINT32_MAX)
+ 393:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     {
+ 394:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         targetP->clientHoldOffTime = value;
+ 395:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         result = COAP_204_CHANGED;
+ 396:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     }
+ 397:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     else
+ 398:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     {
+ 399:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         result = COAP_406_NOT_ACCEPTABLE;
+ 400:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     }
+ 401:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 402:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 403:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 404:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_400_BAD_REQUEST;
+ 405:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 406:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 407:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 408:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             }
+ 409:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 410:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             case LWM2M_SECURITY_BOOTSTRAP_TIMEOUT_ID:
+ 411:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             {
+ 412:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 int64_t value;
+ 413:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 414:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 if (1 == lwm2m_data_decode_int(dataArray + i, &value))
+ 415:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 416:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     if (value >= 0 && value <= UINT32_MAX)
+ 417:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     {
+ 418:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         targetP->bootstrapServerAccountTimeout = value;
+ 419:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         result = COAP_204_CHANGED;
+ 420:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     }
+ 421:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     else
+ 422:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     {
+ 423:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                         result = COAP_406_NOT_ACCEPTABLE;
+ 424:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     }
+ 425:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ 426:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 else
+ 427:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 {
+ 428:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                     result = COAP_400_BAD_REQUEST;
+ 429:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 15
+
+
+ 430:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 431:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 break;
+ 432:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             }
+ 433:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 434:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             default:
+ 435:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 return COAP_400_BAD_REQUEST;
+ 436:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 437:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 438:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         i++;
+ 439:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 440:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     while ((i < numData) && (COAP_204_CHANGED == result));
+ 441:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 442:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     return result;
+ 443:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 444:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 445:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** static uint8_t prv_security_delete(uint16_t id,
+ 446:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                    lwm2m_object_t *objectP)
+ 447:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 448:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP;
+ 449:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     objectP->instanceList = lwm2m_list_remove(objectP->instanceList, id, (lwm2m_list_t **)&targetP)
+ 450:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 451:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == targetP) return COAP_404_NOT_FOUND;
+ 452:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 453:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL != targetP->uri)
+ 454:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 455:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         lwm2m_free(targetP->uri);
+ 456:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 457:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 458:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     lwm2m_free(targetP);
+ 459:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     return COAP_202_DELETED;
+ 460:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 461:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 462:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** static uint8_t prv_security_create(uint16_t instanceId,
+ 463:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                    int numData,
+ 464:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                    lwm2m_data_t *dataArray,
+ 465:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                                    lwm2m_object_t *objectP)
+ 466:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 467:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP;
+ 468:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     uint8_t result;
+ 469:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     targetP = (security_instance_t *)lwm2m_malloc(sizeof(security_instance_t));
+ 470:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 471:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == targetP) return COAP_500_INTERNAL_SERVER_ERROR;
+ 472:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 473:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     (void) memset(targetP, 0, sizeof(security_instance_t));
+ 474:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     targetP->instanceId = instanceId;
+ 475:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     objectP->instanceList = LWM2M_LIST_ADD(objectP->instanceList, targetP);
+ 476:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     result = prv_security_write(instanceId, numData, dataArray, objectP);
+ 477:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 478:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (COAP_204_CHANGED != result)
+ 479:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 480:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         (void)prv_security_delete(instanceId, objectP);
+ 481:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 482:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     else
+ 483:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 484:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         targetP->shortID =  123;
+ 485:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         result = COAP_201_CREATED;
+ 486:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 16
+
+
+ 487:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 488:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     return result;
+ 489:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 490:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #endif
+ 491:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 492:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** void copy_security_object(lwm2m_object_t *objectDest, lwm2m_object_t *objectSrc)
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 321              		.loc 1 493 1 is_stmt 1 view -0
+ 322              		.cfi_startproc
+ 323              		@ args = 0, pretend = 0, frame = 8
+ 324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 494:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instanceSrc;
+ 325              		.loc 1 494 5 view .LVU79
+ 495:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *previousInstanceDest = NULL;
+ 326              		.loc 1 495 5 view .LVU80
+ 496:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     (void) memcpy(objectDest, objectSrc, sizeof(lwm2m_object_t));
+ 327              		.loc 1 496 5 view .LVU81
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instanceSrc;
+ 328              		.loc 1 493 1 is_stmt 0 view .LVU82
+ 329 0000 2DE9F341 		push	{r0, r1, r4, r5, r6, r7, r8, lr}
+ 330              	.LCFI4:
+ 331              		.cfi_def_cfa_offset 32
+ 332              		.cfi_offset 4, -24
+ 333              		.cfi_offset 5, -20
+ 334              		.cfi_offset 6, -16
+ 335              		.cfi_offset 7, -12
+ 336              		.cfi_offset 8, -8
+ 337              		.cfi_offset 14, -4
+ 338              		.loc 1 496 12 view .LVU83
+ 339 0004 0246     		mov	r2, r0
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instanceSrc;
+ 340              		.loc 1 493 1 view .LVU84
+ 341 0006 0746     		mov	r7, r0
+ 342              		.loc 1 496 12 view .LVU85
+ 343 0008 0B46     		mov	r3, r1
+ 344 000a 01F12C00 		add	r0, r1, #44
+ 345              	.LVL28:
+ 346              	.L35:
+ 347              		.loc 1 496 12 view .LVU86
+ 348 000e 53F8044B 		ldr	r4, [r3], #4	@ unaligned
+ 349 0012 42F8044B 		str	r4, [r2], #4	@ unaligned
+ 350 0016 8342     		cmp	r3, r0
+ 351 0018 F9D1     		bne	.L35
+ 497:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     objectDest->instanceList = NULL;
+ 352              		.loc 1 497 5 is_stmt 1 view .LVU87
+ 353              		.loc 1 497 30 is_stmt 0 view .LVU88
+ 354 001a 0026     		movs	r6, #0
+ 355 001c BE60     		str	r6, [r7, #8]
+ 498:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     objectDest->userData = NULL;
+ 356              		.loc 1 498 5 is_stmt 1 view .LVU89
+ 499:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instanceSrc = (security_instance_t *)objectSrc->instanceList;
+ 357              		.loc 1 499 17 is_stmt 0 view .LVU90
+ 358 001e 8D68     		ldr	r5, [r1, #8]
+ 498:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     objectDest->userData = NULL;
+ 359              		.loc 1 498 26 view .LVU91
+ 360 0020 BE62     		str	r6, [r7, #40]
+ 361              		.loc 1 499 5 is_stmt 1 view .LVU92
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 17
+
+
+ 362              	.LVL29:
+ 500:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 501:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     while (NULL != instanceSrc)
+ 363              		.loc 1 501 5 view .LVU93
+ 364              	.L36:
+ 365              		.loc 1 501 11 view .LVU94
+ 366 0022 15B9     		cbnz	r5, .L44
+ 367              	.L34:
+ 502:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 503:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         security_instance_t *instanceDest = (security_instance_t *)lwm2m_malloc(sizeof(security_ins
+ 504:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 505:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (NULL == instanceDest)
+ 506:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 507:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return;
+ 508:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 509:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 510:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         (void) memcpy(instanceDest, instanceSrc, sizeof(security_instance_t));
+ 511:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instanceDest->uri = (char *)lwm2m_malloc(strlen(instanceSrc->uri) + 1);
+ 512:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 513:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (NULL == instanceDest->uri)
+ 514:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 515:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_free(instanceDest);
+ 516:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return;
+ 517:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 518:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 519:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         (void) strncpy(instanceDest->uri, instanceSrc->uri, strlen(instanceSrc->uri) + 1);
+ 520:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 521:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (LWM2M_SECURITY_MODE_PRE_SHARED_KEY == instanceSrc->securityMode)
+ 522:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 523:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             instanceDest->publicIdentity = lwm2m_strdup(instanceSrc->publicIdentity);
+ 524:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             instanceDest->secretKey = lwm2m_strdup(instanceSrc->secretKey);
+ 525:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 526:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 527:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instanceSrc = (security_instance_t *)instanceSrc->next;
+ 528:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 529:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (NULL == previousInstanceDest)
+ 530:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 531:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             objectDest->instanceList = (lwm2m_list_t *)instanceDest;
+ 532:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 533:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         else
+ 534:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 535:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             previousInstanceDest->next = instanceDest;
+ 536:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 537:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 538:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         previousInstanceDest = instanceDest;
+ 539:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 540:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 368              		.loc 1 540 1 is_stmt 0 view .LVU95
+ 369 0024 02B0     		add	sp, sp, #8
+ 370              	.LCFI5:
+ 371              		.cfi_remember_state
+ 372              		.cfi_def_cfa_offset 24
+ 373              		@ sp needed
+ 374 0026 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 375              	.LVL30:
+ 376              	.L44:
+ 377              	.LCFI6:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 18
+
+
+ 378              		.cfi_restore_state
+ 379              	.LBB11:
+ 503:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 380              		.loc 1 503 9 is_stmt 1 view .LVU96
+ 503:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 381              		.loc 1 503 68 is_stmt 0 view .LVU97
+ 382 002a 4020     		movs	r0, #64
+ 383 002c FFF7FEFF 		bl	lwm2m_malloc
+ 384              	.LVL31:
+ 505:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 385              		.loc 1 505 9 is_stmt 1 view .LVU98
+ 505:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 386              		.loc 1 505 12 is_stmt 0 view .LVU99
+ 387 0030 0446     		mov	r4, r0
+ 388 0032 0028     		cmp	r0, #0
+ 389 0034 F6D0     		beq	.L34
+ 510:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instanceDest->uri = (char *)lwm2m_malloc(strlen(instanceSrc->uri) + 1);
+ 390              		.loc 1 510 9 is_stmt 1 view .LVU100
+ 510:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instanceDest->uri = (char *)lwm2m_malloc(strlen(instanceSrc->uri) + 1);
+ 391              		.loc 1 510 16 is_stmt 0 view .LVU101
+ 392 0036 2B46     		mov	r3, r5
+ 393 0038 0246     		mov	r2, r0
+ 394 003a 05F14001 		add	r1, r5, #64
+ 395              	.LVL32:
+ 396              	.L39:
+ 510:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instanceDest->uri = (char *)lwm2m_malloc(strlen(instanceSrc->uri) + 1);
+ 397              		.loc 1 510 16 view .LVU102
+ 398 003e 53F8040B 		ldr	r0, [r3], #4	@ unaligned
+ 399 0042 42F8040B 		str	r0, [r2], #4	@ unaligned
+ 400 0046 8B42     		cmp	r3, r1
+ 401 0048 F9D1     		bne	.L39
+ 511:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 402              		.loc 1 511 9 is_stmt 1 view .LVU103
+ 511:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 403              		.loc 1 511 50 is_stmt 0 view .LVU104
+ 404 004a A868     		ldr	r0, [r5, #8]
+ 405 004c FFF7FEFF 		bl	strlen
+ 406              	.LVL33:
+ 511:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 407              		.loc 1 511 37 view .LVU105
+ 408 0050 0130     		adds	r0, r0, #1
+ 409 0052 FFF7FEFF 		bl	lwm2m_malloc
+ 410              	.LVL34:
+ 411 0056 8046     		mov	r8, r0
+ 511:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 412              		.loc 1 511 27 view .LVU106
+ 413 0058 A060     		str	r0, [r4, #8]
+ 513:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 414              		.loc 1 513 9 is_stmt 1 view .LVU107
+ 513:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 415              		.loc 1 513 12 is_stmt 0 view .LVU108
+ 416 005a 28B9     		cbnz	r0, .L40
+ 515:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return;
+ 417              		.loc 1 515 13 is_stmt 1 view .LVU109
+ 418 005c 2046     		mov	r0, r4
+ 419              	.LBE11:
+ 420              		.loc 1 540 1 is_stmt 0 view .LVU110
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 19
+
+
+ 421 005e 02B0     		add	sp, sp, #8
+ 422              	.LCFI7:
+ 423              		.cfi_remember_state
+ 424              		.cfi_def_cfa_offset 24
+ 425              		@ sp needed
+ 426 0060 BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+ 427              	.LCFI8:
+ 428              		.cfi_restore 14
+ 429              		.cfi_restore 8
+ 430              		.cfi_restore 7
+ 431              		.cfi_restore 6
+ 432              		.cfi_restore 5
+ 433              		.cfi_restore 4
+ 434              		.cfi_def_cfa_offset 0
+ 435              	.LVL35:
+ 436              	.LBB12:
+ 515:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return;
+ 437              		.loc 1 515 13 view .LVU111
+ 438 0064 FFF7FEBF 		b	lwm2m_free
+ 439              	.LVL36:
+ 440              	.L40:
+ 441              	.LCFI9:
+ 442              		.cfi_restore_state
+ 519:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 443              		.loc 1 519 9 is_stmt 1 view .LVU112
+ 519:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 444              		.loc 1 519 54 is_stmt 0 view .LVU113
+ 445 0068 A968     		ldr	r1, [r5, #8]
+ 519:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 446              		.loc 1 519 61 view .LVU114
+ 447 006a 0191     		str	r1, [sp, #4]
+ 448 006c 0846     		mov	r0, r1
+ 449 006e FFF7FEFF 		bl	strlen
+ 450              	.LVL37:
+ 519:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 451              		.loc 1 519 16 view .LVU115
+ 452 0072 0199     		ldr	r1, [sp, #4]
+ 453 0074 421C     		adds	r2, r0, #1
+ 454 0076 4046     		mov	r0, r8
+ 455 0078 FFF7FEFF 		bl	strncpy
+ 456              	.LVL38:
+ 521:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 457              		.loc 1 521 9 is_stmt 1 view .LVU116
+ 521:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 458              		.loc 1 521 12 is_stmt 0 view .LVU117
+ 459 007c 6B7B     		ldrb	r3, [r5, #13]	@ zero_extendqisi2
+ 460 007e 3BB9     		cbnz	r3, .L41
+ 523:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             instanceDest->secretKey = lwm2m_strdup(instanceSrc->secretKey);
+ 461              		.loc 1 523 13 is_stmt 1 view .LVU118
+ 523:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             instanceDest->secretKey = lwm2m_strdup(instanceSrc->secretKey);
+ 462              		.loc 1 523 44 is_stmt 0 view .LVU119
+ 463 0080 2869     		ldr	r0, [r5, #16]
+ 464 0082 FFF7FEFF 		bl	lwm2m_strdup
+ 465              	.LVL39:
+ 523:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             instanceDest->secretKey = lwm2m_strdup(instanceSrc->secretKey);
+ 466              		.loc 1 523 42 view .LVU120
+ 467 0086 2061     		str	r0, [r4, #16]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 20
+
+
+ 524:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 468              		.loc 1 524 13 is_stmt 1 view .LVU121
+ 524:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 469              		.loc 1 524 39 is_stmt 0 view .LVU122
+ 470 0088 286A     		ldr	r0, [r5, #32]
+ 471 008a FFF7FEFF 		bl	lwm2m_strdup
+ 472              	.LVL40:
+ 524:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 473              		.loc 1 524 37 view .LVU123
+ 474 008e 2062     		str	r0, [r4, #32]
+ 475              	.L41:
+ 527:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 476              		.loc 1 527 9 is_stmt 1 view .LVU124
+ 527:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 477              		.loc 1 527 21 is_stmt 0 view .LVU125
+ 478 0090 2D68     		ldr	r5, [r5]
+ 479              	.LVL41:
+ 529:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 480              		.loc 1 529 9 is_stmt 1 view .LVU126
+ 529:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 481              		.loc 1 529 12 is_stmt 0 view .LVU127
+ 482 0092 16B9     		cbnz	r6, .L42
+ 531:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 483              		.loc 1 531 13 is_stmt 1 view .LVU128
+ 531:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 484              		.loc 1 531 38 is_stmt 0 view .LVU129
+ 485 0094 BC60     		str	r4, [r7, #8]
+ 486              	.L43:
+ 531:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 487              		.loc 1 531 38 view .LVU130
+ 488              	.LBE12:
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instanceSrc;
+ 489              		.loc 1 493 1 view .LVU131
+ 490 0096 2646     		mov	r6, r4
+ 491              	.LVL42:
+ 493:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instanceSrc;
+ 492              		.loc 1 493 1 view .LVU132
+ 493 0098 C3E7     		b	.L36
+ 494              	.LVL43:
+ 495              	.L42:
+ 496              	.LBB13:
+ 535:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 497              		.loc 1 535 13 is_stmt 1 view .LVU133
+ 535:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 498              		.loc 1 535 40 is_stmt 0 view .LVU134
+ 499 009a 3460     		str	r4, [r6]
+ 500 009c FBE7     		b	.L43
+ 501              	.LBE13:
+ 502              		.cfi_endproc
+ 503              	.LFE14:
+ 505              		.section	.text.display_security_object,"ax",%progbits
+ 506              		.align	1
+ 507              		.global	display_security_object
+ 508              		.syntax unified
+ 509              		.thumb
+ 510              		.thumb_func
+ 511              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 21
+
+
+ 513              	display_security_object:
+ 514              	.LVL44:
+ 515              	.LFB15:
+ 541:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 542:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** void display_security_object(lwm2m_object_t *object)
+ 543:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 516              		.loc 1 543 1 is_stmt 1 view -0
+ 517              		.cfi_startproc
+ 518              		@ args = 0, pretend = 0, frame = 0
+ 519              		@ frame_needed = 0, uses_anonymous_args = 0
+ 520              		@ link register save eliminated.
+ 544:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #ifdef WITH_LOGS
+ 545:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     fprintf(stdout, "  /%u: Security object, instances:\r\n", object->objID);
+ 546:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instance = (security_instance_t *)object->instanceList;
+ 547:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 548:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     while (NULL != instance)
+ 549:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 550:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         fprintf(stdout, "    /%u/%u: instanceId: %u, uri: %s, isBootstrap: %s, shortId: %u, clientH
+ 551:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 object->objID, instance->instanceId,
+ 552:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 instance->instanceId, instance->uri, instance->isBootstrap ? "true" : "false",
+ 553:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 instance->shortID, instance->clientHoldOffTime);
+ 554:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instance = (security_instance_t *)instance->next;
+ 555:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 556:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 557:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #endif
+ 558:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 521              		.loc 1 558 1 view .LVU136
+ 522 0000 7047     		bx	lr
+ 523              		.cfi_endproc
+ 524              	.LFE15:
+ 526              		.section	.text.clean_security_object,"ax",%progbits
+ 527              		.align	1
+ 528              		.global	clean_security_object
+ 529              		.syntax unified
+ 530              		.thumb
+ 531              		.thumb_func
+ 532              		.fpu fpv4-sp-d16
+ 534              	clean_security_object:
+ 535              	.LVL45:
+ 536              	.LFB16:
+ 559:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 560:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** void clean_security_object(lwm2m_object_t *objectP)
+ 561:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 537              		.loc 1 561 1 view -0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 0
+ 540              		@ frame_needed = 0, uses_anonymous_args = 0
+ 562:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == objectP)
+ 541              		.loc 1 562 5 view .LVU138
+ 561:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == objectP)
+ 542              		.loc 1 561 1 is_stmt 0 view .LVU139
+ 543 0000 38B5     		push	{r3, r4, r5, lr}
+ 544              	.LCFI10:
+ 545              		.cfi_def_cfa_offset 16
+ 546              		.cfi_offset 3, -16
+ 547              		.cfi_offset 4, -12
+ 548              		.cfi_offset 5, -8
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 22
+
+
+ 549              		.cfi_offset 14, -4
+ 550              		.loc 1 562 8 view .LVU140
+ 551 0002 0546     		mov	r5, r0
+ 552 0004 88B9     		cbnz	r0, .L51
+ 563:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 564:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         return;
+ 565:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 566:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 567:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     while (objectP->instanceList != NULL)
+ 568:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 569:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         security_instance_t *securityInstance = (security_instance_t *)objectP->instanceList;
+ 570:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         objectP->instanceList = objectP->instanceList->next;
+ 571:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 572:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (NULL != securityInstance->uri)
+ 573:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 574:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_free(securityInstance->uri);
+ 575:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 576:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 577:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (LWM2M_SECURITY_MODE_PRE_SHARED_KEY == securityInstance->securityMode)
+ 578:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 579:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_free(securityInstance->publicIdentity);
+ 580:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_free(securityInstance->secretKey);
+ 581:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 582:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 583:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         lwm2m_free(securityInstance);
+ 584:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 585:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 586:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     lwm2m_free(objectP);
+ 587:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 553              		.loc 1 587 1 view .LVU141
+ 554 0006 38BD     		pop	{r3, r4, r5, pc}
+ 555              	.LVL46:
+ 556              	.L54:
+ 557              	.LBB14:
+ 569:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         objectP->instanceList = objectP->instanceList->next;
+ 558              		.loc 1 569 9 is_stmt 1 view .LVU142
+ 570:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 559              		.loc 1 570 9 view .LVU143
+ 572:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 560              		.loc 1 572 37 is_stmt 0 view .LVU144
+ 561 0008 A068     		ldr	r0, [r4, #8]
+ 570:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 562              		.loc 1 570 31 view .LVU145
+ 563 000a 2368     		ldr	r3, [r4]
+ 564 000c AB60     		str	r3, [r5, #8]
+ 572:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 565              		.loc 1 572 9 is_stmt 1 view .LVU146
+ 572:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 566              		.loc 1 572 12 is_stmt 0 view .LVU147
+ 567 000e 08B1     		cbz	r0, .L52
+ 574:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 568              		.loc 1 574 13 is_stmt 1 view .LVU148
+ 569 0010 FFF7FEFF 		bl	lwm2m_free
+ 570              	.LVL47:
+ 571              	.L52:
+ 577:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 572              		.loc 1 577 9 view .LVU149
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 23
+
+
+ 577:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 573              		.loc 1 577 12 is_stmt 0 view .LVU150
+ 574 0014 637B     		ldrb	r3, [r4, #13]	@ zero_extendqisi2
+ 575 0016 2BB9     		cbnz	r3, .L53
+ 579:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_free(securityInstance->secretKey);
+ 576              		.loc 1 579 13 is_stmt 1 view .LVU151
+ 577 0018 2069     		ldr	r0, [r4, #16]
+ 578 001a FFF7FEFF 		bl	lwm2m_free
+ 579              	.LVL48:
+ 580:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 580              		.loc 1 580 13 view .LVU152
+ 581 001e 206A     		ldr	r0, [r4, #32]
+ 582 0020 FFF7FEFF 		bl	lwm2m_free
+ 583              	.LVL49:
+ 584              	.L53:
+ 583:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 585              		.loc 1 583 9 view .LVU153
+ 586 0024 2046     		mov	r0, r4
+ 587 0026 FFF7FEFF 		bl	lwm2m_free
+ 588              	.LVL50:
+ 589              	.L51:
+ 583:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 590              		.loc 1 583 9 is_stmt 0 view .LVU154
+ 591              	.LBE14:
+ 567:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 592              		.loc 1 567 11 is_stmt 1 view .LVU155
+ 567:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 593              		.loc 1 567 19 is_stmt 0 view .LVU156
+ 594 002a AC68     		ldr	r4, [r5, #8]
+ 567:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 595              		.loc 1 567 11 view .LVU157
+ 596 002c 002C     		cmp	r4, #0
+ 597 002e EBD1     		bne	.L54
+ 586:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 598              		.loc 1 586 5 is_stmt 1 view .LVU158
+ 599 0030 2846     		mov	r0, r5
+ 600              		.loc 1 587 1 is_stmt 0 view .LVU159
+ 601 0032 BDE83840 		pop	{r3, r4, r5, lr}
+ 602              	.LCFI11:
+ 603              		.cfi_restore 14
+ 604              		.cfi_restore 5
+ 605              		.cfi_restore 4
+ 606              		.cfi_restore 3
+ 607              		.cfi_def_cfa_offset 0
+ 608              	.LVL51:
+ 586:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 609              		.loc 1 586 5 view .LVU160
+ 610 0036 FFF7FEBF 		b	lwm2m_free
+ 611              	.LVL52:
+ 586:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 612              		.loc 1 586 5 view .LVU161
+ 613              		.cfi_endproc
+ 614              	.LFE16:
+ 616              		.section	.rodata.add_security_object_instance.str1.1,"aMS",%progbits,1
+ 617              	.LC1:
+ 618 0000 636F6170 		.ascii	"coaps://%s:%s\000"
+ 618      733A2F2F 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 24
+
+
+ 618      25733A25 
+ 618      7300
+ 619              	.LC2:
+ 620 000e 636F6170 		.ascii	"coap://%s:%s\000"
+ 620      3A2F2F25 
+ 620      733A2573 
+ 620      00
+ 621              		.section	.text.add_security_object_instance,"ax",%progbits
+ 622              		.align	1
+ 623              		.global	add_security_object_instance
+ 624              		.syntax unified
+ 625              		.thumb
+ 626              		.thumb_func
+ 627              		.fpu fpv4-sp-d16
+ 629              	add_security_object_instance:
+ 630              	.LVL53:
+ 631              	.LFB17:
+ 588:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 589:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** int add_security_object_instance(lwm2m_object_t *obj, int object_instance_id, void *param)
+ 590:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 632              		.loc 1 590 1 is_stmt 1 view -0
+ 633              		.cfi_startproc
+ 634              		@ args = 0, pretend = 0, frame = 64
+ 635              		@ frame_needed = 0, uses_anonymous_args = 0
+ 591:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instance = NULL;
+ 636              		.loc 1 591 5 view .LVU163
+ 592:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     lwm2m_al_sec_obj_param_t *sec_param = (lwm2m_al_sec_obj_param_t *)param;
+ 637              		.loc 1 592 5 view .LVU164
+ 593:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     char serverUri[URI_MAX_LEN];
+ 638              		.loc 1 593 5 view .LVU165
+ 594:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 595:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if ((NULL == obj) || (NULL == param))
+ 639              		.loc 1 595 5 view .LVU166
+ 590:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instance = NULL;
+ 640              		.loc 1 590 1 is_stmt 0 view .LVU167
+ 641 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 642              	.LCFI12:
+ 643              		.cfi_def_cfa_offset 20
+ 644              		.cfi_offset 4, -20
+ 645              		.cfi_offset 5, -16
+ 646              		.cfi_offset 6, -12
+ 647              		.cfi_offset 7, -8
+ 648              		.cfi_offset 14, -4
+ 649 0002 0F46     		mov	r7, r1
+ 650 0004 93B0     		sub	sp, sp, #76
+ 651              	.LCFI13:
+ 652              		.cfi_def_cfa_offset 96
+ 590:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *instance = NULL;
+ 653              		.loc 1 590 1 view .LVU168
+ 654 0006 1546     		mov	r5, r2
+ 655              		.loc 1 595 8 view .LVU169
+ 656 0008 0646     		mov	r6, r0
+ 657 000a 0028     		cmp	r0, #0
+ 658 000c 5BD0     		beq	.L70
+ 659              		.loc 1 595 23 discriminator 1 view .LVU170
+ 660 000e 002A     		cmp	r2, #0
+ 661 0010 59D0     		beq	.L70
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 25
+
+
+ 596:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 597:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         return (int)LWM2M_ARG_INVALID;
+ 598:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 599:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 600:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance = (security_instance_t *)lwm2m_malloc(sizeof(security_instance_t));
+ 662              		.loc 1 600 5 is_stmt 1 view .LVU171
+ 663              		.loc 1 600 39 is_stmt 0 view .LVU172
+ 664 0012 4020     		movs	r0, #64
+ 665              	.LVL54:
+ 666              		.loc 1 600 39 view .LVU173
+ 667 0014 FFF7FEFF 		bl	lwm2m_malloc
+ 668              	.LVL55:
+ 601:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 602:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == instance)
+ 669              		.loc 1 602 5 is_stmt 1 view .LVU174
+ 670              		.loc 1 602 8 is_stmt 0 view .LVU175
+ 671 0018 0446     		mov	r4, r0
+ 672 001a D0B1     		cbz	r0, .L71
+ 603:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 604:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         return (int)LWM2M_MALLOC_FAILED;
+ 605:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 606:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 607:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     (void) memset(instance, 0, sizeof(security_instance_t));
+ 673              		.loc 1 607 5 is_stmt 1 view .LVU176
+ 674              		.loc 1 607 12 is_stmt 0 view .LVU177
+ 675 001c 4022     		movs	r2, #64
+ 676 001e 0021     		movs	r1, #0
+ 677 0020 FFF7FEFF 		bl	memset
+ 678              	.LVL56:
+ 608:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance->instanceId = object_instance_id;   //i=0 for iot_server, i=1 for bs_server
+ 679              		.loc 1 608 5 is_stmt 1 view .LVU178
+ 609:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance->isBootstrap = sec_param->is_bootstrap;
+ 680              		.loc 1 609 27 is_stmt 0 view .LVU179
+ 681 0024 AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+ 682 0026 2373     		strb	r3, [r4, #12]
+ 610:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 611:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (sec_param->server_ip && sec_param->server_port)
+ 683              		.loc 1 611 18 view .LVU180
+ 684 0028 AB68     		ldr	r3, [r5, #8]
+ 608:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance->isBootstrap = sec_param->is_bootstrap;
+ 685              		.loc 1 608 26 view .LVU181
+ 686 002a A780     		strh	r7, [r4, #4]	@ movhi
+ 609:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance->isBootstrap = sec_param->is_bootstrap;
+ 687              		.loc 1 609 5 is_stmt 1 view .LVU182
+ 688              		.loc 1 611 5 view .LVU183
+ 689              		.loc 1 611 8 is_stmt 0 view .LVU184
+ 690 002c B3B1     		cbz	r3, .L60
+ 691              		.loc 1 611 42 discriminator 1 view .LVU185
+ 692 002e EA68     		ldr	r2, [r5, #12]
+ 693              		.loc 1 611 30 discriminator 1 view .LVU186
+ 694 0030 A2B1     		cbz	r2, .L60
+ 612:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 613:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (NULL != sec_param->psk)
+ 695              		.loc 1 613 9 is_stmt 1 view .LVU187
+ 696              		.loc 1 613 12 is_stmt 0 view .LVU188
+ 697 0032 6969     		ldr	r1, [r5, #20]
+ 614:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 26
+
+
+ 615:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             (void)snprintf(serverUri, URI_MAX_LEN, "coaps://%s:%s", sec_param->server_ip, sec_param
+ 698              		.loc 1 615 19 view .LVU189
+ 699 0034 0092     		str	r2, [sp]
+ 613:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 700              		.loc 1 613 12 view .LVU190
+ 701 0036 79B1     		cbz	r1, .L61
+ 702              		.loc 1 615 13 is_stmt 1 view .LVU191
+ 703              		.loc 1 615 19 is_stmt 0 view .LVU192
+ 704 0038 244A     		ldr	r2, .L87
+ 705              	.L84:
+ 616:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 617:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         else
+ 618:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 619:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             (void)snprintf(serverUri, URI_MAX_LEN, "coap://%s:%s", sec_param->server_ip, sec_param-
+ 706              		.loc 1 619 19 view .LVU193
+ 707 003a 4021     		movs	r1, #64
+ 708 003c 02A8     		add	r0, sp, #8
+ 709 003e FFF7FEFF 		bl	snprintf
+ 710              	.LVL57:
+ 711              	.L62:
+ 620:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 621:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 622:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     else
+ 623:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 624:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         serverUri[0] = '\0';
+ 625:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 626:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 627:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance->uri = (char *)lwm2m_strdup(serverUri);
+ 712              		.loc 1 627 5 is_stmt 1 view .LVU194
+ 713              		.loc 1 627 21 is_stmt 0 view .LVU195
+ 714 0042 02A8     		add	r0, sp, #8
+ 715 0044 FFF7FEFF 		bl	lwm2m_strdup
+ 716              	.LVL58:
+ 717              		.loc 1 627 19 view .LVU196
+ 718 0048 A060     		str	r0, [r4, #8]
+ 628:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 629:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == instance->uri)
+ 719              		.loc 1 629 5 is_stmt 1 view .LVU197
+ 720              		.loc 1 629 8 is_stmt 0 view .LVU198
+ 721 004a 58B9     		cbnz	r0, .L63
+ 722              	.L85:
+ 630:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 631:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         lwm2m_free(instance);
+ 632:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         return (int)LWM2M_MALLOC_FAILED;
+ 633:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 634:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 635:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance->securityMode = LWM2M_SECURITY_MODE_NONE;
+ 636:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 637:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if ((NULL != sec_param->psk_id) && (NULL != sec_param->psk))
+ 638:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 639:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instance->securityMode = LWM2M_SECURITY_MODE_PRE_SHARED_KEY;
+ 640:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instance->publicIdentity = (char *)lwm2m_strdup(sec_param->psk_id);
+ 641:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 642:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (NULL == instance->publicIdentity)
+ 643:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 644:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_free(instance->uri);
+ 645:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_free(instance);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 27
+
+
+ 723              		.loc 1 645 13 is_stmt 1 view .LVU199
+ 724 004c 2046     		mov	r0, r4
+ 725 004e FFF7FEFF 		bl	lwm2m_free
+ 726              	.LVL59:
+ 646:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             return (int)LWM2M_MALLOC_FAILED;
+ 727              		.loc 1 646 13 view .LVU200
+ 728              	.L71:
+ 604:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 729              		.loc 1 604 16 is_stmt 0 view .LVU201
+ 730 0052 6FF00300 		mvn	r0, #3
+ 731 0056 34E0     		b	.L58
+ 732              	.L61:
+ 619:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 733              		.loc 1 619 13 is_stmt 1 view .LVU202
+ 619:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 734              		.loc 1 619 19 is_stmt 0 view .LVU203
+ 735 0058 1D4A     		ldr	r2, .L87+4
+ 736 005a EEE7     		b	.L84
+ 737              	.L60:
+ 624:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 738              		.loc 1 624 9 is_stmt 1 view .LVU204
+ 624:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 739              		.loc 1 624 22 is_stmt 0 view .LVU205
+ 740 005c 0023     		movs	r3, #0
+ 741 005e 8DF80830 		strb	r3, [sp, #8]
+ 742 0062 EEE7     		b	.L62
+ 743              	.L63:
+ 635:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 744              		.loc 1 635 5 is_stmt 1 view .LVU206
+ 635:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 745              		.loc 1 635 28 is_stmt 0 view .LVU207
+ 746 0064 0323     		movs	r3, #3
+ 747 0066 6373     		strb	r3, [r4, #13]
+ 637:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 748              		.loc 1 637 5 is_stmt 1 view .LVU208
+ 637:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 749              		.loc 1 637 27 is_stmt 0 view .LVU209
+ 750 0068 2869     		ldr	r0, [r5, #16]
+ 637:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 751              		.loc 1 637 8 view .LVU210
+ 752 006a 00B3     		cbz	r0, .L65
+ 637:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 753              		.loc 1 637 37 discriminator 1 view .LVU211
+ 754 006c 6B69     		ldr	r3, [r5, #20]
+ 755 006e F3B1     		cbz	r3, .L65
+ 639:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instance->publicIdentity = (char *)lwm2m_strdup(sec_param->psk_id);
+ 756              		.loc 1 639 9 is_stmt 1 view .LVU212
+ 639:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instance->publicIdentity = (char *)lwm2m_strdup(sec_param->psk_id);
+ 757              		.loc 1 639 32 is_stmt 0 view .LVU213
+ 758 0070 0023     		movs	r3, #0
+ 759 0072 6373     		strb	r3, [r4, #13]
+ 640:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 760              		.loc 1 640 9 is_stmt 1 view .LVU214
+ 640:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 761              		.loc 1 640 36 is_stmt 0 view .LVU215
+ 762 0074 FFF7FEFF 		bl	lwm2m_strdup
+ 763              	.LVL60:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 28
+
+
+ 640:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 764              		.loc 1 640 34 view .LVU216
+ 765 0078 2061     		str	r0, [r4, #16]
+ 642:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 766              		.loc 1 642 9 is_stmt 1 view .LVU217
+ 642:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 767              		.loc 1 642 12 is_stmt 0 view .LVU218
+ 768 007a 18B9     		cbnz	r0, .L67
+ 644:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             lwm2m_free(instance);
+ 769              		.loc 1 644 13 is_stmt 1 view .LVU219
+ 770 007c A068     		ldr	r0, [r4, #8]
+ 771              	.L86:
+ 772 007e FFF7FEFF 		bl	lwm2m_free
+ 773              	.LVL61:
+ 774 0082 E3E7     		b	.L85
+ 775              	.L67:
+ 647:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 648:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 649:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         instance->publicIdLen = strlen(sec_param->psk_id);
+ 776              		.loc 1 649 9 view .LVU220
+ 777              		.loc 1 649 33 is_stmt 0 view .LVU221
+ 778 0084 2869     		ldr	r0, [r5, #16]
+ 779 0086 FFF7FEFF 		bl	strlen
+ 780              	.LVL62:
+ 781              		.loc 1 649 31 view .LVU222
+ 782 008a A082     		strh	r0, [r4, #20]	@ movhi
+ 650:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 651:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         if (sec_param->psk_len > 0)
+ 783              		.loc 1 651 9 is_stmt 1 view .LVU223
+ 784              		.loc 1 651 22 is_stmt 0 view .LVU224
+ 785 008c 288B     		ldrh	r0, [r5, #24]
+ 786              		.loc 1 651 12 view .LVU225
+ 787 008e 70B1     		cbz	r0, .L65
+ 652:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         {
+ 653:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             instance->secretKey = (char *)lwm2m_malloc(sec_param->psk_len);
+ 788              		.loc 1 653 13 is_stmt 1 view .LVU226
+ 789              		.loc 1 653 43 is_stmt 0 view .LVU227
+ 790 0090 FFF7FEFF 		bl	lwm2m_malloc
+ 791              	.LVL63:
+ 792              		.loc 1 653 33 view .LVU228
+ 793 0094 2062     		str	r0, [r4, #32]
+ 654:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 655:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             if (NULL == instance->secretKey)
+ 794              		.loc 1 655 13 is_stmt 1 view .LVU229
+ 795              		.loc 1 655 16 is_stmt 0 view .LVU230
+ 796 0096 20B9     		cbnz	r0, .L68
+ 656:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             {
+ 657:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 lwm2m_free(instance->uri);
+ 797              		.loc 1 657 17 is_stmt 1 view .LVU231
+ 798 0098 A068     		ldr	r0, [r4, #8]
+ 799 009a FFF7FEFF 		bl	lwm2m_free
+ 800              	.LVL64:
+ 658:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 lwm2m_free(instance->publicIdentity);
+ 801              		.loc 1 658 17 view .LVU232
+ 802 009e 2069     		ldr	r0, [r4, #16]
+ 803 00a0 EDE7     		b	.L86
+ 804              	.L68:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 29
+
+
+ 659:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 lwm2m_free(instance);
+ 660:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****                 return LWM2M_MALLOC_FAILED;
+ 661:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             }
+ 662:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 663:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             (void) memcpy(instance->secretKey, sec_param->psk, sec_param->psk_len);
+ 805              		.loc 1 663 13 view .LVU233
+ 806              		.loc 1 663 20 is_stmt 0 view .LVU234
+ 807 00a2 2A8B     		ldrh	r2, [r5, #24]
+ 808 00a4 6969     		ldr	r1, [r5, #20]
+ 809 00a6 FFF7FEFF 		bl	memcpy
+ 810              	.LVL65:
+ 664:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****             instance->secretKeyLen = sec_param->psk_len;
+ 811              		.loc 1 664 13 is_stmt 1 view .LVU235
+ 812              		.loc 1 664 36 is_stmt 0 view .LVU236
+ 813 00aa 2B8B     		ldrh	r3, [r5, #24]
+ 814 00ac A384     		strh	r3, [r4, #36]	@ movhi
+ 815              	.L65:
+ 665:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         }
+ 666:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 667:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 668:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance->shortID = sec_param->server_id;
+ 816              		.loc 1 668 5 is_stmt 1 view .LVU237
+ 817              		.loc 1 668 23 is_stmt 0 view .LVU238
+ 818 00ae 2B88     		ldrh	r3, [r5]
+ 819 00b0 E386     		strh	r3, [r4, #54]	@ movhi
+ 669:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     //10? is suitable? it could be changed by the bs server. for lwm2m_server_t member lifetime.
+ 670:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     instance->clientHoldOffTime = sec_param->hold_off_time;
+ 820              		.loc 1 670 5 is_stmt 1 view .LVU239
+ 821              		.loc 1 670 33 is_stmt 0 view .LVU240
+ 822 00b2 6B68     		ldr	r3, [r5, #4]
+ 671:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     // After instance id is initialized
+ 672:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     obj->instanceList = LWM2M_LIST_ADD(obj->instanceList, instance);
+ 823              		.loc 1 672 25 view .LVU241
+ 824 00b4 B068     		ldr	r0, [r6, #8]
+ 670:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     // After instance id is initialized
+ 825              		.loc 1 670 33 view .LVU242
+ 826 00b6 A363     		str	r3, [r4, #56]
+ 827              		.loc 1 672 5 is_stmt 1 view .LVU243
+ 828              		.loc 1 672 25 is_stmt 0 view .LVU244
+ 829 00b8 2146     		mov	r1, r4
+ 830 00ba FFF7FEFF 		bl	lwm2m_list_add
+ 831              	.LVL66:
+ 832              		.loc 1 672 23 view .LVU245
+ 833 00be B060     		str	r0, [r6, #8]
+ 834              		.loc 1 672 68 is_stmt 1 view .LVU246
+ 673:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     return (int)LWM2M_OK;
+ 835              		.loc 1 673 5 view .LVU247
+ 836              		.loc 1 673 12 is_stmt 0 view .LVU248
+ 837 00c0 0020     		movs	r0, #0
+ 838              	.LVL67:
+ 839              	.L58:
+ 674:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 840              		.loc 1 674 1 view .LVU249
+ 841 00c2 13B0     		add	sp, sp, #76
+ 842              	.LCFI14:
+ 843              		.cfi_remember_state
+ 844              		.cfi_def_cfa_offset 20
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 30
+
+
+ 845              		@ sp needed
+ 846 00c4 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 847              	.LVL68:
+ 848              	.L70:
+ 849              	.LCFI15:
+ 850              		.cfi_restore_state
+ 597:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 851              		.loc 1 597 16 view .LVU250
+ 852 00c6 4FF0FF30 		mov	r0, #-1
+ 853              	.LVL69:
+ 597:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 854              		.loc 1 597 16 view .LVU251
+ 855 00ca FAE7     		b	.L58
+ 856              	.L88:
+ 857              		.align	2
+ 858              	.L87:
+ 859 00cc 00000000 		.word	.LC1
+ 860 00d0 0E000000 		.word	.LC2
+ 861              		.cfi_endproc
+ 862              	.LFE17:
+ 864              		.section	.text.config_security_object,"ax",%progbits
+ 865              		.align	1
+ 866              		.global	config_security_object
+ 867              		.syntax unified
+ 868              		.thumb
+ 869              		.thumb_func
+ 870              		.fpu fpv4-sp-d16
+ 872              	config_security_object:
+ 873              	.LVL70:
+ 874              	.LFB18:
+ 675:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 676:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** int config_security_object(lwm2m_object_t *obj, void *param)
+ 677:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 875              		.loc 1 677 1 is_stmt 1 view -0
+ 876              		.cfi_startproc
+ 877              		@ args = 0, pretend = 0, frame = 0
+ 878              		@ frame_needed = 0, uses_anonymous_args = 0
+ 879              		@ link register save eliminated.
+ 678:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL == obj)
+ 880              		.loc 1 678 5 view .LVU253
+ 881              		.loc 1 678 8 is_stmt 0 view .LVU254
+ 882 0000 18B1     		cbz	r0, .L91
+ 679:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 680:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         return LWM2M_ARG_INVALID;
+ 681:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 682:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 683:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     obj->readFunc = prv_security_read;
+ 883              		.loc 1 683 5 is_stmt 1 view .LVU255
+ 884              		.loc 1 683 19 is_stmt 0 view .LVU256
+ 885 0002 034B     		ldr	r3, .L92
+ 886 0004 C360     		str	r3, [r0, #12]
+ 684:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #ifdef LWM2M_BOOTSTRAP
+ 685:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     obj->writeFunc = prv_security_write;
+ 686:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     obj->createFunc = prv_security_create;
+ 687:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     obj->deleteFunc = prv_security_delete;
+ 688:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** #endif
+ 689:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     return (int)LWM2M_OK;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 31
+
+
+ 887              		.loc 1 689 5 is_stmt 1 view .LVU257
+ 888              		.loc 1 689 12 is_stmt 0 view .LVU258
+ 889 0006 0020     		movs	r0, #0
+ 890              	.LVL71:
+ 891              		.loc 1 689 12 view .LVU259
+ 892 0008 7047     		bx	lr
+ 893              	.LVL72:
+ 894              	.L91:
+ 680:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 895              		.loc 1 680 16 view .LVU260
+ 896 000a 4FF0FF30 		mov	r0, #-1
+ 897              	.LVL73:
+ 690:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 898              		.loc 1 690 1 view .LVU261
+ 899 000e 7047     		bx	lr
+ 900              	.L93:
+ 901              		.align	2
+ 902              	.L92:
+ 903 0010 00000000 		.word	prv_security_read
+ 904              		.cfi_endproc
+ 905              	.LFE18:
+ 907              		.section	.text.security_get_uri,"ax",%progbits
+ 908              		.align	1
+ 909              		.global	security_get_uri
+ 910              		.syntax unified
+ 911              		.thumb
+ 912              		.thumb_func
+ 913              		.fpu fpv4-sp-d16
+ 915              	security_get_uri:
+ 916              	.LVL74:
+ 917              	.LFB19:
+ 691:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 692:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** /********************* Security Obj Helpers **********************/
+ 693:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 694:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** char *security_get_uri(lwm2m_object_t *objectP, uint16_t secObjInstID)
+ 695:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** {
+ 918              		.loc 1 695 1 is_stmt 1 view -0
+ 919              		.cfi_startproc
+ 920              		@ args = 0, pretend = 0, frame = 0
+ 921              		@ frame_needed = 0, uses_anonymous_args = 0
+ 696:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP = (security_instance_t *)LWM2M_LIST_FIND(objectP->instanceList, se
+ 922              		.loc 1 696 5 view .LVU263
+ 695:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     security_instance_t *targetP = (security_instance_t *)LWM2M_LIST_FIND(objectP->instanceList, se
+ 923              		.loc 1 695 1 is_stmt 0 view .LVU264
+ 924 0000 08B5     		push	{r3, lr}
+ 925              	.LCFI16:
+ 926              		.cfi_def_cfa_offset 8
+ 927              		.cfi_offset 3, -8
+ 928              		.cfi_offset 14, -4
+ 929              		.loc 1 696 59 view .LVU265
+ 930 0002 8068     		ldr	r0, [r0, #8]
+ 931              	.LVL75:
+ 932              		.loc 1 696 59 view .LVU266
+ 933 0004 FFF7FEFF 		bl	lwm2m_list_find
+ 934              	.LVL76:
+ 697:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 698:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     if (NULL != targetP)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 32
+
+
+ 935              		.loc 1 698 5 is_stmt 1 view .LVU267
+ 936              		.loc 1 698 8 is_stmt 0 view .LVU268
+ 937 0008 20B1     		cbz	r0, .L94
+ 699:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     {
+ 700:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****         return lwm2m_strdup(targetP->uri);
+ 938              		.loc 1 700 9 is_stmt 1 view .LVU269
+ 701:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 702:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** 
+ 703:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     return NULL;
+ 704:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c **** }
+ 939              		.loc 1 704 1 is_stmt 0 view .LVU270
+ 940 000a BDE80840 		pop	{r3, lr}
+ 941              	.LCFI17:
+ 942              		.cfi_remember_state
+ 943              		.cfi_restore 14
+ 944              		.cfi_restore 3
+ 945              		.cfi_def_cfa_offset 0
+ 700:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 946              		.loc 1 700 16 view .LVU271
+ 947 000e 8068     		ldr	r0, [r0, #8]
+ 948              	.LVL77:
+ 700:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lwm2m/port\object_security.c ****     }
+ 949              		.loc 1 700 16 view .LVU272
+ 950 0010 FFF7FEBF 		b	lwm2m_strdup
+ 951              	.LVL78:
+ 952              	.L94:
+ 953              	.LCFI18:
+ 954              		.cfi_restore_state
+ 955              		.loc 1 704 1 view .LVU273
+ 956 0014 08BD     		pop	{r3, pc}
+ 957              		.cfi_endproc
+ 958              	.LFE19:
+ 960              		.section	.rodata
+ 961              		.align	1
+ 962              		.set	.LANCHOR0,. + 0
+ 963              	.LC0:
+ 964 0000 0000     		.short	0
+ 965 0002 0100     		.short	1
+ 966 0004 0200     		.short	2
+ 967 0006 0300     		.short	3
+ 968 0008 0400     		.short	4
+ 969 000a 0500     		.short	5
+ 970 000c 0600     		.short	6
+ 971 000e 0700     		.short	7
+ 972 0010 0800     		.short	8
+ 973 0012 0900     		.short	9
+ 974 0014 0A00     		.short	10
+ 975 0016 0B00     		.short	11
+ 976 0018 0C00     		.short	12
+ 977              		.text
+ 978              	.Letext0:
+ 979              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 980              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 981              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 982              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 983              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 984              		.file 7 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 33
+
+
+ 985              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 986              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_lw
+ 987              		.file 10 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_l
+ 988              		.file 11 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 989              		.file 12 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 990              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/lwm2m_al/
+ 991              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/network/lwm2m/wakaama_l
+ 992              		.file 15 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 993              		.file 16 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 994              		.file 17 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s 			page 34
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 object_security.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:18     .text.prv_security_read:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:25     .text.prv_security_read:00000000 prv_security_read
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:171    .text.prv_security_read:00000076 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:306    .text.prv_security_read:000000f0 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:311    .text.copy_security_object:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:318    .text.copy_security_object:00000000 copy_security_object
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:506    .text.display_security_object:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:513    .text.display_security_object:00000000 display_security_object
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:527    .text.clean_security_object:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:534    .text.clean_security_object:00000000 clean_security_object
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:622    .text.add_security_object_instance:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:629    .text.add_security_object_instance:00000000 add_security_object_instance
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:859    .text.add_security_object_instance:000000cc $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:865    .text.config_security_object:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:872    .text.config_security_object:00000000 config_security_object
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:903    .text.config_security_object:00000010 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:908    .text.security_get_uri:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:915    .text.security_get_uri:00000000 security_get_uri
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:961    .rodata:00000000 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:184    .text.prv_security_read:00000083 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccpxbRy3.s:184    .text.prv_security_read:00000084 $t
+
+UNDEFINED SYMBOLS
+lwm2m_list_find
+lwm2m_data_new
+lwm2m_data_encode_string
+lwm2m_data_encode_bool
+lwm2m_data_encode_int
+lwm2m_data_encode_opaque
+lwm2m_malloc
+strlen
+lwm2m_free
+strncpy
+lwm2m_strdup
+memset
+snprintf
+memcpy
+lwm2m_list_add

@@ -1,0 +1,950 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"link_ring_buffer.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.ring_buffer_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	ring_buffer_init
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	ring_buffer_init:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/link_misc/link_ring_buff
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** /**
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  *  2019-04-29 10:34  zhangqianfu  The first version  
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  *
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****  */
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** #include <stdint.h>
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** #include <stddef.h>
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** #include <string.h>
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** #include <link_misc.h>
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** int ring_buffer_init(tag_ring_buffer_t *ring,unsigned char *buf, int buflen,int offset,int datalen)
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** {
+  30              		.loc 1 47 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 4, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+  35              		.loc 1 48 5 view .LVU1
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if((NULL == ring))
+  36              		.loc 1 49 5 view .LVU2
+  37              		.loc 1 49 7 is_stmt 0 view .LVU3
+  38 0000 30B1     		cbz	r0, .L3
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         return ret;
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     ring->buf     = buf;
+  39              		.loc 1 53 5 is_stmt 1 view .LVU4
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     ring->buflen  = buflen;
+  40              		.loc 1 54 19 is_stmt 0 view .LVU5
+  41 0002 C0E90012 		strd	r1, r2, [r0]
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     ring->datalen = datalen;
+  42              		.loc 1 55 5 is_stmt 1 view .LVU6
+  43              		.loc 1 55 19 is_stmt 0 view .LVU7
+  44 0006 009A     		ldr	r2, [sp]
+  45              	.LVL1:
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     ring->dataoff = offset;
+  46              		.loc 1 56 19 view .LVU8
+  47 0008 C0E90223 		strd	r2, r3, [r0, #8]
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     ret = 0;
+  48              		.loc 1 57 5 is_stmt 1 view .LVU9
+  49              	.LVL2:
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     return ret;
+  50              		.loc 1 58 5 view .LVU10
+  51              		.loc 1 58 12 is_stmt 0 view .LVU11
+  52 000c 0020     		movs	r0, #0
+  53              	.LVL3:
+  54              		.loc 1 58 12 view .LVU12
+  55 000e 7047     		bx	lr
+  56              	.LVL4:
+  57              	.L3:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 3
+
+
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+  58              		.loc 1 51 16 view .LVU13
+  59 0010 4FF0FF30 		mov	r0, #-1
+  60              	.LVL5:
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+  61              		.loc 1 59 1 view .LVU14
+  62 0014 7047     		bx	lr
+  63              		.cfi_endproc
+  64              	.LFE0:
+  66              		.section	.text.ring_buffer_write,"ax",%progbits
+  67              		.align	1
+  68              		.global	ring_buffer_write
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  72              		.fpu fpv4-sp-d16
+  74              	ring_buffer_write:
+  75              	.LVL6:
+  76              	.LFB1:
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** int ring_buffer_write(tag_ring_buffer_t *ring,unsigned char *buf, int len)
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** {
+  77              		.loc 1 63 1 is_stmt 1 view -0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+  81              		.loc 1 64 5 view .LVU16
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int cpylen;  //the current time we should move
+  82              		.loc 1 65 5 view .LVU17
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int lenleft;  //and how many data still left to move
+  83              		.loc 1 66 5 view .LVU18
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int offset;
+  84              		.loc 1 67 5 view .LVU19
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     unsigned char *src;
+  85              		.loc 1 68 5 view .LVU20
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     unsigned char *dst;
+  86              		.loc 1 69 5 view .LVU21
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if((NULL == ring)||(NULL == buf)||(0 == len))
+  87              		.loc 1 70 5 view .LVU22
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+  88              		.loc 1 63 1 is_stmt 0 view .LVU23
+  89 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  90              	.LCFI0:
+  91              		.cfi_def_cfa_offset 24
+  92              		.cfi_offset 3, -24
+  93              		.cfi_offset 4, -20
+  94              		.cfi_offset 5, -16
+  95              		.cfi_offset 6, -12
+  96              		.cfi_offset 7, -8
+  97              		.cfi_offset 14, -4
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+  98              		.loc 1 63 1 view .LVU24
+  99 0002 0F46     		mov	r7, r1
+ 100              		.loc 1 70 7 view .LVU25
+ 101 0004 0446     		mov	r4, r0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 4
+
+
+ 102 0006 0028     		cmp	r0, #0
+ 103 0008 44D0     		beq	.L10
+ 104              		.loc 1 70 22 discriminator 1 view .LVU26
+ 105 000a 0029     		cmp	r1, #0
+ 106 000c 42D0     		beq	.L10
+ 107              		.loc 1 70 37 discriminator 2 view .LVU27
+ 108 000e 002A     		cmp	r2, #0
+ 109 0010 40D0     		beq	.L10
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         return ret;//which means parameters error
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if((ring->datalen == ring->buflen)|| (ring->buflen <= 0))
+ 110              		.loc 1 74 5 is_stmt 1 view .LVU28
+ 111              		.loc 1 74 30 is_stmt 0 view .LVU29
+ 112 0012 D0E90150 		ldrd	r5, r0, [r0, #4]
+ 113              	.LVL7:
+ 114              		.loc 1 74 7 view .LVU30
+ 115 0016 A842     		cmp	r0, r5
+ 116 0018 3FD0     		beq	.L12
+ 117              		.loc 1 74 39 discriminator 1 view .LVU31
+ 118 001a 002D     		cmp	r5, #0
+ 119 001c 3DDD     		ble	.L12
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ret = 0;
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         return  ret;//which means you could copy nothing here
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     ret = len > (ring->buflen-ring->datalen)?(ring->buflen-ring->datalen):len;
+ 120              		.loc 1 79 5 is_stmt 1 view .LVU32
+ 121              		.loc 1 79 30 is_stmt 0 view .LVU33
+ 122 001e 2E1A     		subs	r6, r5, r0
+ 123              		.loc 1 79 9 view .LVU34
+ 124 0020 9642     		cmp	r6, r2
+ 125 0022 A8BF     		it	ge
+ 126 0024 1646     		movge	r6, r2
+ 127              	.LVL8:
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     //now let us think the method to fill the data,take care of the roll back
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     lenleft = ret;
+ 128              		.loc 1 81 5 is_stmt 1 view .LVU35
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     src = buf;
+ 129              		.loc 1 82 5 view .LVU36
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if((ring->dataoff+ring->datalen)>ring->buflen) //which means the data has roll back
+ 130              		.loc 1 83 5 view .LVU37
+ 131              		.loc 1 83 22 is_stmt 0 view .LVU38
+ 132 0026 E268     		ldr	r2, [r4, #12]
+ 133              	.LVL9:
+ 134              		.loc 1 83 22 view .LVU39
+ 135 0028 1044     		add	r0, r0, r2
+ 136              		.loc 1 83 7 view .LVU40
+ 137 002a 8542     		cmp	r5, r0
+ 138 002c 0FDA     		bge	.L6
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         offset = (ring->dataoff+ring->datalen)%ring->buflen; //we could move it one time
+ 139              		.loc 1 85 9 is_stmt 1 view .LVU41
+ 140              	.LVL10:
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 141              		.loc 1 86 9 view .LVU42
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         dst = ring->buf + offset;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 5
+
+
+ 142              		.loc 1 87 9 view .LVU43
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         if(cpylen > 0)
+ 143              		.loc 1 88 9 view .LVU44
+ 144              		.loc 1 88 11 is_stmt 0 view .LVU45
+ 145 002e 002E     		cmp	r6, #0
+ 146 0030 0BDD     		ble	.L4
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         {
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             (void) memcpy(dst,src,cpylen);
+ 147              		.loc 1 90 13 is_stmt 1 view .LVU46
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 148              		.loc 1 85 16 is_stmt 0 view .LVU47
+ 149 0032 90FBF5F2 		sdiv	r2, r0, r5
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         if(cpylen > 0)
+ 150              		.loc 1 87 13 view .LVU48
+ 151 0036 2368     		ldr	r3, [r4]
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 152              		.loc 1 85 16 view .LVU49
+ 153 0038 05FB1200 		mls	r0, r5, r2, r0
+ 154              	.LVL11:
+ 155              		.loc 1 90 20 view .LVU50
+ 156 003c 1844     		add	r0, r0, r3
+ 157 003e 3246     		mov	r2, r6
+ 158 0040 FFF7FEFF 		bl	memcpy
+ 159              	.LVL12:
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             ring->datalen += cpylen;
+ 160              		.loc 1 91 13 is_stmt 1 view .LVU51
+ 161              		.loc 1 91 27 is_stmt 0 view .LVU52
+ 162 0044 A368     		ldr	r3, [r4, #8]
+ 163 0046 3344     		add	r3, r3, r6
+ 164              	.LVL13:
+ 165              	.L14:
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             lenleft -= cpylen;
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         }
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     else if((ring->dataoff+ring->datalen + lenleft)>ring->buflen) //which means the data will be ro
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         //which means roll back,we should copy some here to the tail
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         offset = ring->dataoff + ring->datalen;
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = ring->buflen - offset;
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         dst = ring->buf + offset;
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         (void) memcpy(dst,src,cpylen);
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         src += cpylen;
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->datalen += cpylen;
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         lenleft -= cpylen;
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     //here means we could move it by one time
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(lenleft > 0)
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         offset = (ring->dataoff+ring->datalen)%ring->buflen; //we could move it one time
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         dst = ring->buf + offset;
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         (void) memcpy(dst,src,cpylen);
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->datalen += cpylen;
+ 166              		.loc 1 113 23 view .LVU53
+ 167 0048 A360     		str	r3, [r4, #8]
+ 168              	.LVL14:
+ 169              	.L4:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 6
+
+
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     return ret;
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+ 170              		.loc 1 116 1 view .LVU54
+ 171 004a 3046     		mov	r0, r6
+ 172 004c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 173              	.LVL15:
+ 174              	.L6:
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 175              		.loc 1 95 10 is_stmt 1 view .LVU55
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 176              		.loc 1 95 42 is_stmt 0 view .LVU56
+ 177 004e 8219     		adds	r2, r0, r6
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 178              		.loc 1 95 12 view .LVU57
+ 179 0050 9542     		cmp	r5, r2
+ 180 0052 1DDA     		bge	.L13
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = ring->buflen - offset;
+ 181              		.loc 1 98 9 is_stmt 1 view .LVU58
+ 182              	.LVL16:
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         dst = ring->buf + offset;
+ 183              		.loc 1 99 9 view .LVU59
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         (void) memcpy(dst,src,cpylen);
+ 184              		.loc 1 100 13 is_stmt 0 view .LVU60
+ 185 0054 2368     		ldr	r3, [r4]
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         dst = ring->buf + offset;
+ 186              		.loc 1 99 16 view .LVU61
+ 187 0056 2D1A     		subs	r5, r5, r0
+ 188              	.LVL17:
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         (void) memcpy(dst,src,cpylen);
+ 189              		.loc 1 100 9 is_stmt 1 view .LVU62
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         src += cpylen;
+ 190              		.loc 1 101 9 view .LVU63
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         src += cpylen;
+ 191              		.loc 1 101 16 is_stmt 0 view .LVU64
+ 192 0058 2A46     		mov	r2, r5
+ 193 005a 1844     		add	r0, r0, r3
+ 194              	.LVL18:
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         src += cpylen;
+ 195              		.loc 1 101 16 view .LVU65
+ 196 005c FFF7FEFF 		bl	memcpy
+ 197              	.LVL19:
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->datalen += cpylen;
+ 198              		.loc 1 102 9 is_stmt 1 view .LVU66
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         lenleft -= cpylen;
+ 199              		.loc 1 103 23 is_stmt 0 view .LVU67
+ 200 0060 A368     		ldr	r3, [r4, #8]
+ 201 0062 2B44     		add	r3, r3, r5
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->datalen += cpylen;
+ 202              		.loc 1 102 13 view .LVU68
+ 203 0064 2F44     		add	r7, r7, r5
+ 204              	.LVL20:
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         lenleft -= cpylen;
+ 205              		.loc 1 103 9 is_stmt 1 view .LVU69
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         lenleft -= cpylen;
+ 206              		.loc 1 103 23 is_stmt 0 view .LVU70
+ 207 0066 A360     		str	r3, [r4, #8]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 7
+
+
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 208              		.loc 1 104 9 is_stmt 1 view .LVU71
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 209              		.loc 1 104 17 is_stmt 0 view .LVU72
+ 210 0068 751B     		subs	r5, r6, r5
+ 211              	.LVL21:
+ 212              	.L7:
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 213              		.loc 1 107 5 is_stmt 1 view .LVU73
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 214              		.loc 1 107 7 is_stmt 0 view .LVU74
+ 215 006a 002D     		cmp	r5, #0
+ 216 006c EDDD     		ble	.L4
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 217              		.loc 1 109 9 is_stmt 1 view .LVU75
+ 218              	.LVL22:
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         dst = ring->buf + offset;
+ 219              		.loc 1 110 9 view .LVU76
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         (void) memcpy(dst,src,cpylen);
+ 220              		.loc 1 111 9 view .LVU77
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->datalen += cpylen;
+ 221              		.loc 1 112 9 view .LVU78
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 222              		.loc 1 109 32 is_stmt 0 view .LVU79
+ 223 006e D4E90230 		ldrd	r3, r0, [r4, #8]
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 224              		.loc 1 109 16 view .LVU80
+ 225 0072 6268     		ldr	r2, [r4, #4]
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 226              		.loc 1 109 32 view .LVU81
+ 227 0074 1844     		add	r0, r0, r3
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 228              		.loc 1 109 16 view .LVU82
+ 229 0076 90FBF2F3 		sdiv	r3, r0, r2
+ 230 007a 02FB1300 		mls	r0, r2, r3, r0
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         (void) memcpy(dst,src,cpylen);
+ 231              		.loc 1 111 13 view .LVU83
+ 232 007e 2368     		ldr	r3, [r4]
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->datalen += cpylen;
+ 233              		.loc 1 112 16 view .LVU84
+ 234 0080 2A46     		mov	r2, r5
+ 235 0082 1844     		add	r0, r0, r3
+ 236 0084 3946     		mov	r1, r7
+ 237 0086 FFF7FEFF 		bl	memcpy
+ 238              	.LVL23:
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 239              		.loc 1 113 9 is_stmt 1 view .LVU85
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 240              		.loc 1 113 23 is_stmt 0 view .LVU86
+ 241 008a A368     		ldr	r3, [r4, #8]
+ 242 008c 2B44     		add	r3, r3, r5
+ 243 008e DBE7     		b	.L14
+ 244              	.LVL24:
+ 245              	.L13:
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     //now let us think the method to fill the data,take care of the roll back
+ 246              		.loc 1 79 9 view .LVU87
+ 247 0090 3546     		mov	r5, r6
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 8
+
+
+ 248 0092 EAE7     		b	.L7
+ 249              	.LVL25:
+ 250              	.L10:
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 251              		.loc 1 72 16 view .LVU88
+ 252 0094 4FF0FF36 		mov	r6, #-1
+ 253 0098 D7E7     		b	.L4
+ 254              	.LVL26:
+ 255              	.L12:
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 256              		.loc 1 77 17 view .LVU89
+ 257 009a 0026     		movs	r6, #0
+ 258              	.LVL27:
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 259              		.loc 1 77 17 view .LVU90
+ 260 009c D5E7     		b	.L4
+ 261              		.cfi_endproc
+ 262              	.LFE1:
+ 264              		.section	.text.ring_buffer_read,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	ring_buffer_read
+ 267              		.syntax unified
+ 268              		.thumb
+ 269              		.thumb_func
+ 270              		.fpu fpv4-sp-d16
+ 272              	ring_buffer_read:
+ 273              	.LVL28:
+ 274              	.LFB2:
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** int ring_buffer_read(tag_ring_buffer_t *ring,unsigned char *buf, int len)
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** {
+ 275              		.loc 1 120 1 is_stmt 1 view -0
+ 276              		.cfi_startproc
+ 277              		@ args = 0, pretend = 0, frame = 0
+ 278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+ 279              		.loc 1 121 5 view .LVU92
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int cpylen;  //the current time we should move
+ 280              		.loc 1 122 5 view .LVU93
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int lenleft;  //and how many data still left to move
+ 281              		.loc 1 123 5 view .LVU94
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int offset;
+ 282              		.loc 1 124 5 view .LVU95
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     unsigned char *src;
+ 283              		.loc 1 125 5 view .LVU96
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     unsigned char *dst;
+ 284              		.loc 1 126 5 view .LVU97
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if((NULL == ring)||(NULL == buf)||(0 == len))
+ 285              		.loc 1 127 5 view .LVU98
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+ 286              		.loc 1 120 1 is_stmt 0 view .LVU99
+ 287 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 288              	.LCFI1:
+ 289              		.cfi_def_cfa_offset 24
+ 290              		.cfi_offset 3, -24
+ 291              		.cfi_offset 4, -20
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 9
+
+
+ 292              		.cfi_offset 5, -16
+ 293              		.cfi_offset 6, -12
+ 294              		.cfi_offset 7, -8
+ 295              		.cfi_offset 14, -4
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+ 296              		.loc 1 120 1 view .LVU100
+ 297 0002 0B46     		mov	r3, r1
+ 298              		.loc 1 127 7 view .LVU101
+ 299 0004 0446     		mov	r4, r0
+ 300 0006 0028     		cmp	r0, #0
+ 301 0008 39D0     		beq	.L20
+ 302              		.loc 1 127 22 discriminator 1 view .LVU102
+ 303 000a 0029     		cmp	r1, #0
+ 304 000c 37D0     		beq	.L20
+ 305              		.loc 1 127 37 discriminator 2 view .LVU103
+ 306 000e 002A     		cmp	r2, #0
+ 307 0010 35D0     		beq	.L20
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         return ret;//which means parameters error
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if((ring->datalen == 0) || (ring->buflen <= 0))
+ 308              		.loc 1 131 5 is_stmt 1 view .LVU104
+ 309              		.loc 1 131 13 is_stmt 0 view .LVU105
+ 310 0012 8568     		ldr	r5, [r0, #8]
+ 311              		.loc 1 131 7 view .LVU106
+ 312 0014 7DB3     		cbz	r5, .L15
+ 313              		.loc 1 131 37 discriminator 1 view .LVU107
+ 314 0016 4668     		ldr	r6, [r0, #4]
+ 315              		.loc 1 131 29 discriminator 1 view .LVU108
+ 316 0018 002E     		cmp	r6, #0
+ 317 001a 33DD     		ble	.L21
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ret = 0;
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         return  ret;//which means you could copy nothing here
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     ret = len > ring->datalen?ring->datalen:len;
+ 318              		.loc 1 136 5 is_stmt 1 view .LVU109
+ 319              		.loc 1 136 9 is_stmt 0 view .LVU110
+ 320 001c 9542     		cmp	r5, r2
+ 321 001e A8BF     		it	ge
+ 322 0020 1546     		movge	r5, r2
+ 323              	.LVL29:
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     //now let us think the method to fill the data,take care of the roll back
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     lenleft = ret;
+ 324              		.loc 1 138 5 is_stmt 1 view .LVU111
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     dst = buf;
+ 325              		.loc 1 139 5 view .LVU112
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(ring->dataoff >= (ring->buflen - lenleft)) //which means the data has roll back
+ 326              		.loc 1 140 5 view .LVU113
+ 327              		.loc 1 140 12 is_stmt 0 view .LVU114
+ 328 0022 C168     		ldr	r1, [r0, #12]
+ 329              	.LVL30:
+ 330              		.loc 1 140 39 view .LVU115
+ 331 0024 721B     		subs	r2, r6, r5
+ 332              	.LVL31:
+ 333              		.loc 1 140 7 view .LVU116
+ 334 0026 9142     		cmp	r1, r2
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 10
+
+
+ 335 0028 27DB     		blt	.L23
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         offset =ring->dataoff; //we cpy part
+ 336              		.loc 1 142 9 is_stmt 1 view .LVU117
+ 337              	.LVL32:
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = ring->buflen - ring->dataoff;
+ 338              		.loc 1 143 9 view .LVU118
+ 339              		.loc 1 143 16 is_stmt 0 view .LVU119
+ 340 002a 761A     		subs	r6, r6, r1
+ 341              	.LVL33:
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         src = ring->buf + offset;
+ 342              		.loc 1 144 9 is_stmt 1 view .LVU120
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         if(cpylen > 0)
+ 343              		.loc 1 146 9 view .LVU121
+ 344              		.loc 1 146 11 is_stmt 0 view .LVU122
+ 345 002c 002E     		cmp	r6, #0
+ 346 002e 24DD     		ble	.L23
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         {
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             (void) memcpy(dst,src,cpylen);
+ 347              		.loc 1 148 13 is_stmt 1 view .LVU123
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 348              		.loc 1 144 13 is_stmt 0 view .LVU124
+ 349 0030 0068     		ldr	r0, [r0]
+ 350              	.LVL34:
+ 351              		.loc 1 148 20 view .LVU125
+ 352 0032 3246     		mov	r2, r6
+ 353 0034 0144     		add	r1, r1, r0
+ 354              	.LVL35:
+ 355              		.loc 1 148 20 view .LVU126
+ 356 0036 1846     		mov	r0, r3
+ 357              	.LVL36:
+ 358              		.loc 1 148 20 view .LVU127
+ 359 0038 FFF7FEFF 		bl	memcpy
+ 360              	.LVL37:
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             ring->dataoff = (ring->dataoff + cpylen)%ring->buflen;
+ 361              		.loc 1 149 44 view .LVU128
+ 362 003c E268     		ldr	r2, [r4, #12]
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             ring->dataoff = (ring->dataoff + cpylen)%ring->buflen;
+ 363              		.loc 1 148 20 view .LVU129
+ 364 003e 0346     		mov	r3, r0
+ 365              		.loc 1 149 13 is_stmt 1 view .LVU130
+ 366              		.loc 1 149 53 is_stmt 0 view .LVU131
+ 367 0040 6068     		ldr	r0, [r4, #4]
+ 368              		.loc 1 149 44 view .LVU132
+ 369 0042 3244     		add	r2, r2, r6
+ 370              		.loc 1 149 53 view .LVU133
+ 371 0044 92FBF0F1 		sdiv	r1, r2, r0
+ 372 0048 00FB1122 		mls	r2, r0, r1, r2
+ 373              		.loc 1 149 27 view .LVU134
+ 374 004c E260     		str	r2, [r4, #12]
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             ring->datalen -= cpylen;
+ 375              		.loc 1 150 13 is_stmt 1 view .LVU135
+ 376              		.loc 1 150 27 is_stmt 0 view .LVU136
+ 377 004e A268     		ldr	r2, [r4, #8]
+ 378 0050 921B     		subs	r2, r2, r6
+ 379 0052 A260     		str	r2, [r4, #8]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 11
+
+
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             lenleft -= cpylen;
+ 380              		.loc 1 151 13 is_stmt 1 view .LVU137
+ 381              		.loc 1 151 21 is_stmt 0 view .LVU138
+ 382 0054 AF1B     		subs	r7, r5, r6
+ 383              	.LVL38:
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****             dst += cpylen;
+ 384              		.loc 1 152 13 is_stmt 1 view .LVU139
+ 385              		.loc 1 152 17 is_stmt 0 view .LVU140
+ 386 0056 3344     		add	r3, r3, r6
+ 387              	.LVL39:
+ 388              	.L17:
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         }
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     //here means we could move it by one time
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(lenleft > 0)
+ 389              		.loc 1 156 5 is_stmt 1 view .LVU141
+ 390              		.loc 1 156 7 is_stmt 0 view .LVU142
+ 391 0058 002F     		cmp	r7, #0
+ 392 005a 0CDD     		ble	.L15
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         offset =ring->dataoff; //we cpy part
+ 393              		.loc 1 158 9 is_stmt 1 view .LVU143
+ 394              	.LVL40:
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         cpylen = lenleft;
+ 395              		.loc 1 159 9 view .LVU144
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         src = ring->buf + offset;
+ 396              		.loc 1 160 9 view .LVU145
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         (void) memcpy(dst,src,cpylen);
+ 397              		.loc 1 161 9 view .LVU146
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         src = ring->buf + offset;
+ 398              		.loc 1 160 13 is_stmt 0 view .LVU147
+ 399 005c 2068     		ldr	r0, [r4]
+ 400 005e E168     		ldr	r1, [r4, #12]
+ 401              		.loc 1 161 16 view .LVU148
+ 402 0060 3A46     		mov	r2, r7
+ 403 0062 0144     		add	r1, r1, r0
+ 404              	.LVL41:
+ 405              		.loc 1 161 16 view .LVU149
+ 406 0064 1846     		mov	r0, r3
+ 407 0066 FFF7FEFF 		bl	memcpy
+ 408              	.LVL42:
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->dataoff = ring->dataoff + cpylen;
+ 409              		.loc 1 162 9 is_stmt 1 view .LVU150
+ 410              		.loc 1 162 39 is_stmt 0 view .LVU151
+ 411 006a E368     		ldr	r3, [r4, #12]
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->datalen -= cpylen;
+ 412              		.loc 1 163 23 view .LVU152
+ 413 006c A268     		ldr	r2, [r4, #8]
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->dataoff = ring->dataoff + cpylen;
+ 414              		.loc 1 162 39 view .LVU153
+ 415 006e 3B44     		add	r3, r3, r7
+ 416              		.loc 1 163 23 view .LVU154
+ 417 0070 D21B     		subs	r2, r2, r7
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->dataoff = ring->dataoff + cpylen;
+ 418              		.loc 1 162 23 view .LVU155
+ 419 0072 E360     		str	r3, [r4, #12]
+ 420              		.loc 1 163 9 is_stmt 1 view .LVU156
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 12
+
+
+ 421              		.loc 1 163 23 is_stmt 0 view .LVU157
+ 422 0074 A260     		str	r2, [r4, #8]
+ 423              	.LVL43:
+ 424              	.L15:
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     return ret;
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+ 425              		.loc 1 166 1 view .LVU158
+ 426 0076 2846     		mov	r0, r5
+ 427 0078 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 428              	.LVL44:
+ 429              	.L23:
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     dst = buf;
+ 430              		.loc 1 138 13 view .LVU159
+ 431 007a 2F46     		mov	r7, r5
+ 432 007c ECE7     		b	.L17
+ 433              	.LVL45:
+ 434              	.L20:
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 435              		.loc 1 129 16 view .LVU160
+ 436 007e 4FF0FF35 		mov	r5, #-1
+ 437 0082 F8E7     		b	.L15
+ 438              	.L21:
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 439              		.loc 1 134 17 view .LVU161
+ 440 0084 0025     		movs	r5, #0
+ 441              	.LVL46:
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 442              		.loc 1 134 17 view .LVU162
+ 443 0086 F6E7     		b	.L15
+ 444              		.cfi_endproc
+ 445              	.LFE2:
+ 447              		.section	.text.ring_buffer_datalen,"ax",%progbits
+ 448              		.align	1
+ 449              		.global	ring_buffer_datalen
+ 450              		.syntax unified
+ 451              		.thumb
+ 452              		.thumb_func
+ 453              		.fpu fpv4-sp-d16
+ 455              	ring_buffer_datalen:
+ 456              	.LVL47:
+ 457              	.LFB3:
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** int ring_buffer_datalen(tag_ring_buffer_t *ring)
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** {
+ 458              		.loc 1 170 1 is_stmt 1 view -0
+ 459              		.cfi_startproc
+ 460              		@ args = 0, pretend = 0, frame = 0
+ 461              		@ frame_needed = 0, uses_anonymous_args = 0
+ 462              		@ link register save eliminated.
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+ 463              		.loc 1 171 5 view .LVU164
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(NULL != ring)
+ 464              		.loc 1 172 5 view .LVU165
+ 465              		.loc 1 172 7 is_stmt 0 view .LVU166
+ 466 0000 08B1     		cbz	r0, .L29
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 13
+
+
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ret = ring->datalen;
+ 467              		.loc 1 174 9 is_stmt 1 view .LVU167
+ 468              		.loc 1 174 13 is_stmt 0 view .LVU168
+ 469 0002 8068     		ldr	r0, [r0, #8]
+ 470              	.LVL48:
+ 471              		.loc 1 174 13 view .LVU169
+ 472 0004 7047     		bx	lr
+ 473              	.LVL49:
+ 474              	.L29:
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(NULL != ring)
+ 475              		.loc 1 171 9 view .LVU170
+ 476 0006 4FF0FF30 		mov	r0, #-1
+ 477              	.LVL50:
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     return ret;
+ 478              		.loc 1 176 5 is_stmt 1 view .LVU171
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+ 479              		.loc 1 177 1 is_stmt 0 view .LVU172
+ 480 000a 7047     		bx	lr
+ 481              		.cfi_endproc
+ 482              	.LFE3:
+ 484              		.section	.text.ring_buffer_freespace,"ax",%progbits
+ 485              		.align	1
+ 486              		.global	ring_buffer_freespace
+ 487              		.syntax unified
+ 488              		.thumb
+ 489              		.thumb_func
+ 490              		.fpu fpv4-sp-d16
+ 492              	ring_buffer_freespace:
+ 493              	.LVL51:
+ 494              	.LFB4:
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** int ring_buffer_freespace(tag_ring_buffer_t *ring)
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** {
+ 495              		.loc 1 180 1 is_stmt 1 view -0
+ 496              		.cfi_startproc
+ 497              		@ args = 0, pretend = 0, frame = 0
+ 498              		@ frame_needed = 0, uses_anonymous_args = 0
+ 499              		@ link register save eliminated.
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+ 500              		.loc 1 181 5 view .LVU174
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(NULL != ring)
+ 501              		.loc 1 182 5 view .LVU175
+ 502              		.loc 1 182 7 is_stmt 0 view .LVU176
+ 503 0000 18B1     		cbz	r0, .L32
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ret = ring->buflen-ring->datalen;
+ 504              		.loc 1 184 9 is_stmt 1 view .LVU177
+ 505              		.loc 1 184 13 is_stmt 0 view .LVU178
+ 506 0002 D0E90130 		ldrd	r3, r0, [r0, #4]
+ 507              	.LVL52:
+ 508              		.loc 1 184 13 view .LVU179
+ 509 0006 181A     		subs	r0, r3, r0
+ 510              	.LVL53:
+ 511              		.loc 1 184 13 view .LVU180
+ 512 0008 7047     		bx	lr
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 14
+
+
+ 513              	.LVL54:
+ 514              	.L32:
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(NULL != ring)
+ 515              		.loc 1 181 9 view .LVU181
+ 516 000a 4FF0FF30 		mov	r0, #-1
+ 517              	.LVL55:
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     return ret;
+ 518              		.loc 1 186 5 is_stmt 1 view .LVU182
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+ 519              		.loc 1 187 1 is_stmt 0 view .LVU183
+ 520 000e 7047     		bx	lr
+ 521              		.cfi_endproc
+ 522              	.LFE4:
+ 524              		.section	.text.ring_buffer_reset,"ax",%progbits
+ 525              		.align	1
+ 526              		.global	ring_buffer_reset
+ 527              		.syntax unified
+ 528              		.thumb
+ 529              		.thumb_func
+ 530              		.fpu fpv4-sp-d16
+ 532              	ring_buffer_reset:
+ 533              	.LVL56:
+ 534              	.LFB5:
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** int ring_buffer_reset(tag_ring_buffer_t *ring)
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** {
+ 535              		.loc 1 190 1 is_stmt 1 view -0
+ 536              		.cfi_startproc
+ 537              		@ args = 0, pretend = 0, frame = 0
+ 538              		@ frame_needed = 0, uses_anonymous_args = 0
+ 539              		@ link register save eliminated.
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+ 540              		.loc 1 191 5 view .LVU185
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(NULL != ring)
+ 541              		.loc 1 192 5 view .LVU186
+ 542              		.loc 1 192 7 is_stmt 0 view .LVU187
+ 543 0000 20B1     		cbz	r0, .L35
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->datalen = 0;
+ 544              		.loc 1 194 9 is_stmt 1 view .LVU188
+ 545              		.loc 1 194 23 is_stmt 0 view .LVU189
+ 546 0002 0023     		movs	r3, #0
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ring->dataoff = 0;
+ 547              		.loc 1 195 23 view .LVU190
+ 548 0004 C0E90233 		strd	r3, r3, [r0, #8]
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ret = 0;
+ 549              		.loc 1 196 9 is_stmt 1 view .LVU191
+ 550              	.LVL57:
+ 551              		.loc 1 196 13 is_stmt 0 view .LVU192
+ 552 0008 1846     		mov	r0, r3
+ 553              	.LVL58:
+ 554              		.loc 1 196 13 view .LVU193
+ 555 000a 7047     		bx	lr
+ 556              	.LVL59:
+ 557              	.L35:
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(NULL != ring)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 15
+
+
+ 558              		.loc 1 191 9 view .LVU194
+ 559 000c 4FF0FF30 		mov	r0, #-1
+ 560              	.LVL60:
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     return ret;
+ 561              		.loc 1 198 5 is_stmt 1 view .LVU195
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+ 562              		.loc 1 199 1 is_stmt 0 view .LVU196
+ 563 0010 7047     		bx	lr
+ 564              		.cfi_endproc
+ 565              	.LFE5:
+ 567              		.section	.text.ring_buffer_deinit,"ax",%progbits
+ 568              		.align	1
+ 569              		.global	ring_buffer_deinit
+ 570              		.syntax unified
+ 571              		.thumb
+ 572              		.thumb_func
+ 573              		.fpu fpv4-sp-d16
+ 575              	ring_buffer_deinit:
+ 576              	.LVL61:
+ 577              	.LFB6:
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** 
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** int ring_buffer_deinit(tag_ring_buffer_t *ring)
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** {
+ 578              		.loc 1 202 1 is_stmt 1 view -0
+ 579              		.cfi_startproc
+ 580              		@ args = 0, pretend = 0, frame = 0
+ 581              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+ 582              		.loc 1 203 5 view .LVU198
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(NULL != ring)
+ 583              		.loc 1 204 5 view .LVU199
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     int ret = -1;
+ 584              		.loc 1 202 1 is_stmt 0 view .LVU200
+ 585 0000 08B5     		push	{r3, lr}
+ 586              	.LCFI2:
+ 587              		.cfi_def_cfa_offset 8
+ 588              		.cfi_offset 3, -8
+ 589              		.cfi_offset 14, -4
+ 590              		.loc 1 204 7 view .LVU201
+ 591 0002 28B1     		cbz	r0, .L38
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     {
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         (void) memset(ring,0,sizeof(tag_ring_buffer_t));
+ 592              		.loc 1 206 9 is_stmt 1 view .LVU202
+ 593              		.loc 1 206 16 is_stmt 0 view .LVU203
+ 594 0004 1022     		movs	r2, #16
+ 595 0006 0021     		movs	r1, #0
+ 596 0008 FFF7FEFF 		bl	memset
+ 597              	.LVL62:
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****         ret = 0;
+ 598              		.loc 1 207 9 is_stmt 1 view .LVU204
+ 599              		.loc 1 207 13 is_stmt 0 view .LVU205
+ 600 000c 0020     		movs	r0, #0
+ 601              	.LVL63:
+ 602              	.L36:
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     }
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     return ret;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 16
+
+
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+ 603              		.loc 1 210 1 view .LVU206
+ 604 000e 08BD     		pop	{r3, pc}
+ 605              	.LVL64:
+ 606              	.L38:
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c ****     if(NULL != ring)
+ 607              		.loc 1 203 9 view .LVU207
+ 608 0010 4FF0FF30 		mov	r0, #-1
+ 609              	.LVL65:
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+ 610              		.loc 1 209 5 is_stmt 1 view .LVU208
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_misc\link_ring_buffer.c **** }
+ 611              		.loc 1 209 12 is_stmt 0 view .LVU209
+ 612 0014 FBE7     		b	.L36
+ 613              		.cfi_endproc
+ 614              	.LFE6:
+ 616              		.text
+ 617              	.Letext0:
+ 618              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 619              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 620              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 621              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 622              		.file 6 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/link_misc/link_misc.h"
+ 623              		.file 7 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 link_ring_buffer.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:18     .text.ring_buffer_init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:26     .text.ring_buffer_init:00000000 ring_buffer_init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:67     .text.ring_buffer_write:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:74     .text.ring_buffer_write:00000000 ring_buffer_write
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:265    .text.ring_buffer_read:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:272    .text.ring_buffer_read:00000000 ring_buffer_read
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:448    .text.ring_buffer_datalen:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:455    .text.ring_buffer_datalen:00000000 ring_buffer_datalen
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:485    .text.ring_buffer_freespace:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:492    .text.ring_buffer_freespace:00000000 ring_buffer_freespace
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:525    .text.ring_buffer_reset:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:532    .text.ring_buffer_reset:00000000 ring_buffer_reset
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:568    .text.ring_buffer_deinit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc9Imglb.s:575    .text.ring_buffer_deinit:00000000 ring_buffer_deinit
+
+UNDEFINED SYMBOLS
+memcpy
+memset

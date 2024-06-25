@@ -1,0 +1,1249 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"uart_at.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.uart_at_deinit,"ax",%progbits
+  18              		.align	1
+  19              		.global	uart_at_deinit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	uart_at_deinit:
+  27              	.LVL0:
+  28              	.LFB289:
+  29              		.file 1 "d:/liteos/code/WIFI2/uart_at/uart_at.c"
+   1:d:/liteos/code/WIFI2/uart_at\uart_at.c **** /*----------------------------------------------------------------------------
+   2:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * All rights reserved.
+   4:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * are permitted provided that the following conditions are met:
+   6:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * conditions and the following disclaimer.
+   8:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * provided with the distribution.
+  11:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * permission.
+  14:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  *---------------------------------------------------------------------------*/
+  26:d:/liteos/code/WIFI2/uart_at\uart_at.c **** /*----------------------------------------------------------------------------
+  27:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * Notice of Export Control Law
+  28:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * ===============================================
+  29:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 2
+
+
+  30:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  * applicable export control laws and regulations.
+  33:d:/liteos/code/WIFI2/uart_at\uart_at.c ****  *---------------------------------------------------------------------------*/
+  34:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  35:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include "usart.h"
+  36:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include "stm32l4xx.h"
+  37:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include <stdint.h>
+  38:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include <stddef.h>
+  39:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include <osal.h>
+  40:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include <link_misc.h>
+  41:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include <driver.h>
+  42:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include "sys/fcntl.h"
+  43:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #include <iot_link_config.h>
+  44:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  45:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  46:d:/liteos/code/WIFI2/uart_at\uart_at.c **** UART_HandleTypeDef uart_at;
+  47:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static USART_TypeDef*     s_pUSART = LPUART1;
+  48:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static uint32_t           s_uwIRQn = LPUART1_IRQn;
+  49:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  50:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #ifndef CONFIG_UARTAT_RCVMAX
+  51:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #define CONFIG_UARTAT_RCVMAX     1024  //cache a frame
+  52:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #endif
+  53:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  54:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #ifndef CONFIG_UARTAT_BAUDRATE
+  55:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #define CONFIG_UARTAT_BAUDRATE    115200
+  56:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #endif
+  57:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  58:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  59:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #ifndef CONFIG_UARTAT_DEVNAME
+  60:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #define CONFIG_UARTAT_DEVNAME    "atdev"
+  61:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #endif
+  62:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  63:d:/liteos/code/WIFI2/uart_at\uart_at.c **** #define CN_RCVMEM_LEN  CONFIG_UARTAT_RCVMAX
+  64:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  65:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  66:d:/liteos/code/WIFI2/uart_at\uart_at.c **** struct atio_cb
+  67:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+  68:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned short        w_next;    //the next position to be write
+  69:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     osal_semp_t           rcvsync;   //if a frame has been written to the ring, then active it
+  70:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     tag_ring_buffer_t     rcvring;
+  71:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned char         rcvbuf[CONFIG_UARTAT_RCVMAX];
+  72:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned char         rcvringmem[CN_RCVMEM_LEN];
+  73:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     //for the debug here
+  74:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int          rframeover; //how many times the frame has been over the max length
+  75:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int          rframedrop; //how many frame has been droped for memmory
+  76:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int          sndlen;     //how many bytes has been sent
+  77:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int          rcvlen;     //how many bytes has been received
+  78:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int          sndframe;   //how many frame has been sent
+  79:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int          rcvframe;   //how many frame has been received
+  80:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int          rcvringrst; //how many times the receive ring has been reset
+  81:d:/liteos/code/WIFI2/uart_at\uart_at.c **** };
+  82:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static struct atio_cb   g_atio_cb;
+  83:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  84:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+  85:d:/liteos/code/WIFI2/uart_at\uart_at.c **** /*******************************************************************************
+  86:d:/liteos/code/WIFI2/uart_at\uart_at.c **** function     :use this function to deal the uart interrupt
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 3
+
+
+  87:d:/liteos/code/WIFI2/uart_at\uart_at.c **** parameters   :
+  88:d:/liteos/code/WIFI2/uart_at\uart_at.c **** instruction  :we cached the data in the temp buffer,when the idle interrupt reached,
+  89:d:/liteos/code/WIFI2/uart_at\uart_at.c ****               then we write the data and the length to the ring if the ring has enough
+  90:d:/liteos/code/WIFI2/uart_at\uart_at.c ****               space
+  91:d:/liteos/code/WIFI2/uart_at\uart_at.c **** *******************************************************************************/
+  92:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static void atio_irq(void)
+  93:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+  94:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned char  value;
+  95:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned short ringspace;
+  96:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(__HAL_UART_GET_FLAG(&uart_at, UART_FLAG_RXNE) != RESET)
+  97:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+  98:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        value = (uint8_t)(uart_at.Instance->RDR & 0x00FF);
+  99:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        g_atio_cb.rcvlen++;
+ 100:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        if(g_atio_cb.w_next < CONFIG_UARTAT_RCVMAX)
+ 101:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        {
+ 102:d:/liteos/code/WIFI2/uart_at\uart_at.c ****            g_atio_cb.rcvbuf[g_atio_cb.w_next] = value;
+ 103:d:/liteos/code/WIFI2/uart_at\uart_at.c ****            g_atio_cb.w_next++;
+ 104:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 105:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        else
+ 106:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        {
+ 107:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             g_atio_cb.rframeover++;
+ 108:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 109:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 110:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     else if (__HAL_UART_GET_FLAG(&uart_at,UART_FLAG_IDLE) != RESET)
+ 111:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 112:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         __HAL_UART_CLEAR_IDLEFLAG(&uart_at);
+ 113:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         ringspace = CN_RCVMEM_LEN - ring_buffer_datalen(&g_atio_cb.rcvring);
+ 114:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(ringspace < g_atio_cb.w_next)  //not enough mem
+ 115:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 116:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             g_atio_cb.rframedrop++;
+ 117:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 118:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         else
+ 119:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 120:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             //write data to the ring buffer:len+data format
+ 121:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             ringspace = g_atio_cb.w_next;
+ 122:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             ring_buffer_write(&g_atio_cb.rcvring,(unsigned char *)&ringspace,sizeof(ringspace));
+ 123:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             ring_buffer_write(&g_atio_cb.rcvring,g_atio_cb.rcvbuf,ringspace);
+ 124:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             (void) osal_semp_post(g_atio_cb.rcvsync);
+ 125:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             g_atio_cb.rcvframe++;
+ 126:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 127:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         g_atio_cb.w_next=0; //write from the head
+ 128:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 129:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     else ///< clear the flags
+ 130:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 131:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         __HAL_UART_CLEAR_PEFLAG(&uart_at);
+ 132:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         __HAL_UART_CLEAR_FEFLAG(&uart_at);
+ 133:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         __HAL_UART_CLEAR_NEFLAG(&uart_at);
+ 134:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         __HAL_UART_CLEAR_OREFLAG(&uart_at);
+ 135:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 136:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 137:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 138:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 139:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 140:d:/liteos/code/WIFI2/uart_at\uart_at.c **** /*******************************************************************************
+ 141:d:/liteos/code/WIFI2/uart_at\uart_at.c **** function     :use this function to initialize the uart
+ 142:d:/liteos/code/WIFI2/uart_at\uart_at.c **** parameters   :
+ 143:d:/liteos/code/WIFI2/uart_at\uart_at.c **** instruction  :
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 4
+
+
+ 144:d:/liteos/code/WIFI2/uart_at\uart_at.c **** *******************************************************************************/
+ 145:d:/liteos/code/WIFI2/uart_at\uart_at.c **** bool_t uart_at_init(void *pri)
+ 146:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+ 147:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     //initialize the at controller
+ 148:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     (void) memset(&g_atio_cb,0,sizeof(g_atio_cb));
+ 149:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(false == osal_semp_create(&g_atio_cb.rcvsync,CN_RCVMEM_LEN,0))
+ 150:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 151:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         printf("%s:semp create error\n\r",__FUNCTION__);
+ 152:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         goto EXIT_SEMP;
+ 153:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 154:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     ring_buffer_init(&g_atio_cb.rcvring,g_atio_cb.rcvringmem,CN_RCVMEM_LEN,0,0);
+ 155:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 156:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Instance = s_pUSART;
+ 157:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.BaudRate = CONFIG_UARTAT_BAUDRATE;
+ 158:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.WordLength = UART_WORDLENGTH_8B;
+ 159:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.StopBits = UART_STOPBITS_1;
+ 160:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.Parity = UART_PARITY_NONE;
+ 161:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 162:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.Mode = UART_MODE_TX_RX;
+ 163:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.OverSampling = UART_OVERSAMPLING_16;
+ 164:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(HAL_UART_Init(&uart_at) != HAL_OK)
+ 165:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 166:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         _Error_Handler(__FILE__, __LINE__);
+ 167:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 168:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     __HAL_UART_CLEAR_FLAG(&uart_at,UART_FLAG_TC);
+ 169:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     LOS_HwiCreate(s_uwIRQn, 3, 0, atio_irq, 0);
+ 170:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     __HAL_UART_ENABLE_IT(&uart_at, UART_IT_IDLE);
+ 171:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     __HAL_UART_ENABLE_IT(&uart_at, UART_IT_RXNE);
+ 172:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return true;
+ 173:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 174:d:/liteos/code/WIFI2/uart_at\uart_at.c **** EXIT_SEMP:
+ 175:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return false;
+ 176:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 177:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 178:d:/liteos/code/WIFI2/uart_at\uart_at.c **** void uart_at_deinit(void *pri)
+ 179:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+  30              		.loc 1 179 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+ 180:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     __HAL_UART_DISABLE(&uart_at);
+  35              		.loc 1 180 5 view .LVU1
+  36 0000 074B     		ldr	r3, .L2
+  37 0002 1B68     		ldr	r3, [r3]
+  38 0004 1A68     		ldr	r2, [r3]
+  39 0006 22F00102 		bic	r2, r2, #1
+  40 000a 1A60     		str	r2, [r3]
+ 181:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     __HAL_UART_DISABLE_IT(&uart_at, UART_IT_IDLE);
+  41              		.loc 1 181 5 view .LVU2
+  42 000c 1A68     		ldr	r2, [r3]
+  43 000e 22F01002 		bic	r2, r2, #16
+  44 0012 1A60     		str	r2, [r3]
+ 182:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     __HAL_UART_DISABLE_IT(&uart_at, UART_IT_RXNE);
+  45              		.loc 1 182 5 view .LVU3
+  46 0014 1A68     		ldr	r2, [r3]
+  47 0016 22F02002 		bic	r2, r2, #32
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 5
+
+
+  48 001a 1A60     		str	r2, [r3]
+ 183:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+  49              		.loc 1 183 1 is_stmt 0 view .LVU4
+  50 001c 7047     		bx	lr
+  51              	.L3:
+  52 001e 00BF     		.align	2
+  53              	.L2:
+  54 0020 00000000 		.word	uart_at
+  55              		.cfi_endproc
+  56              	.LFE289:
+  58              		.section	.text.atio_irq,"ax",%progbits
+  59              		.align	1
+  60              		.syntax unified
+  61              		.thumb
+  62              		.thumb_func
+  63              		.fpu fpv4-sp-d16
+  65              	atio_irq:
+  66              	.LFB287:
+  93:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned char  value;
+  67              		.loc 1 93 1 is_stmt 1 view -0
+  68              		.cfi_startproc
+  69              		@ args = 0, pretend = 0, frame = 8
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  94:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned short ringspace;
+  71              		.loc 1 94 5 view .LVU6
+  95:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(__HAL_UART_GET_FLAG(&uart_at, UART_FLAG_RXNE) != RESET)
+  72              		.loc 1 95 5 view .LVU7
+  96:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+  73              		.loc 1 96 5 view .LVU8
+  96:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+  74              		.loc 1 96 8 is_stmt 0 view .LVU9
+  75 0000 2A4B     		ldr	r3, .L12
+  76 0002 1B68     		ldr	r3, [r3]
+  93:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned char  value;
+  77              		.loc 1 93 1 view .LVU10
+  78 0004 37B5     		push	{r0, r1, r2, r4, r5, lr}
+  79              	.LCFI0:
+  80              		.cfi_def_cfa_offset 24
+  81              		.cfi_offset 4, -12
+  82              		.cfi_offset 5, -8
+  83              		.cfi_offset 14, -4
+  96:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+  84              		.loc 1 96 8 view .LVU11
+  85 0006 DA69     		ldr	r2, [r3, #28]
+  96:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+  86              		.loc 1 96 7 view .LVU12
+  87 0008 9106     		lsls	r1, r2, #26
+  88 000a 17D5     		bpl	.L5
+  98:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        g_atio_cb.rcvlen++;
+  89              		.loc 1 98 8 is_stmt 1 view .LVU13
+  98:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        g_atio_cb.rcvlen++;
+  90              		.loc 1 98 42 is_stmt 0 view .LVU14
+  91 000c 998C     		ldrh	r1, [r3, #36]
+  99:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        if(g_atio_cb.w_next < CONFIG_UARTAT_RCVMAX)
+  92              		.loc 1 99 24 view .LVU15
+  93 000e 284B     		ldr	r3, .L12+4
+  94 0010 41F22400 		movw	r0, #4132
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 6
+
+
+  98:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        g_atio_cb.rcvlen++;
+  95              		.loc 1 98 42 view .LVU16
+  96 0014 89B2     		uxth	r1, r1
+  97              	.LVL1:
+  99:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        if(g_atio_cb.w_next < CONFIG_UARTAT_RCVMAX)
+  98              		.loc 1 99 8 is_stmt 1 view .LVU17
+  99:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        if(g_atio_cb.w_next < CONFIG_UARTAT_RCVMAX)
+  99              		.loc 1 99 24 is_stmt 0 view .LVU18
+ 100 0016 1A58     		ldr	r2, [r3, r0]
+ 101 0018 0132     		adds	r2, r2, #1
+ 102 001a 1A50     		str	r2, [r3, r0]
+ 100:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        {
+ 103              		.loc 1 100 8 is_stmt 1 view .LVU19
+ 100:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        {
+ 104              		.loc 1 100 20 is_stmt 0 view .LVU20
+ 105 001c 1A88     		ldrh	r2, [r3]
+ 100:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        {
+ 106              		.loc 1 100 10 view .LVU21
+ 107 001e B2F5006F 		cmp	r2, #2048
+ 102:d:/liteos/code/WIFI2/uart_at\uart_at.c ****            g_atio_cb.w_next++;
+ 108              		.loc 1 102 12 is_stmt 1 view .LVU22
+ 107:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 109              		.loc 1 107 33 is_stmt 0 view .LVU23
+ 110 0022 2BBF     		itete	cs
+ 111 0024 41F21801 		movwcs	r1, #4120
+ 112              	.LVL2:
+ 102:d:/liteos/code/WIFI2/uart_at\uart_at.c ****            g_atio_cb.w_next++;
+ 113              		.loc 1 102 47 view .LVU24
+ 114 0028 9818     		addcc	r0, r3, r2
+ 107:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 115              		.loc 1 107 33 view .LVU25
+ 116 002a 5A58     		ldrcs	r2, [r3, r1]
+  98:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        g_atio_cb.rcvlen++;
+ 117              		.loc 1 98 14 view .LVU26
+ 118 002c 0176     		strbcc	r1, [r0, #24]
+ 103:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 119              		.loc 1 103 12 is_stmt 1 view .LVU27
+ 107:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 120              		.loc 1 107 33 is_stmt 0 view .LVU28
+ 121 002e 2BBF     		itete	cs
+ 122 0030 0132     		addcs	r2, r2, #1
+ 103:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 123              		.loc 1 103 28 view .LVU29
+ 124 0032 0132     		addcc	r2, r2, #1
+ 107:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 125              		.loc 1 107 33 view .LVU30
+ 126 0034 5A50     		strcs	r2, [r3, r1]
+ 103:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 127              		.loc 1 103 28 view .LVU31
+ 128 0036 1A80     		strhcc	r2, [r3]	@ movhi
+ 107:d:/liteos/code/WIFI2/uart_at\uart_at.c ****        }
+ 129              		.loc 1 107 13 is_stmt 1 view .LVU32
+ 130              	.L4:
+ 138:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 131              		.loc 1 138 1 is_stmt 0 view .LVU33
+ 132 0038 03B0     		add	sp, sp, #12
+ 133              	.LCFI1:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 7
+
+
+ 134              		.cfi_remember_state
+ 135              		.cfi_def_cfa_offset 12
+ 136              		@ sp needed
+ 137 003a 30BD     		pop	{r4, r5, pc}
+ 138              	.L5:
+ 139              	.LCFI2:
+ 140              		.cfi_restore_state
+ 110:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 141              		.loc 1 110 10 is_stmt 1 view .LVU34
+ 110:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 142              		.loc 1 110 14 is_stmt 0 view .LVU35
+ 143 003c DA69     		ldr	r2, [r3, #28]
+ 110:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 144              		.loc 1 110 13 view .LVU36
+ 145 003e D206     		lsls	r2, r2, #27
+ 146 0040 2BD5     		bpl	.L8
+ 112:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         ringspace = CN_RCVMEM_LEN - ring_buffer_datalen(&g_atio_cb.rcvring);
+ 147              		.loc 1 112 9 is_stmt 1 view .LVU37
+ 113:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(ringspace < g_atio_cb.w_next)  //not enough mem
+ 148              		.loc 1 113 37 is_stmt 0 view .LVU38
+ 149 0042 1C4D     		ldr	r5, .L12+8
+ 112:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         ringspace = CN_RCVMEM_LEN - ring_buffer_datalen(&g_atio_cb.rcvring);
+ 150              		.loc 1 112 9 view .LVU39
+ 151 0044 1022     		movs	r2, #16
+ 152 0046 1A62     		str	r2, [r3, #32]
+ 113:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(ringspace < g_atio_cb.w_next)  //not enough mem
+ 153              		.loc 1 113 9 is_stmt 1 view .LVU40
+ 113:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(ringspace < g_atio_cb.w_next)  //not enough mem
+ 154              		.loc 1 113 37 is_stmt 0 view .LVU41
+ 155 0048 2846     		mov	r0, r5
+ 156 004a FFF7FEFF 		bl	ring_buffer_datalen
+ 157              	.LVL3:
+ 114:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 158              		.loc 1 114 9 is_stmt 1 view .LVU42
+ 114:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 159              		.loc 1 114 33 is_stmt 0 view .LVU43
+ 160 004e 35F8083C 		ldrh	r3, [r5, #-8]
+ 113:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(ringspace < g_atio_cb.w_next)  //not enough mem
+ 161              		.loc 1 113 35 view .LVU44
+ 162 0052 C0F50060 		rsb	r0, r0, #2048
+ 114:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 163              		.loc 1 114 11 view .LVU45
+ 164 0056 80B2     		uxth	r0, r0
+ 165 0058 9842     		cmp	r0, r3
+ 166 005a A5F10804 		sub	r4, r5, #8
+ 167 005e 07D2     		bcs	.L9
+ 116:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 168              		.loc 1 116 13 is_stmt 1 view .LVU46
+ 116:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 169              		.loc 1 116 33 is_stmt 0 view .LVU47
+ 170 0060 41F21C02 		movw	r2, #4124
+ 171              	.L11:
+ 125:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 172              		.loc 1 125 31 view .LVU48
+ 173 0064 A358     		ldr	r3, [r4, r2]
+ 174 0066 0133     		adds	r3, r3, #1
+ 175 0068 A350     		str	r3, [r4, r2]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 8
+
+
+ 127:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 176              		.loc 1 127 9 is_stmt 1 view .LVU49
+ 127:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 177              		.loc 1 127 25 is_stmt 0 view .LVU50
+ 178 006a 0023     		movs	r3, #0
+ 179 006c 2380     		strh	r3, [r4]	@ movhi
+ 180 006e E3E7     		b	.L4
+ 181              	.L9:
+ 121:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             ring_buffer_write(&g_atio_cb.rcvring,(unsigned char *)&ringspace,sizeof(ringspace));
+ 182              		.loc 1 121 13 is_stmt 1 view .LVU51
+ 122:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             ring_buffer_write(&g_atio_cb.rcvring,g_atio_cb.rcvbuf,ringspace);
+ 183              		.loc 1 122 13 is_stmt 0 view .LVU52
+ 184 0070 0222     		movs	r2, #2
+ 185 0072 0DF10601 		add	r1, sp, #6
+ 186 0076 2846     		mov	r0, r5
+ 121:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             ring_buffer_write(&g_atio_cb.rcvring,(unsigned char *)&ringspace,sizeof(ringspace));
+ 187              		.loc 1 121 23 view .LVU53
+ 188 0078 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 122:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             ring_buffer_write(&g_atio_cb.rcvring,g_atio_cb.rcvbuf,ringspace);
+ 189              		.loc 1 122 13 is_stmt 1 view .LVU54
+ 190 007c FFF7FEFF 		bl	ring_buffer_write
+ 191              	.LVL4:
+ 123:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             (void) osal_semp_post(g_atio_cb.rcvsync);
+ 192              		.loc 1 123 13 view .LVU55
+ 193 0080 BDF80620 		ldrh	r2, [sp, #6]
+ 194 0084 04F11801 		add	r1, r4, #24
+ 195 0088 2846     		mov	r0, r5
+ 196 008a FFF7FEFF 		bl	ring_buffer_write
+ 197              	.LVL5:
+ 124:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             g_atio_cb.rcvframe++;
+ 198              		.loc 1 124 13 view .LVU56
+ 124:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             g_atio_cb.rcvframe++;
+ 199              		.loc 1 124 20 is_stmt 0 view .LVU57
+ 200 008e 6068     		ldr	r0, [r4, #4]
+ 201 0090 FFF7FEFF 		bl	osal_semp_post
+ 202              	.LVL6:
+ 125:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 203              		.loc 1 125 13 is_stmt 1 view .LVU58
+ 125:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 204              		.loc 1 125 31 is_stmt 0 view .LVU59
+ 205 0094 41F22C02 		movw	r2, #4140
+ 206 0098 E4E7     		b	.L11
+ 207              	.L8:
+ 131:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         __HAL_UART_CLEAR_FEFLAG(&uart_at);
+ 208              		.loc 1 131 9 is_stmt 1 view .LVU60
+ 209 009a 0122     		movs	r2, #1
+ 210 009c 1A62     		str	r2, [r3, #32]
+ 132:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         __HAL_UART_CLEAR_NEFLAG(&uart_at);
+ 211              		.loc 1 132 9 view .LVU61
+ 212 009e 0222     		movs	r2, #2
+ 213 00a0 1A62     		str	r2, [r3, #32]
+ 133:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         __HAL_UART_CLEAR_OREFLAG(&uart_at);
+ 214              		.loc 1 133 9 view .LVU62
+ 215 00a2 0422     		movs	r2, #4
+ 216 00a4 1A62     		str	r2, [r3, #32]
+ 134:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 217              		.loc 1 134 9 view .LVU63
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 9
+
+
+ 218 00a6 0822     		movs	r2, #8
+ 219 00a8 1A62     		str	r2, [r3, #32]
+ 138:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 220              		.loc 1 138 1 is_stmt 0 view .LVU64
+ 221 00aa C5E7     		b	.L4
+ 222              	.L13:
+ 223              		.align	2
+ 224              	.L12:
+ 225 00ac 00000000 		.word	uart_at
+ 226 00b0 00000000 		.word	g_atio_cb
+ 227 00b4 08000000 		.word	g_atio_cb+8
+ 228              		.cfi_endproc
+ 229              	.LFE287:
+ 231              		.section	.text.__at_write,"ax",%progbits
+ 232              		.align	1
+ 233              		.syntax unified
+ 234              		.thumb
+ 235              		.thumb_func
+ 236              		.fpu fpv4-sp-d16
+ 238              	__at_write:
+ 239              	.LVL7:
+ 240              	.LFB293:
+ 184:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 185:d:/liteos/code/WIFI2/uart_at\uart_at.c **** /*******************************************************************************
+ 186:d:/liteos/code/WIFI2/uart_at\uart_at.c **** function     :use this function to send a frame to the uart
+ 187:d:/liteos/code/WIFI2/uart_at\uart_at.c **** parameters   :
+ 188:d:/liteos/code/WIFI2/uart_at\uart_at.c **** instruction  :
+ 189:d:/liteos/code/WIFI2/uart_at\uart_at.c **** *******************************************************************************/
+ 190:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static ssize_t uart_at_send(const char  *buf, size_t len,uint32_t timeout)
+ 191:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+ 192:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     HAL_UART_Transmit(&uart_at,(unsigned char *)buf,len,timeout);
+ 193:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndlen += len;
+ 194:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndframe ++;
+ 195:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 196:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return len;
+ 197:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 198:d:/liteos/code/WIFI2/uart_at\uart_at.c **** /*******************************************************************************
+ 199:d:/liteos/code/WIFI2/uart_at\uart_at.c **** function     :use this function to read a frame from the uart
+ 200:d:/liteos/code/WIFI2/uart_at\uart_at.c **** parameters   :
+ 201:d:/liteos/code/WIFI2/uart_at\uart_at.c **** instruction  :
+ 202:d:/liteos/code/WIFI2/uart_at\uart_at.c **** *******************************************************************************/
+ 203:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static ssize_t uart_at_receive(void *buf,size_t len,uint32_t timeout)
+ 204:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+ 205:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned short cpylen;
+ 206:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned short framelen;
+ 207:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned short readlen;
+ 208:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     int32_t ret = 0;
+ 209:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int lock;
+ 210:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(osal_semp_pend(g_atio_cb.rcvsync,timeout))
+ 211:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 212:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         lock = LOS_IntLock();
+ 213:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         readlen = sizeof(framelen);
+ 214:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         cpylen = ring_buffer_read(&g_atio_cb.rcvring,(unsigned char *)&framelen,readlen);
+ 215:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(cpylen != readlen)
+ 216:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 217:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             ring_buffer_reset(&g_atio_cb.rcvring);  //bad ring format here
+ 218:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             g_atio_cb.rcvringrst++;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 10
+
+
+ 219:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 220:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         else
+ 221:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 222:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             if(framelen > len)
+ 223:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             {
+ 224:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 ring_buffer_reset(&g_atio_cb.rcvring);  //bad ring format here
+ 225:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 g_atio_cb.rcvringrst++;
+ 226:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             }
+ 227:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             else
+ 228:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             {
+ 229:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 readlen = framelen;
+ 230:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 cpylen = ring_buffer_read(&g_atio_cb.rcvring,(unsigned char *)buf,readlen);
+ 231:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 if(cpylen != framelen)
+ 232:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 {
+ 233:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                     ring_buffer_reset(&g_atio_cb.rcvring);  //bad ring format here
+ 234:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                     g_atio_cb.rcvringrst++;
+ 235:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 }
+ 236:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 else
+ 237:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 {
+ 238:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                     ret = cpylen;
+ 239:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 }
+ 240:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             }
+ 241:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 242:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         LOS_IntRestore(lock);
+ 243:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 244:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return ret;
+ 245:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 246:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 247:d:/liteos/code/WIFI2/uart_at\uart_at.c **** //make it as the at device here
+ 248:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static ssize_t  __at_read  (void *pri,size_t offset,void *buf,size_t len, uint32_t timeout)
+ 249:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+ 250:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return uart_at_receive(buf,len, timeout);
+ 251:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 252:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 253:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static ssize_t  __at_write (void *pri, size_t offset,const void *buf,size_t len,uint32_t timeout)
+ 254:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+ 241              		.loc 1 254 1 is_stmt 1 view -0
+ 242              		.cfi_startproc
+ 243              		@ args = 4, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return uart_at_send(buf, len, timeout);
+ 245              		.loc 1 255 5 view .LVU66
+ 254:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return uart_at_send(buf, len, timeout);
+ 246              		.loc 1 254 1 is_stmt 0 view .LVU67
+ 247 0000 10B5     		push	{r4, lr}
+ 248              	.LCFI3:
+ 249              		.cfi_def_cfa_offset 8
+ 250              		.cfi_offset 4, -8
+ 251              		.cfi_offset 14, -4
+ 254:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return uart_at_send(buf, len, timeout);
+ 252              		.loc 1 254 1 view .LVU68
+ 253 0002 1C46     		mov	r4, r3
+ 254 0004 1146     		mov	r1, r2
+ 255              	.LVL8:
+ 256              	.LBB4:
+ 257              	.LBI4:
+ 190:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 11
+
+
+ 258              		.loc 1 190 16 is_stmt 1 view .LVU69
+ 259              	.LBB5:
+ 192:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndlen += len;
+ 260              		.loc 1 192 5 view .LVU70
+ 261 0006 029B     		ldr	r3, [sp, #8]
+ 262              	.LVL9:
+ 192:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndlen += len;
+ 263              		.loc 1 192 5 is_stmt 0 view .LVU71
+ 264 0008 0848     		ldr	r0, .L15
+ 265              	.LVL10:
+ 192:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndlen += len;
+ 266              		.loc 1 192 5 view .LVU72
+ 267 000a A2B2     		uxth	r2, r4
+ 268              	.LVL11:
+ 192:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndlen += len;
+ 269              		.loc 1 192 5 view .LVU73
+ 270 000c FFF7FEFF 		bl	HAL_UART_Transmit
+ 271              	.LVL12:
+ 193:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndframe ++;
+ 272              		.loc 1 193 5 is_stmt 1 view .LVU74
+ 193:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndframe ++;
+ 273              		.loc 1 193 22 is_stmt 0 view .LVU75
+ 274 0010 074B     		ldr	r3, .L15+4
+ 275 0012 03F58151 		add	r1, r3, #4128
+ 276              	.LBE5:
+ 277              	.LBE4:
+ 256:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 257:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 278              		.loc 1 257 1 view .LVU76
+ 279 0016 2046     		mov	r0, r4
+ 280              	.LBB7:
+ 281              	.LBB6:
+ 193:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     g_atio_cb.sndframe ++;
+ 282              		.loc 1 193 22 view .LVU77
+ 283 0018 0A68     		ldr	r2, [r1]
+ 284 001a 2244     		add	r2, r2, r4
+ 285 001c 0A60     		str	r2, [r1]
+ 194:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 286              		.loc 1 194 5 is_stmt 1 view .LVU78
+ 194:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 287              		.loc 1 194 24 is_stmt 0 view .LVU79
+ 288 001e 41F22801 		movw	r1, #4136
+ 289 0022 5A58     		ldr	r2, [r3, r1]
+ 290 0024 0132     		adds	r2, r2, #1
+ 291 0026 5A50     		str	r2, [r3, r1]
+ 196:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 292              		.loc 1 196 5 is_stmt 1 view .LVU80
+ 293              	.LVL13:
+ 196:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 294              		.loc 1 196 5 is_stmt 0 view .LVU81
+ 295              	.LBE6:
+ 296              	.LBE7:
+ 297              		.loc 1 257 1 view .LVU82
+ 298 0028 10BD     		pop	{r4, pc}
+ 299              	.LVL14:
+ 300              	.L16:
+ 301              		.loc 1 257 1 view .LVU83
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 12
+
+
+ 302 002a 00BF     		.align	2
+ 303              	.L15:
+ 304 002c 00000000 		.word	uart_at
+ 305 0030 00000000 		.word	g_atio_cb
+ 306              		.cfi_endproc
+ 307              	.LFE293:
+ 309              		.section	.text.__at_read,"ax",%progbits
+ 310              		.align	1
+ 311              		.syntax unified
+ 312              		.thumb
+ 313              		.thumb_func
+ 314              		.fpu fpv4-sp-d16
+ 316              	__at_read:
+ 317              	.LVL15:
+ 318              	.LFB292:
+ 249:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return uart_at_receive(buf,len, timeout);
+ 319              		.loc 1 249 1 is_stmt 1 view -0
+ 320              		.cfi_startproc
+ 321              		@ args = 4, pretend = 0, frame = 8
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 323              		.loc 1 250 5 view .LVU85
+ 249:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return uart_at_receive(buf,len, timeout);
+ 324              		.loc 1 249 1 is_stmt 0 view .LVU86
+ 325 0000 2DE9F743 		push	{r0, r1, r2, r4, r5, r6, r7, r8, r9, lr}
+ 326              	.LCFI4:
+ 327              		.cfi_def_cfa_offset 40
+ 328              		.cfi_offset 4, -28
+ 329              		.cfi_offset 5, -24
+ 330              		.cfi_offset 6, -20
+ 331              		.cfi_offset 7, -16
+ 332              		.cfi_offset 8, -12
+ 333              		.cfi_offset 9, -8
+ 334              		.cfi_offset 14, -4
+ 335              	.LBB10:
+ 336              	.LBB11:
+ 210:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 337              		.loc 1 210 8 view .LVU87
+ 338 0004 214D     		ldr	r5, .L27
+ 339 0006 0A99     		ldr	r1, [sp, #40]
+ 340              	.LVL16:
+ 210:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 341              		.loc 1 210 8 view .LVU88
+ 342 0008 6868     		ldr	r0, [r5, #4]
+ 343              	.LVL17:
+ 210:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 344              		.loc 1 210 8 view .LVU89
+ 345              	.LBE11:
+ 346              	.LBE10:
+ 249:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return uart_at_receive(buf,len, timeout);
+ 347              		.loc 1 249 1 view .LVU90
+ 348 000a 1746     		mov	r7, r2
+ 349              	.LVL18:
+ 249:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return uart_at_receive(buf,len, timeout);
+ 350              		.loc 1 249 1 view .LVU91
+ 351 000c 9846     		mov	r8, r3
+ 352              	.LVL19:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 13
+
+
+ 353              	.LBB14:
+ 354              	.LBI10:
+ 203:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+ 355              		.loc 1 203 16 is_stmt 1 view .LVU92
+ 356              	.LBB12:
+ 205:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned short framelen;
+ 357              		.loc 1 205 5 view .LVU93
+ 206:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned short readlen;
+ 358              		.loc 1 206 5 view .LVU94
+ 207:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     int32_t ret = 0;
+ 359              		.loc 1 207 5 view .LVU95
+ 208:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int lock;
+ 360              		.loc 1 208 5 view .LVU96
+ 209:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(osal_semp_pend(g_atio_cb.rcvsync,timeout))
+ 361              		.loc 1 209 5 view .LVU97
+ 210:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 362              		.loc 1 210 5 view .LVU98
+ 210:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 363              		.loc 1 210 8 is_stmt 0 view .LVU99
+ 364 000e FFF7FEFF 		bl	osal_semp_pend
+ 365              	.LVL20:
+ 210:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 366              		.loc 1 210 8 view .LVU100
+ 367 0012 A946     		mov	r9, r5
+ 210:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 368              		.loc 1 210 7 view .LVU101
+ 369 0014 0446     		mov	r4, r0
+ 370 0016 D0B1     		cbz	r0, .L17
+ 212:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         readlen = sizeof(framelen);
+ 371              		.loc 1 212 9 is_stmt 1 view .LVU102
+ 212:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         readlen = sizeof(framelen);
+ 372              		.loc 1 212 16 is_stmt 0 view .LVU103
+ 373 0018 FFF7FEFF 		bl	LOS_IntLock
+ 374              	.LVL21:
+ 214:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(cpylen != readlen)
+ 375              		.loc 1 214 18 view .LVU104
+ 376 001c 0222     		movs	r2, #2
+ 212:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         readlen = sizeof(framelen);
+ 377              		.loc 1 212 16 view .LVU105
+ 378 001e 0646     		mov	r6, r0
+ 379              	.LVL22:
+ 213:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         cpylen = ring_buffer_read(&g_atio_cb.rcvring,(unsigned char *)&framelen,readlen);
+ 380              		.loc 1 213 9 is_stmt 1 view .LVU106
+ 214:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(cpylen != readlen)
+ 381              		.loc 1 214 9 view .LVU107
+ 214:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(cpylen != readlen)
+ 382              		.loc 1 214 18 is_stmt 0 view .LVU108
+ 383 0020 0DF10601 		add	r1, sp, #6
+ 384 0024 05F10800 		add	r0, r5, #8
+ 385              	.LVL23:
+ 214:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         if(cpylen != readlen)
+ 386              		.loc 1 214 18 view .LVU109
+ 387 0028 FFF7FEFF 		bl	ring_buffer_read
+ 388              	.LVL24:
+ 215:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 389              		.loc 1 215 9 is_stmt 1 view .LVU110
+ 215:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 14
+
+
+ 390              		.loc 1 215 11 is_stmt 0 view .LVU111
+ 391 002c 80B2     		uxth	r0, r0
+ 215:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         {
+ 392              		.loc 1 215 11 view .LVU112
+ 393 002e 0228     		cmp	r0, #2
+ 394 0030 11D0     		beq	.L19
+ 395              	.L21:
+ 217:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             g_atio_cb.rcvringrst++;
+ 396              		.loc 1 217 13 is_stmt 1 view .LVU113
+ 397 0032 1748     		ldr	r0, .L27+4
+ 398              	.LVL25:
+ 217:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             g_atio_cb.rcvringrst++;
+ 399              		.loc 1 217 13 is_stmt 0 view .LVU114
+ 400 0034 FFF7FEFF 		bl	ring_buffer_reset
+ 401              	.LVL26:
+ 218:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 402              		.loc 1 218 13 is_stmt 1 view .LVU115
+ 218:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         }
+ 403              		.loc 1 218 33 is_stmt 0 view .LVU116
+ 404 0038 41F23002 		movw	r2, #4144
+ 405 003c 59F80230 		ldr	r3, [r9, r2]
+ 406 0040 0133     		adds	r3, r3, #1
+ 407 0042 49F80230 		str	r3, [r9, r2]
+ 408              	.LVL27:
+ 409              	.L26:
+ 208:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     unsigned int lock;
+ 410              		.loc 1 208 13 view .LVU117
+ 411 0046 0024     		movs	r4, #0
+ 412              	.LVL28:
+ 413              	.L20:
+ 242:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 414              		.loc 1 242 9 is_stmt 1 view .LVU118
+ 415 0048 3046     		mov	r0, r6
+ 416 004a FFF7FEFF 		bl	LOS_IntRestore
+ 417              	.LVL29:
+ 244:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 418              		.loc 1 244 5 view .LVU119
+ 419              	.L17:
+ 244:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 420              		.loc 1 244 5 is_stmt 0 view .LVU120
+ 421              	.LBE12:
+ 422              	.LBE14:
+ 252:d:/liteos/code/WIFI2/uart_at\uart_at.c **** static ssize_t  __at_write (void *pri, size_t offset,const void *buf,size_t len,uint32_t timeout)
+ 423              		.loc 1 252 1 view .LVU121
+ 424 004e 2046     		mov	r0, r4
+ 425 0050 03B0     		add	sp, sp, #12
+ 426              	.LCFI5:
+ 427              		.cfi_remember_state
+ 428              		.cfi_def_cfa_offset 28
+ 429              		@ sp needed
+ 430 0052 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 431              	.LVL30:
+ 432              	.L19:
+ 433              	.LCFI6:
+ 434              		.cfi_restore_state
+ 435              	.LBB15:
+ 436              	.LBB13:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 15
+
+
+ 222:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             {
+ 437              		.loc 1 222 13 is_stmt 1 view .LVU122
+ 222:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             {
+ 438              		.loc 1 222 25 is_stmt 0 view .LVU123
+ 439 0056 BDF80620 		ldrh	r2, [sp, #6]
+ 222:d:/liteos/code/WIFI2/uart_at\uart_at.c ****             {
+ 440              		.loc 1 222 15 view .LVU124
+ 441 005a 9045     		cmp	r8, r2
+ 442 005c E9D3     		bcc	.L21
+ 229:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 cpylen = ring_buffer_read(&g_atio_cb.rcvring,(unsigned char *)buf,readlen);
+ 443              		.loc 1 229 17 is_stmt 1 view .LVU125
+ 444              	.LVL31:
+ 230:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 if(cpylen != framelen)
+ 445              		.loc 1 230 17 view .LVU126
+ 230:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 if(cpylen != framelen)
+ 446              		.loc 1 230 26 is_stmt 0 view .LVU127
+ 447 005e 3946     		mov	r1, r7
+ 448 0060 05F10800 		add	r0, r5, #8
+ 449              	.LVL32:
+ 230:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 if(cpylen != framelen)
+ 450              		.loc 1 230 26 view .LVU128
+ 451 0064 FFF7FEFF 		bl	ring_buffer_read
+ 452              	.LVL33:
+ 231:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 {
+ 453              		.loc 1 231 17 is_stmt 1 view .LVU129
+ 231:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 {
+ 454              		.loc 1 231 19 is_stmt 0 view .LVU130
+ 455 0068 BDF80620 		ldrh	r2, [sp, #6]
+ 456 006c 83B2     		uxth	r3, r0
+ 457 006e 9A42     		cmp	r2, r3
+ 458 0070 09D0     		beq	.L22
+ 233:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                     g_atio_cb.rcvringrst++;
+ 459              		.loc 1 233 21 is_stmt 1 view .LVU131
+ 460 0072 05F10800 		add	r0, r5, #8
+ 461              	.LVL34:
+ 233:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                     g_atio_cb.rcvringrst++;
+ 462              		.loc 1 233 21 is_stmt 0 view .LVU132
+ 463 0076 FFF7FEFF 		bl	ring_buffer_reset
+ 464              	.LVL35:
+ 234:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 }
+ 465              		.loc 1 234 21 is_stmt 1 view .LVU133
+ 234:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 }
+ 466              		.loc 1 234 41 is_stmt 0 view .LVU134
+ 467 007a 41F23002 		movw	r2, #4144
+ 468 007e AB58     		ldr	r3, [r5, r2]
+ 469 0080 0133     		adds	r3, r3, #1
+ 470 0082 AB50     		str	r3, [r5, r2]
+ 471 0084 DFE7     		b	.L26
+ 472              	.LVL36:
+ 473              	.L22:
+ 238:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 }
+ 474              		.loc 1 238 21 is_stmt 1 view .LVU135
+ 475 0086 84B2     		uxth	r4, r0
+ 476              	.LVL37:
+ 238:d:/liteos/code/WIFI2/uart_at\uart_at.c ****                 }
+ 477              		.loc 1 238 21 is_stmt 0 view .LVU136
+ 478 0088 DEE7     		b	.L20
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 16
+
+
+ 479              	.L28:
+ 480 008a 00BF     		.align	2
+ 481              	.L27:
+ 482 008c 00000000 		.word	g_atio_cb
+ 483 0090 08000000 		.word	g_atio_cb+8
+ 484              	.LBE13:
+ 485              	.LBE15:
+ 486              		.cfi_endproc
+ 487              	.LFE292:
+ 489              		.section	.rodata.uart_at_init.str1.1,"aMS",%progbits,1
+ 490              	.LC0:
+ 491 0000 25733A73 		.ascii	"%s:semp create error\012\015\000"
+ 491      656D7020 
+ 491      63726561 
+ 491      74652065 
+ 491      72726F72 
+ 492              	.LC1:
+ 493 0017 643A2F6C 		.ascii	"d:/liteos/code/WIFI2/uart_at/uart_at.c\000"
+ 493      6974656F 
+ 493      732F636F 
+ 493      64652F57 
+ 493      49464932 
+ 494              		.section	.text.uart_at_init,"ax",%progbits
+ 495              		.align	1
+ 496              		.global	uart_at_init
+ 497              		.syntax unified
+ 498              		.thumb
+ 499              		.thumb_func
+ 500              		.fpu fpv4-sp-d16
+ 502              	uart_at_init:
+ 503              	.LVL38:
+ 504              	.LFB288:
+ 146:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     //initialize the at controller
+ 505              		.loc 1 146 1 is_stmt 1 view -0
+ 506              		.cfi_startproc
+ 507              		@ args = 0, pretend = 0, frame = 0
+ 508              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(false == osal_semp_create(&g_atio_cb.rcvsync,CN_RCVMEM_LEN,0))
+ 509              		.loc 1 148 5 view .LVU138
+ 146:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     //initialize the at controller
+ 510              		.loc 1 146 1 is_stmt 0 view .LVU139
+ 511 0000 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 512              	.LCFI7:
+ 513              		.cfi_def_cfa_offset 24
+ 514              		.cfi_offset 4, -12
+ 515              		.cfi_offset 5, -8
+ 516              		.cfi_offset 14, -4
+ 148:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(false == osal_semp_create(&g_atio_cb.rcvsync,CN_RCVMEM_LEN,0))
+ 517              		.loc 1 148 12 view .LVU140
+ 518 0002 41F23402 		movw	r2, #4148
+ 519 0006 0021     		movs	r1, #0
+ 520 0008 2248     		ldr	r0, .L36
+ 521              	.LVL39:
+ 148:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(false == osal_semp_create(&g_atio_cb.rcvsync,CN_RCVMEM_LEN,0))
+ 522              		.loc 1 148 12 view .LVU141
+ 523 000a FFF7FEFF 		bl	memset
+ 524              	.LVL40:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 17
+
+
+ 149:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 525              		.loc 1 149 5 is_stmt 1 view .LVU142
+ 149:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 526              		.loc 1 149 17 is_stmt 0 view .LVU143
+ 527 000e 2248     		ldr	r0, .L36+4
+ 528 0010 0022     		movs	r2, #0
+ 529 0012 4FF40061 		mov	r1, #2048
+ 530 0016 FFF7FEFF 		bl	osal_semp_create
+ 531              	.LVL41:
+ 149:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 532              		.loc 1 149 7 view .LVU144
+ 533 001a 0446     		mov	r4, r0
+ 534 001c 30B9     		cbnz	r0, .L30
+ 151:d:/liteos/code/WIFI2/uart_at\uart_at.c ****         goto EXIT_SEMP;
+ 535              		.loc 1 151 9 is_stmt 1 view .LVU145
+ 536 001e 1F49     		ldr	r1, .L36+8
+ 537 0020 1F48     		ldr	r0, .L36+12
+ 538 0022 FFF7FEFF 		bl	printf
+ 539              	.LVL42:
+ 152:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 540              		.loc 1 152 9 view .LVU146
+ 541              	.LDL1:
+ 175:d:/liteos/code/WIFI2/uart_at\uart_at.c **** }
+ 542              		.loc 1 175 5 view .LVU147
+ 543              	.L29:
+ 176:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 544              		.loc 1 176 1 is_stmt 0 view .LVU148
+ 545 0026 2046     		mov	r0, r4
+ 546 0028 03B0     		add	sp, sp, #12
+ 547              	.LCFI8:
+ 548              		.cfi_remember_state
+ 549              		.cfi_def_cfa_offset 12
+ 550              		@ sp needed
+ 551 002a 30BD     		pop	{r4, r5, pc}
+ 552              	.L30:
+ 553              	.LCFI9:
+ 554              		.cfi_restore_state
+ 555              	.LBB18:
+ 556              	.LBI18:
+ 145:d:/liteos/code/WIFI2/uart_at\uart_at.c **** {
+ 557              		.loc 1 145 8 is_stmt 1 view .LVU149
+ 558              	.LVL43:
+ 559              	.LBB19:
+ 154:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 560              		.loc 1 154 5 view .LVU150
+ 561 002c 1D49     		ldr	r1, .L36+16
+ 156:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.BaudRate = CONFIG_UARTAT_BAUDRATE;
+ 562              		.loc 1 156 22 is_stmt 0 view .LVU151
+ 563 002e 1E4C     		ldr	r4, .L36+20
+ 154:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 564              		.loc 1 154 5 view .LVU152
+ 565 0030 0025     		movs	r5, #0
+ 566 0032 2B46     		mov	r3, r5
+ 567 0034 4FF40062 		mov	r2, #2048
+ 568 0038 0095     		str	r5, [sp]
+ 569 003a A1F50160 		sub	r0, r1, #2064
+ 570 003e FFF7FEFF 		bl	ring_buffer_init
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 18
+
+
+ 571              	.LVL44:
+ 156:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.BaudRate = CONFIG_UARTAT_BAUDRATE;
+ 572              		.loc 1 156 5 is_stmt 1 view .LVU153
+ 157:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.WordLength = UART_WORDLENGTH_8B;
+ 573              		.loc 1 157 27 is_stmt 0 view .LVU154
+ 574 0042 1A4A     		ldr	r2, .L36+24
+ 160:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 575              		.loc 1 160 25 view .LVU155
+ 576 0044 2561     		str	r5, [r4, #16]
+ 157:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.WordLength = UART_WORDLENGTH_8B;
+ 577              		.loc 1 157 27 view .LVU156
+ 578 0046 4FF4E133 		mov	r3, #115200
+ 579 004a C4E90023 		strd	r2, r3, [r4]
+ 158:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.StopBits = UART_STOPBITS_1;
+ 580              		.loc 1 158 5 is_stmt 1 view .LVU157
+ 164:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 581              		.loc 1 164 8 is_stmt 0 view .LVU158
+ 582 004e 2046     		mov	r0, r4
+ 162:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.OverSampling = UART_OVERSAMPLING_16;
+ 583              		.loc 1 162 23 view .LVU159
+ 584 0050 0C23     		movs	r3, #12
+ 159:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.Parity = UART_PARITY_NONE;
+ 585              		.loc 1 159 27 view .LVU160
+ 586 0052 C4E90255 		strd	r5, r5, [r4, #8]
+ 160:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 587              		.loc 1 160 5 is_stmt 1 view .LVU161
+ 161:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.Mode = UART_MODE_TX_RX;
+ 588              		.loc 1 161 5 view .LVU162
+ 161:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.Mode = UART_MODE_TX_RX;
+ 589              		.loc 1 161 28 is_stmt 0 view .LVU163
+ 590 0056 A561     		str	r5, [r4, #24]
+ 162:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.OverSampling = UART_OVERSAMPLING_16;
+ 591              		.loc 1 162 5 is_stmt 1 view .LVU164
+ 162:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     uart_at.Init.OverSampling = UART_OVERSAMPLING_16;
+ 592              		.loc 1 162 23 is_stmt 0 view .LVU165
+ 593 0058 6361     		str	r3, [r4, #20]
+ 163:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(HAL_UART_Init(&uart_at) != HAL_OK)
+ 594              		.loc 1 163 5 is_stmt 1 view .LVU166
+ 163:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     if(HAL_UART_Init(&uart_at) != HAL_OK)
+ 595              		.loc 1 163 31 is_stmt 0 view .LVU167
+ 596 005a E561     		str	r5, [r4, #28]
+ 164:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 597              		.loc 1 164 5 is_stmt 1 view .LVU168
+ 164:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 598              		.loc 1 164 8 is_stmt 0 view .LVU169
+ 599 005c FFF7FEFF 		bl	HAL_UART_Init
+ 600              	.LVL45:
+ 164:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     {
+ 601              		.loc 1 164 7 view .LVU170
+ 602 0060 18B1     		cbz	r0, .L32
+ 166:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     }
+ 603              		.loc 1 166 9 is_stmt 1 view .LVU171
+ 604 0062 1348     		ldr	r0, .L36+28
+ 605 0064 A621     		movs	r1, #166
+ 606 0066 FFF7FEFF 		bl	_Error_Handler
+ 607              	.LVL46:
+ 608              	.L32:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 19
+
+
+ 168:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     LOS_HwiCreate(s_uwIRQn, 3, 0, atio_irq, 0);
+ 609              		.loc 1 168 5 view .LVU172
+ 610 006a 2368     		ldr	r3, [r4]
+ 611 006c 4022     		movs	r2, #64
+ 612 006e 1A62     		str	r2, [r3, #32]
+ 169:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     __HAL_UART_ENABLE_IT(&uart_at, UART_IT_IDLE);
+ 613              		.loc 1 169 5 view .LVU173
+ 614 0070 0022     		movs	r2, #0
+ 615 0072 104B     		ldr	r3, .L36+32
+ 616 0074 0092     		str	r2, [sp]
+ 617 0076 0321     		movs	r1, #3
+ 618 0078 4620     		movs	r0, #70
+ 619 007a FFF7FEFF 		bl	LOS_HwiCreate
+ 620              	.LVL47:
+ 170:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     __HAL_UART_ENABLE_IT(&uart_at, UART_IT_RXNE);
+ 621              		.loc 1 170 5 view .LVU174
+ 622 007e 2368     		ldr	r3, [r4]
+ 623 0080 1A68     		ldr	r2, [r3]
+ 624 0082 42F01002 		orr	r2, r2, #16
+ 625 0086 1A60     		str	r2, [r3]
+ 171:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return true;
+ 626              		.loc 1 171 5 view .LVU175
+ 627 0088 1A68     		ldr	r2, [r3]
+ 628 008a 42F02002 		orr	r2, r2, #32
+ 629 008e 1A60     		str	r2, [r3]
+ 172:d:/liteos/code/WIFI2/uart_at\uart_at.c **** 
+ 630              		.loc 1 172 5 view .LVU176
+ 631              	.LVL48:
+ 171:d:/liteos/code/WIFI2/uart_at\uart_at.c ****     return true;
+ 632              		.loc 1 171 5 is_stmt 0 view .LVU177
+ 633 0090 0124     		movs	r4, #1
+ 634 0092 C8E7     		b	.L29
+ 635              	.L37:
+ 636              		.align	2
+ 637              	.L36:
+ 638 0094 00000000 		.word	g_atio_cb
+ 639 0098 04000000 		.word	g_atio_cb+4
+ 640 009c 00000000 		.word	.LANCHOR0
+ 641 00a0 00000000 		.word	.LC0
+ 642 00a4 18080000 		.word	g_atio_cb+2072
+ 643 00a8 00000000 		.word	uart_at
+ 644 00ac 00800040 		.word	1073774592
+ 645 00b0 17000000 		.word	.LC1
+ 646 00b4 00000000 		.word	atio_irq
+ 647              	.LBE19:
+ 648              	.LBE18:
+ 649              		.cfi_endproc
+ 650              	.LFE288:
+ 652              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 653              	.LC2:
+ 654 0000 61746465 		.ascii	"atdev\000"
+ 654      7600
+ 655              		.comm	uart_at,120,4
+ 656              		.section	.bss.g_atio_cb,"aw",%nobits
+ 657              		.align	2
+ 660              	g_atio_cb:
+ 661 0000 00000000 		.space	4148
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 20
+
+
+ 661      00000000 
+ 661      00000000 
+ 661      00000000 
+ 661      00000000 
+ 662              		.section	.rodata.__FUNCTION__.11416,"a"
+ 663              		.set	.LANCHOR0,. + 0
+ 666              	__FUNCTION__.11416:
+ 667 0000 75617274 		.ascii	"uart_at_init\000"
+ 667      5F61745F 
+ 667      696E6974 
+ 667      00
+ 668              		.section	.rodata.s_at_op,"a"
+ 669              		.align	2
+ 672              	s_at_op:
+ 673 0000 00000000 		.space	4
+ 674 0004 00000000 		.word	__at_read
+ 675 0008 00000000 		.word	__at_write
+ 676 000c 00000000 		.space	12
+ 676      00000000 
+ 676      00000000 
+ 677 0018 00000000 		.word	uart_at_init
+ 678 001c 00000000 		.word	uart_at_deinit
+ 679              		.section	osdriv,"a"
+ 680              		.align	2
+ 683              	uart_at_driv:
+ 684 0000 00000000 		.word	.LC2
+ 685 0004 00000000 		.word	s_at_op
+ 686 0008 00000000 		.word	0
+ 687 000c 02000000 		.word	2
+ 688              		.text
+ 689              	.Letext0:
+ 690              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 691              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 692              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 693              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 694              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 695              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 696              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 697              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 698              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 699              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 700              		.file 12 "d:/liteos/code/WIFI2/Inc/stm32l4xx.h"
+ 701              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 702              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 703              		.file 15 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 704              		.file 16 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 705              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 706              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 707              		.file 19 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 708              		.file 20 "d:/liteos/code/WIFI2/Inc/usart.h"
+ 709              		.file 21 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/link_misc/link_misc.h"
+ 710              		.file 22 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal_types.h"
+ 711              		.file 23 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/driver/driver.h"
+ 712              		.file 24 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 713              		.file 25 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal.h"
+ 714              		.file 26 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 715              		.file 27 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 21
+
+
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart_at.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:18     .text.uart_at_deinit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:26     .text.uart_at_deinit:00000000 uart_at_deinit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:54     .text.uart_at_deinit:00000020 $d
+                            *COM*:00000078 uart_at
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:59     .text.atio_irq:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:65     .text.atio_irq:00000000 atio_irq
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:225    .text.atio_irq:000000ac $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:660    .bss.g_atio_cb:00000000 g_atio_cb
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:232    .text.__at_write:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:238    .text.__at_write:00000000 __at_write
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:304    .text.__at_write:0000002c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:310    .text.__at_read:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:316    .text.__at_read:00000000 __at_read
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:482    .text.__at_read:0000008c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:495    .text.uart_at_init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:502    .text.uart_at_init:00000000 uart_at_init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:638    .text.uart_at_init:00000094 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:657    .bss.g_atio_cb:00000000 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:666    .rodata.__FUNCTION__.11416:00000000 __FUNCTION__.11416
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:669    .rodata.s_at_op:00000000 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:672    .rodata.s_at_op:00000000 s_at_op
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:680    osdriv:00000000 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccLeOfbu.s:683    osdriv:00000000 uart_at_driv
+
+UNDEFINED SYMBOLS
+ring_buffer_datalen
+ring_buffer_write
+osal_semp_post
+HAL_UART_Transmit
+osal_semp_pend
+LOS_IntLock
+ring_buffer_read
+ring_buffer_reset
+LOS_IntRestore
+memset
+osal_semp_create
+printf
+ring_buffer_init
+HAL_UART_Init
+_Error_Handler
+LOS_HwiCreate

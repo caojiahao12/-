@@ -1,0 +1,715 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_init.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.osEnableFPU,"ax",%progbits
+  18              		.align	1
+  19              		.global	osEnableFPU
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	osEnableFPU:
+  27              	.LFB314:
+  28              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/los_init.c"
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 2
+
+
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #include "los_sys.h"
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #include "los_tick.h"
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #include "los_task.ph"
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #include "los_config.h"
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_HEAP_IMPROVED == YES)
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #include "mem.h"
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #include "los_exc.ph"
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #ifdef __cplusplus
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if __cplusplus
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** extern "C" {
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif /* __cpluscplus */
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif /* __cpluscplus */
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** LITE_OS_SEC_BSS UINT8* m_aucSysMem0;
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if ((LOSCFG_PLATFORM_EXC == YES) && (LOSCFG_SAVE_EXC_INFO == YES))
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** LITE_OS_SEC_BSS UINT8 m_aucTaskArray[MAX_EXC_MEM_SIZE];
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** LITE_OS_SEC_TEXT_INIT void osEnableFPU(void)
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** {
+  29              		.loc 1 60 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     *(volatile UINT32 *)0xE000ED88 |= ((3UL << 20)|(3UL << 22));
+  34              		.loc 1 61 5 view .LVU1
+  35              		.loc 1 61 36 is_stmt 0 view .LVU2
+  36 0000 024A     		ldr	r2, .L2
+  37 0002 1368     		ldr	r3, [r2]
+  38 0004 43F47003 		orr	r3, r3, #15728640
+  39 0008 1360     		str	r3, [r2]
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** }
+  40              		.loc 1 62 1 view .LVU3
+  41 000a 7047     		bx	lr
+  42              	.L3:
+  43              		.align	2
+  44              	.L2:
+  45 000c 88ED00E0 		.word	-536810104
+  46              		.cfi_endproc
+  47              	.LFE314:
+  49              		.section	.text.LOS_Reboot,"ax",%progbits
+  50              		.align	1
+  51              		.global	LOS_Reboot
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 3
+
+
+  55              		.fpu fpv4-sp-d16
+  57              	LOS_Reboot:
+  58              	.LFB315:
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** /*****************************************************************************
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Function    : LOS_Reboot not implement yet, need hardware support
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Description : system exception, die in here, wait for watchdog.
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Input       : None
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Output      : None
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Return      : None
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  *****************************************************************************/
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** LITE_OS_SEC_TEXT_INIT VOID LOS_Reboot(VOID)
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** {
+  59              		.loc 1 72 1 is_stmt 1 view -0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     (VOID) LOS_IntLock();
+  64              		.loc 1 73 5 view .LVU5
+  65              		.loc 1 73 12 is_stmt 0 view .LVU6
+  66 0000 FFF7FEBF 		b	LOS_IntLock
+  67              	.LVL0:
+  68              		.cfi_endproc
+  69              	.LFE315:
+  71              		.section	.rodata.LOS_Start.str1.1,"aMS",%progbits,1
+  72              	.LC0:
+  73 0000 5B455252 		.ascii	"[ERR] \000"
+  73      5D2000
+  74              	.LC1:
+  75 0007 6F735469 		.ascii	"osTickStart error\000"
+  75      636B5374 
+  75      61727420 
+  75      6572726F 
+  75      7200
+  76              		.section	.text.LOS_Start,"ax",%progbits
+  77              		.align	1
+  78              		.global	LOS_Start
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  82              		.fpu fpv4-sp-d16
+  84              	LOS_Start:
+  85              	.LFB317:
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     return;
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** }
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** /*****************************************************************************
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Function    : osRegister
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Description : Configuring the maximum number of tasks
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Input       : None
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Output      : None
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Return      : None
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  *****************************************************************************/
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** LITE_OS_SEC_TEXT_INIT static VOID osRegister(VOID)
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 4
+
+
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     g_uwTskMaxNum = LOSCFG_BASE_CORE_TSK_LIMIT + 1; /* Reserved 1 for IDLE */
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     return;
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** }
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** /*****************************************************************************
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Function    : LOS_Start
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Description : Task start function
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Input       : None
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Output      : None
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Return      : LOS_OK on success or error code on failure
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  *****************************************************************************/
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_Start(VOID)
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** {
+  86              		.loc 1 100 1 is_stmt 1 view -0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     UINT32 uwRet;
+  90              		.loc 1 101 5 view .LVU8
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_BASE_CORE_TICK_HW_TIME == NO)
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     uwRet = osTickStart();
+  91              		.loc 1 103 5 view .LVU9
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     UINT32 uwRet;
+  92              		.loc 1 100 1 is_stmt 0 view .LVU10
+  93 0000 10B5     		push	{r4, lr}
+  94              	.LCFI0:
+  95              		.cfi_def_cfa_offset 8
+  96              		.cfi_offset 4, -8
+  97              		.cfi_offset 14, -4
+  98              		.loc 1 103 13 view .LVU11
+  99 0002 FFF7FEFF 		bl	osTickStart
+ 100              	.LVL1:
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 101              		.loc 1 105 5 is_stmt 1 view .LVU12
+ 102              		.loc 1 105 8 is_stmt 0 view .LVU13
+ 103 0006 0446     		mov	r4, r0
+ 104 0008 38B1     		cbz	r0, .L6
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         PRINT_ERR("osTickStart error\n");
+ 105              		.loc 1 107 9 is_stmt 1 view .LVU14
+ 106              		.loc 1 107 9 view .LVU15
+ 107 000a 0548     		ldr	r0, .L8
+ 108              	.LVL2:
+ 109              		.loc 1 107 9 is_stmt 0 view .LVU16
+ 110 000c FFF7FEFF 		bl	printf
+ 111              	.LVL3:
+ 112 0010 0448     		ldr	r0, .L8+4
+ 113 0012 FFF7FEFF 		bl	puts
+ 114              	.LVL4:
+ 115              		.loc 1 107 9 is_stmt 1 view .LVU17
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 116              		.loc 1 108 9 view .LVU18
+ 117              	.L5:
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #else
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 5
+
+
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     extern int os_timer_init(void);
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     uwRet = os_timer_init();
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         PRINT_ERR("os_timer_init error\n");
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_LIB_LIBC_NEWLIB_REENT == YES)
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     extern VOID osTaskSwitchImpurePtr(VOID);
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     osTaskSwitchImpurePtr();
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     LOS_StartToRun();
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     return uwRet;
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** }
+ 118              		.loc 1 128 1 is_stmt 0 view .LVU19
+ 119 0016 2046     		mov	r0, r4
+ 120 0018 10BD     		pop	{r4, pc}
+ 121              	.LVL5:
+ 122              	.L6:
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 123              		.loc 1 125 5 is_stmt 1 view .LVU20
+ 124 001a FFF7FEFF 		bl	LOS_StartToRun
+ 125              	.LVL6:
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** }
+ 126              		.loc 1 127 5 view .LVU21
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** }
+ 127              		.loc 1 127 12 is_stmt 0 view .LVU22
+ 128 001e FAE7     		b	.L5
+ 129              	.L9:
+ 130              		.align	2
+ 131              	.L8:
+ 132 0020 00000000 		.word	.LC0
+ 133 0024 07000000 		.word	.LC1
+ 134              		.cfi_endproc
+ 135              	.LFE317:
+ 137              		.section	.rodata.LOS_KernelInit.str1.1,"aMS",%progbits,1
+ 138              	.LC2:
+ 139 0000 6F734D65 		.ascii	"osMemSystemInit error %d\012\000"
+ 139      6D537973 
+ 139      74656D49 
+ 139      6E697420 
+ 139      6572726F 
+ 140              	.LC3:
+ 141 001a 6F735461 		.ascii	"osTaskInit error\000"
+ 141      736B496E 
+ 141      69742065 
+ 141      72726F72 
+ 141      00
+ 142              	.LC4:
+ 143 002b 6F735175 		.ascii	"osQueueInit error\000"
+ 143      65756549 
+ 143      6E697420 
+ 143      6572726F 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 6
+
+
+ 143      7200
+ 144              		.section	.text.LOS_KernelInit,"ax",%progbits
+ 145              		.align	1
+ 146              		.global	LOS_KernelInit
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 150              		.fpu fpv4-sp-d16
+ 152              	LOS_KernelInit:
+ 153              	.LFB318:
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** /*****************************************************************************
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Function    : LOS_KernelInit
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Description : System kernel initialization function, configure all system modules
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Input       : None
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Output      : None
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  Return      : LOS_OK on success or error code on failure
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****  *****************************************************************************/
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_KernelInit(VOID)
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** {
+ 154              		.loc 1 138 1 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     UINT32 uwRet;
+ 158              		.loc 1 139 5 view .LVU24
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     osRegister();
+ 159              		.loc 1 141 5 view .LVU25
+ 160              	.LBB4:
+ 161              	.LBI4:
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** {
+ 162              		.loc 1 85 35 view .LVU26
+ 163              	.LBB5:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 164              		.loc 1 87 5 view .LVU27
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 165              		.loc 1 87 19 is_stmt 0 view .LVU28
+ 166 0000 1C4B     		ldr	r3, .L16
+ 167              	.LBE5:
+ 168              	.LBE4:
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     UINT32 uwRet;
+ 169              		.loc 1 138 1 view .LVU29
+ 170 0002 10B5     		push	{r4, lr}
+ 171              	.LCFI1:
+ 172              		.cfi_def_cfa_offset 8
+ 173              		.cfi_offset 4, -8
+ 174              		.cfi_offset 14, -4
+ 175              	.LBB7:
+ 176              	.LBB6:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 177              		.loc 1 87 19 view .LVU30
+ 178 0004 1022     		movs	r2, #16
+ 179 0006 1A60     		str	r2, [r3]
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** }
+ 180              		.loc 1 89 5 is_stmt 1 view .LVU31
+ 181              	.LBE6:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 7
+
+
+ 182              	.LBE7:
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_HEAP_IMPROVED != YES)
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     m_aucSysMem0 = OS_SYS_MEM_ADDR;
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     uwRet = osMemSystemInit();
+ 183              		.loc 1 148 5 view .LVU32
+ 184              		.loc 1 148 13 is_stmt 0 view .LVU33
+ 185 0008 FFF7FEFF 		bl	osMemSystemInit
+ 186              	.LVL7:
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 187              		.loc 1 150 5 is_stmt 1 view .LVU34
+ 188              		.loc 1 150 8 is_stmt 0 view .LVU35
+ 189 000c 0446     		mov	r4, r0
+ 190 000e 40B1     		cbz	r0, .L11
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         PRINT_ERR("osMemSystemInit error %d\n", uwRet);/*lint !e515*/
+ 191              		.loc 1 152 9 is_stmt 1 view .LVU36
+ 192              		.loc 1 152 9 view .LVU37
+ 193 0010 1948     		ldr	r0, .L16+4
+ 194              	.LVL8:
+ 195              		.loc 1 152 9 is_stmt 0 view .LVU38
+ 196 0012 FFF7FEFF 		bl	printf
+ 197              	.LVL9:
+ 198 0016 1948     		ldr	r0, .L16+8
+ 199 0018 2146     		mov	r1, r4
+ 200 001a FFF7FEFF 		bl	printf
+ 201              	.LVL10:
+ 202              		.loc 1 152 9 is_stmt 1 view .LVU39
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 203              		.loc 1 153 9 view .LVU40
+ 204              	.L10:
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_PLATFORM_HWI == YES)
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         osHwiInit();
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         osExcInit(MAX_EXC_MEM_SIZE);
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     uwRet =osTaskInit();
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         PRINT_ERR("osTaskInit error\n");
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_BASE_CORE_TSK_MONITOR == YES)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 8
+
+
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         osTaskMonInit();
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_BASE_CORE_CPUP == YES)
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         uwRet = osCpupInit();
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             PRINT_ERR("osCpupInit error\n");
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         }
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_BASE_IPC_SEM == YES)
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         uwRet = osSemInit();
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         }
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_BASE_IPC_MUX == YES)
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         uwRet = osMuxInit();
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         }
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_BASE_IPC_QUEUE == YES)
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         uwRet = osQueueInit();
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             PRINT_ERR("osQueueInit error\n");
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         }
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_BASE_CORE_SWTMR == YES)
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         uwRet = osSwTmrInit();
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             PRINT_ERR("osSwTmrInit error\n");
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         }
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 9
+
+
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     #if(LOSCFG_BASE_CORE_TIMESLICE == YES)
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     osTimesliceInit();
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     #endif
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     uwRet = osIdleTaskCreate();
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_TEST == YES)
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     uwRet = los_TestInit();
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         PRINT_ERR("los_TestInit error\n");
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_DEFERED_JOB == YES)
+ 254:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     extern UINT32 osDeferedTaskInit(VOID);
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     osDeferedTaskInit();
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 257:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #if (LOSCFG_ENABLE_MPU == YES)
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     void mpu_init (void);
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     mpu_init ();
+ 261:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** #endif
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** 
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     return LOS_OK;
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c **** }
+ 205              		.loc 1 264 1 is_stmt 0 view .LVU41
+ 206 001e 2046     		mov	r0, r4
+ 207 0020 10BD     		pop	{r4, pc}
+ 208              	.LVL11:
+ 209              	.L11:
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 210              		.loc 1 158 9 is_stmt 1 view .LVU42
+ 211 0022 FFF7FEFF 		bl	osHwiInit
+ 212              	.LVL12:
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 213              		.loc 1 168 5 view .LVU43
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 214              		.loc 1 168 12 is_stmt 0 view .LVU44
+ 215 0026 FFF7FEFF 		bl	osTaskInit
+ 216              	.LVL13:
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 217              		.loc 1 169 5 is_stmt 1 view .LVU45
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     {
+ 218              		.loc 1 169 8 is_stmt 0 view .LVU46
+ 219 002a 0446     		mov	r4, r0
+ 220 002c 30B1     		cbz	r0, .L13
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 221              		.loc 1 171 9 is_stmt 1 view .LVU47
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 222              		.loc 1 171 9 view .LVU48
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 10
+
+
+ 223 002e 1248     		ldr	r0, .L16+4
+ 224              	.LVL14:
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         return uwRet;
+ 225              		.loc 1 171 9 is_stmt 0 view .LVU49
+ 226 0030 FFF7FEFF 		bl	printf
+ 227              	.LVL15:
+ 228 0034 1248     		ldr	r0, .L16+12
+ 229              	.L15:
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 230              		.loc 1 217 13 view .LVU50
+ 231 0036 FFF7FEFF 		bl	puts
+ 232              	.LVL16:
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 233              		.loc 1 217 13 is_stmt 1 view .LVU51
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         }
+ 234              		.loc 1 218 13 view .LVU52
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         }
+ 235              		.loc 1 218 20 is_stmt 0 view .LVU53
+ 236 003a F0E7     		b	.L10
+ 237              	.LVL17:
+ 238              	.L13:
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     }
+ 239              		.loc 1 177 9 is_stmt 1 view .LVU54
+ 240 003c FFF7FEFF 		bl	osTaskMonInit
+ 241              	.LVL18:
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 242              		.loc 1 194 9 view .LVU55
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 243              		.loc 1 194 17 is_stmt 0 view .LVU56
+ 244 0040 FFF7FEFF 		bl	osSemInit
+ 245              	.LVL19:
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 246              		.loc 1 195 9 is_stmt 1 view .LVU57
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 247              		.loc 1 195 12 is_stmt 0 view .LVU58
+ 248 0044 0446     		mov	r4, r0
+ 249 0046 0028     		cmp	r0, #0
+ 250 0048 E9D1     		bne	.L10
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 251              		.loc 1 204 9 is_stmt 1 view .LVU59
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 252              		.loc 1 204 17 is_stmt 0 view .LVU60
+ 253 004a FFF7FEFF 		bl	osMuxInit
+ 254              	.LVL20:
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 255              		.loc 1 205 9 is_stmt 1 view .LVU61
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 256              		.loc 1 205 12 is_stmt 0 view .LVU62
+ 257 004e 0446     		mov	r4, r0
+ 258 0050 0028     		cmp	r0, #0
+ 259 0052 E4D1     		bne	.L10
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 260              		.loc 1 214 9 is_stmt 1 view .LVU63
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         if (uwRet != LOS_OK)
+ 261              		.loc 1 214 17 is_stmt 0 view .LVU64
+ 262 0054 FFF7FEFF 		bl	osQueueInit
+ 263              	.LVL21:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 11
+
+
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 264              		.loc 1 215 9 is_stmt 1 view .LVU65
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****         {
+ 265              		.loc 1 215 12 is_stmt 0 view .LVU66
+ 266 0058 0446     		mov	r4, r0
+ 267 005a 20B1     		cbz	r0, .L14
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 268              		.loc 1 217 13 is_stmt 1 view .LVU67
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 269              		.loc 1 217 13 view .LVU68
+ 270 005c 0648     		ldr	r0, .L16+4
+ 271              	.LVL22:
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****             return uwRet;
+ 272              		.loc 1 217 13 is_stmt 0 view .LVU69
+ 273 005e FFF7FEFF 		bl	printf
+ 274              	.LVL23:
+ 275 0062 0848     		ldr	r0, .L16+16
+ 276 0064 E7E7     		b	.L15
+ 277              	.LVL24:
+ 278              	.L14:
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     #endif
+ 279              		.loc 1 235 5 is_stmt 1 view .LVU70
+ 280 0066 FFF7FEFF 		bl	osTimesliceInit
+ 281              	.LVL25:
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 282              		.loc 1 238 5 view .LVU71
+ 283              		.loc 1 264 1 is_stmt 0 view .LVU72
+ 284 006a BDE81040 		pop	{r4, lr}
+ 285              	.LCFI2:
+ 286              		.cfi_restore 14
+ 287              		.cfi_restore 4
+ 288              		.cfi_def_cfa_offset 0
+ 289              	.LVL26:
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos\los_init.c ****     if (uwRet != LOS_OK)
+ 290              		.loc 1 238 13 view .LVU73
+ 291 006e FFF7FEBF 		b	osIdleTaskCreate
+ 292              	.LVL27:
+ 293              	.L17:
+ 294 0072 00BF     		.align	2
+ 295              	.L16:
+ 296 0074 00000000 		.word	g_uwTskMaxNum
+ 297 0078 00000000 		.word	.LC0
+ 298 007c 00000000 		.word	.LC2
+ 299 0080 1A000000 		.word	.LC3
+ 300 0084 2B000000 		.word	.LC4
+ 301              		.cfi_endproc
+ 302              	.LFE318:
+ 304              		.comm	m_aucSysMem0,4,4
+ 305              		.text
+ 306              	.Letext0:
+ 307              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 308              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 309              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 310              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 311              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 312              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 313              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 12
+
+
+ 314              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 315              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 316              		.file 11 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_l
+ 317              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 318              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 319              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 320              		.file 15 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 321              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_t
+ 322              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_t
+ 323              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 324              		.file 19 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 325              		.file 20 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/list.
+ 326              		.file 21 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 327              		.file 22 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 328              		.file 23 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 329              		.file 24 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 330              		.file 25 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 331              		.file 26 "<built-in>"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_init.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:18     .text.osEnableFPU:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:26     .text.osEnableFPU:00000000 osEnableFPU
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:45     .text.osEnableFPU:0000000c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:50     .text.LOS_Reboot:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:57     .text.LOS_Reboot:00000000 LOS_Reboot
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:77     .text.LOS_Start:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:84     .text.LOS_Start:00000000 LOS_Start
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:132    .text.LOS_Start:00000020 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:145    .text.LOS_KernelInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:152    .text.LOS_KernelInit:00000000 LOS_KernelInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccCrBVIp.s:296    .text.LOS_KernelInit:00000074 $d
+                            *COM*:00000004 m_aucSysMem0
+
+UNDEFINED SYMBOLS
+LOS_IntLock
+osTickStart
+printf
+puts
+LOS_StartToRun
+osMemSystemInit
+osHwiInit
+osTaskInit
+osTaskMonInit
+osSemInit
+osMuxInit
+osQueueInit
+osTimesliceInit
+osIdleTaskCreate
+g_uwTskMaxNum

@@ -1,0 +1,678 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"sys_init.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HAL_GetTick,"ax",%progbits
+  18              		.align	1
+  19              		.global	HAL_GetTick
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	HAL_GetTick:
+  27              	.LFB287:
+  28              		.file 1 "d:/liteos/code/WIFI2/Src/sys_init.c"
+   1:d:/liteos/code/WIFI2/Src\sys_init.c **** /*----------------------------------------------------------------------------
+   2:d:/liteos/code/WIFI2/Src\sys_init.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:d:/liteos/code/WIFI2/Src\sys_init.c ****  * All rights reserved.
+   4:d:/liteos/code/WIFI2/Src\sys_init.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:d:/liteos/code/WIFI2/Src\sys_init.c ****  * are permitted provided that the following conditions are met:
+   6:d:/liteos/code/WIFI2/Src\sys_init.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:d:/liteos/code/WIFI2/Src\sys_init.c ****  * conditions and the following disclaimer.
+   8:d:/liteos/code/WIFI2/Src\sys_init.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:d:/liteos/code/WIFI2/Src\sys_init.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:d:/liteos/code/WIFI2/Src\sys_init.c ****  * provided with the distribution.
+  11:d:/liteos/code/WIFI2/Src\sys_init.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:d:/liteos/code/WIFI2/Src\sys_init.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:d:/liteos/code/WIFI2/Src\sys_init.c ****  * permission.
+  14:d:/liteos/code/WIFI2/Src\sys_init.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:d:/liteos/code/WIFI2/Src\sys_init.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:d:/liteos/code/WIFI2/Src\sys_init.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:d:/liteos/code/WIFI2/Src\sys_init.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:d:/liteos/code/WIFI2/Src\sys_init.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:d:/liteos/code/WIFI2/Src\sys_init.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:d:/liteos/code/WIFI2/Src\sys_init.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:d:/liteos/code/WIFI2/Src\sys_init.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:d:/liteos/code/WIFI2/Src\sys_init.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:d:/liteos/code/WIFI2/Src\sys_init.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:d:/liteos/code/WIFI2/Src\sys_init.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:d:/liteos/code/WIFI2/Src\sys_init.c ****  *---------------------------------------------------------------------------*/
+  26:d:/liteos/code/WIFI2/Src\sys_init.c **** /*----------------------------------------------------------------------------
+  27:d:/liteos/code/WIFI2/Src\sys_init.c ****  * Notice of Export Control Law
+  28:d:/liteos/code/WIFI2/Src\sys_init.c ****  * ===============================================
+  29:d:/liteos/code/WIFI2/Src\sys_init.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:d:/liteos/code/WIFI2/Src\sys_init.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 2
+
+
+  31:d:/liteos/code/WIFI2/Src\sys_init.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:d:/liteos/code/WIFI2/Src\sys_init.c ****  * applicable export control laws and regulations.
+  33:d:/liteos/code/WIFI2/Src\sys_init.c ****  *---------------------------------------------------------------------------*/
+  34:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  35:d:/liteos/code/WIFI2/Src\sys_init.c **** #include "sys_init.h"
+  36:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  37:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  38:d:/liteos/code/WIFI2/Src\sys_init.c **** uint32_t HAL_GetTick(void)
+  39:d:/liteos/code/WIFI2/Src\sys_init.c **** {
+  29              		.loc 1 39 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  40:d:/liteos/code/WIFI2/Src\sys_init.c ****     return (uint32_t)LOS_TickCountGet();
+  33              		.loc 1 40 5 view .LVU1
+  39:d:/liteos/code/WIFI2/Src\sys_init.c ****     return (uint32_t)LOS_TickCountGet();
+  34              		.loc 1 39 1 is_stmt 0 view .LVU2
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+  40              		.loc 1 40 22 view .LVU3
+  41 0002 FFF7FEFF 		bl	LOS_TickCountGet
+  42              	.LVL0:
+  41:d:/liteos/code/WIFI2/Src\sys_init.c **** }
+  43              		.loc 1 41 1 view .LVU4
+  44 0006 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE287:
+  48              		.section	.text._Error_Handler,"ax",%progbits
+  49              		.align	1
+  50              		.global	_Error_Handler
+  51              		.syntax unified
+  52              		.thumb
+  53              		.thumb_func
+  54              		.fpu fpv4-sp-d16
+  56              	_Error_Handler:
+  57              	.LFB288:
+  42:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  43:d:/liteos/code/WIFI2/Src\sys_init.c **** /**
+  44:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @brief  This function is executed in case of error occurrence.
+  45:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @param  file: The file name as string.
+  46:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @param  line: The line in file as a number.
+  47:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @retval None
+  48:d:/liteos/code/WIFI2/Src\sys_init.c ****   */
+  49:d:/liteos/code/WIFI2/Src\sys_init.c **** void _Error_Handler(char *file, int line)
+  50:d:/liteos/code/WIFI2/Src\sys_init.c **** {
+  58              		.loc 1 50 1 is_stmt 1 view -0
+  59              		.cfi_startproc
+  60              		@ Volatile: function does not return.
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64              	.LVL1:
+  65              	.L3:
+  51:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* USER CODE BEGIN Error_Handler_Debug */
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 3
+
+
+  52:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* User can add his own implementation to report the HAL error return state */
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   while(1)
+  66              		.loc 1 53 3 discriminator 1 view .LVU6
+  54:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+  55:d:/liteos/code/WIFI2/Src\sys_init.c ****   }
+  67              		.loc 1 55 3 discriminator 1 view .LVU7
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+  68              		.loc 1 53 8 discriminator 1 view .LVU8
+  69 0000 FEE7     		b	.L3
+  70              		.cfi_endproc
+  71              	.LFE288:
+  73              		.section	.text.SystemClock_Config,"ax",%progbits
+  74              		.align	1
+  75              		.global	SystemClock_Config
+  76              		.syntax unified
+  77              		.thumb
+  78              		.thumb_func
+  79              		.fpu fpv4-sp-d16
+  81              	SystemClock_Config:
+  82              	.LFB289:
+  56:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* USER CODE END Error_Handler_Debug */
+  57:d:/liteos/code/WIFI2/Src\sys_init.c **** }
+  58:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  59:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  60:d:/liteos/code/WIFI2/Src\sys_init.c **** /**
+  61:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @brief System Clock Configuration
+  62:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @retval None
+  63:d:/liteos/code/WIFI2/Src\sys_init.c ****   */
+  64:d:/liteos/code/WIFI2/Src\sys_init.c **** void SystemClock_Config(void)
+  65:d:/liteos/code/WIFI2/Src\sys_init.c **** {
+  83              		.loc 1 65 1 view -0
+  84              		.cfi_startproc
+  85              		@ args = 0, pretend = 0, frame = 184
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  66:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitTypeDef RCC_OscInitStruct;
+  87              		.loc 1 66 3 view .LVU10
+  67:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  88              		.loc 1 67 3 view .LVU11
+  68:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit;
+  89              		.loc 1 68 3 view .LVU12
+  69:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  70:d:/liteos/code/WIFI2/Src\sys_init.c ****     /**Configure LSE Drive Capability 
+  71:d:/liteos/code/WIFI2/Src\sys_init.c ****     */
+  72:d:/liteos/code/WIFI2/Src\sys_init.c ****   HAL_PWR_EnableBkUpAccess();
+  90              		.loc 1 72 3 view .LVU13
+  65:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitTypeDef RCC_OscInitStruct;
+  91              		.loc 1 65 1 is_stmt 0 view .LVU14
+  92 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  93              	.LCFI1:
+  94              		.cfi_def_cfa_offset 20
+  95              		.cfi_offset 4, -20
+  96              		.cfi_offset 5, -16
+  97              		.cfi_offset 6, -12
+  98              		.cfi_offset 7, -8
+  99              		.cfi_offset 14, -4
+ 100 0002 AFB0     		sub	sp, sp, #188
+ 101              	.LCFI2:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 4
+
+
+ 102              		.cfi_def_cfa_offset 208
+ 103              		.loc 1 72 3 view .LVU15
+ 104 0004 FFF7FEFF 		bl	HAL_PWR_EnableBkUpAccess
+ 105              	.LVL2:
+  73:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  74:d:/liteos/code/WIFI2/Src\sys_init.c ****   __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+ 106              		.loc 1 74 3 is_stmt 1 view .LVU16
+ 107 0008 2C4A     		ldr	r2, .L13
+ 108 000a D2F89030 		ldr	r3, [r2, #144]
+ 109 000e 23F01803 		bic	r3, r3, #24
+ 110 0012 C2F89030 		str	r3, [r2, #144]
+  75:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  76:d:/liteos/code/WIFI2/Src\sys_init.c ****     /**Initializes the CPU, AHB and APB busses clocks 
+  77:d:/liteos/code/WIFI2/Src\sys_init.c ****     */
+  78:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSE
+ 111              		.loc 1 78 3 view .LVU17
+ 112              		.loc 1 78 36 is_stmt 0 view .LVU18
+ 113 0016 1623     		movs	r3, #22
+  79:d:/liteos/code/WIFI2/Src\sys_init.c ****                               |RCC_OSCILLATORTYPE_MSI;
+  80:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+  81:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 114              		.loc 1 81 30 view .LVU19
+ 115 0018 0124     		movs	r4, #1
+  78:d:/liteos/code/WIFI2/Src\sys_init.c ****                               |RCC_OSCILLATORTYPE_MSI;
+ 116              		.loc 1 78 36 view .LVU20
+ 117 001a 0693     		str	r3, [sp, #24]
+  80:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 118              		.loc 1 80 3 is_stmt 1 view .LVU21
+ 119              		.loc 1 81 30 is_stmt 0 view .LVU22
+ 120 001c 4FF48073 		mov	r3, #256
+  82:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+  83:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
+  84:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.MSICalibrationValue = 0;
+  85:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
+ 121              		.loc 1 85 35 view .LVU23
+ 122 0020 0020     		movs	r0, #0
+  81:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+ 123              		.loc 1 81 30 view .LVU24
+ 124 0022 CDE90843 		strd	r4, r3, [sp, #32]
+  82:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+ 125              		.loc 1 82 3 is_stmt 1 view .LVU25
+ 126              		.loc 1 85 35 is_stmt 0 view .LVU26
+ 127 0026 6023     		movs	r3, #96
+ 128 0028 CDE90D03 		strd	r0, r3, [sp, #52]
+  86:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 129              		.loc 1 86 34 view .LVU27
+ 130 002c 0225     		movs	r5, #2
+  82:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+ 131              		.loc 1 82 41 view .LVU28
+ 132 002e 1027     		movs	r7, #16
+  87:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+  88:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLM = 1;
+  89:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLN = 40;
+  90:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+ 133              		.loc 1 90 30 view .LVU29
+ 134 0030 2823     		movs	r3, #40
+ 135 0032 0726     		movs	r6, #7
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 5
+
+
+  91:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+  92:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+  93:d:/liteos/code/WIFI2/Src\sys_init.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 136              		.loc 1 93 7 view .LVU30
+ 137 0034 06A8     		add	r0, sp, #24
+  87:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+ 138              		.loc 1 87 35 view .LVU31
+ 139 0036 CDE91054 		strd	r5, r4, [sp, #64]
+  90:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+ 140              		.loc 1 90 30 view .LVU32
+ 141 003a CDE91336 		strd	r3, r6, [sp, #76]
+  92:d:/liteos/code/WIFI2/Src\sys_init.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 142              		.loc 1 92 30 view .LVU33
+ 143 003e CDE91555 		strd	r5, r5, [sp, #84]
+  82:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
+ 144              		.loc 1 82 41 view .LVU34
+ 145 0042 0A97     		str	r7, [sp, #40]
+  83:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.MSICalibrationValue = 0;
+ 146              		.loc 1 83 3 is_stmt 1 view .LVU35
+  83:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.MSICalibrationValue = 0;
+ 147              		.loc 1 83 30 is_stmt 0 view .LVU36
+ 148 0044 0C94     		str	r4, [sp, #48]
+  84:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
+ 149              		.loc 1 84 3 is_stmt 1 view .LVU37
+  86:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+ 150              		.loc 1 86 3 view .LVU38
+  88:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLN = 40;
+ 151              		.loc 1 88 3 view .LVU39
+  88:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLN = 40;
+ 152              		.loc 1 88 30 is_stmt 0 view .LVU40
+ 153 0046 1294     		str	r4, [sp, #72]
+  89:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+ 154              		.loc 1 89 3 is_stmt 1 view .LVU41
+  91:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+ 155              		.loc 1 91 3 view .LVU42
+ 156              		.loc 1 93 3 view .LVU43
+ 157              		.loc 1 93 7 is_stmt 0 view .LVU44
+ 158 0048 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 159              	.LVL3:
+ 160              		.loc 1 93 6 view .LVU45
+ 161 004c 00B1     		cbz	r0, .L5
+ 162              	.L6:
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 163              		.loc 1 53 3 is_stmt 1 view .LVU46
+  55:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* USER CODE END Error_Handler_Debug */
+ 164              		.loc 1 55 3 view .LVU47
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 165              		.loc 1 53 8 view .LVU48
+ 166 004e FEE7     		b	.L6
+ 167              	.L5:
+  94:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+  95:d:/liteos/code/WIFI2/Src\sys_init.c ****     _Error_Handler(__FILE__, __LINE__);
+  96:d:/liteos/code/WIFI2/Src\sys_init.c ****   }
+  97:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+  98:d:/liteos/code/WIFI2/Src\sys_init.c ****     /**Initializes the CPU, AHB and APB busses clocks 
+  99:d:/liteos/code/WIFI2/Src\sys_init.c ****     */
+ 100:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 6
+
+
+ 168              		.loc 1 100 3 view .LVU49
+ 101:d:/liteos/code/WIFI2/Src\sys_init.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 102:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 169              		.loc 1 102 34 is_stmt 0 view .LVU50
+ 170 0050 0F21     		movs	r1, #15
+ 171 0052 0323     		movs	r3, #3
+ 172 0054 CDE90113 		strd	r1, r3, [sp, #4]
+ 103:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 173              		.loc 1 103 3 is_stmt 1 view .LVU51
+ 104:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 105:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 106:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 107:d:/liteos/code/WIFI2/Src\sys_init.c ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+ 174              		.loc 1 107 7 is_stmt 0 view .LVU52
+ 175 0058 0421     		movs	r1, #4
+ 104:d:/liteos/code/WIFI2/Src\sys_init.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 176              		.loc 1 104 36 view .LVU53
+ 177 005a CDE90300 		strd	r0, r0, [sp, #12]
+ 105:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 178              		.loc 1 105 3 is_stmt 1 view .LVU54
+ 105:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 179              		.loc 1 105 36 is_stmt 0 view .LVU55
+ 180 005e 0590     		str	r0, [sp, #20]
+ 181              		.loc 1 107 3 is_stmt 1 view .LVU56
+ 182              		.loc 1 107 7 is_stmt 0 view .LVU57
+ 183 0060 0DEB0100 		add	r0, sp, r1
+ 184 0064 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 185              	.LVL4:
+ 186              		.loc 1 107 6 view .LVU58
+ 187 0068 00B1     		cbz	r0, .L7
+ 188              	.L8:
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 189              		.loc 1 53 3 is_stmt 1 view .LVU59
+  55:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* USER CODE END Error_Handler_Debug */
+ 190              		.loc 1 55 3 view .LVU60
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 191              		.loc 1 53 8 view .LVU61
+ 192 006a FEE7     		b	.L8
+ 193              	.L7:
+ 108:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 109:d:/liteos/code/WIFI2/Src\sys_init.c ****     _Error_Handler(__FILE__, __LINE__);
+ 110:d:/liteos/code/WIFI2/Src\sys_init.c ****   }
+ 111:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 112:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART2
+ 194              		.loc 1 112 3 view .LVU62
+ 195              		.loc 1 112 38 is_stmt 0 view .LVU63
+ 196 006c 144B     		ldr	r3, .L13+4
+ 197 006e 1793     		str	r3, [sp, #92]
+ 113:d:/liteos/code/WIFI2/Src\sys_init.c ****                               |RCC_PERIPHCLK_USART3|RCC_PERIPHCLK_LPUART1
+ 114:d:/liteos/code/WIFI2/Src\sys_init.c ****                               |RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_I2C2
+ 115:d:/liteos/code/WIFI2/Src\sys_init.c ****                               |RCC_PERIPHCLK_I2C3|RCC_PERIPHCLK_SDMMC1
+ 116:d:/liteos/code/WIFI2/Src\sys_init.c ****                               |RCC_PERIPHCLK_ADC;
+ 117:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+ 198              		.loc 1 117 3 is_stmt 1 view .LVU64
+ 118:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
+ 119:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
+ 120:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Lpuart1ClockSelection = RCC_LPUART1CLKSOURCE_HSI;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 7
+
+
+ 199              		.loc 1 120 39 is_stmt 0 view .LVU65
+ 200 0070 4FF40063 		mov	r3, #2048
+ 121:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
+ 201              		.loc 1 121 36 view .LVU66
+ 202 0074 CDE92230 		strd	r3, r0, [sp, #136]
+ 122:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.I2c2ClockSelection = RCC_I2C2CLKSOURCE_PCLK1;
+ 123:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
+ 124:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
+ 203              		.loc 1 124 35 view .LVU67
+ 204 0078 4FF08053 		mov	r3, #268435456
+ 205 007c 2B93     		str	r3, [sp, #172]
+ 125:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Sdmmc1ClockSelection = RCC_SDMMC1CLKSOURCE_PLLSAI1;
+ 206              		.loc 1 125 38 view .LVU68
+ 207 007e 4FF08063 		mov	r3, #67108864
+ 118:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
+ 208              		.loc 1 118 38 view .LVU69
+ 209 0082 CDE91F00 		strd	r0, r0, [sp, #124]
+ 119:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Lpuart1ClockSelection = RCC_LPUART1CLKSOURCE_HSI;
+ 210              		.loc 1 119 3 is_stmt 1 view .LVU70
+ 123:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
+ 211              		.loc 1 123 36 is_stmt 0 view .LVU71
+ 212 0086 CDE92400 		strd	r0, r0, [sp, #144]
+ 119:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Lpuart1ClockSelection = RCC_LPUART1CLKSOURCE_HSI;
+ 213              		.loc 1 119 38 view .LVU72
+ 214 008a 2190     		str	r0, [sp, #132]
+ 120:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
+ 215              		.loc 1 120 3 is_stmt 1 view .LVU73
+ 122:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
+ 216              		.loc 1 122 3 view .LVU74
+ 124:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.Sdmmc1ClockSelection = RCC_SDMMC1CLKSOURCE_PLLSAI1;
+ 217              		.loc 1 124 3 view .LVU75
+ 218              		.loc 1 125 3 view .LVU76
+ 219              		.loc 1 125 38 is_stmt 0 view .LVU77
+ 220 008c 2993     		str	r3, [sp, #164]
+ 126:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
+ 221              		.loc 1 126 3 is_stmt 1 view .LVU78
+ 127:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+ 128:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1N = 16;
+ 129:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+ 130:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+ 131:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+ 132:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_48M2CLK|RCC_PLLSAI1_ADC1CLK;
+ 133:d:/liteos/code/WIFI2/Src\sys_init.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 222              		.loc 1 133 7 is_stmt 0 view .LVU79
+ 223 008e 17A8     		add	r0, sp, #92
+ 132:d:/liteos/code/WIFI2/Src\sys_init.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 224              		.loc 1 132 41 view .LVU80
+ 225 0090 4FF08873 		mov	r3, #17825792
+ 127:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+ 226              		.loc 1 127 34 view .LVU81
+ 227 0094 CDE91844 		strd	r4, r4, [sp, #96]
+ 128:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+ 228              		.loc 1 128 3 is_stmt 1 view .LVU82
+ 129:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+ 229              		.loc 1 129 34 is_stmt 0 view .LVU83
+ 230 0098 CDE91A76 		strd	r7, r6, [sp, #104]
+ 130:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 8
+
+
+ 231              		.loc 1 130 3 is_stmt 1 view .LVU84
+ 131:d:/liteos/code/WIFI2/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_48M2CLK|RCC_PLLSAI1_ADC1CLK;
+ 232              		.loc 1 131 34 is_stmt 0 view .LVU85
+ 233 009c CDE91C55 		strd	r5, r5, [sp, #112]
+ 132:d:/liteos/code/WIFI2/Src\sys_init.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 234              		.loc 1 132 3 is_stmt 1 view .LVU86
+ 132:d:/liteos/code/WIFI2/Src\sys_init.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 235              		.loc 1 132 41 is_stmt 0 view .LVU87
+ 236 00a0 1E93     		str	r3, [sp, #120]
+ 237              		.loc 1 133 3 is_stmt 1 view .LVU88
+ 238              		.loc 1 133 7 is_stmt 0 view .LVU89
+ 239 00a2 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
+ 240              	.LVL5:
+ 241              		.loc 1 133 6 view .LVU90
+ 242 00a6 00B1     		cbz	r0, .L9
+ 243              	.L10:
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 244              		.loc 1 53 3 is_stmt 1 view .LVU91
+  55:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* USER CODE END Error_Handler_Debug */
+ 245              		.loc 1 55 3 view .LVU92
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 246              		.loc 1 53 8 view .LVU93
+ 247 00a8 FEE7     		b	.L10
+ 248              	.L9:
+ 134:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 135:d:/liteos/code/WIFI2/Src\sys_init.c ****     _Error_Handler(__FILE__, __LINE__);
+ 136:d:/liteos/code/WIFI2/Src\sys_init.c ****   }
+ 137:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 138:d:/liteos/code/WIFI2/Src\sys_init.c ****     /**Configure the main internal regulator output voltage 
+ 139:d:/liteos/code/WIFI2/Src\sys_init.c ****     */
+ 140:d:/liteos/code/WIFI2/Src\sys_init.c ****   if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+ 249              		.loc 1 140 3 view .LVU94
+ 250              		.loc 1 140 7 is_stmt 0 view .LVU95
+ 251 00aa 4FF40070 		mov	r0, #512
+ 252 00ae FFF7FEFF 		bl	HAL_PWREx_ControlVoltageScaling
+ 253              	.LVL6:
+ 254              		.loc 1 140 6 view .LVU96
+ 255 00b2 00B1     		cbz	r0, .L4
+ 256              	.L12:
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 257              		.loc 1 53 3 is_stmt 1 view .LVU97
+  55:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* USER CODE END Error_Handler_Debug */
+ 258              		.loc 1 55 3 view .LVU98
+  53:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 259              		.loc 1 53 8 view .LVU99
+ 260 00b4 FEE7     		b	.L12
+ 261              	.L4:
+ 141:d:/liteos/code/WIFI2/Src\sys_init.c ****   {
+ 142:d:/liteos/code/WIFI2/Src\sys_init.c ****     _Error_Handler(__FILE__, __LINE__);
+ 143:d:/liteos/code/WIFI2/Src\sys_init.c ****   }
+ 144:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 145:d:/liteos/code/WIFI2/Src\sys_init.c ****     /**Configure the Systick interrupt time 
+ 146:d:/liteos/code/WIFI2/Src\sys_init.c ****     */
+ 147:d:/liteos/code/WIFI2/Src\sys_init.c ****   //HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+ 148:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 149:d:/liteos/code/WIFI2/Src\sys_init.c ****     /**Configure the Systick 
+ 150:d:/liteos/code/WIFI2/Src\sys_init.c ****     */
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 9
+
+
+ 151:d:/liteos/code/WIFI2/Src\sys_init.c ****   //HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+ 152:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 153:d:/liteos/code/WIFI2/Src\sys_init.c ****     /**Enable MSI Auto calibration 
+ 154:d:/liteos/code/WIFI2/Src\sys_init.c ****     */
+ 155:d:/liteos/code/WIFI2/Src\sys_init.c ****   //HAL_RCCEx_EnableMSIPLLMode();
+ 156:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 157:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* SysTick_IRQn interrupt configuration */
+ 158:d:/liteos/code/WIFI2/Src\sys_init.c ****   //HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+ 159:d:/liteos/code/WIFI2/Src\sys_init.c **** }
+ 262              		.loc 1 159 1 is_stmt 0 view .LVU100
+ 263 00b6 2FB0     		add	sp, sp, #188
+ 264              	.LCFI3:
+ 265              		.cfi_def_cfa_offset 20
+ 266              		@ sp needed
+ 267 00b8 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 268              	.L14:
+ 269 00ba 00BF     		.align	2
+ 270              	.L13:
+ 271 00bc 00100240 		.word	1073876992
+ 272 00c0 E7410800 		.word	541159
+ 273              		.cfi_endproc
+ 274              	.LFE289:
+ 276              		.section	.text.atiny_usleep,"ax",%progbits
+ 277              		.align	1
+ 278              		.global	atiny_usleep
+ 279              		.syntax unified
+ 280              		.thumb
+ 281              		.thumb_func
+ 282              		.fpu fpv4-sp-d16
+ 284              	atiny_usleep:
+ 285              	.LVL7:
+ 286              	.LFB290:
+ 160:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 161:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 162:d:/liteos/code/WIFI2/Src\sys_init.c **** #ifdef  USE_FULL_ASSERT
+ 163:d:/liteos/code/WIFI2/Src\sys_init.c **** /**
+ 164:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @brief  Reports the name of the source file and the source line number
+ 165:d:/liteos/code/WIFI2/Src\sys_init.c ****   *         where the assert_param error has occurred.
+ 166:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @param  file: pointer to the source file name
+ 167:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @param  line: assert_param error line source number
+ 168:d:/liteos/code/WIFI2/Src\sys_init.c ****   * @retval None
+ 169:d:/liteos/code/WIFI2/Src\sys_init.c ****   */
+ 170:d:/liteos/code/WIFI2/Src\sys_init.c **** void assert_failed(uint8_t* file, uint32_t line)
+ 171:d:/liteos/code/WIFI2/Src\sys_init.c **** { 
+ 172:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* USER CODE BEGIN 6 */
+ 173:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* User can add his own implementation to report the file name and line number,
+ 174:d:/liteos/code/WIFI2/Src\sys_init.c ****      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+ 175:d:/liteos/code/WIFI2/Src\sys_init.c ****   /* USER CODE END 6 */
+ 176:d:/liteos/code/WIFI2/Src\sys_init.c **** }
+ 177:d:/liteos/code/WIFI2/Src\sys_init.c **** #endif /* USE_FULL_ASSERT */
+ 178:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 179:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 180:d:/liteos/code/WIFI2/Src\sys_init.c **** /*
+ 181:d:/liteos/code/WIFI2/Src\sys_init.c ****  * atiny_adapter user interface
+ 182:d:/liteos/code/WIFI2/Src\sys_init.c ****  */
+ 183:d:/liteos/code/WIFI2/Src\sys_init.c **** void atiny_usleep(unsigned long usec)
+ 184:d:/liteos/code/WIFI2/Src\sys_init.c **** {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 10
+
+
+ 287              		.loc 1 184 1 is_stmt 1 view -0
+ 288              		.cfi_startproc
+ 289              		@ args = 0, pretend = 0, frame = 0
+ 290              		@ frame_needed = 0, uses_anonymous_args = 0
+ 291              		@ link register save eliminated.
+ 185:d:/liteos/code/WIFI2/Src\sys_init.c ****     delayus((uint32_t)usec);
+ 292              		.loc 1 185 5 view .LVU102
+ 293 0000 FFF7FEBF 		b	delayus
+ 294              	.LVL8:
+ 295              		.loc 1 185 5 is_stmt 0 view .LVU103
+ 296              		.cfi_endproc
+ 297              	.LFE290:
+ 299              		.section	.text.atiny_random,"ax",%progbits
+ 300              		.align	1
+ 301              		.global	atiny_random
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 305              		.fpu fpv4-sp-d16
+ 307              	atiny_random:
+ 308              	.LVL9:
+ 309              	.LFB291:
+ 186:d:/liteos/code/WIFI2/Src\sys_init.c **** }
+ 187:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 188:d:/liteos/code/WIFI2/Src\sys_init.c **** int atiny_random(void *output, size_t len)
+ 189:d:/liteos/code/WIFI2/Src\sys_init.c **** {
+ 310              		.loc 1 189 1 is_stmt 1 view -0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314              		@ link register save eliminated.
+ 190:d:/liteos/code/WIFI2/Src\sys_init.c ****     return hal_rng_generate_buffer(output, len);
+ 315              		.loc 1 190 5 view .LVU105
+ 316              		.loc 1 190 12 is_stmt 0 view .LVU106
+ 317 0000 FFF7FEBF 		b	hal_rng_generate_buffer
+ 318              	.LVL10:
+ 319              		.loc 1 190 12 view .LVU107
+ 320              		.cfi_endproc
+ 321              	.LFE291:
+ 323              		.section	.text.atiny_reboot,"ax",%progbits
+ 324              		.align	1
+ 325              		.global	atiny_reboot
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 329              		.fpu fpv4-sp-d16
+ 331              	atiny_reboot:
+ 332              	.LFB292:
+ 191:d:/liteos/code/WIFI2/Src\sys_init.c **** }
+ 192:d:/liteos/code/WIFI2/Src\sys_init.c **** 
+ 193:d:/liteos/code/WIFI2/Src\sys_init.c **** void atiny_reboot(void)
+ 194:d:/liteos/code/WIFI2/Src\sys_init.c **** {
+ 333              		.loc 1 194 1 is_stmt 1 view -0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 0
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337              		@ link register save eliminated.
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 11
+
+
+ 195:d:/liteos/code/WIFI2/Src\sys_init.c ****     HAL_NVIC_SystemReset();
+ 338              		.loc 1 195 5 view .LVU109
+ 339 0000 FFF7FEBF 		b	HAL_NVIC_SystemReset
+ 340              	.LVL11:
+ 341              		.cfi_endproc
+ 342              	.LFE292:
+ 344              		.text
+ 345              	.Letext0:
+ 346              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 347              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 348              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 349              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 350              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 351              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 352              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 353              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 354              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 355              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 356              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 357              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_l
+ 358              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 359              		.file 15 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 360              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 361              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 362              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 363              		.file 19 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 364              		.file 20 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 365              		.file 21 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 366              		.file 22 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 367              		.file 23 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 368              		.file 24 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_t
+ 369              		.file 25 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_t
+ 370              		.file 26 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 371              		.file 27 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_m
+ 372              		.file 28 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ 373              		.file 29 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 374              		.file 30 "d:/liteos/code/WIFI2/Inc/usart.h"
+ 375              		.file 31 "d:/liteos/code/WIFI2/Inc/i2c.h"
+ 376              		.file 32 "d:/liteos/code/WIFI2/Inc/spi.h"
+ 377              		.file 33 "d:/liteos/code/WIFI2/Hardware/LCD/lcd.h"
+ 378              		.file 34 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 379              		.file 35 "d:/liteos/code/WIFI2/Hardware/Inc/hal_rng.h"
+ 380              		.file 36 "d:/liteos/code/WIFI2/Inc/dwt.h"
+ 381              		.file 37 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 382              		.file 38 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 383              		.file 39 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_s
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sys_init.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:18     .text.HAL_GetTick:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:26     .text.HAL_GetTick:00000000 HAL_GetTick
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:49     .text._Error_Handler:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:56     .text._Error_Handler:00000000 _Error_Handler
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:74     .text.SystemClock_Config:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:81     .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:271    .text.SystemClock_Config:000000bc $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:277    .text.atiny_usleep:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:284    .text.atiny_usleep:00000000 atiny_usleep
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:300    .text.atiny_random:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:307    .text.atiny_random:00000000 atiny_random
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:324    .text.atiny_reboot:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccvwjIwB.s:331    .text.atiny_reboot:00000000 atiny_reboot
+
+UNDEFINED SYMBOLS
+LOS_TickCountGet
+HAL_PWR_EnableBkUpAccess
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_RCCEx_PeriphCLKConfig
+HAL_PWREx_ControlVoltageScaling
+delayus
+hal_rng_generate_buffer
+HAL_NVIC_SystemReset

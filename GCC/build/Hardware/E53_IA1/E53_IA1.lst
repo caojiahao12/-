@@ -1,0 +1,1275 @@
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"E53_IA1.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Init_BH1750,"ax",%progbits
+  18              		.align	1
+  19              		.global	Init_BH1750
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	Init_BH1750:
+  27              	.LFB287:
+  28              		.file 1 "d:/liteos/code/WIFI2/Hardware/E53_IA1/E53_IA1.c"
+   1:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /********************************************************************************
+   2:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 文件名称 ：E53_IA1.c
+   3:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 作     者：小熊派开源社区
+   4:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 版     本：V1.0
+   5:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 编写日期 ：2019-5-27
+   6:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 功     能：E53_IA1扩展板驱动
+   7:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** *********************************************************************************
+   8:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 说    明 ：本例程配套小熊派开源社区开发板使用
+   9:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     *
+  10:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 淘     宝：https://shop336827451.taobao.com/
+  11:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 论     坛：https://bbs.huaweicloud.com/forum/forum-734-1.html
+  12:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     * 微信公众号：小熊派开源社区
+  13:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** *********************************************************************************/
+  14:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  15:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** #include "E53_IA1.h"
+  16:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** #include "stm32l4xx.h"
+  17:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** #include "i2c.h"
+  18:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  19:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** const int16_t POLYNOMIAL = 0x131;
+  20:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  21:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  22:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  23:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+  24:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: Init_BH1750
+  25:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 写命令初始化BH1750
+  26:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+  27:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 无
+  28:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+  29:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** void Init_BH1750(void)
+  30:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 2
+
+
+  29              		.loc 1 30 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  31:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t t_Data = 0x01;
+  33              		.loc 1 31 5 view .LVU1
+  30:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t t_Data = 0x01;
+  34              		.loc 1 30 1 is_stmt 0 view .LVU2
+  35 0000 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 24
+  38              		.cfi_offset 14, -4
+  32:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_I2C_Master_Transmit(&hi2c1,BH1750_Addr,&t_Data,1,0xff);
+  39              		.loc 1 32 5 view .LVU3
+  40 0002 FF22     		movs	r2, #255
+  31:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t t_Data = 0x01;
+  41              		.loc 1 31 13 view .LVU4
+  42 0004 0123     		movs	r3, #1
+  43              		.loc 1 32 5 view .LVU5
+  44 0006 0092     		str	r2, [sp]
+  45 0008 4621     		movs	r1, #70
+  46 000a 0DF10F02 		add	r2, sp, #15
+  47 000e 0448     		ldr	r0, .L2
+  31:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t t_Data = 0x01;
+  48              		.loc 1 31 13 view .LVU6
+  49 0010 8DF80F30 		strb	r3, [sp, #15]
+  50              		.loc 1 32 5 is_stmt 1 view .LVU7
+  51 0014 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  52              	.LVL0:
+  33:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+  53              		.loc 1 33 1 is_stmt 0 view .LVU8
+  54 0018 05B0     		add	sp, sp, #20
+  55              	.LCFI1:
+  56              		.cfi_def_cfa_offset 4
+  57              		@ sp needed
+  58 001a 5DF804FB 		ldr	pc, [sp], #4
+  59              	.L3:
+  60 001e 00BF     		.align	2
+  61              	.L2:
+  62 0020 00000000 		.word	hi2c1
+  63              		.cfi_endproc
+  64              	.LFE287:
+  66              		.section	.text.Start_BH1750,"ax",%progbits
+  67              		.align	1
+  68              		.global	Start_BH1750
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  72              		.fpu fpv4-sp-d16
+  74              	Start_BH1750:
+  75              	.LFB288:
+  34:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  35:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+  36:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: Start_BH1750
+  37:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 启动BH1750
+  38:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+  39:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 无
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 3
+
+
+  40:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+  41:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** void Start_BH1750(void)
+  42:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+  76              		.loc 1 42 1 is_stmt 1 view -0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 8
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  43:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t t_Data = 0x10;
+  80              		.loc 1 43 5 view .LVU10
+  42:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t t_Data = 0x10;
+  81              		.loc 1 42 1 is_stmt 0 view .LVU11
+  82 0000 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+  83              	.LCFI2:
+  84              		.cfi_def_cfa_offset 24
+  85              		.cfi_offset 14, -4
+  86              		.loc 1 43 13 view .LVU12
+  87 0002 1023     		movs	r3, #16
+  88 0004 8DF80F30 		strb	r3, [sp, #15]
+  44:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_I2C_Master_Transmit(&hi2c1,BH1750_Addr,&t_Data,1,0xff); 
+  89              		.loc 1 44 5 is_stmt 1 view .LVU13
+  90 0008 FF23     		movs	r3, #255
+  91 000a 0093     		str	r3, [sp]
+  92 000c 0DF10F02 		add	r2, sp, #15
+  93 0010 0123     		movs	r3, #1
+  94 0012 4621     		movs	r1, #70
+  95 0014 0248     		ldr	r0, .L5
+  96 0016 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  97              	.LVL1:
+  45:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+  98              		.loc 1 45 1 is_stmt 0 view .LVU14
+  99 001a 05B0     		add	sp, sp, #20
+ 100              	.LCFI3:
+ 101              		.cfi_def_cfa_offset 4
+ 102              		@ sp needed
+ 103 001c 5DF804FB 		ldr	pc, [sp], #4
+ 104              	.L6:
+ 105              		.align	2
+ 106              	.L5:
+ 107 0020 00000000 		.word	hi2c1
+ 108              		.cfi_endproc
+ 109              	.LFE288:
+ 111              		.global	__aeabi_i2d
+ 112              		.global	__aeabi_ddiv
+ 113              		.global	__aeabi_d2f
+ 114              		.section	.text.Convert_BH1750,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	Convert_BH1750
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 120              		.fpu fpv4-sp-d16
+ 122              	Convert_BH1750:
+ 123              	.LFB289:
+  46:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  47:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+  48:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: Convert_BH1750
+  49:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 数值转换
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 4
+
+
+  50:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+  51:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 光强值
+  52:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+  53:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** float Convert_BH1750(void)
+  54:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 124              		.loc 1 54 1 is_stmt 1 view -0
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 8
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+  55:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     float result_lx;
+ 128              		.loc 1 55 5 view .LVU16
+  56:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t BUF[2];
+ 129              		.loc 1 56 5 view .LVU17
+  57:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     int result;
+ 130              		.loc 1 57 5 view .LVU18
+  58:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     Start_BH1750();
+ 131              		.loc 1 58 5 view .LVU19
+  54:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     float result_lx;
+ 132              		.loc 1 54 1 is_stmt 0 view .LVU20
+ 133 0000 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+ 134              	.LCFI4:
+ 135              		.cfi_def_cfa_offset 24
+ 136              		.cfi_offset 14, -4
+ 137              		.loc 1 58 5 view .LVU21
+ 138 0002 FFF7FEFF 		bl	Start_BH1750
+ 139              	.LVL2:
+  59:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_Delay(180);
+ 140              		.loc 1 59 5 is_stmt 1 view .LVU22
+ 141 0006 B420     		movs	r0, #180
+ 142 0008 FFF7FEFF 		bl	HAL_Delay
+ 143              	.LVL3:
+  60:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_I2C_Master_Receive(&hi2c1, BH1750_Addr+1,BUF,2,0xff); 
+ 144              		.loc 1 60 5 view .LVU23
+ 145 000c FF23     		movs	r3, #255
+ 146 000e 03AA     		add	r2, sp, #12
+ 147 0010 0093     		str	r3, [sp]
+ 148 0012 4721     		movs	r1, #71
+ 149 0014 0223     		movs	r3, #2
+ 150 0016 0B48     		ldr	r0, .L8
+ 151 0018 FFF7FEFF 		bl	HAL_I2C_Master_Receive
+ 152              	.LVL4:
+  61:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     result=BUF[0];
+ 153              		.loc 1 61 5 view .LVU24
+  62:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     result=(result<<8)+BUF[1];  //Synthetic Digital Illumination Intensity Data
+ 154              		.loc 1 62 5 view .LVU25
+ 155              		.loc 1 62 27 is_stmt 0 view .LVU26
+ 156 001c 9DF80D30 		ldrb	r3, [sp, #13]	@ zero_extendqisi2
+  61:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     result=BUF[0];
+ 157              		.loc 1 61 11 view .LVU27
+ 158 0020 9DF80C00 		ldrb	r0, [sp, #12]	@ zero_extendqisi2
+ 159              	.LVL5:
+  63:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     result_lx=(float)(result/1.2);
+ 160              		.loc 1 63 5 is_stmt 1 view .LVU28
+ 161              		.loc 1 63 29 is_stmt 0 view .LVU29
+ 162 0024 03EB0020 		add	r0, r3, r0, lsl #8
+ 163              	.LVL6:
+ 164              		.loc 1 63 29 view .LVU30
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 5
+
+
+ 165 0028 FFF7FEFF 		bl	__aeabi_i2d
+ 166              	.LVL7:
+ 167              		.loc 1 63 29 view .LVU31
+ 168 002c 064B     		ldr	r3, .L8+4
+ 169 002e 4FF03332 		mov	r2, #858993459
+ 170 0032 FFF7FEFF 		bl	__aeabi_ddiv
+ 171              	.LVL8:
+ 172              		.loc 1 63 14 view .LVU32
+ 173 0036 FFF7FEFF 		bl	__aeabi_d2f
+ 174              	.LVL9:
+  64:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     return result_lx;
+ 175              		.loc 1 64 5 is_stmt 1 view .LVU33
+  65:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 176              		.loc 1 65 1 is_stmt 0 view .LVU34
+ 177 003a 00EE100A 		vmov	s0, r0
+ 178 003e 05B0     		add	sp, sp, #20
+ 179              	.LCFI5:
+ 180              		.cfi_def_cfa_offset 4
+ 181              		@ sp needed
+ 182 0040 5DF804FB 		ldr	pc, [sp], #4
+ 183              	.L9:
+ 184              		.align	2
+ 185              	.L8:
+ 186 0044 00000000 		.word	hi2c1
+ 187 0048 3333F33F 		.word	1072902963
+ 188              		.cfi_endproc
+ 189              	.LFE289:
+ 191              		.section	.text.SHT30_reset,"ax",%progbits
+ 192              		.align	1
+ 193              		.global	SHT30_reset
+ 194              		.syntax unified
+ 195              		.thumb
+ 196              		.thumb_func
+ 197              		.fpu fpv4-sp-d16
+ 199              	SHT30_reset:
+ 200              	.LFB290:
+  66:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  67:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+  68:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: SHT30_reset
+  69:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: SHT30复位
+  70:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+  71:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 无
+  72:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+  73:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** void SHT30_reset(void)
+  74:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 201              		.loc 1 74 1 is_stmt 1 view -0
+ 202              		.cfi_startproc
+ 203              		@ args = 0, pretend = 0, frame = 8
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+  75:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Resetcommand_Buffer[2]={0x30,0xA2}; //soft reset  
+ 205              		.loc 1 75 5 view .LVU36
+  74:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Resetcommand_Buffer[2]={0x30,0xA2}; //soft reset  
+ 206              		.loc 1 74 1 is_stmt 0 view .LVU37
+ 207 0000 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+ 208              	.LCFI6:
+ 209              		.cfi_def_cfa_offset 24
+ 210              		.cfi_offset 14, -4
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 6
+
+
+ 211              		.loc 1 75 13 view .LVU38
+ 212 0002 4AF23023 		movw	r3, #41520
+ 213 0006 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+  76:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_I2C_Master_Transmit(&hi2c1,SHT30_Addr<<1,SHT3X_Resetcommand_Buffer,2,0x10);
+ 214              		.loc 1 76 5 is_stmt 1 view .LVU39
+ 215 000a 1023     		movs	r3, #16
+ 216 000c 0093     		str	r3, [sp]
+ 217 000e 03AA     		add	r2, sp, #12
+ 218 0010 0223     		movs	r3, #2
+ 219 0012 8821     		movs	r1, #136
+ 220 0014 0448     		ldr	r0, .L11
+ 221 0016 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+ 222              	.LVL10:
+  77:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_Delay(15);
+ 223              		.loc 1 77 5 view .LVU40
+ 224 001a 0F20     		movs	r0, #15
+ 225 001c FFF7FEFF 		bl	HAL_Delay
+ 226              	.LVL11:
+  78:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+  79:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 227              		.loc 1 79 1 is_stmt 0 view .LVU41
+ 228 0020 05B0     		add	sp, sp, #20
+ 229              	.LCFI7:
+ 230              		.cfi_def_cfa_offset 4
+ 231              		@ sp needed
+ 232 0022 5DF804FB 		ldr	pc, [sp], #4
+ 233              	.L12:
+ 234 0026 00BF     		.align	2
+ 235              	.L11:
+ 236 0028 00000000 		.word	hi2c1
+ 237              		.cfi_endproc
+ 238              	.LFE290:
+ 240              		.section	.text.Init_SHT30,"ax",%progbits
+ 241              		.align	1
+ 242              		.global	Init_SHT30
+ 243              		.syntax unified
+ 244              		.thumb
+ 245              		.thumb_func
+ 246              		.fpu fpv4-sp-d16
+ 248              	Init_SHT30:
+ 249              	.LFB291:
+  80:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  81:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+  82:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: Init_SHT30
+  83:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 初始化SHT30，设置测量周期
+  84:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+  85:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 无
+  86:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+  87:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** void Init_SHT30(void)
+  88:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 250              		.loc 1 88 1 is_stmt 1 view -0
+ 251              		.cfi_startproc
+ 252              		@ args = 0, pretend = 0, frame = 8
+ 253              		@ frame_needed = 0, uses_anonymous_args = 0
+  89:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Modecommand_Buffer[2]={0x22,0x36}; //periodic mode commands 
+ 254              		.loc 1 89 5 view .LVU43
+  88:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Modecommand_Buffer[2]={0x22,0x36}; //periodic mode commands 
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 7
+
+
+ 255              		.loc 1 88 1 is_stmt 0 view .LVU44
+ 256 0000 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+ 257              	.LCFI8:
+ 258              		.cfi_def_cfa_offset 24
+ 259              		.cfi_offset 14, -4
+ 260              		.loc 1 89 13 view .LVU45
+ 261 0002 43F22263 		movw	r3, #13858
+ 262 0006 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+  90:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_I2C_Master_Transmit(&hi2c1,SHT30_Addr<<1,SHT3X_Modecommand_Buffer,2,0x10); //send periodic 
+ 263              		.loc 1 90 5 is_stmt 1 view .LVU46
+ 264 000a 1023     		movs	r3, #16
+ 265 000c 0093     		str	r3, [sp]
+ 266 000e 03AA     		add	r2, sp, #12
+ 267 0010 0223     		movs	r3, #2
+ 268 0012 8821     		movs	r1, #136
+ 269 0014 0248     		ldr	r0, .L14
+ 270 0016 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+ 271              	.LVL12:
+  91:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+  92:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 272              		.loc 1 92 1 is_stmt 0 view .LVU47
+ 273 001a 05B0     		add	sp, sp, #20
+ 274              	.LCFI9:
+ 275              		.cfi_def_cfa_offset 4
+ 276              		@ sp needed
+ 277 001c 5DF804FB 		ldr	pc, [sp], #4
+ 278              	.L15:
+ 279              		.align	2
+ 280              	.L14:
+ 281 0020 00000000 		.word	hi2c1
+ 282              		.cfi_endproc
+ 283              	.LFE291:
+ 285              		.section	.text.SHT3x_CheckCrc,"ax",%progbits
+ 286              		.align	1
+ 287              		.global	SHT3x_CheckCrc
+ 288              		.syntax unified
+ 289              		.thumb
+ 290              		.thumb_func
+ 291              		.fpu fpv4-sp-d16
+ 293              	SHT3x_CheckCrc:
+ 294              	.LVL13:
+ 295              	.LFB292:
+  93:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+  94:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+  95:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: SHT3x_CheckCrc
+  96:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 检查数据正确性
+  97:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: data：读取到的数据
+  98:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 						nbrOfBytes：需要校验的数量
+  99:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 						checksum：读取到的校对比验值
+ 100:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 校验结果，0-成功		1-失败
+ 101:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+ 102:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** uint8_t SHT3x_CheckCrc(char data[], char nbrOfBytes, char checksum)
+ 103:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 296              		.loc 1 103 1 is_stmt 1 view -0
+ 297              		.cfi_startproc
+ 298              		@ args = 0, pretend = 0, frame = 0
+ 299              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 8
+
+
+ 104:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 105:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     char crc = 0xFF;
+ 300              		.loc 1 105 5 view .LVU49
+ 106:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     char bit = 0;
+ 301              		.loc 1 106 5 view .LVU50
+ 107:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     char byteCtr ;
+ 302              		.loc 1 107 5 view .LVU51
+ 108:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 109:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     //calculates 8-Bit checksum with given polynomial
+ 110:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     for(byteCtr = 0; byteCtr < nbrOfBytes; ++byteCtr)
+ 303              		.loc 1 110 5 view .LVU52
+ 103:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 304              		.loc 1 103 1 is_stmt 0 view .LVU53
+ 305 0000 10B5     		push	{r4, lr}
+ 306              	.LCFI10:
+ 307              		.cfi_def_cfa_offset 8
+ 308              		.cfi_offset 4, -8
+ 309              		.cfi_offset 14, -4
+ 310 0002 0144     		add	r1, r1, r0
+ 311              	.LVL14:
+ 105:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     char bit = 0;
+ 312              		.loc 1 105 10 view .LVU54
+ 313 0004 FF23     		movs	r3, #255
+ 314              	.LVL15:
+ 315              	.L17:
+ 316              		.loc 1 110 22 is_stmt 1 discriminator 1 view .LVU55
+ 317              		.loc 1 110 5 is_stmt 0 discriminator 1 view .LVU56
+ 318 0006 8842     		cmp	r0, r1
+ 319 0008 03D1     		bne	.L21
+ 111:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     {
+ 112:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         crc ^= (data[byteCtr]);
+ 113:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         for ( bit = 8; bit > 0; --bit)
+ 114:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         {
+ 115:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****             if (crc & 0x80) crc = (crc << 1) ^ POLYNOMIAL;
+ 116:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****             else crc = (crc << 1);
+ 117:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         }
+ 118:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     }
+ 119:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 120:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     if(crc != checksum)
+ 320              		.loc 1 120 5 is_stmt 1 view .LVU57
+ 121:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 		return 1;
+ 122:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     else
+ 123:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 		return 0;
+ 124:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 125:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 321              		.loc 1 125 1 is_stmt 0 view .LVU58
+ 322 000a 981A     		subs	r0, r3, r2
+ 323              	.LVL16:
+ 324              		.loc 1 125 1 view .LVU59
+ 325 000c 18BF     		it	ne
+ 326 000e 0120     		movne	r0, #1
+ 327 0010 10BD     		pop	{r4, pc}
+ 328              	.LVL17:
+ 329              	.L21:
+ 112:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         for ( bit = 8; bit > 0; --bit)
+ 330              		.loc 1 112 9 is_stmt 1 view .LVU60
+ 112:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         for ( bit = 8; bit > 0; --bit)
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 9
+
+
+ 331              		.loc 1 112 21 is_stmt 0 view .LVU61
+ 332 0012 10F8014B 		ldrb	r4, [r0], #1	@ zero_extendqisi2
+ 333              	.LVL18:
+ 112:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         for ( bit = 8; bit > 0; --bit)
+ 334              		.loc 1 112 13 view .LVU62
+ 335 0016 6340     		eors	r3, r3, r4
+ 336              	.LVL19:
+ 113:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         {
+ 337              		.loc 1 113 9 is_stmt 1 view .LVU63
+ 113:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         {
+ 338              		.loc 1 113 24 view .LVU64
+ 112:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         for ( bit = 8; bit > 0; --bit)
+ 339              		.loc 1 112 13 is_stmt 0 view .LVU65
+ 340 0018 0824     		movs	r4, #8
+ 341              	.LVL20:
+ 342              	.L20:
+ 115:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****             else crc = (crc << 1);
+ 343              		.loc 1 115 13 is_stmt 1 view .LVU66
+ 115:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****             else crc = (crc << 1);
+ 344              		.loc 1 115 16 is_stmt 0 view .LVU67
+ 345 001a 13F0800F 		tst	r3, #128
+ 346 001e 04F1FF34 		add	r4, r4, #-1
+ 347              	.LVL21:
+ 115:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****             else crc = (crc << 1);
+ 348              		.loc 1 115 16 view .LVU68
+ 349 0022 4FEA4303 		lsl	r3, r3, #1
+ 350              	.LVL22:
+ 115:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****             else crc = (crc << 1);
+ 351              		.loc 1 115 29 is_stmt 1 view .LVU69
+ 115:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****             else crc = (crc << 1);
+ 352              		.loc 1 115 46 is_stmt 0 view .LVU70
+ 353 0026 18BF     		it	ne
+ 354 0028 83F03103 		eorne	r3, r3, #49
+ 116:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         }
+ 355              		.loc 1 116 18 is_stmt 1 view .LVU71
+ 113:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         {
+ 356              		.loc 1 113 9 is_stmt 0 view .LVU72
+ 357 002c 14F0FF04 		ands	r4, r4, #255
+ 116:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         }
+ 358              		.loc 1 116 22 view .LVU73
+ 359 0030 DBB2     		uxtb	r3, r3
+ 360              	.LVL23:
+ 113:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         {
+ 361              		.loc 1 113 33 is_stmt 1 view .LVU74
+ 113:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         {
+ 362              		.loc 1 113 24 view .LVU75
+ 113:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         {
+ 363              		.loc 1 113 9 is_stmt 0 view .LVU76
+ 364 0032 F2D1     		bne	.L20
+ 365 0034 E7E7     		b	.L17
+ 366              		.cfi_endproc
+ 367              	.LFE292:
+ 369              		.section	.text.SHT3x_CalcTemperatureC,"ax",%progbits
+ 370              		.align	1
+ 371              		.global	SHT3x_CalcTemperatureC
+ 372              		.syntax unified
+ 373              		.thumb
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 10
+
+
+ 374              		.thumb_func
+ 375              		.fpu fpv4-sp-d16
+ 377              	SHT3x_CalcTemperatureC:
+ 378              	.LVL24:
+ 379              	.LFB293:
+ 126:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 127:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 128:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: SHT3x_CalcTemperatureC
+ 129:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 温度计算
+ 130:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: u16sT：读取到的温度原始数据
+ 131:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 计算后的温度数据
+ 132:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+ 133:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** float SHT3x_CalcTemperatureC(unsigned short u16sT)
+ 134:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 380              		.loc 1 134 1 is_stmt 1 view -0
+ 381              		.cfi_startproc
+ 382              		@ args = 0, pretend = 0, frame = 0
+ 383              		@ frame_needed = 0, uses_anonymous_args = 0
+ 384              		@ link register save eliminated.
+ 135:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 136:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     float temperatureC = 0;            // variable for result
+ 385              		.loc 1 136 5 view .LVU78
+ 137:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 138:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     u16sT &= ~0x0003;           // clear bits [1..0] (status bits)
+ 386              		.loc 1 138 5 view .LVU79
+ 139:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     //-- calculate temperature [℃] --
+ 140:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     temperatureC = (175 * (float)u16sT / 65535 - 45); //T = -45 + 175 * rawValue / (2^16-1)
+ 387              		.loc 1 140 5 view .LVU80
+ 141:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 142:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     return temperatureC;
+ 388              		.loc 1 142 5 view .LVU81
+ 140:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 389              		.loc 1 140 27 is_stmt 0 view .LVU82
+ 390 0000 4FF6FC73 		movw	r3, #65532
+ 391 0004 0340     		ands	r3, r3, r0
+ 392 0006 07EE903A 		vmov	s15, r3	@ int
+ 140:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 393              		.loc 1 140 25 view .LVU83
+ 394 000a 9FED077A 		vldr.32	s14, .L24
+ 140:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 395              		.loc 1 140 27 view .LVU84
+ 396 000e F8EE677A 		vcvt.f32.u32	s15, s15
+ 140:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 397              		.loc 1 140 25 view .LVU85
+ 398 0012 67EE877A 		vmul.f32	s15, s15, s14
+ 140:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 399              		.loc 1 140 40 view .LVU86
+ 400 0016 9FED057A 		vldr.32	s14, .L24+4
+ 401 001a 87EE870A 		vdiv.f32	s0, s15, s14
+ 143:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 144:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 402              		.loc 1 144 1 view .LVU87
+ 403 001e DFED047A 		vldr.32	s15, .L24+8
+ 404 0022 30EE670A 		vsub.f32	s0, s0, s15
+ 405 0026 7047     		bx	lr
+ 406              	.L25:
+ 407              		.align	2
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 11
+
+
+ 408              	.L24:
+ 409 0028 00002F43 		.word	1127153664
+ 410 002c 00FF7F47 		.word	1199570688
+ 411 0030 00003442 		.word	1110704128
+ 412              		.cfi_endproc
+ 413              	.LFE293:
+ 415              		.section	.text.SHT3x_CalcRH,"ax",%progbits
+ 416              		.align	1
+ 417              		.global	SHT3x_CalcRH
+ 418              		.syntax unified
+ 419              		.thumb
+ 420              		.thumb_func
+ 421              		.fpu fpv4-sp-d16
+ 423              	SHT3x_CalcRH:
+ 424              	.LVL25:
+ 425              	.LFB294:
+ 145:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 146:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 147:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: SHT3x_CalcRH
+ 148:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 湿度计算
+ 149:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: u16sRH：读取到的湿度原始数据
+ 150:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 计算后的湿度数据
+ 151:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+ 152:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** float SHT3x_CalcRH(unsigned short u16sRH)
+ 153:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 426              		.loc 1 153 1 is_stmt 1 view -0
+ 427              		.cfi_startproc
+ 428              		@ args = 0, pretend = 0, frame = 0
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 430              		@ link register save eliminated.
+ 154:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 155:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     float humidityRH = 0;              // variable for result
+ 431              		.loc 1 155 5 view .LVU89
+ 156:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 157:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     u16sRH &= ~0x0003;          // clear bits [1..0] (status bits)
+ 432              		.loc 1 157 5 view .LVU90
+ 158:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     //-- calculate relative humidity [%RH] --
+ 159:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     humidityRH = (100 * (float)u16sRH / 65535);  // RH = rawValue / (2^16-1) * 10
+ 433              		.loc 1 159 5 view .LVU91
+ 160:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 161:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     return humidityRH;
+ 434              		.loc 1 161 5 view .LVU92
+ 159:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 435              		.loc 1 159 25 is_stmt 0 view .LVU93
+ 436 0000 4FF6FC73 		movw	r3, #65532
+ 437 0004 0340     		ands	r3, r3, r0
+ 438 0006 07EE903A 		vmov	s15, r3	@ int
+ 159:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 439              		.loc 1 159 23 view .LVU94
+ 440 000a 9FED050A 		vldr.32	s0, .L27
+ 159:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 441              		.loc 1 159 25 view .LVU95
+ 442 000e F8EE677A 		vcvt.f32.u32	s15, s15
+ 159:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 443              		.loc 1 159 23 view .LVU96
+ 444 0012 67EE807A 		vmul.f32	s15, s15, s0
+ 162:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 12
+
+
+ 163:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 445              		.loc 1 163 1 view .LVU97
+ 446 0016 9FED030A 		vldr.32	s0, .L27+4
+ 447 001a 87EE800A 		vdiv.f32	s0, s15, s0
+ 448 001e 7047     		bx	lr
+ 449              	.L28:
+ 450              		.align	2
+ 451              	.L27:
+ 452 0020 0000C842 		.word	1120403456
+ 453 0024 00FF7F47 		.word	1199570688
+ 454              		.cfi_endproc
+ 455              	.LFE294:
+ 457              		.section	.text.Init_Motor,"ax",%progbits
+ 458              		.align	1
+ 459              		.global	Init_Motor
+ 460              		.syntax unified
+ 461              		.thumb
+ 462              		.thumb_func
+ 463              		.fpu fpv4-sp-d16
+ 465              	Init_Motor:
+ 466              	.LFB295:
+ 164:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 165:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 166:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: Init_Motor
+ 167:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 初始化Init_E53_IA1的马达
+ 168:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+ 169:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 无
+ 170:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+ 171:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** void Init_Motor(void)
+ 172:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 467              		.loc 1 172 1 is_stmt 1 view -0
+ 468              		.cfi_startproc
+ 469              		@ args = 0, pretend = 0, frame = 24
+ 470              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitTypeDef GPIO_InitStruct;
+ 471              		.loc 1 173 5 view .LVU99
+ 174:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 175:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     /* GPIO Ports Clock Enable */
+ 176:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     IA1_Motor_GPIO_CLK_ENABLE();
+ 472              		.loc 1 176 5 view .LVU100
+ 473              	.LBB2:
+ 474              		.loc 1 176 5 view .LVU101
+ 475              		.loc 1 176 5 view .LVU102
+ 476              	.LBE2:
+ 172:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitTypeDef GPIO_InitStruct;
+ 477              		.loc 1 172 1 is_stmt 0 view .LVU103
+ 478 0000 7FB5     		push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ 479              	.LCFI11:
+ 480              		.cfi_def_cfa_offset 32
+ 481              		.cfi_offset 14, -4
+ 482              	.LBB3:
+ 483              		.loc 1 176 5 view .LVU104
+ 484 0002 0F4B     		ldr	r3, .L30
+ 485              	.LBE3:
+ 177:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 178:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     /*Configure GPIO pin Output Level */
+ 179:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_GPIO_WritePin(IA1_Motor_GPIO_Port, IA1_Motor_Pin, GPIO_PIN_RESET);
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 13
+
+
+ 486              		.loc 1 179 5 view .LVU105
+ 487 0004 0F48     		ldr	r0, .L30+4
+ 488              	.LBB4:
+ 176:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 489              		.loc 1 176 5 view .LVU106
+ 490 0006 DA6C     		ldr	r2, [r3, #76]
+ 491 0008 42F00202 		orr	r2, r2, #2
+ 492 000c DA64     		str	r2, [r3, #76]
+ 176:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 493              		.loc 1 176 5 is_stmt 1 view .LVU107
+ 494 000e DB6C     		ldr	r3, [r3, #76]
+ 495 0010 03F00203 		and	r3, r3, #2
+ 496 0014 0093     		str	r3, [sp]
+ 176:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 497              		.loc 1 176 5 view .LVU108
+ 498              	.LBE4:
+ 499              		.loc 1 179 5 is_stmt 0 view .LVU109
+ 500 0016 0022     		movs	r2, #0
+ 501 0018 4FF48071 		mov	r1, #256
+ 502              	.LBB5:
+ 176:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 503              		.loc 1 176 5 view .LVU110
+ 504 001c 009B     		ldr	r3, [sp]
+ 505              	.LBE5:
+ 176:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 506              		.loc 1 176 5 is_stmt 1 view .LVU111
+ 507              		.loc 1 179 5 view .LVU112
+ 508 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 509              	.LVL26:
+ 180:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 181:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     /*Configure GPIO pin : PtPin */
+ 182:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Pin = IA1_Motor_Pin;
+ 510              		.loc 1 182 5 view .LVU113
+ 183:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 511              		.loc 1 183 26 is_stmt 0 view .LVU114
+ 512 0022 4FF48072 		mov	r2, #256
+ 513 0026 0123     		movs	r3, #1
+ 514 0028 CDE90123 		strd	r2, r3, [sp, #4]
+ 184:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 515              		.loc 1 184 5 is_stmt 1 view .LVU115
+ 185:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 186:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_GPIO_Init(IA1_Motor_GPIO_Port, &GPIO_InitStruct);
+ 516              		.loc 1 186 5 is_stmt 0 view .LVU116
+ 517 002c 0548     		ldr	r0, .L30+4
+ 184:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 518              		.loc 1 184 26 view .LVU117
+ 519 002e 0023     		movs	r3, #0
+ 520              		.loc 1 186 5 view .LVU118
+ 521 0030 01A9     		add	r1, sp, #4
+ 185:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 522              		.loc 1 185 27 view .LVU119
+ 523 0032 CDE90333 		strd	r3, r3, [sp, #12]
+ 524              		.loc 1 186 5 is_stmt 1 view .LVU120
+ 525 0036 FFF7FEFF 		bl	HAL_GPIO_Init
+ 526              	.LVL27:
+ 187:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 527              		.loc 1 187 1 is_stmt 0 view .LVU121
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 14
+
+
+ 528 003a 07B0     		add	sp, sp, #28
+ 529              	.LCFI12:
+ 530              		.cfi_def_cfa_offset 4
+ 531              		@ sp needed
+ 532 003c 5DF804FB 		ldr	pc, [sp], #4
+ 533              	.L31:
+ 534              		.align	2
+ 535              	.L30:
+ 536 0040 00100240 		.word	1073876992
+ 537 0044 00040048 		.word	1207960576
+ 538              		.cfi_endproc
+ 539              	.LFE295:
+ 541              		.section	.text.Init_Light,"ax",%progbits
+ 542              		.align	1
+ 543              		.global	Init_Light
+ 544              		.syntax unified
+ 545              		.thumb
+ 546              		.thumb_func
+ 547              		.fpu fpv4-sp-d16
+ 549              	Init_Light:
+ 550              	.LFB296:
+ 188:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 189:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 190:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: Init_Light
+ 191:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 初始化Init_E53_IA1的补光灯
+ 192:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+ 193:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 无
+ 194:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+ 195:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** void Init_Light(void)
+ 196:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 551              		.loc 1 196 1 is_stmt 1 view -0
+ 552              		.cfi_startproc
+ 553              		@ args = 0, pretend = 0, frame = 24
+ 554              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitTypeDef GPIO_InitStruct;
+ 555              		.loc 1 197 5 view .LVU123
+ 198:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 199:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     /* GPIO Ports Clock Enable */
+ 200:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     IA1_Light_GPIO_CLK_ENABLE();
+ 556              		.loc 1 200 5 view .LVU124
+ 557              	.LBB6:
+ 558              		.loc 1 200 5 view .LVU125
+ 559              		.loc 1 200 5 view .LVU126
+ 560              	.LBE6:
+ 196:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitTypeDef GPIO_InitStruct;
+ 561              		.loc 1 196 1 is_stmt 0 view .LVU127
+ 562 0000 7FB5     		push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ 563              	.LCFI13:
+ 564              		.cfi_def_cfa_offset 32
+ 565              		.cfi_offset 14, -4
+ 566              	.LBB7:
+ 567              		.loc 1 200 5 view .LVU128
+ 568 0002 0F4B     		ldr	r3, .L33
+ 569 0004 DA6C     		ldr	r2, [r3, #76]
+ 570 0006 42F00102 		orr	r2, r2, #1
+ 571 000a DA64     		str	r2, [r3, #76]
+ 572              		.loc 1 200 5 is_stmt 1 view .LVU129
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 15
+
+
+ 573 000c DB6C     		ldr	r3, [r3, #76]
+ 574 000e 03F00103 		and	r3, r3, #1
+ 575 0012 0093     		str	r3, [sp]
+ 576              		.loc 1 200 5 view .LVU130
+ 577              	.LBE7:
+ 201:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 202:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	 /*Configure GPIO pin Output Level */
+ 203:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_GPIO_WritePin(IA1_Light_GPIO_Port, IA1_Light_Pin, GPIO_PIN_RESET);
+ 578              		.loc 1 203 5 is_stmt 0 view .LVU131
+ 579 0014 0022     		movs	r2, #0
+ 580 0016 0121     		movs	r1, #1
+ 581 0018 4FF09040 		mov	r0, #1207959552
+ 582              	.LBB8:
+ 200:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 583              		.loc 1 200 5 view .LVU132
+ 584 001c 009B     		ldr	r3, [sp]
+ 585              	.LBE8:
+ 200:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 586              		.loc 1 200 5 is_stmt 1 view .LVU133
+ 587              		.loc 1 203 5 view .LVU134
+ 588 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 589              	.LVL28:
+ 204:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 205:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     /*Configure GPIO pin : PtPin */
+ 206:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Pin = IA1_Light_Pin;
+ 590              		.loc 1 206 5 view .LVU135
+ 591              		.loc 1 206 25 is_stmt 0 view .LVU136
+ 592 0022 0123     		movs	r3, #1
+ 207:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 593              		.loc 1 207 26 view .LVU137
+ 594 0024 CDE90133 		strd	r3, r3, [sp, #4]
+ 208:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 595              		.loc 1 208 5 is_stmt 1 view .LVU138
+ 209:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 210:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_GPIO_Init(IA1_Light_GPIO_Port, &GPIO_InitStruct);
+ 596              		.loc 1 210 5 is_stmt 0 view .LVU139
+ 597 0028 01A9     		add	r1, sp, #4
+ 208:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 598              		.loc 1 208 26 view .LVU140
+ 599 002a 0023     		movs	r3, #0
+ 600              		.loc 1 210 5 view .LVU141
+ 601 002c 4FF09040 		mov	r0, #1207959552
+ 209:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 602              		.loc 1 209 27 view .LVU142
+ 603 0030 CDE90333 		strd	r3, r3, [sp, #12]
+ 604              		.loc 1 210 5 is_stmt 1 view .LVU143
+ 605 0034 FFF7FEFF 		bl	HAL_GPIO_Init
+ 606              	.LVL29:
+ 211:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 607              		.loc 1 211 1 is_stmt 0 view .LVU144
+ 608 0038 07B0     		add	sp, sp, #28
+ 609              	.LCFI14:
+ 610              		.cfi_def_cfa_offset 4
+ 611              		@ sp needed
+ 612 003a 5DF804FB 		ldr	pc, [sp], #4
+ 613              	.L34:
+ 614 003e 00BF     		.align	2
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 16
+
+
+ 615              	.L33:
+ 616 0040 00100240 		.word	1073876992
+ 617              		.cfi_endproc
+ 618              	.LFE296:
+ 620              		.section	.text.Init_E53_IA1,"ax",%progbits
+ 621              		.align	1
+ 622              		.global	Init_E53_IA1
+ 623              		.syntax unified
+ 624              		.thumb
+ 625              		.thumb_func
+ 626              		.fpu fpv4-sp-d16
+ 628              	Init_E53_IA1:
+ 629              	.LFB297:
+ 212:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 213:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: Init_E53_IA1
+ 214:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 初始化Init_E53_IA1
+ 215:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+ 216:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 无
+ 217:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+ 218:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** void Init_E53_IA1(void)
+ 219:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 630              		.loc 1 219 1 is_stmt 1 view -0
+ 631              		.cfi_startproc
+ 632              		@ args = 0, pretend = 0, frame = 0
+ 633              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****    	MX_I2C1_Init();
+ 634              		.loc 1 220 5 view .LVU146
+ 219:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****    	MX_I2C1_Init();
+ 635              		.loc 1 219 1 is_stmt 0 view .LVU147
+ 636 0000 08B5     		push	{r3, lr}
+ 637              	.LCFI15:
+ 638              		.cfi_def_cfa_offset 8
+ 639              		.cfi_offset 3, -8
+ 640              		.cfi_offset 14, -4
+ 641              		.loc 1 220 5 view .LVU148
+ 642 0002 FFF7FEFF 		bl	MX_I2C1_Init
+ 643              	.LVL30:
+ 221:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     Init_BH1750();
+ 644              		.loc 1 221 5 is_stmt 1 view .LVU149
+ 645 0006 FFF7FEFF 		bl	Init_BH1750
+ 646              	.LVL31:
+ 222:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     Init_SHT30();
+ 647              		.loc 1 222 5 view .LVU150
+ 648 000a FFF7FEFF 		bl	Init_SHT30
+ 649              	.LVL32:
+ 223:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     Init_Motor();
+ 650              		.loc 1 223 5 view .LVU151
+ 651 000e FFF7FEFF 		bl	Init_Motor
+ 652              	.LVL33:
+ 224:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     Init_Light();
+ 653              		.loc 1 224 5 view .LVU152
+ 225:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 654              		.loc 1 225 1 is_stmt 0 view .LVU153
+ 655 0012 BDE80840 		pop	{r3, lr}
+ 656              	.LCFI16:
+ 657              		.cfi_restore 14
+ 658              		.cfi_restore 3
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 17
+
+
+ 659              		.cfi_def_cfa_offset 0
+ 224:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     Init_Light();
+ 660              		.loc 1 224 5 view .LVU154
+ 661 0016 FFF7FEBF 		b	Init_Light
+ 662              	.LVL34:
+ 663              		.cfi_endproc
+ 664              	.LFE297:
+ 666              		.section	.text.E53_IA1_Read_Data,"ax",%progbits
+ 667              		.align	1
+ 668              		.global	E53_IA1_Read_Data
+ 669              		.syntax unified
+ 670              		.thumb
+ 671              		.thumb_func
+ 672              		.fpu fpv4-sp-d16
+ 674              	E53_IA1_Read_Data:
+ 675              	.LFB298:
+ 226:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 227:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 228:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: E53_IA1_Read_Data
+ 229:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 测量光照强度、温度、湿度
+ 230:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 参    数: 无
+ 231:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 无
+ 232:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+ 233:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** void E53_IA1_Read_Data(void)
+ 234:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** {
+ 676              		.loc 1 234 1 is_stmt 1 view -0
+ 677              		.cfi_startproc
+ 678              		@ args = 0, pretend = 0, frame = 16
+ 679              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 236:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     char  data[3];    //data array for checksum verification
+ 680              		.loc 1 236 5 view .LVU156
+ 237:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     unsigned char addr = 0;
+ 681              		.loc 1 237 5 view .LVU157
+ 682              	.LVL35:
+ 238:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     unsigned short tmp = 0;
+ 683              		.loc 1 238 5 view .LVU158
+ 239:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     float t = 0;
+ 684              		.loc 1 239 5 view .LVU159
+ 240:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint16_t dat;
+ 685              		.loc 1 240 5 view .LVU160
+ 241:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Fetchcommand_Bbuffer[2]={0xE0,0x00};								//read the measurement results
+ 686              		.loc 1 241 5 view .LVU161
+ 234:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 	
+ 687              		.loc 1 234 1 is_stmt 0 view .LVU162
+ 688 0000 70B5     		push	{r4, r5, r6, lr}
+ 689              	.LCFI17:
+ 690              		.cfi_def_cfa_offset 16
+ 691              		.cfi_offset 4, -16
+ 692              		.cfi_offset 5, -12
+ 693              		.cfi_offset 6, -8
+ 694              		.cfi_offset 14, -4
+ 695 0002 86B0     		sub	sp, sp, #24
+ 696              	.LCFI18:
+ 697              		.cfi_def_cfa_offset 40
+ 698              		.loc 1 241 13 view .LVU163
+ 699 0004 E023     		movs	r3, #224
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 18
+
+
+ 700 0006 ADF80830 		strh	r3, [sp, #8]	@ movhi
+ 242:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Data_Buffer[6]; 																		//byte 0,1 is temperature byte 4,5 is humidity
+ 701              		.loc 1 242 5 is_stmt 1 view .LVU164
+ 243:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     
+ 244:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_Data.Lux=Convert_BH1750();																								//Read bh1750 sensor data 
+ 702              		.loc 1 244 5 view .LVU165
+ 703              		.loc 1 244 22 is_stmt 0 view .LVU166
+ 704 000a FFF7FEFF 		bl	Convert_BH1750
+ 705              	.LVL36:
+ 245:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     
+ 246:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_I2C_Master_Transmit(&hi2c1,SHT30_Addr<<1,SHT3X_Fetchcommand_Bbuffer,2,0x10); //Read sht30 s
+ 706              		.loc 1 246 5 view .LVU167
+ 707 000e 1025     		movs	r5, #16
+ 244:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     
+ 708              		.loc 1 244 21 view .LVU168
+ 709 0010 204C     		ldr	r4, .L39
+ 710              		.loc 1 246 5 view .LVU169
+ 711 0012 0095     		str	r5, [sp]
+ 712 0014 0223     		movs	r3, #2
+ 713 0016 02AA     		add	r2, sp, #8
+ 714 0018 8821     		movs	r1, #136
+ 715 001a 1F48     		ldr	r0, .L39+4
+ 244:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     
+ 716              		.loc 1 244 21 view .LVU170
+ 717 001c 84ED000A 		vstr.32	s0, [r4]
+ 718              		.loc 1 246 5 is_stmt 1 view .LVU171
+ 719 0020 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+ 720              	.LVL37:
+ 247:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     HAL_I2C_Master_Receive(&hi2c1,(SHT30_Addr<<1)+1,SHT3X_Data_Buffer,6,0x10); 
+ 721              		.loc 1 247 5 view .LVU172
+ 722 0024 0DEB0502 		add	r2, sp, r5
+ 723 0028 0095     		str	r5, [sp]
+ 724 002a 8921     		movs	r1, #137
+ 725 002c 1A48     		ldr	r0, .L39+4
+ 726 002e 0623     		movs	r3, #6
+ 727 0030 FFF7FEFF 		bl	HAL_I2C_Master_Receive
+ 728              	.LVL38:
+ 248:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     
+ 249:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     //    /* check tem */
+ 250:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[0] = SHT3X_Data_Buffer[0];
+ 729              		.loc 1 250 5 view .LVU173
+ 730              		.loc 1 250 32 is_stmt 0 view .LVU174
+ 731 0034 9DF81060 		ldrb	r6, [sp, #16]	@ zero_extendqisi2
+ 251:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[1] = SHT3X_Data_Buffer[1];
+ 732              		.loc 1 251 32 view .LVU175
+ 733 0038 9DF81150 		ldrb	r5, [sp, #17]	@ zero_extendqisi2
+ 252:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[2] = SHT3X_Data_Buffer[2];
+ 734              		.loc 1 252 32 view .LVU176
+ 735 003c 9DF81220 		ldrb	r2, [sp, #18]	@ zero_extendqisi2
+ 250:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[1] = SHT3X_Data_Buffer[1];
+ 736              		.loc 1 250 13 view .LVU177
+ 737 0040 8DF80C60 		strb	r6, [sp, #12]
+ 251:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[1] = SHT3X_Data_Buffer[1];
+ 738              		.loc 1 251 5 is_stmt 1 view .LVU178
+ 253:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 254:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     tmp=SHT3x_CheckCrc(data, 2, data[2]);
+ 739              		.loc 1 254 9 is_stmt 0 view .LVU179
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 19
+
+
+ 740 0044 0221     		movs	r1, #2
+ 741 0046 03A8     		add	r0, sp, #12
+ 251:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[2] = SHT3X_Data_Buffer[2];
+ 742              		.loc 1 251 13 view .LVU180
+ 743 0048 8DF80D50 		strb	r5, [sp, #13]
+ 252:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 744              		.loc 1 252 5 is_stmt 1 view .LVU181
+ 252:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 745              		.loc 1 252 13 is_stmt 0 view .LVU182
+ 746 004c 8DF80E20 		strb	r2, [sp, #14]
+ 747              		.loc 1 254 5 is_stmt 1 view .LVU183
+ 748              		.loc 1 254 9 is_stmt 0 view .LVU184
+ 749 0050 FFF7FEFF 		bl	SHT3x_CheckCrc
+ 750              	.LVL39:
+ 255:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     if( !tmp ) /* value is ture */
+ 751              		.loc 1 255 5 is_stmt 1 view .LVU185
+ 752              		.loc 1 255 7 is_stmt 0 view .LVU186
+ 753 0054 28B9     		cbnz	r0, .L37
+ 256:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     {
+ 257:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         dat = ((uint16_t)data[0] << 8) | data[1];
+ 754              		.loc 1 257 9 is_stmt 1 view .LVU187
+ 755              	.LVL40:
+ 258:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         E53_IA1_Data.Temperature = SHT3x_CalcTemperatureC( dat );    
+ 756              		.loc 1 258 9 view .LVU188
+ 757              		.loc 1 258 36 is_stmt 0 view .LVU189
+ 758 0056 45EA0620 		orr	r0, r5, r6, lsl #8
+ 759              	.LVL41:
+ 760              		.loc 1 258 36 view .LVU190
+ 761 005a FFF7FEFF 		bl	SHT3x_CalcTemperatureC
+ 762              	.LVL42:
+ 763              		.loc 1 258 34 view .LVU191
+ 764 005e 84ED020A 		vstr.32	s0, [r4, #8]
+ 765              	.LVL43:
+ 766              	.L37:
+ 259:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     }
+ 260:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     
+ 261:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     //    /* check humidity */
+ 262:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[0] = SHT3X_Data_Buffer[3];
+ 767              		.loc 1 262 5 is_stmt 1 view .LVU192
+ 768              		.loc 1 262 32 is_stmt 0 view .LVU193
+ 769 0062 9DF81360 		ldrb	r6, [sp, #19]	@ zero_extendqisi2
+ 263:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[1] = SHT3X_Data_Buffer[4];
+ 770              		.loc 1 263 32 view .LVU194
+ 771 0066 9DF81450 		ldrb	r5, [sp, #20]	@ zero_extendqisi2
+ 264:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[2] = SHT3X_Data_Buffer[5];
+ 772              		.loc 1 264 32 view .LVU195
+ 773 006a 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
+ 262:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[1] = SHT3X_Data_Buffer[4];
+ 774              		.loc 1 262 13 view .LVU196
+ 775 006e 8DF80C60 		strb	r6, [sp, #12]
+ 263:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[1] = SHT3X_Data_Buffer[4];
+ 776              		.loc 1 263 5 is_stmt 1 view .LVU197
+ 265:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 266:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     tmp=SHT3x_CheckCrc(data, 2, data[2]);
+ 777              		.loc 1 266 9 is_stmt 0 view .LVU198
+ 778 0072 0221     		movs	r1, #2
+ 779 0074 03A8     		add	r0, sp, #12
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 20
+
+
+ 263:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     data[2] = SHT3X_Data_Buffer[5];
+ 780              		.loc 1 263 13 view .LVU199
+ 781 0076 8DF80D50 		strb	r5, [sp, #13]
+ 264:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 782              		.loc 1 264 5 is_stmt 1 view .LVU200
+ 264:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** 
+ 783              		.loc 1 264 13 is_stmt 0 view .LVU201
+ 784 007a 8DF80E20 		strb	r2, [sp, #14]
+ 785              		.loc 1 266 5 is_stmt 1 view .LVU202
+ 786              		.loc 1 266 9 is_stmt 0 view .LVU203
+ 787 007e FFF7FEFF 		bl	SHT3x_CheckCrc
+ 788              	.LVL44:
+ 267:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     if( !tmp ) /* value is ture */
+ 789              		.loc 1 267 5 is_stmt 1 view .LVU204
+ 790              		.loc 1 267 7 is_stmt 0 view .LVU205
+ 791 0082 28B9     		cbnz	r0, .L36
+ 268:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     {
+ 269:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         dat = ((uint16_t)data[0] << 8) | data[1];
+ 792              		.loc 1 269 9 is_stmt 1 view .LVU206
+ 793              	.LVL45:
+ 270:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****         E53_IA1_Data.Humidity = SHT3x_CalcRH( dat );    
+ 794              		.loc 1 270 9 view .LVU207
+ 795              		.loc 1 270 33 is_stmt 0 view .LVU208
+ 796 0084 45EA0620 		orr	r0, r5, r6, lsl #8
+ 797              	.LVL46:
+ 798              		.loc 1 270 33 view .LVU209
+ 799 0088 FFF7FEFF 		bl	SHT3x_CalcRH
+ 800              	.LVL47:
+ 801              		.loc 1 270 31 view .LVU210
+ 802 008c 84ED010A 		vstr.32	s0, [r4, #4]
+ 803              	.LVL48:
+ 804              	.L36:
+ 271:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     }
+ 272:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c ****     
+ 273:d:/liteos/code/WIFI2/Hardware/E53_IA1\E53_IA1.c **** }
+ 805              		.loc 1 273 1 view .LVU211
+ 806 0090 06B0     		add	sp, sp, #24
+ 807              	.LCFI19:
+ 808              		.cfi_def_cfa_offset 16
+ 809              		@ sp needed
+ 810 0092 70BD     		pop	{r4, r5, r6, pc}
+ 811              	.L40:
+ 812              		.align	2
+ 813              	.L39:
+ 814 0094 00000000 		.word	E53_IA1_Data
+ 815 0098 00000000 		.word	hi2c1
+ 816              		.cfi_endproc
+ 817              	.LFE298:
+ 819              		.global	POLYNOMIAL
+ 820              		.section	.rodata.POLYNOMIAL,"a"
+ 821              		.align	1
+ 824              	POLYNOMIAL:
+ 825 0000 3101     		.short	305
+ 826              		.text
+ 827              	.Letext0:
+ 828              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 829              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 21
+
+
+ 830              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 831              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 832              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 833              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 834              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 835              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 836              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 837              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 838              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 839              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 840              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 841              		.file 15 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 842              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 843              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 844              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 845              		.file 19 "d:/liteos/code/WIFI2/Hardware/E53_IA1/E53_IA1.h"
+ 846              		.file 20 "d:/liteos/code/WIFI2/Inc/i2c.h"
+ 847              		.file 21 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ARM GAS  C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 E53_IA1.c
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:18     .text.Init_BH1750:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:26     .text.Init_BH1750:00000000 Init_BH1750
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:62     .text.Init_BH1750:00000020 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:67     .text.Start_BH1750:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:74     .text.Start_BH1750:00000000 Start_BH1750
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:107    .text.Start_BH1750:00000020 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:115    .text.Convert_BH1750:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:122    .text.Convert_BH1750:00000000 Convert_BH1750
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:186    .text.Convert_BH1750:00000044 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:192    .text.SHT30_reset:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:199    .text.SHT30_reset:00000000 SHT30_reset
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:236    .text.SHT30_reset:00000028 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:241    .text.Init_SHT30:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:248    .text.Init_SHT30:00000000 Init_SHT30
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:281    .text.Init_SHT30:00000020 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:286    .text.SHT3x_CheckCrc:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:293    .text.SHT3x_CheckCrc:00000000 SHT3x_CheckCrc
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:370    .text.SHT3x_CalcTemperatureC:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:377    .text.SHT3x_CalcTemperatureC:00000000 SHT3x_CalcTemperatureC
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:409    .text.SHT3x_CalcTemperatureC:00000028 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:416    .text.SHT3x_CalcRH:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:423    .text.SHT3x_CalcRH:00000000 SHT3x_CalcRH
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:452    .text.SHT3x_CalcRH:00000020 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:458    .text.Init_Motor:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:465    .text.Init_Motor:00000000 Init_Motor
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:536    .text.Init_Motor:00000040 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:542    .text.Init_Light:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:549    .text.Init_Light:00000000 Init_Light
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:616    .text.Init_Light:00000040 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:621    .text.Init_E53_IA1:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:628    .text.Init_E53_IA1:00000000 Init_E53_IA1
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:667    .text.E53_IA1_Read_Data:00000000 $t
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:674    .text.E53_IA1_Read_Data:00000000 E53_IA1_Read_Data
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:814    .text.E53_IA1_Read_Data:00000094 $d
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:824    .rodata.POLYNOMIAL:00000000 POLYNOMIAL
+C:\Users\�ܼҺ�\AppData\Local\Temp\cco53uHT.s:821    .rodata.POLYNOMIAL:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Master_Transmit
+hi2c1
+__aeabi_i2d
+__aeabi_ddiv
+__aeabi_d2f
+HAL_Delay
+HAL_I2C_Master_Receive
+HAL_GPIO_WritePin
+HAL_GPIO_Init
+MX_I2C1_Init
+E53_IA1_Data

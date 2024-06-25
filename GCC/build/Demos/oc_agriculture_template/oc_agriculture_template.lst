@@ -1,0 +1,2059 @@
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"oc_agriculture_template.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata.app_cmd_task_entry.str1.1,"aMS",%progbits,1
+  18              	.LC0:
+  19 0000 41677269 		.ascii	"Agriculture_Control_Light:msgid:%d mid:%d\000"
+  19      63756C74 
+  19      7572655F 
+  19      436F6E74 
+  19      726F6C5F 
+  20              	.LC1:
+  21 002a 41677269 		.ascii	"Agriculture_Control_Motor:msgid:%d mid:%d\000"
+  21      63756C74 
+  21      7572655F 
+  21      436F6E74 
+  21      726F6C5F 
+  22              		.section	.text.app_cmd_task_entry,"ax",%progbits
+  23              		.align	1
+  24              		.arch armv7e-m
+  25              		.syntax unified
+  26              		.thumb
+  27              		.thumb_func
+  28              		.fpu fpv4-sp-d16
+  30              	app_cmd_task_entry:
+  31              	.LFB288:
+  32              		.file 1 "d:/liteos/code/WIFI2/Demos/oc_agriculture_template/oc_agriculture_template.c"
+   1:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** /*----------------------------------------------------------------------------
+   2:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * All rights reserved.
+   4:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * are permitted provided that the following conditions are met:
+   6:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * conditions and the following disclaimer.
+   8:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * provided with the distribution.
+  11:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * permission.
+  14:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 2
+
+
+  19:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *---------------------------------------------------------------------------*/
+  26:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** /*----------------------------------------------------------------------------
+  27:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Notice of Export Control Law
+  28:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * ===============================================
+  29:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * applicable export control laws and regulations.
+  33:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *---------------------------------------------------------------------------*/
+  34:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** /**
+  35:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *  2019-05-14 17:21  zhangqianfu  The first version
+  37:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *
+  38:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****  */
+  39:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <stdint.h>
+  40:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <stddef.h>
+  41:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <string.h>
+  42:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  43:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <osal.h>
+  44:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <oc_lwm2m_al.h>
+  45:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <link_endian.h>
+  46:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  47:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include "E53_IA1.h"
+  48:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include "lcd.h"
+  49:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  50:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <gpio.h>
+  51:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <stm32l4xx_it.h>
+  52:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  53:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_endpoint_id "changteng"
+  54:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_server "119.3.250.80"
+  55:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_port "5683"
+  56:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  57:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_Agriculture 0x0
+  58:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_Agriculture_Control_Light 0x1
+  59:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_response_Agriculture_Control_Light 0x2
+  60:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_Agriculture_Control_Motor 0x3
+  61:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_response_Agriculture_Control_Motor 0x4
+  62:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  63:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #pragma pack(1)
+  64:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  65:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  66:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t messageId;
+  67:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t Temperature;
+  68:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t Humidity;
+  69:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t Luminance;
+  70:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Agriculture;
+  71:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  72:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  73:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  74:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t messageId;
+  75:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t mid;
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 3
+
+
+  76:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t errcode;
+  77:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t Light_State;
+  78:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Response_Agriculture_Control_Light;
+  79:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  80:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  81:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  82:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t messageId;
+  83:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t mid;
+  84:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t errcode;
+  85:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t Motor_State;
+  86:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Response_Agriculture_Control_Motor;
+  87:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  88:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  89:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  90:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t messageId;
+  91:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t mid;
+  92:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     char Light[3];
+  93:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Agriculture_Control_Light;
+  94:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  95:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  96:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  97:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint8_t messageId;
+  98:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t mid;
+  99:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     char Motor[3];
+ 100:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Agriculture_Control_Motor;
+ 101:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #pragma pack()
+ 102:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 103:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** E53_IA1_Data_TypeDef E53_IA1_Data;
+ 104:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 105:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** //if your command is very fast,please use a queue here--TODO
+ 106:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_rcv_buf_len 128
+ 107:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int s_rcv_buffer[cn_app_rcv_buf_len];
+ 108:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int s_rcv_datalen;
+ 109:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** static osal_semp_t s_rcv_sync;
+ 110:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 111:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** //use this function to push all the message to the buffer
+ 112:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int app_msg_deal(void *usr_data, en_oc_lwm2m_msg_t type, void *data, int len)
+ 113:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 114:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     unsigned char *msg;
+ 115:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     msg = data;
+ 116:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+ 117:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 118:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     if (len <= cn_app_rcv_buf_len)
+ 119:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 120:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         if (msg[0] == 0xaa && msg[1] == 0xaa)
+ 121:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 122:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             printf("OC respond message received! \n\r");
+ 123:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             return ret;
+ 124:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 125:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         memcpy(s_rcv_buffer, msg, len);
+ 126:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         s_rcv_datalen = len;
+ 127:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 128:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         (void)osal_semp_post(s_rcv_sync);
+ 129:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 130:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         ret = 0;
+ 131:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 132:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return ret;
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 4
+
+
+ 133:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 134:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 135:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int app_cmd_task_entry()
+ 136:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  33              		.loc 1 136 1 view -0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 16
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+ 137:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+  37              		.loc 1 137 5 view .LVU1
+  38              	.LVL0:
+ 136:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+  39              		.loc 1 136 1 is_stmt 0 view .LVU2
+  40 0000 7FB5     		push	{r0, r1, r2, r3, r4, r5, r6, lr}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 32
+  43              		.cfi_offset 4, -16
+  44              		.cfi_offset 5, -12
+  45              		.cfi_offset 6, -8
+  46              		.cfi_offset 14, -4
+ 138:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Response_Agriculture_Control_Light Response_Agriculture_Control_Light;
+ 139:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Response_Agriculture_Control_Motor Response_Agriculture_Control_Motor;
+ 140:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture_Control_Light *Agriculture_Control_Light;
+ 141:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture_Control_Motor *Agriculture_Control_Motor;
+ 142:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t msgid;
+ 143:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 144:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     while (1)
+ 145:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 146:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         if (osal_semp_pend(s_rcv_sync, cn_osal_timeout_forever))
+  47              		.loc 1 146 13 view .LVU3
+  48 0002 514E     		ldr	r6, .L23
+ 147:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 148:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             msgid = s_rcv_buffer[0] & 0x000000FF;
+  49              		.loc 1 148 33 view .LVU4
+  50 0004 514C     		ldr	r4, .L23+4
+  51              	.L2:
+ 138:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Response_Agriculture_Control_Light Response_Agriculture_Control_Light;
+  52              		.loc 1 138 5 is_stmt 1 view .LVU5
+ 139:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture_Control_Light *Agriculture_Control_Light;
+  53              		.loc 1 139 5 view .LVU6
+ 140:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture_Control_Motor *Agriculture_Control_Motor;
+  54              		.loc 1 140 5 view .LVU7
+ 141:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t msgid;
+  55              		.loc 1 141 5 view .LVU8
+ 142:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  56              		.loc 1 142 5 view .LVU9
+ 144:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+  57              		.loc 1 144 5 view .LVU10
+ 146:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+  58              		.loc 1 146 9 view .LVU11
+ 146:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+  59              		.loc 1 146 13 is_stmt 0 view .LVU12
+  60 0006 3068     		ldr	r0, [r6]
+  61 0008 4FF0FF31 		mov	r1, #-1
+  62 000c FFF7FEFF 		bl	osal_semp_pend
+  63              	.LVL1:
+ 146:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 5
+
+
+  64              		.loc 1 146 12 view .LVU13
+  65 0010 0028     		cmp	r0, #0
+  66 0012 F8D0     		beq	.L2
+  67              		.loc 1 148 13 is_stmt 1 view .LVU14
+  68              		.loc 1 148 19 is_stmt 0 view .LVU15
+  69 0014 94F90050 		ldrsb	r5, [r4]
+  70              	.LVL2:
+ 149:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****              //**********************‰∫ëÂπ≥Âè∞ÊéßÂà∂ÔºöÂëΩ‰ª§‰∏ãÂèë********************************
+ 150:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             switch (msgid)
+  71              		.loc 1 150 13 is_stmt 1 view .LVU16
+  72 0018 012D     		cmp	r5, #1
+  73 001a 2CD0     		beq	.L4
+  74 001c 032D     		cmp	r5, #3
+  75 001e F2D1     		bne	.L2
+ 151:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             {
+ 152:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             case cn_app_Agriculture_Control_Light:
+ 153:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 Agriculture_Control_Light = (tag_app_Agriculture_Control_Light *)s_rcv_buffer;
+ 154:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 printf("Agriculture_Control_Light:msgid:%d mid:%d", Agriculture_Control_Light->mess
+ 155:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 /********** code area for cmd from IoT cloud  **********/
+ 156:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 if (Agriculture_Control_Light->Light[0] == 'O' && Agriculture_Control_Light->Light[
+ 157:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 158:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     HAL_GPIO_WritePin(IA1_Light_GPIO_Port, IA1_Light_Pin, GPIO_PIN_SET);
+ 159:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.messageId = cn_app_response_Agriculture_Cont
+ 160:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 161:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.errcode = 0;
+ 162:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.Light_State = 1;
+ 163:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Light, sizeof(Response_Ag
+ 164:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 165:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 if (Agriculture_Control_Light->Light[0] == 'O' && Agriculture_Control_Light->Light[
+ 166:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 167:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     HAL_GPIO_WritePin(IA1_Light_GPIO_Port, IA1_Light_Pin, GPIO_PIN_RESET);
+ 168:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.messageId = cn_app_response_Agriculture_Cont
+ 169:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 170:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.errcode = 0;
+ 171:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.Light_State = 0;
+ 172:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Light, sizeof(Response_Ag
+ 173:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 174:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 /********** code area end  **********/
+ 175:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 break;
+ 176:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             case cn_app_Agriculture_Control_Motor:
+ 177:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 Agriculture_Control_Motor = (tag_app_Agriculture_Control_Motor *)s_rcv_buffer;
+  76              		.loc 1 177 17 view .LVU17
+  77              	.LVL3:
+ 178:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 printf("Agriculture_Control_Motor:msgid:%d mid:%d", Agriculture_Control_Motor->mess
+  78              		.loc 1 178 17 view .LVU18
+  79 0020 B4F80120 		ldrh	r2, [r4, #1]	@ unaligned
+  80 0024 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
+  81 0026 4A48     		ldr	r0, .L23+8
+  82 0028 52BA     		rev16	r2, r2
+  83 002a 92B2     		uxth	r2, r2
+  84 002c FFF7FEFF 		bl	printf
+  85              	.LVL4:
+ 179:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 /********** code area for cmd from IoT cloud  **********/
+ 180:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 if (Agriculture_Control_Motor->Motor[0] == 'O' && Agriculture_Control_Motor->Motor[
+  86              		.loc 1 180 17 view .LVU19
+  87              		.loc 1 180 20 is_stmt 0 view .LVU20
+  88 0030 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 6
+
+
+  89 0032 4F2B     		cmp	r3, #79
+  90 0034 E7D1     		bne	.L2
+  91              		.loc 1 180 64 discriminator 1 view .LVU21
+  92 0036 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+  93 0038 4E2B     		cmp	r3, #78
+  94 003a 66D0     		beq	.L10
+  95              	.L12:
+ 181:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 182:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     HAL_GPIO_WritePin(IA1_Motor_GPIO_Port, IA1_Motor_Pin, GPIO_PIN_SET);
+ 183:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.messageId = cn_app_response_Agriculture_Cont
+ 184:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.mid = Agriculture_Control_Motor->mid;
+ 185:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.errcode = 0;
+ 186:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.Motor_State = 1;
+ 187:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Motor, sizeof(Response_Ag
+ 188:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 189:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 if (Agriculture_Control_Motor->Motor[0] == 'O' && Agriculture_Control_Motor->Motor[
+  96              		.loc 1 189 64 view .LVU22
+  97 003c 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+  98 003e 462B     		cmp	r3, #70
+  99 0040 E1D1     		bne	.L2
+ 100              		.loc 1 189 110 discriminator 2 view .LVU23
+ 101 0042 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 102 0044 462B     		cmp	r3, #70
+ 103 0046 DED1     		bne	.L2
+ 190:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 191:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     HAL_GPIO_WritePin(IA1_Motor_GPIO_Port, IA1_Motor_Pin, GPIO_PIN_RESET);
+ 104              		.loc 1 191 21 is_stmt 1 view .LVU24
+ 105 0048 4248     		ldr	r0, .L23+12
+ 106 004a 0022     		movs	r2, #0
+ 107 004c 4FF48071 		mov	r1, #256
+ 108 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 109              	.LVL5:
+ 192:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.messageId = cn_app_response_Agriculture_Cont
+ 110              		.loc 1 192 21 view .LVU25
+ 111              		.loc 1 192 66 is_stmt 0 view .LVU26
+ 112 0054 0423     		movs	r3, #4
+ 113 0056 8DF80830 		strb	r3, [sp, #8]
+ 193:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.mid = Agriculture_Control_Motor->mid;
+ 114              		.loc 1 193 21 is_stmt 1 view .LVU27
+ 115              		.loc 1 193 87 is_stmt 0 view .LVU28
+ 116 005a B4F80130 		ldrh	r3, [r4, #1]	@ unaligned
+ 117              		.loc 1 193 60 view .LVU29
+ 118 005e ADF80930 		strh	r3, [sp, #9]	@ unaligned
+ 194:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.errcode = 0;
+ 119              		.loc 1 194 21 is_stmt 1 view .LVU30
+ 120              		.loc 1 194 64 is_stmt 0 view .LVU31
+ 121 0062 0023     		movs	r3, #0
+ 122 0064 8DF80B30 		strb	r3, [sp, #11]
+ 195:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.Motor_State = 0;
+ 123              		.loc 1 195 21 is_stmt 1 view .LVU32
+ 124              		.loc 1 195 68 is_stmt 0 view .LVU33
+ 125 0068 8DF80C30 		strb	r3, [sp, #12]
+ 196:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Motor, sizeof(Response_Ag
+ 126              		.loc 1 196 21 is_stmt 1 view .LVU34
+ 127 006c 4FF47A72 		mov	r2, #1000
+ 128 0070 0521     		movs	r1, #5
+ 129 0072 02A8     		add	r0, sp, #8
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 7
+
+
+ 130 0074 2AE0     		b	.L22
+ 131              	.LVL6:
+ 132              	.L4:
+ 153:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 printf("Agriculture_Control_Light:msgid:%d mid:%d", Agriculture_Control_Light->mess
+ 133              		.loc 1 153 17 view .LVU35
+ 154:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 /********** code area for cmd from IoT cloud  **********/
+ 134              		.loc 1 154 17 view .LVU36
+ 135 0076 B4F80120 		ldrh	r2, [r4, #1]	@ unaligned
+ 136 007a 94F90010 		ldrsb	r1, [r4]
+ 137 007e 3648     		ldr	r0, .L23+16
+ 138 0080 52BA     		rev16	r2, r2
+ 139 0082 92B2     		uxth	r2, r2
+ 140 0084 FFF7FEFF 		bl	printf
+ 141              	.LVL7:
+ 156:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 142              		.loc 1 156 17 view .LVU37
+ 156:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 143              		.loc 1 156 20 is_stmt 0 view .LVU38
+ 144 0088 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 145 008a 4F2B     		cmp	r3, #79
+ 146 008c BBD1     		bne	.L2
+ 156:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 147              		.loc 1 156 64 discriminator 1 view .LVU39
+ 148 008e 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 149 0090 4E2B     		cmp	r3, #78
+ 150 0092 1ED0     		beq	.L7
+ 151              	.L9:
+ 165:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 152              		.loc 1 165 64 view .LVU40
+ 153 0094 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 154 0096 462B     		cmp	r3, #70
+ 155 0098 B5D1     		bne	.L2
+ 165:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 156              		.loc 1 165 110 discriminator 2 view .LVU41
+ 157 009a 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 158 009c 462B     		cmp	r3, #70
+ 159 009e B2D1     		bne	.L2
+ 167:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.messageId = cn_app_response_Agriculture_Cont
+ 160              		.loc 1 167 21 is_stmt 1 view .LVU42
+ 161 00a0 0022     		movs	r2, #0
+ 162 00a2 0121     		movs	r1, #1
+ 163 00a4 4FF09040 		mov	r0, #1207959552
+ 164 00a8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 165              	.LVL8:
+ 168:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 166              		.loc 1 168 21 view .LVU43
+ 168:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 167              		.loc 1 168 66 is_stmt 0 view .LVU44
+ 168 00ac 0223     		movs	r3, #2
+ 169 00ae 8DF80030 		strb	r3, [sp]
+ 169:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.errcode = 0;
+ 170              		.loc 1 169 21 is_stmt 1 view .LVU45
+ 169:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.errcode = 0;
+ 171              		.loc 1 169 87 is_stmt 0 view .LVU46
+ 172 00b2 B4F80130 		ldrh	r3, [r4, #1]	@ unaligned
+ 169:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.errcode = 0;
+ 173              		.loc 1 169 60 view .LVU47
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 8
+
+
+ 174 00b6 ADF80130 		strh	r3, [sp, #1]	@ unaligned
+ 170:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.Light_State = 0;
+ 175              		.loc 1 170 21 is_stmt 1 view .LVU48
+ 170:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.Light_State = 0;
+ 176              		.loc 1 170 64 is_stmt 0 view .LVU49
+ 177 00ba 0023     		movs	r3, #0
+ 178 00bc 8DF80330 		strb	r3, [sp, #3]
+ 171:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Light, sizeof(Response_Ag
+ 179              		.loc 1 171 21 is_stmt 1 view .LVU50
+ 171:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Light, sizeof(Response_Ag
+ 180              		.loc 1 171 68 is_stmt 0 view .LVU51
+ 181 00c0 8DF80430 		strb	r3, [sp, #4]
+ 172:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 182              		.loc 1 172 21 is_stmt 1 view .LVU52
+ 183 00c4 4FF47A72 		mov	r2, #1000
+ 184 00c8 0521     		movs	r1, #5
+ 185 00ca 6846     		mov	r0, sp
+ 186              	.LVL9:
+ 187              	.L22:
+ 188              		.loc 1 196 21 is_stmt 0 view .LVU53
+ 189 00cc FFF7FEFF 		bl	oc_lwm2m_report
+ 190              	.LVL10:
+ 191 00d0 99E7     		b	.L2
+ 192              	.LVL11:
+ 193              	.L7:
+ 158:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.messageId = cn_app_response_Agriculture_Cont
+ 194              		.loc 1 158 21 is_stmt 1 view .LVU54
+ 195 00d2 2A46     		mov	r2, r5
+ 196 00d4 2946     		mov	r1, r5
+ 197 00d6 4FF09040 		mov	r0, #1207959552
+ 198 00da FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 199              	.LVL12:
+ 159:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 200              		.loc 1 159 21 view .LVU55
+ 159:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 201              		.loc 1 159 66 is_stmt 0 view .LVU56
+ 202 00de 0223     		movs	r3, #2
+ 203 00e0 8DF80030 		strb	r3, [sp]
+ 160:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.errcode = 0;
+ 204              		.loc 1 160 21 is_stmt 1 view .LVU57
+ 160:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.errcode = 0;
+ 205              		.loc 1 160 87 is_stmt 0 view .LVU58
+ 206 00e4 B4F80130 		ldrh	r3, [r4, #1]	@ unaligned
+ 160:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.errcode = 0;
+ 207              		.loc 1 160 60 view .LVU59
+ 208 00e8 ADF80130 		strh	r3, [sp, #1]	@ unaligned
+ 161:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.Light_State = 1;
+ 209              		.loc 1 161 21 is_stmt 1 view .LVU60
+ 163:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 210              		.loc 1 163 21 is_stmt 0 view .LVU61
+ 211 00ec 4FF47A72 		mov	r2, #1000
+ 161:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.Light_State = 1;
+ 212              		.loc 1 161 64 view .LVU62
+ 213 00f0 0023     		movs	r3, #0
+ 163:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 214              		.loc 1 163 21 view .LVU63
+ 215 00f2 0521     		movs	r1, #5
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 9
+
+
+ 216 00f4 6846     		mov	r0, sp
+ 161:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Light.Light_State = 1;
+ 217              		.loc 1 161 64 view .LVU64
+ 218 00f6 8DF80330 		strb	r3, [sp, #3]
+ 162:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Light, sizeof(Response_Ag
+ 219              		.loc 1 162 21 is_stmt 1 view .LVU65
+ 162:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Light, sizeof(Response_Ag
+ 220              		.loc 1 162 68 is_stmt 0 view .LVU66
+ 221 00fa 8DF80450 		strb	r5, [sp, #4]
+ 163:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 222              		.loc 1 163 21 is_stmt 1 view .LVU67
+ 223 00fe FFF7FEFF 		bl	oc_lwm2m_report
+ 224              	.LVL13:
+ 165:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 225              		.loc 1 165 17 view .LVU68
+ 165:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 226              		.loc 1 165 20 is_stmt 0 view .LVU69
+ 227 0102 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 228 0104 4F2B     		cmp	r3, #79
+ 229 0106 C5D0     		beq	.L9
+ 230 0108 7DE7     		b	.L2
+ 231              	.LVL14:
+ 232              	.L10:
+ 182:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.messageId = cn_app_response_Agriculture_Cont
+ 233              		.loc 1 182 21 is_stmt 1 view .LVU70
+ 234 010a 1248     		ldr	r0, .L23+12
+ 235 010c 0122     		movs	r2, #1
+ 236 010e 4FF48071 		mov	r1, #256
+ 237 0112 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 238              	.LVL15:
+ 183:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.mid = Agriculture_Control_Motor->mid;
+ 239              		.loc 1 183 21 view .LVU71
+ 183:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.mid = Agriculture_Control_Motor->mid;
+ 240              		.loc 1 183 66 is_stmt 0 view .LVU72
+ 241 0116 0423     		movs	r3, #4
+ 242 0118 8DF80830 		strb	r3, [sp, #8]
+ 184:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.errcode = 0;
+ 243              		.loc 1 184 21 is_stmt 1 view .LVU73
+ 184:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.errcode = 0;
+ 244              		.loc 1 184 87 is_stmt 0 view .LVU74
+ 245 011c B4F80130 		ldrh	r3, [r4, #1]	@ unaligned
+ 184:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.errcode = 0;
+ 246              		.loc 1 184 60 view .LVU75
+ 247 0120 ADF80930 		strh	r3, [sp, #9]	@ unaligned
+ 185:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.Motor_State = 1;
+ 248              		.loc 1 185 21 is_stmt 1 view .LVU76
+ 185:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Response_Agriculture_Control_Motor.Motor_State = 1;
+ 249              		.loc 1 185 64 is_stmt 0 view .LVU77
+ 250 0124 0023     		movs	r3, #0
+ 251 0126 8DF80B30 		strb	r3, [sp, #11]
+ 186:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Motor, sizeof(Response_Ag
+ 252              		.loc 1 186 21 is_stmt 1 view .LVU78
+ 187:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 253              		.loc 1 187 21 is_stmt 0 view .LVU79
+ 254 012a 4FF47A72 		mov	r2, #1000
+ 186:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Motor, sizeof(Response_Ag
+ 255              		.loc 1 186 68 view .LVU80
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 10
+
+
+ 256 012e 0123     		movs	r3, #1
+ 187:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 257              		.loc 1 187 21 view .LVU81
+ 258 0130 0521     		movs	r1, #5
+ 259 0132 02A8     		add	r0, sp, #8
+ 186:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     oc_lwm2m_report((char *)&Response_Agriculture_Control_Motor, sizeof(Response_Ag
+ 260              		.loc 1 186 68 view .LVU82
+ 261 0134 8DF80C30 		strb	r3, [sp, #12]
+ 187:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 262              		.loc 1 187 21 is_stmt 1 view .LVU83
+ 263 0138 FFF7FEFF 		bl	oc_lwm2m_report
+ 264              	.LVL16:
+ 189:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 265              		.loc 1 189 17 view .LVU84
+ 189:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 {
+ 266              		.loc 1 189 20 is_stmt 0 view .LVU85
+ 267 013c E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 268 013e 4F2B     		cmp	r3, #79
+ 269 0140 3FF47CAF 		beq	.L12
+ 270 0144 5FE7     		b	.L2
+ 271              	.L24:
+ 272 0146 00BF     		.align	2
+ 273              	.L23:
+ 274 0148 00000000 		.word	.LANCHOR0
+ 275 014c 00000000 		.word	.LANCHOR1
+ 276 0150 2A000000 		.word	.LC1
+ 277 0154 00040048 		.word	1207960576
+ 278 0158 00000000 		.word	.LC0
+ 279              		.cfi_endproc
+ 280              	.LFE288:
+ 282              		.section	.rodata.app_msg_deal.str1.1,"aMS",%progbits,1
+ 283              	.LC2:
+ 284 0000 4F432072 		.ascii	"OC respond message received! \012\015\000"
+ 284      6573706F 
+ 284      6E64206D 
+ 284      65737361 
+ 284      67652072 
+ 285              		.section	.text.app_msg_deal,"ax",%progbits
+ 286              		.align	1
+ 287              		.syntax unified
+ 288              		.thumb
+ 289              		.thumb_func
+ 290              		.fpu fpv4-sp-d16
+ 292              	app_msg_deal:
+ 293              	.LVL17:
+ 294              	.LFB287:
+ 113:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     unsigned char *msg;
+ 295              		.loc 1 113 1 is_stmt 1 view -0
+ 296              		.cfi_startproc
+ 297              		@ args = 0, pretend = 0, frame = 0
+ 298              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     msg = data;
+ 299              		.loc 1 114 5 view .LVU87
+ 115:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+ 300              		.loc 1 115 5 view .LVU88
+ 116:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 301              		.loc 1 116 5 view .LVU89
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 11
+
+
+ 118:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 302              		.loc 1 118 5 view .LVU90
+ 118:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 303              		.loc 1 118 8 is_stmt 0 view .LVU91
+ 304 0000 802B     		cmp	r3, #128
+ 113:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     unsigned char *msg;
+ 305              		.loc 1 113 1 view .LVU92
+ 306 0002 08B5     		push	{r3, lr}
+ 307              	.LCFI1:
+ 308              		.cfi_def_cfa_offset 8
+ 309              		.cfi_offset 3, -8
+ 310              		.cfi_offset 14, -4
+ 113:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     unsigned char *msg;
+ 311              		.loc 1 113 1 view .LVU93
+ 312 0004 1146     		mov	r1, r2
+ 313              	.LVL18:
+ 118:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 314              		.loc 1 118 8 view .LVU94
+ 315 0006 08DC     		bgt	.L28
+ 120:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 316              		.loc 1 120 9 is_stmt 1 view .LVU95
+ 120:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 317              		.loc 1 120 12 is_stmt 0 view .LVU96
+ 318 0008 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 319              	.LVL19:
+ 120:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 320              		.loc 1 120 12 view .LVU97
+ 321 000a AA2A     		cmp	r2, #170
+ 322 000c 08D1     		bne	.L27
+ 120:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 323              		.loc 1 120 28 discriminator 1 view .LVU98
+ 324 000e 4A78     		ldrb	r2, [r1, #1]	@ zero_extendqisi2
+ 325 0010 AA2A     		cmp	r2, #170
+ 326 0012 05D1     		bne	.L27
+ 122:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             return ret;
+ 327              		.loc 1 122 13 is_stmt 1 view .LVU99
+ 328 0014 0748     		ldr	r0, .L29
+ 329              	.LVL20:
+ 122:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             return ret;
+ 330              		.loc 1 122 13 is_stmt 0 view .LVU100
+ 331 0016 FFF7FEFF 		bl	printf
+ 332              	.LVL21:
+ 123:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 333              		.loc 1 123 13 is_stmt 1 view .LVU101
+ 334              	.L28:
+ 116:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 335              		.loc 1 116 9 is_stmt 0 view .LVU102
+ 336 001a 4FF0FF30 		mov	r0, #-1
+ 337              	.LVL22:
+ 116:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 338              		.loc 1 116 9 view .LVU103
+ 339 001e 08E0     		b	.L25
+ 340              	.LVL23:
+ 341              	.L27:
+ 125:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         s_rcv_datalen = len;
+ 342              		.loc 1 125 9 is_stmt 1 view .LVU104
+ 343 0020 1A46     		mov	r2, r3
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 12
+
+
+ 344 0022 0548     		ldr	r0, .L29+4
+ 345              	.LVL24:
+ 125:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         s_rcv_datalen = len;
+ 346              		.loc 1 125 9 is_stmt 0 view .LVU105
+ 347 0024 FFF7FEFF 		bl	memcpy
+ 348              	.LVL25:
+ 126:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 349              		.loc 1 126 9 is_stmt 1 view .LVU106
+ 128:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 350              		.loc 1 128 9 view .LVU107
+ 351 0028 044B     		ldr	r3, .L29+8
+ 128:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 352              		.loc 1 128 15 is_stmt 0 view .LVU108
+ 353 002a 1868     		ldr	r0, [r3]
+ 354 002c FFF7FEFF 		bl	osal_semp_post
+ 355              	.LVL26:
+ 130:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 356              		.loc 1 130 9 is_stmt 1 view .LVU109
+ 130:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 357              		.loc 1 130 13 is_stmt 0 view .LVU110
+ 358 0030 0020     		movs	r0, #0
+ 359              	.LVL27:
+ 360              	.L25:
+ 133:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 361              		.loc 1 133 1 view .LVU111
+ 362 0032 08BD     		pop	{r3, pc}
+ 363              	.L30:
+ 364              		.align	2
+ 365              	.L29:
+ 366 0034 00000000 		.word	.LC2
+ 367 0038 00000000 		.word	.LANCHOR1
+ 368 003c 00000000 		.word	.LANCHOR0
+ 369              		.cfi_endproc
+ 370              	.LFE287:
+ 372              		.section	.rodata.app_collect_task_entry.str1.1,"aMS",%progbits,1
+ 373              	.LC3:
+ 374 0000 0D0A2A2A 		.ascii	"\015\012******************************Lux Value is "
+ 374      2A2A2A2A 
+ 374      2A2A2A2A 
+ 374      2A2A2A2A 
+ 374      2A2A2A2A 
+ 375 002d 2025640D 		.ascii	" %d\015\012\000"
+ 375      0A00
+ 376              	.LC4:
+ 377 0033 0D0A2A2A 		.ascii	"\015\012******************************Humidity is  "
+ 377      2A2A2A2A 
+ 377      2A2A2A2A 
+ 377      2A2A2A2A 
+ 377      2A2A2A2A 
+ 378 0060 25640D0A 		.ascii	"%d\015\012\000"
+ 378      00
+ 379              	.LC5:
+ 380 0065 0D0A2A2A 		.ascii	"\015\012******************************Temperature i"
+ 380      2A2A2A2A 
+ 380      2A2A2A2A 
+ 380      2A2A2A2A 
+ 380      2A2A2A2A 
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 13
+
+
+ 381 0092 73202025 		.ascii	"s  %d\015\012\000"
+ 381      640D0A00 
+ 382              	.LC6:
+ 383 009a 20204F4E 		.ascii	"  ON\000"
+ 383      00
+ 384              	.LC7:
+ 385 009f 204F4646 		.ascii	" OFF\000"
+ 385      00
+ 386              		.section	.text.app_collect_task_entry,"ax",%progbits
+ 387              		.align	1
+ 388              		.syntax unified
+ 389              		.thumb
+ 390              		.thumb_func
+ 391              		.fpu fpv4-sp-d16
+ 393              	app_collect_task_entry:
+ 394              	.LFB290:
+ 197:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 }
+ 198:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 /********** code area end  **********/
+ 199:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 break;
+ 200:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             default:
+ 201:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 break;
+ 202:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             }
+ 203:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 204:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 205:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 206:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return ret;
+ 207:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 208:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 209:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int app_report_task_entry()
+ 210:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 211:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+ 212:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 213:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_config_param_t oc_param;
+ 214:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture Agriculture;
+ 215:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 216:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     (void)memset(&oc_param, 0, sizeof(oc_param));
+ 217:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 218:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.address = cn_app_server;
+ 219:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.port = cn_app_port;
+ 220:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.ep_id = cn_endpoint_id;
+ 221:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.boot_mode = en_oc_boot_strap_mode_factory;
+ 222:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.rcv_func = app_msg_deal;
+ 223:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 224:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     ret = oc_lwm2m_config(&oc_param);
+ 225:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     if (0 != ret)
+ 226:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 227:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         return ret;
+ 228:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 229:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //**********************‰∫ëÂπ≥Âè∞ÊéßÂà∂Ôºö‰∏äÊä•****************************************//
+ 230:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //install a dealer for the led message received
+ 231:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     while (1) //--TODO ,you could add your own code here
+ 232:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 233:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.messageId = cn_app_Agriculture;
+ 234:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Temperature = (int8_t)E53_IA1_Data.Temperature;
+ 235:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Humidity = (int8_t)E53_IA1_Data.Humidity;
+ 236:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Luminance = htons((uint16_t)E53_IA1_Data.Lux);
+ 237:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         oc_lwm2m_report((char *)&Agriculture, sizeof(Agriculture), 1000);
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 14
+
+
+ 238:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         osal_task_sleep(2 * 1000);
+ 239:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 240:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return ret;
+ 241:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 242:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** extern UART_HandleTypeDef uart_comm;
+ 243:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** uint8_t comm_data[16] = {0};
+ 244:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 245:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         
+ 246:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 247:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int app_collect_task_entry()
+ 248:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 395              		.loc 1 248 1 is_stmt 1 view -0
+ 396              		.cfi_startproc
+ 397              		@ Volatile: function does not return.
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     Init_E53_IA1();
+ 400              		.loc 1 249 5 view .LVU113
+ 248:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     Init_E53_IA1();
+ 401              		.loc 1 248 1 is_stmt 0 view .LVU114
+ 402 0000 83B5     		push	{r0, r1, r7, lr}
+ 403              	.LCFI2:
+ 404              		.cfi_def_cfa_offset 16
+ 405              		.cfi_offset 7, -8
+ 406              		.cfi_offset 14, -4
+ 407              		.loc 1 249 5 view .LVU115
+ 408 0002 FFF7FEFF 		bl	Init_E53_IA1
+ 409              	.LVL28:
+ 250:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     while (1)
+ 251:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 252:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         E53_IA1_Read_Data();
+ 253:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Lux Value is  %d\r\n", (int)E53_IA1_Data.Lux);
+ 254:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Humidity is  %d\r\n", (int)E53_IA1_Data.Humidity)
+ 255:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Temperature is  %d\r\n", (int)E53_IA1_Data.Temper
+ 256:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 257:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //**********************Êô∫ËÉΩÊéßÂà∂****************************************//
+ 258:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //ÂÖâÁÖß‰ø°ÊÅØÔºö
+ 259:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         if (E53_IA1_Data.Lux <= 10)
+ 260:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 261:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             HAL_GPIO_WritePin(IA1_Light_GPIO_Port, IA1_Light_Pin, GPIO_PIN_SET);
+ 262:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 263:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         else if( E53_IA1_Data.Lux >= 1000)
+ 264:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 265:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             HAL_GPIO_WritePin(IA1_Light_GPIO_Port, IA1_Light_Pin, GPIO_PIN_RESET);
+ 266:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 267:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 268:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //Ê∏©Â∫¶‰ø°ÊÅØ
+ 269:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         if (E53_IA1_Data.Temperature >= 37)
+ 270:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 271:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             HAL_GPIO_WritePin(IA1_Motor_GPIO_Port, IA1_Motor_Pin, GPIO_PIN_SET);
+ 272:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 273:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         else if(E53_IA1_Data.Temperature <= 25)
+ 274:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 275:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             HAL_GPIO_WritePin(IA1_Motor_GPIO_Port, IA1_Motor_Pin, GPIO_PIN_RESET);
+ 410              		.loc 1 275 13 view .LVU116
+ 411 0006 A54D     		ldr	r5, .L63
+ 412              	.L48:
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 15
+
+
+ 250:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     while (1)
+ 413              		.loc 1 250 5 is_stmt 1 view .LVU117
+ 252:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Lux Value is  %d\r\n", (int)E53_IA1_Data.Lux);
+ 414              		.loc 1 252 9 view .LVU118
+ 253:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Humidity is  %d\r\n", (int)E53_IA1_Data.Humidity)
+ 415              		.loc 1 253 91 is_stmt 0 view .LVU119
+ 416 0008 A54C     		ldr	r4, .L63+4
+ 252:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Lux Value is  %d\r\n", (int)E53_IA1_Data.Lux);
+ 417              		.loc 1 252 9 view .LVU120
+ 418 000a FFF7FEFF 		bl	E53_IA1_Read_Data
+ 419              	.LVL29:
+ 253:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Humidity is  %d\r\n", (int)E53_IA1_Data.Humidity)
+ 420              		.loc 1 253 9 is_stmt 1 view .LVU121
+ 421 000e D4ED007A 		vldr.32	s15, [r4]
+ 422 0012 A448     		ldr	r0, .L63+8
+ 423 0014 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 424 0018 17EE901A 		vmov	r1, s15	@ int
+ 425 001c FFF7FEFF 		bl	printf
+ 426              	.LVL30:
+ 254:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Temperature is  %d\r\n", (int)E53_IA1_Data.Temper
+ 427              		.loc 1 254 9 view .LVU122
+ 428 0020 D4ED017A 		vldr.32	s15, [r4, #4]
+ 429 0024 A048     		ldr	r0, .L63+12
+ 430 0026 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 431 002a 17EE901A 		vmov	r1, s15	@ int
+ 432 002e FFF7FEFF 		bl	printf
+ 433              	.LVL31:
+ 255:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 434              		.loc 1 255 9 view .LVU123
+ 435 0032 D4ED027A 		vldr.32	s15, [r4, #8]
+ 436 0036 9D48     		ldr	r0, .L63+16
+ 437 0038 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 438 003c 17EE901A 		vmov	r1, s15	@ int
+ 439 0040 FFF7FEFF 		bl	printf
+ 440              	.LVL32:
+ 259:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 441              		.loc 1 259 9 view .LVU124
+ 259:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 442              		.loc 1 259 25 is_stmt 0 view .LVU125
+ 443 0044 D4ED007A 		vldr.32	s15, [r4]
+ 259:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 444              		.loc 1 259 12 view .LVU126
+ 445 0048 B2EE047A 		vmov.f32	s14, #1.0e+1
+ 446 004c F4EEC77A 		vcmpe.f32	s15, s14
+ 447 0050 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 448 0054 00F2EF80 		bhi	.L55
+ 261:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 449              		.loc 1 261 13 is_stmt 1 view .LVU127
+ 450 0058 0122     		movs	r2, #1
+ 451              	.L58:
+ 265:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 452              		.loc 1 265 13 is_stmt 0 view .LVU128
+ 453 005a 0121     		movs	r1, #1
+ 454 005c 4FF09040 		mov	r0, #1207959552
+ 455 0060 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 456              	.LVL33:
+ 457              	.L34:
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 16
+
+
+ 269:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 458              		.loc 1 269 9 is_stmt 1 view .LVU129
+ 269:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 459              		.loc 1 269 25 is_stmt 0 view .LVU130
+ 460 0064 D4ED027A 		vldr.32	s15, [r4, #8]
+ 269:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 461              		.loc 1 269 12 view .LVU131
+ 462 0068 9FED917A 		vldr.32	s14, .L63+20
+ 463 006c F4EEC77A 		vcmpe.f32	s15, s14
+ 464 0070 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 465 0074 C0F2E980 		blt	.L56
+ 271:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 466              		.loc 1 271 13 is_stmt 1 view .LVU132
+ 467 0078 0122     		movs	r2, #1
+ 468              	.L59:
+ 469              		.loc 1 275 13 is_stmt 0 view .LVU133
+ 470 007a 4FF48071 		mov	r1, #256
+ 471 007e 2846     		mov	r0, r5
+ 472 0080 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 473              	.LVL34:
+ 474              	.L38:
+ 276:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 277:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 278:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //ÊπøÂ∫¶‰ø°ÊÅØ
+ 279:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         if (E53_IA1_Data.Humidity >= 50)
+ 475              		.loc 1 279 9 is_stmt 1 view .LVU134
+ 476              		.loc 1 279 25 is_stmt 0 view .LVU135
+ 477 0084 D4ED017A 		vldr.32	s15, [r4, #4]
+ 478              		.loc 1 279 12 view .LVU136
+ 479 0088 9FED8A7A 		vldr.32	s14, .L63+24
+ 480 008c F4EEC77A 		vcmpe.f32	s15, s14
+ 481 0090 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 482 0094 C0F2E380 		blt	.L57
+ 280:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 281:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             HAL_GPIO_WritePin(IA1_Motor_GPIO_Port, IA1_Motor_Pin, GPIO_PIN_RESET);
+ 483              		.loc 1 281 13 is_stmt 1 view .LVU137
+ 484 0098 0022     		movs	r2, #0
+ 485              	.L60:
+ 282:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 283:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         else if(E53_IA1_Data.Humidity <= 20)
+ 284:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 285:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             HAL_GPIO_WritePin(IA1_Motor_GPIO_Port, IA1_Motor_Pin, GPIO_PIN_SET);
+ 486              		.loc 1 285 13 is_stmt 0 view .LVU138
+ 487 009a 4FF48071 		mov	r1, #256
+ 488 009e 2846     		mov	r0, r5
+ 489 00a0 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 490              	.LVL35:
+ 491              	.L42:
+ 286:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 287:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 288:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //**********************‰ø°ÊÅØËé∑ÂèñÂíåÊòæÁ§∫****************************************//
+ 289:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //Âà§Êñ≠È©¨ËææÁä∂ÊÄÅ
+ 290:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         if (HAL_GPIO_ReadPin(IA1_Motor_GPIO_Port, IA1_Motor_Pin) == GPIO_PIN_SET)
+ 492              		.loc 1 290 9 is_stmt 1 view .LVU139
+ 493              		.loc 1 290 13 is_stmt 0 view .LVU140
+ 494 00a4 4FF48071 		mov	r1, #256
+ 495 00a8 2846     		mov	r0, r5
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 17
+
+
+ 496 00aa FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 497              	.LVL36:
+ 498              		.loc 1 290 12 view .LVU141
+ 499 00ae 0128     		cmp	r0, #1
+ 500 00b0 40F0DF80 		bne	.L44
+ 291:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 292:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             LCD_ShowString(134, 158, 200, 16, 24, "  ON");
+ 501              		.loc 1 292 13 is_stmt 1 view .LVU142
+ 502 00b4 804B     		ldr	r3, .L63+28
+ 503              	.L61:
+ 293:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 294:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         else if (HAL_GPIO_ReadPin(IA1_Motor_GPIO_Port, IA1_Motor_Pin) == GPIO_PIN_RESET)
+ 295:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 296:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****             LCD_ShowString(134, 158, 200, 16, 24, " OFF");
+ 504              		.loc 1 296 13 is_stmt 0 view .LVU143
+ 505 00b6 0193     		str	r3, [sp, #4]
+ 506 00b8 1823     		movs	r3, #24
+ 507 00ba 0093     		str	r3, [sp]
+ 508 00bc C822     		movs	r2, #200
+ 509 00be 1023     		movs	r3, #16
+ 510 00c0 9E21     		movs	r1, #158
+ 511 00c2 8620     		movs	r0, #134
+ 512 00c4 FFF7FEFF 		bl	LCD_ShowString
+ 513              	.LVL37:
+ 514              	.L45:
+ 297:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 298:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //Âà§Êñ≠ÁÅØÁä∂ÊÄÅ
+ 299:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         if (HAL_GPIO_ReadPin(IA1_Light_GPIO_Port, IA1_Light_Pin) == GPIO_PIN_SET)
+ 515              		.loc 1 299 9 is_stmt 1 view .LVU144
+ 516              		.loc 1 299 13 is_stmt 0 view .LVU145
+ 517 00c8 0121     		movs	r1, #1
+ 518 00ca 4FF09040 		mov	r0, #1207959552
+ 519 00ce FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 520              	.LVL38:
+ 521              		.loc 1 299 12 view .LVU146
+ 522 00d2 0128     		cmp	r0, #1
+ 523 00d4 40F0D780 		bne	.L46
+ 300:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 301:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****              LCD_ShowString(134, 192, 200, 16, 24, "  ON");
+ 524              		.loc 1 301 14 is_stmt 1 view .LVU147
+ 525 00d8 774B     		ldr	r3, .L63+28
+ 526              	.L62:
+ 302:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 303:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         else if (HAL_GPIO_ReadPin(IA1_Light_GPIO_Port, IA1_Light_Pin) == GPIO_PIN_RESET)
+ 304:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 305:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****              LCD_ShowString(134, 192, 200, 16, 24, " OFF");
+ 527              		.loc 1 305 14 is_stmt 0 view .LVU148
+ 528 00da 0193     		str	r3, [sp, #4]
+ 529 00dc 1823     		movs	r3, #24
+ 530 00de 0093     		str	r3, [sp]
+ 531 00e0 C822     		movs	r2, #200
+ 532 00e2 1023     		movs	r3, #16
+ 533 00e4 C021     		movs	r1, #192
+ 534 00e6 8620     		movs	r0, #134
+ 535 00e8 FFF7FEFF 		bl	LCD_ShowString
+ 536              	.LVL39:
+ 537              	.L47:
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 18
+
+
+ 306:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 307:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 308:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 309:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //LCD_ShowString(10, 140, 200, 16, 16, "Temperature:");
+ 310:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowNum(134, 63, (int)E53_IA1_Data.Temperature, 4, 24);
+ 538              		.loc 1 310 9 is_stmt 1 view .LVU149
+ 539              		.loc 1 310 30 is_stmt 0 view .LVU150
+ 540 00ec D4ED027A 		vldr.32	s15, [r4, #8]
+ 541              		.loc 1 310 9 view .LVU151
+ 542 00f0 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 543 00f4 1826     		movs	r6, #24
+ 544 00f6 17EE902A 		vmov	r2, s15	@ int
+ 545 00fa 0096     		str	r6, [sp]
+ 546 00fc 0423     		movs	r3, #4
+ 547 00fe 3F21     		movs	r1, #63
+ 548 0100 8620     		movs	r0, #134
+ 549 0102 FFF7FEFF 		bl	LCD_ShowNum
+ 550              	.LVL40:
+ 311:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //LCD_ShowString(10, 170, 200, 16, 16, "Humidity:");
+ 312:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowNum(134, 90, (int)E53_IA1_Data.Humidity, 4, 24);
+ 551              		.loc 1 312 9 is_stmt 1 view .LVU152
+ 552              		.loc 1 312 30 is_stmt 0 view .LVU153
+ 553 0106 D4ED017A 		vldr.32	s15, [r4, #4]
+ 554              		.loc 1 312 9 view .LVU154
+ 555 010a 0096     		str	r6, [sp]
+ 556 010c FDEEE77A 		vcvt.s32.f32	s15, s15
+ 557 0110 0423     		movs	r3, #4
+ 558 0112 17EE902A 		vmov	r2, s15	@ int
+ 559 0116 5A21     		movs	r1, #90
+ 560 0118 8620     		movs	r0, #134
+ 561 011a FFF7FEFF 		bl	LCD_ShowNum
+ 562              	.LVL41:
+ 313:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //LCD_ShowString(10, 200, 200, 16, 16, "Luminance:");
+ 314:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowNum(134, 120, (int)E53_IA1_Data.Lux, 4, 24);
+ 563              		.loc 1 314 9 is_stmt 1 view .LVU155
+ 564              		.loc 1 314 31 is_stmt 0 view .LVU156
+ 565 011e D4ED007A 		vldr.32	s15, [r4]
+ 566              		.loc 1 314 9 view .LVU157
+ 567 0122 0096     		str	r6, [sp]
+ 568 0124 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 569 0128 0423     		movs	r3, #4
+ 570 012a 17EE902A 		vmov	r2, s15	@ int
+ 571 012e 7821     		movs	r1, #120
+ 572 0130 8620     		movs	r0, #134
+ 573 0132 FFF7FEFF 		bl	LCD_ShowNum
+ 574              	.LVL42:
+ 315:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[0] = 'C';
+ 575              		.loc 1 315 9 is_stmt 1 view .LVU158
+ 316:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[1] = 'O';
+ 317:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[2] = 'M';
+ 318:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[3] = 'M';
+ 319:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 320:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****          comm_data[4] = (int)E53_IA1_Data.Temperature / 1000 % 10 + '0';//ÂçÉ+‚Äò0‚Äô‰∏∫‰∫ÜËΩ¨ÂèòÊà
+ 576              		.loc 1 320 25 is_stmt 0 view .LVU159
+ 577 0136 D4ED027A 		vldr.32	s15, [r4, #8]
+ 315:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[0] = 'C';
+ 578              		.loc 1 315 22 view .LVU160
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 19
+
+
+ 579 013a 6049     		ldr	r1, .L63+32
+ 580              		.loc 1 320 25 view .LVU161
+ 581 013c FDEEE77A 		vcvt.s32.f32	s15, s15
+ 315:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[0] = 'C';
+ 582              		.loc 1 315 22 view .LVU162
+ 583 0140 4323     		movs	r3, #67
+ 584 0142 0B70     		strb	r3, [r1]
+ 316:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[1] = 'O';
+ 585              		.loc 1 316 9 is_stmt 1 view .LVU163
+ 316:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[1] = 'O';
+ 586              		.loc 1 316 22 is_stmt 0 view .LVU164
+ 587 0144 4F23     		movs	r3, #79
+ 588              		.loc 1 320 25 view .LVU165
+ 589 0146 17EE900A 		vmov	r0, s15	@ int
+ 316:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[1] = 'O';
+ 590              		.loc 1 316 22 view .LVU166
+ 591 014a 4B70     		strb	r3, [r1, #1]
+ 317:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[3] = 'M';
+ 592              		.loc 1 317 9 is_stmt 1 view .LVU167
+ 317:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[3] = 'M';
+ 593              		.loc 1 317 22 is_stmt 0 view .LVU168
+ 594 014c 4D23     		movs	r3, #77
+ 595 014e 8B70     		strb	r3, [r1, #2]
+ 318:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 596              		.loc 1 318 9 is_stmt 1 view .LVU169
+ 318:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 597              		.loc 1 318 22 is_stmt 0 view .LVU170
+ 598 0150 CB70     		strb	r3, [r1, #3]
+ 599              		.loc 1 320 10 is_stmt 1 view .LVU171
+ 600              		.loc 1 320 62 is_stmt 0 view .LVU172
+ 601 0152 0A23     		movs	r3, #10
+ 321:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 322:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[6] = (int)E53_IA1_Data.Temperature / 10 % 10 + '0';//ÂçÅ
+ 323:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[7] = (int)E53_IA1_Data.Temperature % 10 + '0';//‰∏™
+ 324:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 325:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[8] = (int)E53_IA1_Data.Humidity / 1000 % 10 + '0';
+ 602              		.loc 1 325 24 view .LVU173
+ 603 0154 D4ED017A 		vldr.32	s15, [r4, #4]
+ 320:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 604              		.loc 1 320 55 view .LVU174
+ 605 0158 4FF47A77 		mov	r7, #1000
+ 606 015c 90FBF7F6 		sdiv	r6, r0, r7
+ 320:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 607              		.loc 1 320 62 view .LVU175
+ 608 0160 96FBF3F2 		sdiv	r2, r6, r3
+ 609 0164 03FB1262 		mls	r2, r3, r2, r6
+ 320:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 610              		.loc 1 320 67 view .LVU176
+ 611 0168 3032     		adds	r2, r2, #48
+ 320:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 612              		.loc 1 320 23 view .LVU177
+ 613 016a 0A71     		strb	r2, [r1, #4]
+ 321:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 614              		.loc 1 321 9 is_stmt 1 view .LVU178
+ 321:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 615              		.loc 1 321 54 is_stmt 0 view .LVU179
+ 616 016c 6426     		movs	r6, #100
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 20
+
+
+ 617              		.loc 1 325 24 view .LVU180
+ 618 016e FDEEE77A 		vcvt.s32.f32	s15, s15
+ 321:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 619              		.loc 1 321 54 view .LVU181
+ 620 0172 90FBF6FC 		sdiv	ip, r0, r6
+ 321:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 621              		.loc 1 321 60 view .LVU182
+ 622 0176 9CFBF3F2 		sdiv	r2, ip, r3
+ 623 017a 03FB12C2 		mls	r2, r3, r2, ip
+ 321:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 624              		.loc 1 321 65 view .LVU183
+ 625 017e 3032     		adds	r2, r2, #48
+ 321:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[5] = (int)E53_IA1_Data.Temperature / 100 % 10 + '0';//Áôæ
+ 626              		.loc 1 321 22 view .LVU184
+ 627 0180 4A71     		strb	r2, [r1, #5]
+ 322:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[7] = (int)E53_IA1_Data.Temperature % 10 + '0';//‰∏™
+ 628              		.loc 1 322 9 is_stmt 1 view .LVU185
+ 322:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[7] = (int)E53_IA1_Data.Temperature % 10 + '0';//‰∏™
+ 629              		.loc 1 322 54 is_stmt 0 view .LVU186
+ 630 0182 90FBF3F2 		sdiv	r2, r0, r3
+ 322:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[7] = (int)E53_IA1_Data.Temperature % 10 + '0';//‰∏™
+ 631              		.loc 1 322 59 view .LVU187
+ 632 0186 92FBF3FC 		sdiv	ip, r2, r3
+ 633 018a 03FB1C2C 		mls	ip, r3, ip, r2
+ 323:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 634              		.loc 1 323 54 view .LVU188
+ 635 018e 03FB1202 		mls	r2, r3, r2, r0
+ 636              		.loc 1 325 24 view .LVU189
+ 637 0192 17EE900A 		vmov	r0, s15	@ int
+ 322:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[7] = (int)E53_IA1_Data.Temperature % 10 + '0';//‰∏™
+ 638              		.loc 1 322 64 view .LVU190
+ 639 0196 0CF1300C 		add	ip, ip, #48
+ 323:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 640              		.loc 1 323 59 view .LVU191
+ 641 019a 3032     		adds	r2, r2, #48
+ 326:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 327:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[10] = (int)E53_IA1_Data.Humidity / 10 % 10 + '0';
+ 328:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[11] = (int)E53_IA1_Data.Humidity % 10 + '0';
+ 329:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 330:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[12] = (int)E53_IA1_Data.Lux / 1000 % 10 + '0';
+ 642              		.loc 1 330 25 view .LVU192
+ 643 019c D4ED007A 		vldr.32	s15, [r4]
+ 322:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[7] = (int)E53_IA1_Data.Temperature % 10 + '0';//‰∏™
+ 644              		.loc 1 322 22 view .LVU193
+ 645 01a0 81F806C0 		strb	ip, [r1, #6]
+ 323:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 646              		.loc 1 323 9 is_stmt 1 view .LVU194
+ 323:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 647              		.loc 1 323 22 is_stmt 0 view .LVU195
+ 648 01a4 CA71     		strb	r2, [r1, #7]
+ 325:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 649              		.loc 1 325 9 is_stmt 1 view .LVU196
+ 325:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 650              		.loc 1 325 51 is_stmt 0 view .LVU197
+ 651 01a6 90FBF7FC 		sdiv	ip, r0, r7
+ 325:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 652              		.loc 1 325 58 view .LVU198
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 21
+
+
+ 653 01aa 9CFBF3F2 		sdiv	r2, ip, r3
+ 654 01ae 03FB12C2 		mls	r2, r3, r2, ip
+ 325:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 655              		.loc 1 325 63 view .LVU199
+ 656 01b2 3032     		adds	r2, r2, #48
+ 326:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 657              		.loc 1 326 51 view .LVU200
+ 658 01b4 90FBF6FC 		sdiv	ip, r0, r6
+ 659              		.loc 1 330 25 view .LVU201
+ 660 01b8 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 325:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 661              		.loc 1 325 22 view .LVU202
+ 662 01bc 0A72     		strb	r2, [r1, #8]
+ 326:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 663              		.loc 1 326 9 is_stmt 1 view .LVU203
+ 326:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 664              		.loc 1 326 57 is_stmt 0 view .LVU204
+ 665 01be 9CFBF3F2 		sdiv	r2, ip, r3
+ 666 01c2 03FB12C2 		mls	r2, r3, r2, ip
+ 326:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 667              		.loc 1 326 62 view .LVU205
+ 668 01c6 3032     		adds	r2, r2, #48
+ 326:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[9] = (int)E53_IA1_Data.Humidity / 100 % 10 + '0';
+ 669              		.loc 1 326 22 view .LVU206
+ 670 01c8 4A72     		strb	r2, [r1, #9]
+ 327:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[11] = (int)E53_IA1_Data.Humidity % 10 + '0';
+ 671              		.loc 1 327 9 is_stmt 1 view .LVU207
+ 327:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[11] = (int)E53_IA1_Data.Humidity % 10 + '0';
+ 672              		.loc 1 327 52 is_stmt 0 view .LVU208
+ 673 01ca 90FBF3F2 		sdiv	r2, r0, r3
+ 327:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[11] = (int)E53_IA1_Data.Humidity % 10 + '0';
+ 674              		.loc 1 327 57 view .LVU209
+ 675 01ce 92FBF3FC 		sdiv	ip, r2, r3
+ 676 01d2 03FB1C2C 		mls	ip, r3, ip, r2
+ 328:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 677              		.loc 1 328 52 view .LVU210
+ 678 01d6 03FB1202 		mls	r2, r3, r2, r0
+ 679              		.loc 1 330 25 view .LVU211
+ 680 01da 17EE900A 		vmov	r0, s15	@ int
+ 328:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 681              		.loc 1 328 57 view .LVU212
+ 682 01de 3032     		adds	r2, r2, #48
+ 328:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 683              		.loc 1 328 23 view .LVU213
+ 684 01e0 CA72     		strb	r2, [r1, #11]
+ 685              		.loc 1 330 47 view .LVU214
+ 686 01e2 90FBF7F7 		sdiv	r7, r0, r7
+ 331:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[13] = (int)E53_IA1_Data.Lux / 100 % 10 + '0';
+ 687              		.loc 1 331 47 view .LVU215
+ 688 01e6 90FBF6F6 		sdiv	r6, r0, r6
+ 330:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[13] = (int)E53_IA1_Data.Lux / 100 % 10 + '0';
+ 689              		.loc 1 330 54 view .LVU216
+ 690 01ea 97FBF3F2 		sdiv	r2, r7, r3
+ 691 01ee 03FB1277 		mls	r7, r3, r2, r7
+ 692              		.loc 1 331 53 view .LVU217
+ 693 01f2 96FBF3F2 		sdiv	r2, r6, r3
+ 694 01f6 03FB1266 		mls	r6, r3, r2, r6
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 22
+
+
+ 332:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[14] = (int)E53_IA1_Data.Lux / 10 % 10 + '0';
+ 695              		.loc 1 332 47 view .LVU218
+ 696 01fa 90FBF3F2 		sdiv	r2, r0, r3
+ 697              		.loc 1 332 52 view .LVU219
+ 698 01fe 92FBF3F4 		sdiv	r4, r2, r3
+ 699 0202 03FB1424 		mls	r4, r3, r4, r2
+ 333:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[15] = (int)E53_IA1_Data.Lux % 10 + '0';
+ 700              		.loc 1 333 47 view .LVU220
+ 701 0206 03FB1203 		mls	r3, r3, r2, r0
+ 702              		.loc 1 333 52 view .LVU221
+ 703 020a 3033     		adds	r3, r3, #48
+ 327:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[11] = (int)E53_IA1_Data.Humidity % 10 + '0';
+ 704              		.loc 1 327 62 view .LVU222
+ 705 020c 0CF1300C 		add	ip, ip, #48
+ 706              		.loc 1 333 23 view .LVU223
+ 707 0210 CB73     		strb	r3, [r1, #15]
+ 330:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[13] = (int)E53_IA1_Data.Lux / 100 % 10 + '0';
+ 708              		.loc 1 330 59 view .LVU224
+ 709 0212 3037     		adds	r7, r7, #48
+ 331:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[14] = (int)E53_IA1_Data.Lux / 10 % 10 + '0';
+ 710              		.loc 1 331 58 view .LVU225
+ 711 0214 3036     		adds	r6, r6, #48
+ 332:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[15] = (int)E53_IA1_Data.Lux % 10 + '0';
+ 712              		.loc 1 332 57 view .LVU226
+ 713 0216 3034     		adds	r4, r4, #48
+ 334:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 335:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         HAL_UART_Transmit(&uart_comm, &comm_data, 16, 0xff);
+ 714              		.loc 1 335 9 view .LVU227
+ 715 0218 FF23     		movs	r3, #255
+ 716 021a 1022     		movs	r2, #16
+ 717 021c 2848     		ldr	r0, .L63+36
+ 327:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[11] = (int)E53_IA1_Data.Humidity % 10 + '0';
+ 718              		.loc 1 327 23 view .LVU228
+ 719 021e 81F80AC0 		strb	ip, [r1, #10]
+ 328:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 720              		.loc 1 328 9 is_stmt 1 view .LVU229
+ 330:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[13] = (int)E53_IA1_Data.Lux / 100 % 10 + '0';
+ 721              		.loc 1 330 9 view .LVU230
+ 330:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[13] = (int)E53_IA1_Data.Lux / 100 % 10 + '0';
+ 722              		.loc 1 330 23 is_stmt 0 view .LVU231
+ 723 0222 0F73     		strb	r7, [r1, #12]
+ 331:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[14] = (int)E53_IA1_Data.Lux / 10 % 10 + '0';
+ 724              		.loc 1 331 9 is_stmt 1 view .LVU232
+ 331:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[14] = (int)E53_IA1_Data.Lux / 10 % 10 + '0';
+ 725              		.loc 1 331 23 is_stmt 0 view .LVU233
+ 726 0224 4E73     		strb	r6, [r1, #13]
+ 332:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[15] = (int)E53_IA1_Data.Lux % 10 + '0';
+ 727              		.loc 1 332 9 is_stmt 1 view .LVU234
+ 332:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         comm_data[15] = (int)E53_IA1_Data.Lux % 10 + '0';
+ 728              		.loc 1 332 23 is_stmt 0 view .LVU235
+ 729 0226 8C73     		strb	r4, [r1, #14]
+ 333:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 730              		.loc 1 333 9 is_stmt 1 view .LVU236
+ 731              		.loc 1 335 9 view .LVU237
+ 732 0228 FFF7FEFF 		bl	HAL_UART_Transmit
+ 733              	.LVL43:
+ 336:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         osal_task_sleep(2 * 1000);
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 23
+
+
+ 734              		.loc 1 336 9 view .LVU238
+ 735 022c 4FF4FA60 		mov	r0, #2000
+ 736 0230 FFF7FEFF 		bl	osal_task_sleep
+ 737              	.LVL44:
+ 250:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 738              		.loc 1 250 11 view .LVU239
+ 252:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Lux Value is  %d\r\n", (int)E53_IA1_Data.Lux);
+ 739              		.loc 1 252 9 is_stmt 0 view .LVU240
+ 740 0234 E8E6     		b	.L48
+ 741              	.L55:
+ 263:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 742              		.loc 1 263 14 is_stmt 1 view .LVU241
+ 263:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 743              		.loc 1 263 16 is_stmt 0 view .LVU242
+ 744 0236 9FED237A 		vldr.32	s14, .L63+40
+ 745 023a F4EEC77A 		vcmpe.f32	s15, s14
+ 746 023e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 747 0242 FFF60FAF 		blt	.L34
+ 265:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 748              		.loc 1 265 13 is_stmt 1 view .LVU243
+ 749 0246 0022     		movs	r2, #0
+ 750 0248 07E7     		b	.L58
+ 751              	.L56:
+ 273:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 752              		.loc 1 273 14 view .LVU244
+ 273:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 753              		.loc 1 273 16 is_stmt 0 view .LVU245
+ 754 024a B3EE097A 		vmov.f32	s14, #2.5e+1
+ 755 024e F4EEC77A 		vcmpe.f32	s15, s14
+ 756 0252 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 757 0256 3FF615AF 		bhi	.L38
+ 275:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 758              		.loc 1 275 13 is_stmt 1 view .LVU246
+ 759 025a 0022     		movs	r2, #0
+ 760 025c 0DE7     		b	.L59
+ 761              	.L57:
+ 283:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 762              		.loc 1 283 14 view .LVU247
+ 283:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 763              		.loc 1 283 16 is_stmt 0 view .LVU248
+ 764 025e B3EE047A 		vmov.f32	s14, #2.0e+1
+ 765 0262 F4EEC77A 		vcmpe.f32	s15, s14
+ 766 0266 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 767 026a 3FF61BAF 		bhi	.L42
+ 285:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 768              		.loc 1 285 13 is_stmt 1 view .LVU249
+ 769 026e 0122     		movs	r2, #1
+ 770 0270 13E7     		b	.L60
+ 771              	.L44:
+ 294:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 772              		.loc 1 294 14 view .LVU250
+ 294:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 773              		.loc 1 294 18 is_stmt 0 view .LVU251
+ 774 0272 4FF48071 		mov	r1, #256
+ 775 0276 2846     		mov	r0, r5
+ 776 0278 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 777              	.LVL45:
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 24
+
+
+ 294:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 778              		.loc 1 294 17 view .LVU252
+ 779 027c 0028     		cmp	r0, #0
+ 780 027e 7FF423AF 		bne	.L45
+ 296:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 781              		.loc 1 296 13 is_stmt 1 view .LVU253
+ 782 0282 114B     		ldr	r3, .L63+44
+ 783 0284 17E7     		b	.L61
+ 784              	.L46:
+ 303:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 785              		.loc 1 303 14 view .LVU254
+ 303:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 786              		.loc 1 303 18 is_stmt 0 view .LVU255
+ 787 0286 0121     		movs	r1, #1
+ 788 0288 4FF09040 		mov	r0, #1207959552
+ 789 028c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 790              	.LVL46:
+ 303:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 791              		.loc 1 303 17 view .LVU256
+ 792 0290 0028     		cmp	r0, #0
+ 793 0292 7FF42BAF 		bne	.L47
+ 305:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 794              		.loc 1 305 14 is_stmt 1 view .LVU257
+ 795 0296 0C4B     		ldr	r3, .L63+44
+ 796 0298 1FE7     		b	.L62
+ 797              	.L64:
+ 798 029a 00BF     		.align	2
+ 799              	.L63:
+ 800 029c 00040048 		.word	1207960576
+ 801 02a0 00000000 		.word	E53_IA1_Data
+ 802 02a4 00000000 		.word	.LC3
+ 803 02a8 33000000 		.word	.LC4
+ 804 02ac 65000000 		.word	.LC5
+ 805 02b0 00001442 		.word	1108606976
+ 806 02b4 00004842 		.word	1112014848
+ 807 02b8 9A000000 		.word	.LC6
+ 808 02bc 00000000 		.word	.LANCHOR2
+ 809 02c0 00000000 		.word	uart_comm
+ 810 02c4 00007A44 		.word	1148846080
+ 811 02c8 9F000000 		.word	.LC7
+ 812              		.cfi_endproc
+ 813              	.LFE290:
+ 815              		.section	.rodata.app_report_task_entry.str1.1,"aMS",%progbits,1
+ 816              	.LC8:
+ 817 0000 3131392E 		.ascii	"119.3.250.80\000"
+ 817      332E3235 
+ 817      302E3830 
+ 817      00
+ 818              	.LC9:
+ 819 000d 35363833 		.ascii	"5683\000"
+ 819      00
+ 820              	.LC10:
+ 821 0012 6368616E 		.ascii	"changteng\000"
+ 821      6774656E 
+ 821      6700
+ 822              		.section	.text.app_report_task_entry,"ax",%progbits
+ 823              		.align	1
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 25
+
+
+ 824              		.syntax unified
+ 825              		.thumb
+ 826              		.thumb_func
+ 827              		.fpu fpv4-sp-d16
+ 829              	app_report_task_entry:
+ 830              	.LFB289:
+ 210:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+ 831              		.loc 1 210 1 view -0
+ 832              		.cfi_startproc
+ 833              		@ args = 0, pretend = 0, frame = 72
+ 834              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 835              		.loc 1 211 5 view .LVU259
+ 836              	.LVL47:
+ 213:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture Agriculture;
+ 837              		.loc 1 213 5 view .LVU260
+ 214:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 838              		.loc 1 214 5 view .LVU261
+ 216:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 839              		.loc 1 216 5 view .LVU262
+ 210:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+ 840              		.loc 1 210 1 is_stmt 0 view .LVU263
+ 841 0000 30B5     		push	{r4, r5, lr}
+ 842              	.LCFI3:
+ 843              		.cfi_def_cfa_offset 12
+ 844              		.cfi_offset 4, -12
+ 845              		.cfi_offset 5, -8
+ 846              		.cfi_offset 14, -4
+ 847 0002 93B0     		sub	sp, sp, #76
+ 848              	.LCFI4:
+ 849              		.cfi_def_cfa_offset 88
+ 216:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 850              		.loc 1 216 11 view .LVU264
+ 851 0004 3C22     		movs	r2, #60
+ 852 0006 0021     		movs	r1, #0
+ 853 0008 03A8     		add	r0, sp, #12
+ 854 000a FFF7FEFF 		bl	memset
+ 855              	.LVL48:
+ 218:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.port = cn_app_port;
+ 856              		.loc 1 218 5 is_stmt 1 view .LVU265
+ 218:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.port = cn_app_port;
+ 857              		.loc 1 218 33 is_stmt 0 view .LVU266
+ 858 000e 1C4B     		ldr	r3, .L69
+ 859 0010 0B93     		str	r3, [sp, #44]
+ 219:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.ep_id = cn_endpoint_id;
+ 860              		.loc 1 219 5 is_stmt 1 view .LVU267
+ 219:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.ep_id = cn_endpoint_id;
+ 861              		.loc 1 219 30 is_stmt 0 view .LVU268
+ 862 0012 1C4B     		ldr	r3, .L69+4
+ 863 0014 0C93     		str	r3, [sp, #48]
+ 220:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.boot_mode = en_oc_boot_strap_mode_factory;
+ 864              		.loc 1 220 5 is_stmt 1 view .LVU269
+ 220:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.boot_mode = en_oc_boot_strap_mode_factory;
+ 865              		.loc 1 220 31 is_stmt 0 view .LVU270
+ 866 0016 1C4B     		ldr	r3, .L69+8
+ 867 0018 0A93     		str	r3, [sp, #40]
+ 221:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.rcv_func = app_msg_deal;
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 26
+
+
+ 868              		.loc 1 221 5 is_stmt 1 view .LVU271
+ 221:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.rcv_func = app_msg_deal;
+ 869              		.loc 1 221 24 is_stmt 0 view .LVU272
+ 870 001a 0023     		movs	r3, #0
+ 871 001c 8DF80C30 		strb	r3, [sp, #12]
+ 222:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 872              		.loc 1 222 5 is_stmt 1 view .LVU273
+ 224:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     if (0 != ret)
+ 873              		.loc 1 224 11 is_stmt 0 view .LVU274
+ 874 0020 03A8     		add	r0, sp, #12
+ 222:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 875              		.loc 1 222 23 view .LVU275
+ 876 0022 1A4B     		ldr	r3, .L69+12
+ 877 0024 1093     		str	r3, [sp, #64]
+ 224:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     if (0 != ret)
+ 878              		.loc 1 224 5 is_stmt 1 view .LVU276
+ 224:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     if (0 != ret)
+ 879              		.loc 1 224 11 is_stmt 0 view .LVU277
+ 880 0026 FFF7FEFF 		bl	oc_lwm2m_config
+ 881              	.LVL49:
+ 225:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 882              		.loc 1 225 5 is_stmt 1 view .LVU278
+ 225:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 883              		.loc 1 225 8 is_stmt 0 view .LVU279
+ 884 002a 0446     		mov	r4, r0
+ 885 002c 30BB     		cbnz	r0, .L68
+ 886              	.LBB4:
+ 887              	.LBB5:
+ 234:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Humidity = (int8_t)E53_IA1_Data.Humidity;
+ 888              		.loc 1 234 55 view .LVU280
+ 889 002e 184D     		ldr	r5, .L69+16
+ 890              	.LVL50:
+ 891              	.L66:
+ 231:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 892              		.loc 1 231 5 is_stmt 1 view .LVU281
+ 233:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Temperature = (int8_t)E53_IA1_Data.Temperature;
+ 893              		.loc 1 233 9 view .LVU282
+ 234:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Humidity = (int8_t)E53_IA1_Data.Humidity;
+ 894              		.loc 1 234 35 is_stmt 0 view .LVU283
+ 895 0030 D5ED027A 		vldr.32	s15, [r5, #8]
+ 233:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Temperature = (int8_t)E53_IA1_Data.Temperature;
+ 896              		.loc 1 233 31 view .LVU284
+ 897 0034 8DF80440 		strb	r4, [sp, #4]
+ 234:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Humidity = (int8_t)E53_IA1_Data.Humidity;
+ 898              		.loc 1 234 9 is_stmt 1 view .LVU285
+ 234:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Humidity = (int8_t)E53_IA1_Data.Humidity;
+ 899              		.loc 1 234 35 is_stmt 0 view .LVU286
+ 900 0038 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 237:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         osal_task_sleep(2 * 1000);
+ 901              		.loc 1 237 9 view .LVU287
+ 902 003c 4FF47A72 		mov	r2, #1000
+ 234:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Humidity = (int8_t)E53_IA1_Data.Humidity;
+ 903              		.loc 1 234 35 view .LVU288
+ 904 0040 17EE903A 		vmov	r3, s15	@ int
+ 235:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Luminance = htons((uint16_t)E53_IA1_Data.Lux);
+ 905              		.loc 1 235 32 view .LVU289
+ 906 0044 D5ED017A 		vldr.32	s15, [r5, #4]
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 27
+
+
+ 234:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Humidity = (int8_t)E53_IA1_Data.Humidity;
+ 907              		.loc 1 234 35 view .LVU290
+ 908 0048 8DF80530 		strb	r3, [sp, #5]
+ 235:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Luminance = htons((uint16_t)E53_IA1_Data.Lux);
+ 909              		.loc 1 235 9 is_stmt 1 view .LVU291
+ 235:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Luminance = htons((uint16_t)E53_IA1_Data.Lux);
+ 910              		.loc 1 235 32 is_stmt 0 view .LVU292
+ 911 004c FDEEE77A 		vcvt.s32.f32	s15, s15
+ 237:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         osal_task_sleep(2 * 1000);
+ 912              		.loc 1 237 9 view .LVU293
+ 913 0050 0521     		movs	r1, #5
+ 235:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Luminance = htons((uint16_t)E53_IA1_Data.Lux);
+ 914              		.loc 1 235 32 view .LVU294
+ 915 0052 17EE903A 		vmov	r3, s15	@ int
+ 236:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         oc_lwm2m_report((char *)&Agriculture, sizeof(Agriculture), 1000);
+ 916              		.loc 1 236 33 view .LVU295
+ 917 0056 D5ED007A 		vldr.32	s15, [r5]
+ 235:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         Agriculture.Luminance = htons((uint16_t)E53_IA1_Data.Lux);
+ 918              		.loc 1 235 32 view .LVU296
+ 919 005a 8DF80630 		strb	r3, [sp, #6]
+ 236:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         oc_lwm2m_report((char *)&Agriculture, sizeof(Agriculture), 1000);
+ 920              		.loc 1 236 9 is_stmt 1 view .LVU297
+ 236:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         oc_lwm2m_report((char *)&Agriculture, sizeof(Agriculture), 1000);
+ 921              		.loc 1 236 33 is_stmt 0 view .LVU298
+ 922 005e FCEEE77A 		vcvt.u32.f32	s15, s15
+ 237:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         osal_task_sleep(2 * 1000);
+ 923              		.loc 1 237 9 view .LVU299
+ 924 0062 01A8     		add	r0, sp, #4
+ 236:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         oc_lwm2m_report((char *)&Agriculture, sizeof(Agriculture), 1000);
+ 925              		.loc 1 236 33 view .LVU300
+ 926 0064 17EE903A 		vmov	r3, s15	@ int
+ 236:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         oc_lwm2m_report((char *)&Agriculture, sizeof(Agriculture), 1000);
+ 927              		.loc 1 236 31 view .LVU301
+ 928 0068 5BBA     		rev16	r3, r3
+ 929 006a ADF80730 		strh	r3, [sp, #7]	@ unaligned
+ 237:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         osal_task_sleep(2 * 1000);
+ 930              		.loc 1 237 9 is_stmt 1 view .LVU302
+ 931 006e FFF7FEFF 		bl	oc_lwm2m_report
+ 932              	.LVL51:
+ 238:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 933              		.loc 1 238 9 view .LVU303
+ 934 0072 4FF4FA60 		mov	r0, #2000
+ 935 0076 FFF7FEFF 		bl	osal_task_sleep
+ 936              	.LVL52:
+ 231:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 937              		.loc 1 231 11 view .LVU304
+ 938 007a D9E7     		b	.L66
+ 939              	.LVL53:
+ 940              	.L68:
+ 231:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 941              		.loc 1 231 11 is_stmt 0 view .LVU305
+ 942              	.LBE5:
+ 943              	.LBE4:
+ 241:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** extern UART_HandleTypeDef uart_comm;
+ 944              		.loc 1 241 1 view .LVU306
+ 945 007c 13B0     		add	sp, sp, #76
+ 946              	.LCFI5:
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 28
+
+
+ 947              		.cfi_def_cfa_offset 12
+ 948              		@ sp needed
+ 949 007e 30BD     		pop	{r4, r5, pc}
+ 950              	.L70:
+ 951              		.align	2
+ 952              	.L69:
+ 953 0080 00000000 		.word	.LC8
+ 954 0084 0D000000 		.word	.LC9
+ 955 0088 12000000 		.word	.LC10
+ 956 008c 00000000 		.word	app_msg_deal
+ 957 0090 00000000 		.word	E53_IA1_Data
+ 958              		.cfi_endproc
+ 959              	.LFE289:
+ 961              		.section	.rodata.standard_app_demo_main.str1.1,"aMS",%progbits,1
+ 962              	.LC11:
+ 963 0000 6170705F 		.ascii	"app_collect\000"
+ 963      636F6C6C 
+ 963      65637400 
+ 964              	.LC12:
+ 965 000c 6170705F 		.ascii	"app_report\000"
+ 965      7265706F 
+ 965      727400
+ 966              	.LC13:
+ 967 0017 6170705F 		.ascii	"app_command\000"
+ 967      636F6D6D 
+ 967      616E6400 
+ 968              		.section	.text.standard_app_demo_main,"ax",%progbits
+ 969              		.align	1
+ 970              		.global	standard_app_demo_main
+ 971              		.syntax unified
+ 972              		.thumb
+ 973              		.thumb_func
+ 974              		.fpu fpv4-sp-d16
+ 976              	standard_app_demo_main:
+ 977              	.LFB291:
+ 337:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 338:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 339:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return 0;
+ 340:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 341:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 342:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <stimer.h>
+ 343:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 344:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** int standard_app_demo_main()
+ 345:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 978              		.loc 1 345 1 is_stmt 1 view -0
+ 979              		.cfi_startproc
+ 980              		@ args = 0, pretend = 0, frame = 0
+ 981              		@ frame_needed = 0, uses_anonymous_args = 0
+ 346:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     LCD_Clear(BLACK);
+ 982              		.loc 1 346 5 view .LVU308
+ 345:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     LCD_Clear(BLACK);
+ 983              		.loc 1 345 1 is_stmt 0 view .LVU309
+ 984 0000 73B5     		push	{r0, r1, r4, r5, r6, lr}
+ 985              	.LCFI6:
+ 986              		.cfi_def_cfa_offset 24
+ 987              		.cfi_offset 4, -16
+ 988              		.cfi_offset 5, -12
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 29
+
+
+ 989              		.cfi_offset 6, -8
+ 990              		.cfi_offset 14, -4
+ 991              		.loc 1 346 5 view .LVU310
+ 992 0002 0020     		movs	r0, #0
+ 993 0004 FFF7FEFF 		bl	LCD_Clear
+ 994              	.LVL54:
+ 347:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     POINT_COLOR = GREEN;
+ 995              		.loc 1 347 5 is_stmt 1 view .LVU311
+ 996              		.loc 1 347 17 is_stmt 0 view .LVU312
+ 997 0008 1F4B     		ldr	r3, .L72
+ 998 000a 4FF4FC62 		mov	r2, #2016
+ 999 000e 1A80     		strh	r2, [r3]	@ movhi
+ 348:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     extern const unsigned char gImage_nonyye[115208] ;
+ 1000              		.loc 1 348 5 is_stmt 1 view .LVU313
+ 349:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     LCD_Show_Image(0, 0, 240, 240, gImage_nonyye);
+ 1001              		.loc 1 349 5 view .LVU314
+ 1002 0010 1E4B     		ldr	r3, .L72+4
+ 1003 0012 0093     		str	r3, [sp]
+ 1004 0014 0021     		movs	r1, #0
+ 1005 0016 F023     		movs	r3, #240
+ 1006 0018 1A46     		mov	r2, r3
+ 1007 001a 0846     		mov	r0, r1
+ 350:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //LCD_ShowString(10, 10, 200, 16, 24, "Welcome to BearPi");
+ 351:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //LCD_ShowString(15, 40, 200, 16, 24, "Agriculture Demo");
+ 352:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //LCD_ShowString(10, 80, 200, 16, 16, "NCDP_IP:");
+ 353:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //LCD_ShowString(80, 80, 200, 16, 16, cn_app_server);
+ 354:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //LCD_ShowString(10, 110, 200, 16, 16, "NCDP_PORT:");
+ 355:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //LCD_ShowString(100, 110, 200, 16, 16, cn_app_port);
+ 356:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 357:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_semp_create(&s_rcv_sync, 1, 0);
+ 358:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 359:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_task_create("app_collect", app_collect_task_entry, NULL, 0x400, NULL, 3);
+ 1008              		.loc 1 359 5 is_stmt 0 view .LVU315
+ 1009 001c 0024     		movs	r4, #0
+ 349:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     LCD_Show_Image(0, 0, 240, 240, gImage_nonyye);
+ 1010              		.loc 1 349 5 view .LVU316
+ 1011 001e FFF7FEFF 		bl	LCD_Show_Image
+ 1012              	.LVL55:
+ 357:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 1013              		.loc 1 357 5 is_stmt 1 view .LVU317
+ 1014              		.loc 1 359 5 is_stmt 0 view .LVU318
+ 1015 0022 0325     		movs	r5, #3
+ 357:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 1016              		.loc 1 357 5 view .LVU319
+ 1017 0024 0022     		movs	r2, #0
+ 1018 0026 0121     		movs	r1, #1
+ 1019 0028 1948     		ldr	r0, .L72+8
+ 1020 002a FFF7FEFF 		bl	osal_semp_create
+ 1021              	.LVL56:
+ 1022              		.loc 1 359 5 is_stmt 1 view .LVU320
+ 360:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_task_create("app_report", app_report_task_entry, NULL, 0x1000, NULL, 2);
+ 1023              		.loc 1 360 5 is_stmt 0 view .LVU321
+ 1024 002e 0226     		movs	r6, #2
+ 359:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_task_create("app_report", app_report_task_entry, NULL, 0x1000, NULL, 2);
+ 1025              		.loc 1 359 5 view .LVU322
+ 1026 0030 2246     		mov	r2, r4
+ 1027 0032 CDE90045 		strd	r4, r5, [sp]
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 30
+
+
+ 1028 0036 1749     		ldr	r1, .L72+12
+ 1029 0038 1748     		ldr	r0, .L72+16
+ 1030 003a 4FF48063 		mov	r3, #1024
+ 1031 003e FFF7FEFF 		bl	osal_task_create
+ 1032              	.LVL57:
+ 1033              		.loc 1 360 5 is_stmt 1 view .LVU323
+ 1034 0042 2246     		mov	r2, r4
+ 1035 0044 CDE90046 		strd	r4, r6, [sp]
+ 1036 0048 1449     		ldr	r1, .L72+20
+ 1037 004a 1548     		ldr	r0, .L72+24
+ 1038 004c 4FF48053 		mov	r3, #4096
+ 1039 0050 FFF7FEFF 		bl	osal_task_create
+ 1040              	.LVL58:
+ 361:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_task_create("app_command", app_cmd_task_entry, NULL, 0x1000, NULL, 3);
+ 1041              		.loc 1 361 5 view .LVU324
+ 1042 0054 2246     		mov	r2, r4
+ 1043 0056 CDE90045 		strd	r4, r5, [sp]
+ 1044 005a 1249     		ldr	r1, .L72+28
+ 1045 005c 1248     		ldr	r0, .L72+32
+ 1046 005e 4FF48053 		mov	r3, #4096
+ 1047 0062 FFF7FEFF 		bl	osal_task_create
+ 1048              	.LVL59:
+ 362:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 363:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     //**********************ËÆæÂ§áÁ´ØÊéßÂà∂****************************************//
+ 364:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_int_connect(KEY1_EXTI_IRQn, 2, 0, Key1_IRQHandler, NULL);
+ 1049              		.loc 1 364 5 view .LVU325
+ 1050 0066 2246     		mov	r2, r4
+ 1051 0068 3146     		mov	r1, r6
+ 1052 006a 104B     		ldr	r3, .L72+36
+ 1053 006c 0094     		str	r4, [sp]
+ 1054 006e 0820     		movs	r0, #8
+ 1055 0070 FFF7FEFF 		bl	osal_int_connect
+ 1056              	.LVL60:
+ 365:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_int_connect(KEY2_EXTI_IRQn, 3, 0, Key2_IRQHandler, NULL);
+ 1057              		.loc 1 365 5 view .LVU326
+ 1058 0074 0E4B     		ldr	r3, .L72+40
+ 1059 0076 0094     		str	r4, [sp]
+ 1060 0078 2246     		mov	r2, r4
+ 1061 007a 2946     		mov	r1, r5
+ 1062 007c 0920     		movs	r0, #9
+ 1063 007e FFF7FEFF 		bl	osal_int_connect
+ 1064              	.LVL61:
+ 366:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return 0;
+ 1065              		.loc 1 366 5 view .LVU327
+ 367:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 1066              		.loc 1 367 1 is_stmt 0 view .LVU328
+ 1067 0082 2046     		mov	r0, r4
+ 1068 0084 02B0     		add	sp, sp, #8
+ 1069              	.LCFI7:
+ 1070              		.cfi_def_cfa_offset 16
+ 1071              		@ sp needed
+ 1072 0086 70BD     		pop	{r4, r5, r6, pc}
+ 1073              	.L73:
+ 1074              		.align	2
+ 1075              	.L72:
+ 1076 0088 00000000 		.word	POINT_COLOR
+ 1077 008c 00000000 		.word	gImage_nonyye
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 31
+
+
+ 1078 0090 00000000 		.word	.LANCHOR0
+ 1079 0094 00000000 		.word	app_collect_task_entry
+ 1080 0098 00000000 		.word	.LC11
+ 1081 009c 00000000 		.word	app_report_task_entry
+ 1082 00a0 0C000000 		.word	.LC12
+ 1083 00a4 00000000 		.word	app_cmd_task_entry
+ 1084 00a8 17000000 		.word	.LC13
+ 1085 00ac 00000000 		.word	Key1_IRQHandler
+ 1086 00b0 00000000 		.word	Key2_IRQHandler
+ 1087              		.cfi_endproc
+ 1088              	.LFE291:
+ 1090              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
+ 1091              		.align	1
+ 1092              		.global	HAL_GPIO_EXTI_Callback
+ 1093              		.syntax unified
+ 1094              		.thumb
+ 1095              		.thumb_func
+ 1096              		.fpu fpv4-sp-d16
+ 1098              	HAL_GPIO_EXTI_Callback:
+ 1099              	.LVL62:
+ 1100              	.LFB292:
+ 368:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 369:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+ 370:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 1101              		.loc 1 370 1 is_stmt 1 view -0
+ 1102              		.cfi_startproc
+ 1103              		@ args = 0, pretend = 0, frame = 0
+ 1104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1105              		@ link register save eliminated.
+ 371:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     switch (GPIO_Pin)
+ 1106              		.loc 1 371 5 view .LVU330
+ 1107 0000 0428     		cmp	r0, #4
+ 1108 0002 02D0     		beq	.L75
+ 1109 0004 0828     		cmp	r0, #8
+ 1110 0006 05D0     		beq	.L76
+ 1111 0008 7047     		bx	lr
+ 1112              	.L75:
+ 372:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 373:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     case KEY1_Pin:
+ 374:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         HAL_GPIO_TogglePin(IA1_Motor_GPIO_Port, IA1_Motor_Pin);
+ 1113              		.loc 1 374 9 view .LVU331
+ 1114 000a 0448     		ldr	r0, .L80
+ 1115              	.LVL63:
+ 1116              		.loc 1 374 9 is_stmt 0 view .LVU332
+ 1117 000c 4FF48071 		mov	r1, #256
+ 1118              	.L79:
+ 375:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         break;
+ 376:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     case KEY2_Pin:
+ 377:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         HAL_GPIO_TogglePin(IA1_Light_GPIO_Port, IA1_Light_Pin);
+ 1119              		.loc 1 377 9 view .LVU333
+ 1120 0010 FFF7FEBF 		b	HAL_GPIO_TogglePin
+ 1121              	.LVL64:
+ 1122              	.L76:
+ 1123              		.loc 1 377 9 is_stmt 1 view .LVU334
+ 1124 0014 0121     		movs	r1, #1
+ 1125 0016 4FF09040 		mov	r0, #1207959552
+ 1126              	.LVL65:
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 32
+
+
+ 1127              		.loc 1 377 9 is_stmt 0 view .LVU335
+ 1128 001a F9E7     		b	.L79
+ 1129              	.L81:
+ 1130              		.align	2
+ 1131              	.L80:
+ 1132 001c 00040048 		.word	1207960576
+ 1133              		.cfi_endproc
+ 1134              	.LFE292:
+ 1136              		.section	.text.UART2_Control,"ax",%progbits
+ 1137              		.align	1
+ 1138              		.global	UART2_Control
+ 1139              		.syntax unified
+ 1140              		.thumb
+ 1141              		.thumb_func
+ 1142              		.fpu fpv4-sp-d16
+ 1144              	UART2_Control:
+ 1145              	.LVL66:
+ 1146              	.LFB293:
+ 378:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         break;
+ 379:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     default:
+ 380:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****         break;
+ 381:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 382:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 383:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** void UART2_Control(unsigned char buf)
+ 384:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 1147              		.loc 1 384 1 is_stmt 1 view -0
+ 1148              		.cfi_startproc
+ 1149              		@ args = 0, pretend = 0, frame = 0
+ 1150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1151              		@ link register save eliminated.
+ 385:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** //	HAL_UART_Transmit(&huart1,&data,1,0);
+ 386:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	//Êî∂Âà∞‚Äú1‚ÄùÔºåÁîµÁÅØÔºåÊî∂Âà∞‚Äú2‚ÄùÔºåÁÅ≠ÁÅØ
+ 387:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	if(buf == 'M')
+ 1152              		.loc 1 387 2 view .LVU337
+ 1153              		.loc 1 387 4 is_stmt 0 view .LVU338
+ 1154 0000 4D28     		cmp	r0, #77
+ 1155 0002 04D1     		bne	.L83
+ 388:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	{
+ 389:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 		HAL_GPIO_TogglePin(IA1_Motor_GPIO_Port,IA1_Motor_Pin);
+ 1156              		.loc 1 389 3 is_stmt 1 view .LVU339
+ 1157 0004 0548     		ldr	r0, .L86
+ 1158              	.LVL67:
+ 1159              		.loc 1 389 3 is_stmt 0 view .LVU340
+ 1160 0006 4FF48071 		mov	r1, #256
+ 1161              	.L85:
+ 390:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	}
+ 391:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	else if(buf == 'L')
+ 392:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	{
+ 393:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 		HAL_GPIO_TogglePin(IA1_Light_GPIO_Port,IA1_Light_Pin);
+ 1162              		.loc 1 393 3 view .LVU341
+ 1163 000a FFF7FEBF 		b	HAL_GPIO_TogglePin
+ 1164              	.LVL68:
+ 1165              	.L83:
+ 391:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	{
+ 1166              		.loc 1 391 7 is_stmt 1 view .LVU342
+ 391:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	{
+ 1167              		.loc 1 391 9 is_stmt 0 view .LVU343
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 33
+
+
+ 1168 000e 4C28     		cmp	r0, #76
+ 1169 0010 03D1     		bne	.L82
+ 1170              		.loc 1 393 3 is_stmt 1 view .LVU344
+ 1171 0012 0121     		movs	r1, #1
+ 1172 0014 4FF09040 		mov	r0, #1207959552
+ 1173              	.LVL69:
+ 1174              		.loc 1 393 3 is_stmt 0 view .LVU345
+ 1175 0018 F7E7     		b	.L85
+ 1176              	.LVL70:
+ 1177              	.L82:
+ 394:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	}
+ 395:d:/liteos/code/WIFI2/Demos/oc_agriculture_template\oc_agriculture_template.c **** }...
+ 1178              		.loc 1 395 1 view .LVU346
+ 1179 001a 7047     		bx	lr
+ 1180              	.L87:
+ 1181              		.align	2
+ 1182              	.L86:
+ 1183 001c 00040048 		.word	1207960576
+ 1184              		.cfi_endproc
+ 1185              	.LFE293:
+ 1187              		.global	comm_data
+ 1188              		.comm	E53_IA1_Data,12,4
+ 1189              		.section	.bss.comm_data,"aw",%nobits
+ 1190              		.set	.LANCHOR2,. + 0
+ 1193              	comm_data:
+ 1194 0000 00000000 		.space	16
+ 1194      00000000 
+ 1194      00000000 
+ 1194      00000000 
+ 1195              		.section	.bss.s_rcv_buffer,"aw",%nobits
+ 1196              		.align	2
+ 1197              		.set	.LANCHOR1,. + 0
+ 1200              	s_rcv_buffer:
+ 1201 0000 00000000 		.space	512
+ 1201      00000000 
+ 1201      00000000 
+ 1201      00000000 
+ 1201      00000000 
+ 1202              		.section	.bss.s_rcv_sync,"aw",%nobits
+ 1203              		.align	2
+ 1204              		.set	.LANCHOR0,. + 0
+ 1207              	s_rcv_sync:
+ 1208 0000 00000000 		.space	4
+ 1209              		.text
+ 1210              	.Letext0:
+ 1211              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1212              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1213              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1214              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1215              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 1216              		.file 7 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 1217              		.file 8 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal_types.h"
+ 1218              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al/
+ 1219              		.file 10 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_t
+ 1220              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 1221              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/comm
+ 1222              		.file 13 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 34
+
+
+ 1223              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 1224              		.file 15 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 1225              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 1226              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 1227              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 1228              		.file 19 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 1229              		.file 20 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 1230              		.file 21 "d:/liteos/code/WIFI2/Hardware/E53_IA1/E53_IA1.h"
+ 1231              		.file 22 "d:/liteos/code/WIFI2/Hardware/LCD/lcd.h"
+ 1232              		.file 23 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal.h"
+ 1233              		.file 24 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ 1234              		.file 25 "<built-in>"
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 35
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 oc_agriculture_template.c
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:23     .text.app_cmd_task_entry:00000000 $t
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:30     .text.app_cmd_task_entry:00000000 app_cmd_task_entry
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:274    .text.app_cmd_task_entry:00000148 $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:286    .text.app_msg_deal:00000000 $t
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:292    .text.app_msg_deal:00000000 app_msg_deal
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:366    .text.app_msg_deal:00000034 $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:387    .text.app_collect_task_entry:00000000 $t
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:393    .text.app_collect_task_entry:00000000 app_collect_task_entry
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:800    .text.app_collect_task_entry:0000029c $d
+                            *COM*:0000000c E53_IA1_Data
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:823    .text.app_report_task_entry:00000000 $t
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:829    .text.app_report_task_entry:00000000 app_report_task_entry
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:953    .text.app_report_task_entry:00000080 $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:969    .text.standard_app_demo_main:00000000 $t
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:976    .text.standard_app_demo_main:00000000 standard_app_demo_main
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1076   .text.standard_app_demo_main:00000088 $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1091   .text.HAL_GPIO_EXTI_Callback:00000000 $t
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1098   .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1132   .text.HAL_GPIO_EXTI_Callback:0000001c $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1137   .text.UART2_Control:00000000 $t
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1144   .text.UART2_Control:00000000 UART2_Control
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1183   .text.UART2_Control:0000001c $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1193   .bss.comm_data:00000000 comm_data
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1194   .bss.comm_data:00000000 $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1196   .bss.s_rcv_buffer:00000000 $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1200   .bss.s_rcv_buffer:00000000 s_rcv_buffer
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1203   .bss.s_rcv_sync:00000000 $d
+C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s:1207   .bss.s_rcv_sync:00000000 s_rcv_sync
+
+UNDEFINED SYMBOLS
+osal_semp_pend
+printf
+HAL_GPIO_WritePin
+oc_lwm2m_report
+memcpy
+osal_semp_post
+Init_E53_IA1
+E53_IA1_Read_Data
+HAL_GPIO_ReadPin
+LCD_ShowString
+LCD_ShowNum
+HAL_UART_Transmit
+osal_task_sleep
+uart_comm
+memset
+oc_lwm2m_config
+LCD_Clear
+LCD_Show_Image
+osal_semp_create
+osal_task_create
+osal_int_connect
+POINT_COLOR
+gImage_nonyye
+Key1_IRQHandler
+Key2_IRQHandler
+ARM GAS  C:\Users\≤‹º“∫¿\AppData\Local\Temp\cco9YUzv.s 			page 36
+
+
+HAL_GPIO_TogglePin

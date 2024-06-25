@@ -1,0 +1,1483 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_slabmem.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.osSlabBlockHeadFill,"ax",%progbits
+  18              		.align	1
+  19              		.global	osSlabBlockHeadFill
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	osSlabBlockHeadFill:
+  27              	.LVL0:
+  28              	.LFB287:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/commo
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * Copyright (c) <2013-2017>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #define _LOS_SLAB_MEM_C_
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #include <los_printf.h>
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #include <los_slab.ph>
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #include <los_hwi.h>
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #include "los_memstat.inc"
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #endif
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** VOID *osSlabBlockHeadFill(OS_SLAB_BLOCK_NODE *pstSlabNode, UINT32 uwBlkSz)
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+  30              		.loc 1 45 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_MAGIC_SET(pstSlabNode);
+  35              		.loc 1 46 5 view .LVU1
+  36 0000 4DF6DE63 		movw	r3, #57054
+  37 0004 0380     		strh	r3, [r0]	@ movhi
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_SIZE_SET(pstSlabNode, uwBlkSz);
+  38              		.loc 1 47 5 view .LVU2
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_ID_SET(pstSlabNode, 0);//now undefine how to use ID
+  39              		.loc 1 48 5 is_stmt 0 view .LVU3
+  40 0006 0023     		movs	r3, #0
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_SIZE_SET(pstSlabNode, uwBlkSz);
+  41              		.loc 1 47 5 view .LVU4
+  42 0008 8170     		strb	r1, [r0, #2]
+  43              		.loc 1 48 5 is_stmt 1 view .LVU5
+  44 000a C370     		strb	r3, [r0, #3]
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return (VOID *)(pstSlabNode + 1);
+  45              		.loc 1 49 5 view .LVU6
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+  46              		.loc 1 50 1 is_stmt 0 view .LVU7
+  47 000c 0430     		adds	r0, r0, #4
+  48              	.LVL1:
+  49              		.loc 1 50 1 view .LVU8
+  50 000e 7047     		bx	lr
+  51              		.cfi_endproc
+  52              	.LFE287:
+  54              		.section	.text.osSlabMemInit,"ax",%progbits
+  55              		.align	1
+  56              		.global	osSlabMemInit
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+  60              		.fpu fpv4-sp-d16
+  62              	osSlabMemInit:
+  63              	.LVL2:
+  64              	.LFB288:
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** /*****************************************************************************
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 3
+
+
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Function : osSlabMemInit
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Description : To initialize the slab memory management
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Input       : None
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Output      : None
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Return      : None
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** *****************************************************************************/
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** BOOL osSlabMemInit(VOID *pPool)
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+  65              		.loc 1 60 1 is_stmt 1 view -0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMemHead = osSlabCtrlHdrGet(pPool);
+  69              		.loc 1 61 5 view .LVU10
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMemHead = osSlabCtrlHdrGet(pPool);
+  70              		.loc 1 60 1 is_stmt 0 view .LVU11
+  71 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  72              	.LCFI0:
+  73              		.cfi_def_cfa_offset 32
+  74              		.cfi_offset 4, -32
+  75              		.cfi_offset 5, -28
+  76              		.cfi_offset 6, -24
+  77              		.cfi_offset 7, -20
+  78              		.cfi_offset 8, -16
+  79              		.cfi_offset 9, -12
+  80              		.cfi_offset 10, -8
+  81              		.cfi_offset 14, -4
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMemHead = osSlabCtrlHdrGet(pPool);
+  82              		.loc 1 60 1 view .LVU12
+  83 0004 0746     		mov	r7, r0
+  84              		.loc 1 61 54 view .LVU13
+  85 0006 FFF7FEFF 		bl	osSlabCtrlHdrGet
+  86              	.LVL3:
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwTmp = 0;
+  87              		.loc 1 63 12 view .LVU14
+  88 000a 0025     		movs	r5, #0
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+  89              		.loc 1 61 54 view .LVU15
+  90 000c 0446     		mov	r4, r0
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+  91              		.loc 1 62 5 is_stmt 1 view .LVU16
+  92              	.LVL4:
+  93              		.loc 1 63 5 view .LVU17
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwBlkSz = 0;
+  94              		.loc 1 64 5 view .LVU18
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwBlkCnt = 0;
+  95              		.loc 1 65 5 view .LVU19
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     for (uwIdx = 0; uwIdx < SLAB_MEM_COUNT; uwIdx++)
+  96              		.loc 1 67 5 view .LVU20
+  97              		.loc 1 67 21 view .LVU21
+  98              		.loc 1 67 16 is_stmt 0 view .LVU22
+  99 000e 2E46     		mov	r6, r5
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwBlkSz = (SLAB_MEM_CALSS_STEP_SIZE << uwIdx);
+ 100              		.loc 1 69 45 view .LVU23
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 4
+
+
+ 101 0010 4FF01008 		mov	r8, #16
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwBlkCnt = SLAB_MEM_ALLOCATOR_SIZE / uwBlkSz;
+ 102              		.loc 1 70 18 view .LVU24
+ 103 0014 4FF40079 		mov	r9, #512
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMemHead->stSlabClass[uwIdx].blkSz = uwBlkSz;
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMemHead->stSlabClass[uwIdx].blkCnt = uwBlkCnt;
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMemHead->stSlabClass[uwIdx].blkUsedCnt = 0;
+ 104              		.loc 1 73 55 view .LVU25
+ 105 0018 AA46     		mov	r10, r5
+ 106              	.LVL5:
+ 107              	.L5:
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwBlkCnt = SLAB_MEM_ALLOCATOR_SIZE / uwBlkSz;
+ 108              		.loc 1 69 9 is_stmt 1 view .LVU26
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (NULL != pstSlabMemHead->stSlabClass[uwIdx].alloc)
+ 109              		.loc 1 74 12 is_stmt 0 view .LVU27
+ 110 001a E268     		ldr	r2, [r4, #12]
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (NULL != pstSlabMemHead->stSlabClass[uwIdx].alloc)
+ 111              		.loc 1 73 55 view .LVU28
+ 112 001c C4F808A0 		str	r10, [r4, #8]
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwBlkCnt = SLAB_MEM_ALLOCATOR_SIZE / uwBlkSz;
+ 113              		.loc 1 69 45 view .LVU29
+ 114 0020 08FA06F1 		lsl	r1, r8, r6
+ 115              	.LVL6:
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMemHead->stSlabClass[uwIdx].blkSz = uwBlkSz;
+ 116              		.loc 1 70 9 is_stmt 1 view .LVU30
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMemHead->stSlabClass[uwIdx].blkSz = uwBlkSz;
+ 117              		.loc 1 70 18 is_stmt 0 view .LVU31
+ 118 0024 B9FBF1F3 		udiv	r3, r9, r1
+ 119              	.LVL7:
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMemHead->stSlabClass[uwIdx].blkCnt = uwBlkCnt;
+ 120              		.loc 1 71 9 is_stmt 1 view .LVU32
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMemHead->stSlabClass[uwIdx].blkUsedCnt = 0;
+ 121              		.loc 1 72 51 is_stmt 0 view .LVU33
+ 122 0028 C4E90013 		strd	r1, r3, [r4]
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (NULL != pstSlabMemHead->stSlabClass[uwIdx].alloc)
+ 123              		.loc 1 73 9 is_stmt 1 view .LVU34
+ 124              		.loc 1 74 9 view .LVU35
+ 125              		.loc 1 74 12 is_stmt 0 view .LVU36
+ 126 002c 52B1     		cbz	r2, .L3
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             PRINT_WARN("SlabMemAllocator[%d] inited before\n", uwIdx);
+ 127              		.loc 1 76 70 is_stmt 1 view .LVU37
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             uwTmp++;
+ 128              		.loc 1 77 13 view .LVU38
+ 129              		.loc 1 77 18 is_stmt 0 view .LVU39
+ 130 002e 0135     		adds	r5, r5, #1
+ 131              	.LVL8:
+ 132              	.L4:
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 133              		.loc 1 67 45 is_stmt 1 discriminator 2 view .LVU40
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 134              		.loc 1 67 50 is_stmt 0 discriminator 2 view .LVU41
+ 135 0030 0136     		adds	r6, r6, #1
+ 136              	.LVL9:
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 137              		.loc 1 67 21 is_stmt 1 discriminator 2 view .LVU42
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 5
+
+
+ 138              		.loc 1 67 5 is_stmt 0 discriminator 2 view .LVU43
+ 139 0032 042E     		cmp	r6, #4
+ 140 0034 04F11004 		add	r4, r4, #16
+ 141 0038 EFD1     		bne	.L5
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         else
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             pstSlabMemHead->stSlabClass[uwIdx].alloc = osSlabAllocatorNew(pPool, uwBlkSz + sizeof(O
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return ((0 == uwTmp) ? TRUE : FALSE);
+ 142              		.loc 1 85 5 is_stmt 1 view .LVU44
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 143              		.loc 1 86 1 is_stmt 0 view .LVU45
+ 144 003a B5FA85F0 		clz	r0, r5
+ 145 003e 4009     		lsrs	r0, r0, #5
+ 146 0040 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 147              	.LVL10:
+ 148              	.L3:
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 149              		.loc 1 81 13 is_stmt 1 view .LVU46
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 150              		.loc 1 81 56 is_stmt 0 view .LVU47
+ 151 0044 0422     		movs	r2, #4
+ 152 0046 1144     		add	r1, r1, r2
+ 153              	.LVL11:
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 154              		.loc 1 81 56 view .LVU48
+ 155 0048 3846     		mov	r0, r7
+ 156 004a FFF7FEFF 		bl	osSlabAllocatorNew
+ 157              	.LVL12:
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 158              		.loc 1 81 54 view .LVU49
+ 159 004e E060     		str	r0, [r4, #12]
+ 160 0050 EEE7     		b	.L4
+ 161              		.cfi_endproc
+ 162              	.LFE288:
+ 164              		.section	.text.osSlabMemAlloc,"ax",%progbits
+ 165              		.align	1
+ 166              		.global	osSlabMemAlloc
+ 167              		.syntax unified
+ 168              		.thumb
+ 169              		.thumb_func
+ 170              		.fpu fpv4-sp-d16
+ 172              	osSlabMemAlloc:
+ 173              	.LVL13:
+ 174              	.LFB289:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** /*****************************************************************************
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Function : osSlabMemAlloc
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Description : To alloc memory block
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Input       :  UITN32 sz --- size of the  memory we want to alloc
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Output      : None
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Return      : pointer :the address of the memory we alloced
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** *****************************************************************************/
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** VOID *osSlabMemAlloc(VOID *pPool, UINT32 uwSz)
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 6
+
+
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+ 175              		.loc 1 96 1 is_stmt 1 view -0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     VOID *pRet = NULL;
+ 179              		.loc 1 97 5 view .LVU51
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINTPTR uvIntSave;
+ 180              		.loc 1 98 5 view .LVU52
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMem = osSlabCtrlHdrGet(pPool);
+ 181              		.loc 1 99 5 view .LVU53
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     VOID *pRet = NULL;
+ 182              		.loc 1 96 1 is_stmt 0 view .LVU54
+ 183 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 184              	.LCFI1:
+ 185              		.cfi_def_cfa_offset 24
+ 186              		.cfi_offset 4, -24
+ 187              		.cfi_offset 5, -20
+ 188              		.cfi_offset 6, -16
+ 189              		.cfi_offset 7, -12
+ 190              		.cfi_offset 8, -8
+ 191              		.cfi_offset 14, -4
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     VOID *pRet = NULL;
+ 192              		.loc 1 96 1 view .LVU55
+ 193 0004 0C46     		mov	r4, r1
+ 194              		.loc 1 99 50 view .LVU56
+ 195 0006 FFF7FEFF 		bl	osSlabCtrlHdrGet
+ 196              	.LVL14:
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc = NULL;
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     if (uwSz > (SLAB_MEM_CALSS_STEP_SIZE << (SLAB_MEM_COUNT - 1)))
+ 197              		.loc 1 103 8 view .LVU57
+ 198 000a 802C     		cmp	r4, #128
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc = NULL;
+ 199              		.loc 1 99 50 view .LVU58
+ 200 000c 0546     		mov	r5, r0
+ 201              	.LVL15:
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc = NULL;
+ 202              		.loc 1 100 5 is_stmt 1 view .LVU59
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 203              		.loc 1 101 5 view .LVU60
+ 204              		.loc 1 103 5 view .LVU61
+ 205              		.loc 1 103 8 is_stmt 0 view .LVU62
+ 206 000e 11D8     		bhi	.L14
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         return NULL;
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     for (uwIdx = 0; uwIdx < SLAB_MEM_COUNT; uwIdx++)
+ 207              		.loc 1 108 16 view .LVU63
+ 208 0010 0023     		movs	r3, #0
+ 209              	.LVL16:
+ 210              	.L13:
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (uwSz<= pstSlabMem->stSlabClass[uwIdx].blkSz)
+ 211              		.loc 1 110 9 is_stmt 1 view .LVU64
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 7
+
+
+ 212 0012 4FEA0318 		lsl	r8, r3, #4
+ 213              		.loc 1 110 12 is_stmt 0 view .LVU65
+ 214 0016 55F80820 		ldr	r2, [r5, r8]
+ 215 001a A242     		cmp	r2, r4
+ 216 001c 26D3     		bcc	.L9
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             uvIntSave = LOS_IntLock();
+ 217              		.loc 1 112 13 is_stmt 1 view .LVU66
+ 218 001e 05EB0806 		add	r6, r5, r8
+ 219              		.loc 1 112 25 is_stmt 0 view .LVU67
+ 220 0022 FFF7FEFF 		bl	LOS_IntLock
+ 221              	.LVL17:
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (pstSlabMem->stSlabClass[uwIdx].blkUsedCnt >= pstSlabMem->stSlabClass[uwIdx].blkCnt)
+ 222              		.loc 1 114 16 view .LVU68
+ 223 0026 D6E90132 		ldrd	r3, r2, [r6, #4]
+ 224 002a 9A42     		cmp	r2, r3
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 225              		.loc 1 112 25 view .LVU69
+ 226 002c 0746     		mov	r7, r0
+ 227              	.LVL18:
+ 228              		.loc 1 114 13 is_stmt 1 view .LVU70
+ 229              		.loc 1 114 16 is_stmt 0 view .LVU71
+ 230 002e 03D3     		bcc	.L10
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             {
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 (VOID)LOS_IntRestore(uvIntSave);
+ 231              		.loc 1 116 17 is_stmt 1 view .LVU72
+ 232 0030 FFF7FEFF 		bl	LOS_IntRestore
+ 233              	.LVL19:
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 return NULL;
+ 234              		.loc 1 117 17 view .LVU73
+ 235              	.L14:
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 236              		.loc 1 105 16 is_stmt 0 view .LVU74
+ 237 0034 0024     		movs	r4, #0
+ 238              	.LVL20:
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 239              		.loc 1 105 16 view .LVU75
+ 240 0036 03E0     		b	.L7
+ 241              	.LVL21:
+ 242              	.L10:
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             }
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (NULL == pstSlabMem->stSlabClass[uwIdx].alloc)
+ 243              		.loc 1 120 13 is_stmt 1 view .LVU76
+ 244              		.loc 1 120 55 is_stmt 0 view .LVU77
+ 245 0038 F468     		ldr	r4, [r6, #12]
+ 246              	.LVL22:
+ 247              		.loc 1 120 16 view .LVU78
+ 248 003a 24B9     		cbnz	r4, .L11
+ 249              	.LVL23:
+ 250              	.L19:
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             {
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 (VOID)LOS_IntRestore(uvIntSave);
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 return NULL;
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             }
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 8
+
+
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             pstSlabAlloc = &(pstSlabMem->stSlabClass[uwIdx]);
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             pRet = osSlabAllocatorAlloc(pstSlabAlloc->alloc);
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (NULL != pRet)
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             {
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 /* alloc success */
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 pRet = osSlabBlockHeadFill((OS_SLAB_BLOCK_NODE *)pRet, pstSlabMem->stSlabClass[uwId
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 pstSlabMem->stSlabClass[uwIdx].blkUsedCnt++;
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 OS_MEM_ADD_USED(pstSlabMem->stSlabClass[uwIdx].blkSz);
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #endif
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             }
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             (VOID)LOS_IntRestore(uvIntSave);
+ 251              		.loc 1 138 13 view .LVU79
+ 252 003c FFF7FEFF 		bl	LOS_IntRestore
+ 253              	.LVL24:
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             return pRet;
+ 254              		.loc 1 139 13 is_stmt 1 view .LVU80
+ 255              	.L7:
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return NULL;
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 256              		.loc 1 144 1 is_stmt 0 view .LVU81
+ 257 0040 2046     		mov	r0, r4
+ 258 0042 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 259              	.LVL25:
+ 260              	.L11:
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             pRet = osSlabAllocatorAlloc(pstSlabAlloc->alloc);
+ 261              		.loc 1 126 13 is_stmt 1 view .LVU82
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (NULL != pRet)
+ 262              		.loc 1 127 13 view .LVU83
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (NULL != pRet)
+ 263              		.loc 1 127 20 is_stmt 0 view .LVU84
+ 264 0046 2046     		mov	r0, r4
+ 265              	.LVL26:
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (NULL != pRet)
+ 266              		.loc 1 127 20 view .LVU85
+ 267 0048 FFF7FEFF 		bl	osSlabAllocatorAlloc
+ 268              	.LVL27:
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             {
+ 269              		.loc 1 128 13 is_stmt 1 view .LVU86
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             {
+ 270              		.loc 1 128 16 is_stmt 0 view .LVU87
+ 271 004c 0446     		mov	r4, r0
+ 272 004e 58B1     		cbz	r0, .L12
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 pstSlabMem->stSlabClass[uwIdx].blkUsedCnt++;
+ 273              		.loc 1 131 17 is_stmt 1 view .LVU88
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 pstSlabMem->stSlabClass[uwIdx].blkUsedCnt++;
+ 274              		.loc 1 131 24 is_stmt 0 view .LVU89
+ 275 0050 55F80830 		ldr	r3, [r5, r8]
+ 276              	.LVL28:
+ 277              	.LBB4:
+ 278              	.LBI4:
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+ 279              		.loc 1 44 7 is_stmt 1 view .LVU90
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 9
+
+
+ 280              	.LBB5:
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_SIZE_SET(pstSlabNode, uwBlkSz);
+ 281              		.loc 1 46 5 view .LVU91
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_ID_SET(pstSlabNode, 0);//now undefine how to use ID
+ 282              		.loc 1 47 5 is_stmt 0 view .LVU92
+ 283 0054 8370     		strb	r3, [r0, #2]
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return (VOID *)(pstSlabNode + 1);
+ 284              		.loc 1 48 5 view .LVU93
+ 285 0056 0023     		movs	r3, #0
+ 286              	.LVL29:
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return (VOID *)(pstSlabNode + 1);
+ 287              		.loc 1 48 5 view .LVU94
+ 288 0058 C370     		strb	r3, [r0, #3]
+ 289              	.LBE5:
+ 290              	.LBE4:
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 291              		.loc 1 132 58 view .LVU95
+ 292 005a B368     		ldr	r3, [r6, #8]
+ 293              	.LBB8:
+ 294              	.LBB6:
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_SIZE_SET(pstSlabNode, uwBlkSz);
+ 295              		.loc 1 46 5 view .LVU96
+ 296 005c 4DF6DE62 		movw	r2, #57054
+ 297              	.LBE6:
+ 298              	.LBE8:
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 299              		.loc 1 132 58 view .LVU97
+ 300 0060 0133     		adds	r3, r3, #1
+ 301              	.LBB9:
+ 302              	.LBB7:
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_SIZE_SET(pstSlabNode, uwBlkSz);
+ 303              		.loc 1 46 5 view .LVU98
+ 304 0062 0280     		strh	r2, [r0]	@ movhi
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_ID_SET(pstSlabNode, 0);//now undefine how to use ID
+ 305              		.loc 1 47 5 is_stmt 1 view .LVU99
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return (VOID *)(pstSlabNode + 1);
+ 306              		.loc 1 48 5 view .LVU100
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 307              		.loc 1 49 5 view .LVU101
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 308              		.loc 1 49 12 is_stmt 0 view .LVU102
+ 309 0064 0434     		adds	r4, r4, #4
+ 310              	.LVL30:
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 311              		.loc 1 49 12 view .LVU103
+ 312              	.LBE7:
+ 313              	.LBE9:
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 314              		.loc 1 132 17 is_stmt 1 view .LVU104
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 315              		.loc 1 132 58 is_stmt 0 view .LVU105
+ 316 0066 B360     		str	r3, [r6, #8]
+ 317              	.L12:
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             return pRet;
+ 318              		.loc 1 138 13 is_stmt 1 view .LVU106
+ 319 0068 3846     		mov	r0, r7
+ 320 006a E7E7     		b	.L19
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 10
+
+
+ 321              	.LVL31:
+ 322              	.L9:
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 323              		.loc 1 108 45 discriminator 2 view .LVU107
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 324              		.loc 1 108 50 is_stmt 0 discriminator 2 view .LVU108
+ 325 006c 0133     		adds	r3, r3, #1
+ 326              	.LVL32:
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 327              		.loc 1 108 21 is_stmt 1 discriminator 2 view .LVU109
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 328              		.loc 1 108 5 is_stmt 0 discriminator 2 view .LVU110
+ 329 006e 042B     		cmp	r3, #4
+ 330 0070 CFD1     		bne	.L13
+ 331 0072 DFE7     		b	.L14
+ 332              		.cfi_endproc
+ 333              	.LFE289:
+ 335              		.section	.text.osSlabMemFree,"ax",%progbits
+ 336              		.align	1
+ 337              		.global	osSlabMemFree
+ 338              		.syntax unified
+ 339              		.thumb
+ 340              		.thumb_func
+ 341              		.fpu fpv4-sp-d16
+ 343              	osSlabMemFree:
+ 344              	.LVL33:
+ 345              	.LFB290:
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** /*****************************************************************************
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Function : osSlabMemFree
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Description : To free the  memory block
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Input       : VOID* pPtr: the pointer of heap memory we want to free
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Output      : None
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Return      : TRUE:success FALSE:error
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** *****************************************************************************/
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** BOOL osSlabMemFree(VOID *pPool, VOID* pPtr)
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+ 346              		.loc 1 154 1 is_stmt 1 view -0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 0
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINTPTR uvIntSave;
+ 350              		.loc 1 155 5 view .LVU112
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMem = osSlabCtrlHdrGet(pPool);
+ 351              		.loc 1 156 5 view .LVU113
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINTPTR uvIntSave;
+ 352              		.loc 1 154 1 is_stmt 0 view .LVU114
+ 353 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 354              	.LCFI2:
+ 355              		.cfi_def_cfa_offset 24
+ 356              		.cfi_offset 3, -24
+ 357              		.cfi_offset 4, -20
+ 358              		.cfi_offset 5, -16
+ 359              		.cfi_offset 6, -12
+ 360              		.cfi_offset 7, -8
+ 361              		.cfi_offset 14, -4
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINTPTR uvIntSave;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 11
+
+
+ 362              		.loc 1 154 1 view .LVU115
+ 363 0002 0D46     		mov	r5, r1
+ 364              		.loc 1 156 50 view .LVU116
+ 365 0004 FFF7FEFF 		bl	osSlabCtrlHdrGet
+ 366              	.LVL34:
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     BOOL bRet = FALSE;
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc;
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_NODE *pstSlabNode = OS_SLAB_BLOCK_HEAD_GET(pPtr);
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 162:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     if (!OS_ALLOC_FROM_SLAB_CHECK(pstSlabNode))
+ 367              		.loc 1 162 8 view .LVU117
+ 368 0008 35F8042C 		ldrh	r2, [r5, #-4]
+ 369 000c 4DF6DE63 		movw	r3, #57054
+ 370 0010 9A42     		cmp	r2, r3
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     BOOL bRet = FALSE;
+ 371              		.loc 1 156 50 view .LVU118
+ 372 0012 0446     		mov	r4, r0
+ 373              	.LVL35:
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     BOOL bRet = FALSE;
+ 374              		.loc 1 157 5 is_stmt 1 view .LVU119
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+ 375              		.loc 1 158 5 view .LVU120
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_NODE *pstSlabNode = OS_SLAB_BLOCK_HEAD_GET(pPtr);
+ 376              		.loc 1 159 5 view .LVU121
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 377              		.loc 1 160 5 view .LVU122
+ 378              		.loc 1 162 5 view .LVU123
+ 379              		.loc 1 162 8 is_stmt 0 view .LVU124
+ 380 0014 20D1     		bne	.L25
+ 163:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         return FALSE;
+ 165:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     for (uwIdx = 0; uwIdx < SLAB_MEM_COUNT; uwIdx++)
+ 167:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 168:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (OS_SLAB_BLOCK_SIZE_GET(pstSlabNode) <= pstSlabMem->stSlabClass[uwIdx].blkSz)
+ 381              		.loc 1 168 13 view .LVU125
+ 382 0016 15F8022C 		ldrb	r2, [r5, #-2]	@ zero_extendqisi2
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 383              		.loc 1 166 16 view .LVU126
+ 384 001a 0023     		movs	r3, #0
+ 385              	.LVL36:
+ 386              	.L24:
+ 387              		.loc 1 168 9 is_stmt 1 view .LVU127
+ 388              		.loc 1 168 82 is_stmt 0 view .LVU128
+ 389 001c 1F01     		lsls	r7, r3, #4
+ 390              		.loc 1 168 12 view .LVU129
+ 391 001e E159     		ldr	r1, [r4, r7]
+ 392 0020 8A42     		cmp	r2, r1
+ 393 0022 16D8     		bhi	.L22
+ 169:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             uvIntSave = LOS_IntLock();
+ 394              		.loc 1 170 13 is_stmt 1 view .LVU130
+ 395              		.loc 1 170 25 is_stmt 0 view .LVU131
+ 396 0024 FFF7FEFF 		bl	LOS_IntLock
+ 397              	.LVL37:
+ 171:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 12
+
+
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             pstSlabAlloc = &(pstSlabMem->stSlabClass[uwIdx]);
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (TRUE == osSlabAllocatorFree(pstSlabAlloc->alloc, pstSlabNode))
+ 398              		.loc 1 173 25 view .LVU132
+ 399 0028 3C44     		add	r4, r4, r7
+ 400              	.LVL38:
+ 170:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 401              		.loc 1 170 25 view .LVU133
+ 402 002a 0646     		mov	r6, r0
+ 403              	.LVL39:
+ 172:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (TRUE == osSlabAllocatorFree(pstSlabAlloc->alloc, pstSlabNode))
+ 404              		.loc 1 172 13 is_stmt 1 view .LVU134
+ 405              		.loc 1 173 13 view .LVU135
+ 406              		.loc 1 173 25 is_stmt 0 view .LVU136
+ 407 002c 291F     		subs	r1, r5, #4
+ 408 002e E068     		ldr	r0, [r4, #12]
+ 409              	.LVL40:
+ 410              		.loc 1 173 25 view .LVU137
+ 411 0030 FFF7FEFF 		bl	osSlabAllocatorFree
+ 412              	.LVL41:
+ 413              		.loc 1 173 16 view .LVU138
+ 414 0034 0128     		cmp	r0, #1
+ 174:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             {
+ 175:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 bRet = TRUE;
+ 415              		.loc 1 175 17 is_stmt 1 view .LVU139
+ 416              	.LVL42:
+ 176:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 pstSlabMem->stSlabClass[uwIdx].blkUsedCnt--;
+ 417              		.loc 1 176 17 view .LVU140
+ 418              		.loc 1 176 58 is_stmt 0 view .LVU141
+ 419 0036 04BF     		itt	eq
+ 420 0038 A368     		ldreq	r3, [r4, #8]
+ 421 003a 03F1FF33 		addeq	r3, r3, #-1
+ 173:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             {
+ 422              		.loc 1 173 25 view .LVU142
+ 423 003e 0546     		mov	r5, r0
+ 424              	.LVL43:
+ 425              		.loc 1 176 58 view .LVU143
+ 426 0040 08BF     		it	eq
+ 427 0042 A360     		streq	r3, [r4, #8]
+ 177:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 178:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 OS_MEM_REDUCE_USED(pstSlabMem->stSlabClass[uwIdx].blkSz);
+ 179:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** #endif
+ 180:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             }
+ 181:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 182:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             (VOID)LOS_IntRestore(uvIntSave);
+ 428              		.loc 1 182 13 view .LVU144
+ 429 0044 3046     		mov	r0, r6
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc;
+ 430              		.loc 1 157 10 view .LVU145
+ 431 0046 18BF     		it	ne
+ 432 0048 0025     		movne	r5, #0
+ 433              	.LVL44:
+ 434              		.loc 1 182 13 is_stmt 1 view .LVU146
+ 435 004a FFF7FEFF 		bl	LOS_IntRestore
+ 436              	.LVL45:
+ 183:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             return bRet;
+ 437              		.loc 1 183 13 view .LVU147
+ 438              	.L20:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 13
+
+
+ 184:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 185:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 186:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return FALSE;
+ 187:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 439              		.loc 1 187 1 is_stmt 0 view .LVU148
+ 440 004e 2846     		mov	r0, r5
+ 441 0050 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 442              	.LVL46:
+ 443              	.L22:
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 444              		.loc 1 166 45 is_stmt 1 discriminator 2 view .LVU149
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 445              		.loc 1 166 50 is_stmt 0 discriminator 2 view .LVU150
+ 446 0052 0133     		adds	r3, r3, #1
+ 447              	.LVL47:
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 448              		.loc 1 166 21 is_stmt 1 discriminator 2 view .LVU151
+ 166:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 449              		.loc 1 166 5 is_stmt 0 discriminator 2 view .LVU152
+ 450 0054 042B     		cmp	r3, #4
+ 451 0056 E1D1     		bne	.L24
+ 452              	.LVL48:
+ 453              	.L25:
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 454              		.loc 1 164 16 view .LVU153
+ 455 0058 0025     		movs	r5, #0
+ 456              	.LVL49:
+ 164:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 457              		.loc 1 164 16 view .LVU154
+ 458 005a F8E7     		b	.L20
+ 459              		.cfi_endproc
+ 460              	.LFE290:
+ 462              		.section	.text.osSlabMemDeinit,"ax",%progbits
+ 463              		.align	1
+ 464              		.global	osSlabMemDeinit
+ 465              		.syntax unified
+ 466              		.thumb
+ 467              		.thumb_func
+ 468              		.fpu fpv4-sp-d16
+ 470              	osSlabMemDeinit:
+ 471              	.LVL50:
+ 472              	.LFB291:
+ 188:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 189:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** /*****************************************************************************
+ 190:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Function : osSlabMemDeinit
+ 191:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Description :  deinitialize the slab memory ,set back to the original status
+ 192:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Input       : None
+ 193:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Output      : None
+ 194:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****  Return      : None
+ 195:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** *****************************************************************************/
+ 196:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** VOID osSlabMemDeinit(VOID *pPool)
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+ 473              		.loc 1 197 1 is_stmt 1 view -0
+ 474              		.cfi_startproc
+ 475              		@ args = 0, pretend = 0, frame = 0
+ 476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 14
+
+
+ 477              		.loc 1 198 5 view .LVU156
+ 199:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMem = NULL;
+ 478              		.loc 1 199 5 view .LVU157
+ 200:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc;
+ 479              		.loc 1 200 5 view .LVU158
+ 201:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwBlkSz;
+ 480              		.loc 1 201 5 view .LVU159
+ 202:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwBlkCnt;
+ 481              		.loc 1 202 5 view .LVU160
+ 203:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 204:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     if (NULL == pPool)
+ 482              		.loc 1 204 5 view .LVU161
+ 197:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx;
+ 483              		.loc 1 197 1 is_stmt 0 view .LVU162
+ 484 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 485              	.LCFI3:
+ 486              		.cfi_def_cfa_offset 32
+ 487              		.cfi_offset 3, -32
+ 488              		.cfi_offset 4, -28
+ 489              		.cfi_offset 5, -24
+ 490              		.cfi_offset 6, -20
+ 491              		.cfi_offset 7, -16
+ 492              		.cfi_offset 8, -12
+ 493              		.cfi_offset 9, -8
+ 494              		.cfi_offset 14, -4
+ 495              		.loc 1 204 8 view .LVU163
+ 496 0004 0646     		mov	r6, r0
+ 497 0006 C8B1     		cbz	r0, .L28
+ 205:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 206:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         return ;
+ 207:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstSlabMem = osSlabCtrlHdrGet(pPool);
+ 498              		.loc 1 208 5 is_stmt 1 view .LVU164
+ 499              		.loc 1 208 18 is_stmt 0 view .LVU165
+ 500 0008 FFF7FEFF 		bl	osSlabCtrlHdrGet
+ 501              	.LVL51:
+ 209:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     for (uwIdx = 0; uwIdx < SLAB_MEM_COUNT; uwIdx++)
+ 502              		.loc 1 210 16 view .LVU166
+ 503 000c 0025     		movs	r5, #0
+ 208:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 504              		.loc 1 208 18 view .LVU167
+ 505 000e 0446     		mov	r4, r0
+ 506              	.LVL52:
+ 507              		.loc 1 210 5 is_stmt 1 view .LVU168
+ 508              		.loc 1 210 21 view .LVU169
+ 211:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwBlkSz = (0x10 << uwIdx);
+ 509              		.loc 1 212 25 is_stmt 0 view .LVU170
+ 510 0010 1027     		movs	r7, #16
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwBlkCnt = SLAB_MEM_ALLOCATOR_SIZE / uwBlkSz;
+ 511              		.loc 1 213 18 view .LVU171
+ 512 0012 4FF40078 		mov	r8, #512
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMem->stSlabClass[uwIdx].blkSz = uwBlkSz;
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMem->stSlabClass[uwIdx].blkCnt = uwBlkCnt;
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (NULL != pstSlabMem->stSlabClass[uwIdx].alloc)
+ 217:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 15
+
+
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             pstSlabAlloc = &(pstSlabMem->stSlabClass[uwIdx]);
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             osSlabAllocatorDestroy(pPool, pstSlabAlloc->alloc);
+ 220:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             pstSlabMem->stSlabClass[uwIdx].alloc = NULL;
+ 513              		.loc 1 220 50 view .LVU172
+ 514 0016 A946     		mov	r9, r5
+ 515              	.LVL53:
+ 516              	.L31:
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwBlkCnt = SLAB_MEM_ALLOCATOR_SIZE / uwBlkSz;
+ 517              		.loc 1 212 9 is_stmt 1 view .LVU173
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+ 518              		.loc 1 216 12 is_stmt 0 view .LVU174
+ 519 0018 E168     		ldr	r1, [r4, #12]
+ 212:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwBlkCnt = SLAB_MEM_ALLOCATOR_SIZE / uwBlkSz;
+ 520              		.loc 1 212 25 view .LVU175
+ 521 001a 07FA05F3 		lsl	r3, r7, r5
+ 522              	.LVL54:
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMem->stSlabClass[uwIdx].blkSz = uwBlkSz;
+ 523              		.loc 1 213 9 is_stmt 1 view .LVU176
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMem->stSlabClass[uwIdx].blkCnt = uwBlkCnt;
+ 524              		.loc 1 214 9 view .LVU177
+ 214:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMem->stSlabClass[uwIdx].blkCnt = uwBlkCnt;
+ 525              		.loc 1 214 46 is_stmt 0 view .LVU178
+ 526 001e 2360     		str	r3, [r4]
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (NULL != pstSlabMem->stSlabClass[uwIdx].alloc)
+ 527              		.loc 1 215 9 is_stmt 1 view .LVU179
+ 213:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabMem->stSlabClass[uwIdx].blkSz = uwBlkSz;
+ 528              		.loc 1 213 18 is_stmt 0 view .LVU180
+ 529 0020 B8FBF3F3 		udiv	r3, r8, r3
+ 530              	.LVL55:
+ 215:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (NULL != pstSlabMem->stSlabClass[uwIdx].alloc)
+ 531              		.loc 1 215 47 view .LVU181
+ 532 0024 6360     		str	r3, [r4, #4]
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+ 533              		.loc 1 216 9 is_stmt 1 view .LVU182
+ 216:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+ 534              		.loc 1 216 12 is_stmt 0 view .LVU183
+ 535 0026 21B1     		cbz	r1, .L30
+ 218:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             osSlabAllocatorDestroy(pPool, pstSlabAlloc->alloc);
+ 536              		.loc 1 218 13 is_stmt 1 view .LVU184
+ 537              	.LVL56:
+ 219:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             pstSlabMem->stSlabClass[uwIdx].alloc = NULL;
+ 538              		.loc 1 219 13 view .LVU185
+ 539 0028 3046     		mov	r0, r6
+ 540 002a FFF7FEFF 		bl	osSlabAllocatorDestroy
+ 541              	.LVL57:
+ 542              		.loc 1 220 13 view .LVU186
+ 543              		.loc 1 220 50 is_stmt 0 view .LVU187
+ 544 002e C4F80C90 		str	r9, [r4, #12]
+ 545              	.L30:
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 546              		.loc 1 210 45 is_stmt 1 discriminator 2 view .LVU188
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 547              		.loc 1 210 50 is_stmt 0 discriminator 2 view .LVU189
+ 548 0032 0135     		adds	r5, r5, #1
+ 549              	.LVL58:
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 550              		.loc 1 210 21 is_stmt 1 discriminator 2 view .LVU190
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 16
+
+
+ 210:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 551              		.loc 1 210 5 is_stmt 0 discriminator 2 view .LVU191
+ 552 0034 042D     		cmp	r5, #4
+ 553 0036 04F11004 		add	r4, r4, #16
+ 554 003a EDD1     		bne	.L31
+ 555              	.LVL59:
+ 556              	.L28:
+ 221:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 222:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 223:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return ;
+ 224:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 557              		.loc 1 224 1 view .LVU192
+ 558 003c BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 559              		.loc 1 224 1 view .LVU193
+ 560              		.cfi_endproc
+ 561              	.LFE291:
+ 563              		.section	.text.osSlabMemCheck,"ax",%progbits
+ 564              		.align	1
+ 565              		.global	osSlabMemCheck
+ 566              		.syntax unified
+ 567              		.thumb
+ 568              		.thumb_func
+ 569              		.fpu fpv4-sp-d16
+ 571              	osSlabMemCheck:
+ 572              	.LVL60:
+ 573              	.LFB292:
+ 225:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 226:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** UINT32 osSlabMemCheck(VOID *pPool, VOID* pPtr)
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+ 574              		.loc 1 227 1 is_stmt 1 view -0
+ 575              		.cfi_startproc
+ 576              		@ args = 0, pretend = 0, frame = 0
+ 577              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINTPTR uvIntSave;
+ 578              		.loc 1 228 5 view .LVU195
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMem = osSlabCtrlHdrGet(pPool);
+ 579              		.loc 1 229 5 view .LVU196
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINTPTR uvIntSave;
+ 580              		.loc 1 227 1 is_stmt 0 view .LVU197
+ 581 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 582              	.LCFI4:
+ 583              		.cfi_def_cfa_offset 24
+ 584              		.cfi_offset 4, -24
+ 585              		.cfi_offset 5, -20
+ 586              		.cfi_offset 6, -16
+ 587              		.cfi_offset 7, -12
+ 588              		.cfi_offset 8, -8
+ 589              		.cfi_offset 14, -4
+ 227:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINTPTR uvIntSave;
+ 590              		.loc 1 227 1 view .LVU198
+ 591 0004 0D46     		mov	r5, r1
+ 592              		.loc 1 229 50 view .LVU199
+ 593 0006 FFF7FEFF 		bl	osSlabCtrlHdrGet
+ 594              	.LVL61:
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwRetBlkSz = (UINT32)-1;
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc;
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 17
+
+
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_NODE *pstSlabNode = OS_SLAB_BLOCK_HEAD_GET(pPtr);
+ 234:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 235:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     if ((!OS_ALLOC_FROM_SLAB_CHECK(pstSlabNode))
+ 595              		.loc 1 235 8 view .LVU200
+ 596 000a 35F8042C 		ldrh	r2, [r5, #-4]
+ 597 000e 4DF6DE63 		movw	r3, #57054
+ 598 0012 9A42     		cmp	r2, r3
+ 229:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwRetBlkSz = (UINT32)-1;
+ 599              		.loc 1 229 50 view .LVU201
+ 600 0014 0446     		mov	r4, r0
+ 601              	.LVL62:
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwRetBlkSz = (UINT32)-1;
+ 602              		.loc 1 230 5 is_stmt 1 view .LVU202
+ 231:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+ 603              		.loc 1 231 5 view .LVU203
+ 232:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_BLOCK_NODE *pstSlabNode = OS_SLAB_BLOCK_HEAD_GET(pPtr);
+ 604              		.loc 1 232 5 view .LVU204
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 605              		.loc 1 233 5 view .LVU205
+ 606              		.loc 1 235 5 view .LVU206
+ 607              		.loc 1 235 8 is_stmt 0 view .LVU207
+ 608 0016 1CD1     		bne	.L42
+ 236:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         || (OS_SLAB_BLOCK_SIZE_GET(pstSlabNode) > pstSlabMem->stSlabClass[SLAB_MEM_COUNT - 1].blkSz
+ 609              		.loc 1 236 13 view .LVU208
+ 610 0018 15F8022C 		ldrb	r2, [r5, #-2]	@ zero_extendqisi2
+ 611              		.loc 1 236 9 view .LVU209
+ 612 001c 036B     		ldr	r3, [r0, #48]
+ 613 001e 9A42     		cmp	r2, r3
+ 614 0020 17D8     		bhi	.L42
+ 237:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         return uwRetBlkSz;
+ 239:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 240:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 241:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     uvIntSave = LOS_IntLock();
+ 615              		.loc 1 241 17 view .LVU210
+ 616 0022 FFF7FEFF 		bl	LOS_IntLock
+ 617              	.LVL63:
+ 233:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 618              		.loc 1 233 25 view .LVU211
+ 619 0026 043D     		subs	r5, r5, #4
+ 620              	.LVL64:
+ 621              		.loc 1 241 5 is_stmt 1 view .LVU212
+ 622              		.loc 1 241 17 is_stmt 0 view .LVU213
+ 623 0028 0746     		mov	r7, r0
+ 624              	.LVL65:
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     for (uwIdx = 0; uwIdx < SLAB_MEM_COUNT; uwIdx++)
+ 625              		.loc 1 242 5 is_stmt 1 view .LVU214
+ 626              		.loc 1 242 21 view .LVU215
+ 627 002a 04F14008 		add	r8, r4, #64
+ 230:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc;
+ 628              		.loc 1 230 12 is_stmt 0 view .LVU216
+ 629 002e 4FF0FF36 		mov	r6, #-1
+ 630              	.LVL66:
+ 631              	.L40:
+ 243:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 244:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabAlloc = &(pstSlabMem->stSlabClass[uwIdx]);
+ 632              		.loc 1 244 9 is_stmt 1 view .LVU217
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 18
+
+
+ 245:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (osSlabAllocatorCheck(pstSlabAlloc->alloc, pstSlabNode) == TRUE)
+ 633              		.loc 1 245 9 view .LVU218
+ 634              		.loc 1 245 13 is_stmt 0 view .LVU219
+ 635 0032 E068     		ldr	r0, [r4, #12]
+ 636 0034 2946     		mov	r1, r5
+ 637 0036 FFF7FEFF 		bl	osSlabAllocatorCheck
+ 638              	.LVL67:
+ 639              		.loc 1 245 12 view .LVU220
+ 640 003a 0128     		cmp	r0, #1
+ 246:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+ 247:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             uwRetBlkSz = pstSlabMem->stSlabClass[uwIdx].blkSz;
+ 641              		.loc 1 247 13 is_stmt 1 view .LVU221
+ 642              		.loc 1 247 24 is_stmt 0 view .LVU222
+ 643 003c 08BF     		it	eq
+ 644 003e 2668     		ldreq	r6, [r4]
+ 645              	.LVL68:
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 646              		.loc 1 242 45 is_stmt 1 view .LVU223
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 647              		.loc 1 242 21 view .LVU224
+ 648 0040 1034     		adds	r4, r4, #16
+ 242:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 649              		.loc 1 242 5 is_stmt 0 view .LVU225
+ 650 0042 A045     		cmp	r8, r4
+ 651 0044 F5D1     		bne	.L40
+ 248:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 249:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 250:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 652              		.loc 1 250 5 is_stmt 1 view .LVU226
+ 653 0046 3846     		mov	r0, r7
+ 654 0048 FFF7FEFF 		bl	LOS_IntRestore
+ 655              	.LVL69:
+ 251:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 252:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return uwRetBlkSz;
+ 656              		.loc 1 252 5 view .LVU227
+ 657              	.L37:
+ 253:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 658              		.loc 1 253 1 is_stmt 0 view .LVU228
+ 659 004c 3046     		mov	r0, r6
+ 660 004e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 661              	.LVL70:
+ 662              	.L42:
+ 238:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 663              		.loc 1 238 16 view .LVU229
+ 664 0052 4FF0FF36 		mov	r6, #-1
+ 665 0056 F9E7     		b	.L37
+ 666              		.cfi_endproc
+ 667              	.LFE292:
+ 669              		.section	.text.osSlabStatisticsGet,"ax",%progbits
+ 670              		.align	1
+ 671              		.global	osSlabStatisticsGet
+ 672              		.syntax unified
+ 673              		.thumb
+ 674              		.thumb_func
+ 675              		.fpu fpv4-sp-d16
+ 677              	osSlabStatisticsGet:
+ 678              	.LVL71:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 19
+
+
+ 679              	.LFB293:
+ 254:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 255:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** UINT32 osSlabStatisticsGet(VOID *pPool, LOS_SLAB_STATUS *pstStatus)
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+ 680              		.loc 1 256 1 is_stmt 1 view -0
+ 681              		.cfi_startproc
+ 682              		@ args = 0, pretend = 0, frame = 16
+ 683              		@ frame_needed = 0, uses_anonymous_args = 0
+ 257:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMem = NULL;
+ 684              		.loc 1 257 5 view .LVU231
+ 258:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc;
+ 685              		.loc 1 258 5 view .LVU232
+ 259:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwItemSz = 0;
+ 686              		.loc 1 259 5 view .LVU233
+ 256:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMem = NULL;
+ 687              		.loc 1 256 1 is_stmt 0 view .LVU234
+ 688 0000 2DE9FF47 		push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, lr}
+ 689              	.LCFI5:
+ 690              		.cfi_def_cfa_offset 48
+ 691              		.cfi_offset 4, -32
+ 692              		.cfi_offset 5, -28
+ 693              		.cfi_offset 6, -24
+ 694              		.cfi_offset 7, -20
+ 695              		.cfi_offset 8, -16
+ 696              		.cfi_offset 9, -12
+ 697              		.cfi_offset 10, -8
+ 698              		.cfi_offset 14, -4
+ 699              		.loc 1 259 12 view .LVU235
+ 700 0004 0024     		movs	r4, #0
+ 260:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwItemCnt = 0;
+ 701              		.loc 1 260 12 view .LVU236
+ 702 0006 CDE90144 		strd	r4, r4, [sp, #4]
+ 261:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwCurUsage = 0;
+ 703              		.loc 1 261 5 is_stmt 1 view .LVU237
+ 704              		.loc 1 261 12 is_stmt 0 view .LVU238
+ 705 000a 0394     		str	r4, [sp, #12]
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwTotalUsage = 0;
+ 706              		.loc 1 262 5 is_stmt 1 view .LVU239
+ 707              	.LVL72:
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwTotalMem = 0;
+ 708              		.loc 1 263 5 view .LVU240
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwTotalallocCount = 0;
+ 709              		.loc 1 264 5 view .LVU241
+ 265:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwTotalfreeCount = 0;
+ 710              		.loc 1 265 5 view .LVU242
+ 266:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwIdx = 0;
+ 711              		.loc 1 266 5 view .LVU243
+ 267:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 268:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     if ((NULL == pstStatus) || (NULL == pPool))
+ 712              		.loc 1 268 5 view .LVU244
+ 713              		.loc 1 268 8 is_stmt 0 view .LVU245
+ 714 000c 8846     		mov	r8, r1
+ 715 000e 19B9     		cbnz	r1, .L45
+ 716              	.LVL73:
+ 717              	.L47:
+ 269:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 270:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         return LOS_NOK;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 20
+
+
+ 718              		.loc 1 270 16 view .LVU246
+ 719 0010 0120     		movs	r0, #1
+ 720              	.L44:
+ 271:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstSlabMem = osSlabCtrlHdrGet(pPool);
+ 273:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     for (uwIdx = 0; uwIdx < SLAB_MEM_COUNT; uwIdx++)
+ 275:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 276:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabAlloc = &(pstSlabMem->stSlabClass[uwIdx]);
+ 277:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 278:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         osSlabAllocatorGetSlabInfo(pstSlabAlloc->alloc, &uwItemSz, &uwItemCnt, &uwCurUsage);
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalUsage += (uwCurUsage * uwItemSz);
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalMem += (uwItemCnt * uwItemSz);
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalallocCount += pstSlabMem->stSlabClass[uwIdx].blkUsedCnt;
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalfreeCount  += pstSlabMem->stSlabClass[uwIdx].blkCnt - pstSlabMem->stSlabClass[uwIdx]
+ 283:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 284:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     if (uwTotalMem < uwTotalUsage)
+ 286:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 287:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         return LOS_NOK;
+ 288:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 289:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 290:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->totalSize  = uwTotalMem;
+ 291:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->usedSize   = uwTotalUsage;
+ 292:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->freeSize   = pstStatus->totalSize - pstStatus->usedSize;
+ 293:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->allocCount = uwTotalallocCount;
+ 294:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->freeCount  = uwTotalfreeCount;
+ 295:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return LOS_OK;
+ 296:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 721              		.loc 1 296 1 view .LVU247
+ 722 0012 04B0     		add	sp, sp, #16
+ 723              	.LCFI6:
+ 724              		.cfi_remember_state
+ 725              		.cfi_def_cfa_offset 32
+ 726              		@ sp needed
+ 727 0014 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 728              	.LVL74:
+ 729              	.L45:
+ 730              	.LCFI7:
+ 731              		.cfi_restore_state
+ 268:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 732              		.loc 1 268 29 discriminator 1 view .LVU248
+ 733 0018 0028     		cmp	r0, #0
+ 734 001a F9D0     		beq	.L47
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 735              		.loc 1 272 5 is_stmt 1 view .LVU249
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 736              		.loc 1 272 18 is_stmt 0 view .LVU250
+ 737 001c FFF7FEFF 		bl	osSlabCtrlHdrGet
+ 738              	.LVL75:
+ 264:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwTotalfreeCount = 0;
+ 739              		.loc 1 264 12 view .LVU251
+ 740 0020 A146     		mov	r9, r4
+ 272:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 741              		.loc 1 272 18 view .LVU252
+ 742 0022 0746     		mov	r7, r0
+ 743              	.LVL76:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 21
+
+
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 744              		.loc 1 274 5 is_stmt 1 view .LVU253
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 745              		.loc 1 274 21 view .LVU254
+ 746 0024 00F1400A 		add	r10, r0, #64
+ 263:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwTotalallocCount = 0;
+ 747              		.loc 1 263 12 is_stmt 0 view .LVU255
+ 748 0028 2546     		mov	r5, r4
+ 262:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwTotalMem = 0;
+ 749              		.loc 1 262 12 view .LVU256
+ 750 002a 2646     		mov	r6, r4
+ 751              	.LVL77:
+ 752              	.L48:
+ 276:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 753              		.loc 1 276 9 is_stmt 1 discriminator 3 view .LVU257
+ 278:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalUsage += (uwCurUsage * uwItemSz);
+ 754              		.loc 1 278 9 discriminator 3 view .LVU258
+ 755 002c F868     		ldr	r0, [r7, #12]
+ 756 002e 03AB     		add	r3, sp, #12
+ 757 0030 02AA     		add	r2, sp, #8
+ 758 0032 01A9     		add	r1, sp, #4
+ 759 0034 FFF7FEFF 		bl	osSlabAllocatorGetSlabInfo
+ 760              	.LVL78:
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalMem += (uwItemCnt * uwItemSz);
+ 761              		.loc 1 279 9 discriminator 3 view .LVU259
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalMem += (uwItemCnt * uwItemSz);
+ 762              		.loc 1 279 37 is_stmt 0 discriminator 3 view .LVU260
+ 763 0038 019B     		ldr	r3, [sp, #4]
+ 279:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalMem += (uwItemCnt * uwItemSz);
+ 764              		.loc 1 279 22 discriminator 3 view .LVU261
+ 765 003a 039A     		ldr	r2, [sp, #12]
+ 766 003c 02FB0366 		mla	r6, r2, r3, r6
+ 767              	.LVL79:
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalallocCount += pstSlabMem->stSlabClass[uwIdx].blkUsedCnt;
+ 768              		.loc 1 280 9 is_stmt 1 discriminator 3 view .LVU262
+ 280:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalallocCount += pstSlabMem->stSlabClass[uwIdx].blkUsedCnt;
+ 769              		.loc 1 280 20 is_stmt 0 discriminator 3 view .LVU263
+ 770 0040 029A     		ldr	r2, [sp, #8]
+ 771 0042 02FB0355 		mla	r5, r2, r3, r5
+ 772              	.LVL80:
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalfreeCount  += pstSlabMem->stSlabClass[uwIdx].blkCnt - pstSlabMem->stSlabClass[uwIdx]
+ 773              		.loc 1 281 9 is_stmt 1 discriminator 3 view .LVU264
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalfreeCount  += pstSlabMem->stSlabClass[uwIdx].blkCnt - pstSlabMem->stSlabClass[uwIdx]
+ 774              		.loc 1 281 60 is_stmt 0 discriminator 3 view .LVU265
+ 775 0046 BA68     		ldr	r2, [r7, #8]
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 776              		.loc 1 282 68 discriminator 3 view .LVU266
+ 777 0048 7B68     		ldr	r3, [r7, #4]
+ 778 004a 1037     		adds	r7, r7, #16
+ 779 004c 9B1A     		subs	r3, r3, r2
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 780              		.loc 1 274 5 discriminator 3 view .LVU267
+ 781 004e 5745     		cmp	r7, r10
+ 281:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         uwTotalfreeCount  += pstSlabMem->stSlabClass[uwIdx].blkCnt - pstSlabMem->stSlabClass[uwIdx]
+ 782              		.loc 1 281 27 discriminator 3 view .LVU268
+ 783 0050 9144     		add	r9, r9, r2
+ 784              	.LVL81:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 22
+
+
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 785              		.loc 1 282 9 is_stmt 1 discriminator 3 view .LVU269
+ 282:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 786              		.loc 1 282 27 is_stmt 0 discriminator 3 view .LVU270
+ 787 0052 1C44     		add	r4, r4, r3
+ 788              	.LVL82:
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 789              		.loc 1 274 45 is_stmt 1 discriminator 3 view .LVU271
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 790              		.loc 1 274 21 discriminator 3 view .LVU272
+ 274:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 791              		.loc 1 274 5 is_stmt 0 discriminator 3 view .LVU273
+ 792 0054 EAD1     		bne	.L48
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 793              		.loc 1 285 5 is_stmt 1 view .LVU274
+ 285:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 794              		.loc 1 285 8 is_stmt 0 view .LVU275
+ 795 0056 AE42     		cmp	r6, r5
+ 796 0058 DAD8     		bhi	.L47
+ 290:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->usedSize   = uwTotalUsage;
+ 797              		.loc 1 290 5 is_stmt 1 view .LVU276
+ 291:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->freeSize   = pstStatus->totalSize - pstStatus->usedSize;
+ 798              		.loc 1 291 27 is_stmt 0 view .LVU277
+ 799 005a C8E90056 		strd	r5, r6, [r8]
+ 292:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->allocCount = uwTotalallocCount;
+ 800              		.loc 1 292 5 is_stmt 1 view .LVU278
+ 292:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->allocCount = uwTotalallocCount;
+ 801              		.loc 1 292 50 is_stmt 0 view .LVU279
+ 802 005e AD1B     		subs	r5, r5, r6
+ 803              	.LVL83:
+ 293:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     pstStatus->freeCount  = uwTotalfreeCount;
+ 804              		.loc 1 293 27 view .LVU280
+ 805 0060 C8E90259 		strd	r5, r9, [r8, #8]
+ 294:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return LOS_OK;
+ 806              		.loc 1 294 5 is_stmt 1 view .LVU281
+ 294:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return LOS_OK;
+ 807              		.loc 1 294 27 is_stmt 0 view .LVU282
+ 808 0064 C8F81040 		str	r4, [r8, #16]
+ 295:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 809              		.loc 1 295 5 is_stmt 1 view .LVU283
+ 295:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 810              		.loc 1 295 12 is_stmt 0 view .LVU284
+ 811 0068 0020     		movs	r0, #0
+ 812 006a D2E7     		b	.L44
+ 813              		.cfi_endproc
+ 814              	.LFE293:
+ 816              		.section	.text.osSlabGetMaxFreeBlkSize,"ax",%progbits
+ 817              		.align	1
+ 818              		.global	osSlabGetMaxFreeBlkSize
+ 819              		.syntax unified
+ 820              		.thumb
+ 821              		.thumb_func
+ 822              		.fpu fpv4-sp-d16
+ 824              	osSlabGetMaxFreeBlkSize:
+ 825              	.LVL84:
+ 826              	.LFB294:
+ 297:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 23
+
+
+ 298:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** UINT32 osSlabGetMaxFreeBlkSize(VOID *pPool)
+ 299:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** {
+ 827              		.loc 1 299 1 is_stmt 1 view -0
+ 828              		.cfi_startproc
+ 829              		@ args = 0, pretend = 0, frame = 16
+ 830              		@ frame_needed = 0, uses_anonymous_args = 0
+ 300:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMem = osSlabCtrlHdrGet(pPool);
+ 831              		.loc 1 300 5 view .LVU286
+ 299:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     struct LOS_SLAB_CONTROL_HEADER *pstSlabMem = osSlabCtrlHdrGet(pPool);
+ 832              		.loc 1 299 1 is_stmt 0 view .LVU287
+ 833 0000 30B5     		push	{r4, r5, lr}
+ 834              	.LCFI8:
+ 835              		.cfi_def_cfa_offset 12
+ 836              		.cfi_offset 4, -12
+ 837              		.cfi_offset 5, -8
+ 838              		.cfi_offset 14, -4
+ 839 0002 85B0     		sub	sp, sp, #20
+ 840              	.LCFI9:
+ 841              		.cfi_def_cfa_offset 32
+ 842              		.loc 1 300 50 view .LVU288
+ 843 0004 FFF7FEFF 		bl	osSlabCtrlHdrGet
+ 844              	.LVL85:
+ 301:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     OS_SLAB_MEM *pstSlabAlloc;
+ 845              		.loc 1 301 5 is_stmt 1 view .LVU289
+ 302:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwItemSz = 0;
+ 846              		.loc 1 302 5 view .LVU290
+ 847              		.loc 1 302 12 is_stmt 0 view .LVU291
+ 848 0008 0023     		movs	r3, #0
+ 303:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwItemCnt = 0;
+ 849              		.loc 1 303 12 view .LVU292
+ 850 000a CDE90133 		strd	r3, r3, [sp, #4]
+ 304:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     UINT32 uwCurUsage = 0;
+ 851              		.loc 1 304 5 is_stmt 1 view .LVU293
+ 852              		.loc 1 304 12 is_stmt 0 view .LVU294
+ 853 000e 0393     		str	r3, [sp, #12]
+ 305:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     int uwIdx = 0;
+ 854              		.loc 1 305 5 is_stmt 1 view .LVU295
+ 855              	.LVL86:
+ 306:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     for (uwIdx = SLAB_MEM_COUNT - 1; uwIdx >= 0; uwIdx--)
+ 856              		.loc 1 307 5 view .LVU296
+ 857              		.loc 1 307 38 view .LVU297
+ 858 0010 0446     		mov	r4, r0
+ 859 0012 A0F14005 		sub	r5, r0, #64
+ 860              	.LVL87:
+ 861              	.L56:
+ 308:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 309:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         pstSlabAlloc = &(pstSlabMem->stSlabClass[uwIdx]);
+ 862              		.loc 1 309 9 view .LVU298
+ 310:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         if (pstSlabAlloc->alloc)
+ 863              		.loc 1 310 9 view .LVU299
+ 864              		.loc 1 310 25 is_stmt 0 view .LVU300
+ 865 0016 E06B     		ldr	r0, [r4, #60]
+ 866              		.loc 1 310 12 view .LVU301
+ 867 0018 58B1     		cbz	r0, .L54
+ 311:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         {
+ 312:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             osSlabAllocatorGetSlabInfo(pstSlabAlloc->alloc, &uwItemSz, &uwItemCnt, &uwCurUsage);
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 24
+
+
+ 868              		.loc 1 312 13 is_stmt 1 view .LVU302
+ 869 001a 03AB     		add	r3, sp, #12
+ 870 001c 02AA     		add	r2, sp, #8
+ 871 001e 01A9     		add	r1, sp, #4
+ 872 0020 FFF7FEFF 		bl	osSlabAllocatorGetSlabInfo
+ 873              	.LVL88:
+ 313:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             if (uwCurUsage != uwItemCnt)
+ 874              		.loc 1 313 13 view .LVU303
+ 875              		.loc 1 313 16 is_stmt 0 view .LVU304
+ 876 0024 DDE90232 		ldrd	r3, r2, [sp, #8]
+ 877 0028 9A42     		cmp	r2, r3
+ 878 002a 02D0     		beq	.L54
+ 314:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             {
+ 315:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****                 return uwItemSz;
+ 879              		.loc 1 315 17 is_stmt 1 view .LVU305
+ 880              		.loc 1 315 24 is_stmt 0 view .LVU306
+ 881 002c 0198     		ldr	r0, [sp, #4]
+ 882              	.L53:
+ 316:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****             }
+ 317:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****         }
+ 318:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     }
+ 319:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** 
+ 320:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     return 0;
+ 321:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 883              		.loc 1 321 1 view .LVU307
+ 884 002e 05B0     		add	sp, sp, #20
+ 885              	.LCFI10:
+ 886              		.cfi_remember_state
+ 887              		.cfi_def_cfa_offset 12
+ 888              		@ sp needed
+ 889 0030 30BD     		pop	{r4, r5, pc}
+ 890              	.LVL89:
+ 891              	.L54:
+ 892              	.LCFI11:
+ 893              		.cfi_restore_state
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 894              		.loc 1 307 50 is_stmt 1 view .LVU308
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 895              		.loc 1 307 38 view .LVU309
+ 896 0032 103C     		subs	r4, r4, #16
+ 307:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c ****     {
+ 897              		.loc 1 307 5 is_stmt 0 view .LVU310
+ 898 0034 AC42     		cmp	r4, r5
+ 899 0036 EED1     		bne	.L56
+ 320:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/mem/common\los_slabmem.c **** }
+ 900              		.loc 1 320 12 view .LVU311
+ 901 0038 0020     		movs	r0, #0
+ 902 003a F8E7     		b	.L53
+ 903              		.cfi_endproc
+ 904              	.LFE294:
+ 906              		.text
+ 907              	.Letext0:
+ 908              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 909              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 910              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 911              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 912              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 25
+
+
+ 913              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 914              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 915              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 916              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 917              		.file 11 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 918              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 919              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ 920              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_slabmem.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:18     .text.osSlabBlockHeadFill:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:26     .text.osSlabBlockHeadFill:00000000 osSlabBlockHeadFill
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:55     .text.osSlabMemInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:62     .text.osSlabMemInit:00000000 osSlabMemInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:165    .text.osSlabMemAlloc:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:172    .text.osSlabMemAlloc:00000000 osSlabMemAlloc
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:336    .text.osSlabMemFree:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:343    .text.osSlabMemFree:00000000 osSlabMemFree
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:463    .text.osSlabMemDeinit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:470    .text.osSlabMemDeinit:00000000 osSlabMemDeinit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:564    .text.osSlabMemCheck:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:571    .text.osSlabMemCheck:00000000 osSlabMemCheck
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:670    .text.osSlabStatisticsGet:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:677    .text.osSlabStatisticsGet:00000000 osSlabStatisticsGet
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:817    .text.osSlabGetMaxFreeBlkSize:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc32PfYj.s:824    .text.osSlabGetMaxFreeBlkSize:00000000 osSlabGetMaxFreeBlkSize
+
+UNDEFINED SYMBOLS
+osSlabCtrlHdrGet
+osSlabAllocatorNew
+LOS_IntLock
+LOS_IntRestore
+osSlabAllocatorAlloc
+osSlabAllocatorFree
+osSlabAllocatorDestroy
+osSlabAllocatorCheck
+osSlabAllocatorGetSlabInfo

@@ -1,0 +1,282 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"link_log.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.link_log_level_set,"ax",%progbits
+  18              		.align	1
+  19              		.global	link_log_level_set
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	link_log_level_set:
+  27              	.LVL0:
+  28              	.LFB3:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/link_log/link_log.c"
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** /**
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  *  2019-12-19 14:34  zhangqianfu  The first version
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  *
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****  */
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** 
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** #include <string.h>
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** #include <stdio.h>
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** #include <link_log.h>
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** 
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** static en_link_log_level_t s_link_log_level = EN_LINK_LOG_LEVEL_TRACE;
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** static const char *s_link_log_names[] =
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** {
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     "TRACE",
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     "DEBUG",
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     "INFO ",
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     "WARN ",
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     "ERROR",
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     "FATAL"
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** };
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** 
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** int link_log_level_set(en_link_log_level_t level)
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** {
+  30              		.loc 1 56 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     int ret = -1;
+  35              		.loc 1 57 5 view .LVU1
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     if(level < EN_LINK_LOG_LEVEL_MAX )
+  36              		.loc 1 58 5 view .LVU2
+  37              		.loc 1 58 7 is_stmt 0 view .LVU3
+  38 0000 0528     		cmp	r0, #5
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     {
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****         s_link_log_level = level;
+  39              		.loc 1 60 9 is_stmt 1 view .LVU4
+  40              		.loc 1 60 26 is_stmt 0 view .LVU5
+  41 0002 9DBF     		ittte	ls
+  42 0004 024B     		ldrls	r3, .L4
+  43 0006 1870     		strbls	r0, [r3]
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****         ret = 0;
+  44              		.loc 1 61 9 is_stmt 1 view .LVU6
+  45              	.LVL1:
+  46              		.loc 1 61 13 is_stmt 0 view .LVU7
+  47 0008 0020     		movls	r0, #0
+  48              	.LVL2:
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     if(level < EN_LINK_LOG_LEVEL_MAX )
+  49              		.loc 1 57 9 view .LVU8
+  50 000a 4FF0FF30 		movhi	r0, #-1
+  51              	.LVL3:
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     }
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     return ret;
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s 			page 3
+
+
+  52              		.loc 1 63 5 is_stmt 1 view .LVU9
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** }
+  53              		.loc 1 64 1 is_stmt 0 view .LVU10
+  54 000e 7047     		bx	lr
+  55              	.L5:
+  56              		.align	2
+  57              	.L4:
+  58 0010 00000000 		.word	.LANCHOR0
+  59              		.cfi_endproc
+  60              	.LFE3:
+  62              		.section	.text.link_log_level_get,"ax",%progbits
+  63              		.align	1
+  64              		.global	link_log_level_get
+  65              		.syntax unified
+  66              		.thumb
+  67              		.thumb_func
+  68              		.fpu fpv4-sp-d16
+  70              	link_log_level_get:
+  71              	.LFB4:
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** 
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** en_link_log_level_t link_log_level_get(void)
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** {
+  72              		.loc 1 67 1 is_stmt 1 view -0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     return s_link_log_level;
+  77              		.loc 1 68 5 view .LVU12
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** }
+  78              		.loc 1 69 1 is_stmt 0 view .LVU13
+  79 0000 014B     		ldr	r3, .L7
+  80 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  81 0004 7047     		bx	lr
+  82              	.L8:
+  83 0006 00BF     		.align	2
+  84              	.L7:
+  85 0008 00000000 		.word	.LANCHOR0
+  86              		.cfi_endproc
+  87              	.LFE4:
+  89              		.section	.rodata.link_log_level_name.str1.1,"aMS",%progbits,1
+  90              	.LC0:
+  91 0000 4E554C4C 		.ascii	"NULL \000"
+  91      2000
+  92              		.section	.text.link_log_level_name,"ax",%progbits
+  93              		.align	1
+  94              		.global	link_log_level_name
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  98              		.fpu fpv4-sp-d16
+ 100              	link_log_level_name:
+ 101              	.LVL4:
+ 102              	.LFB5:
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** 
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** const char *link_log_level_name(en_link_log_level_t log_level)
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s 			page 4
+
+
+ 103              		.loc 1 72 1 is_stmt 1 view -0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107              		@ link register save eliminated.
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     if (log_level >= EN_LINK_LOG_LEVEL_MAX)
+ 108              		.loc 1 73 5 view .LVU15
+ 109              		.loc 1 73 8 is_stmt 0 view .LVU16
+ 110 0000 0528     		cmp	r0, #5
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     {
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****         return "NULL ";
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     }
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     else
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     {
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****         return s_link_log_names[log_level];
+ 111              		.loc 1 79 9 is_stmt 1 view .LVU17
+ 112              		.loc 1 79 32 is_stmt 0 view .LVU18
+ 113 0002 9ABF     		itte	ls
+ 114 0004 024B     		ldrls	r3, .L12
+ 115 0006 53F82000 		ldrls	r0, [r3, r0, lsl #2]
+ 116              	.LVL5:
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     }
+ 117              		.loc 1 75 16 view .LVU19
+ 118 000a 0248     		ldrhi	r0, .L12+4
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c ****     }
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** 
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/link_log\link_log.c **** }
+ 119              		.loc 1 82 1 view .LVU20
+ 120 000c 7047     		bx	lr
+ 121              	.L13:
+ 122 000e 00BF     		.align	2
+ 123              	.L12:
+ 124 0010 00000000 		.word	.LANCHOR1
+ 125 0014 00000000 		.word	.LC0
+ 126              		.cfi_endproc
+ 127              	.LFE5:
+ 129              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 130              	.LC1:
+ 131 0000 54524143 		.ascii	"TRACE\000"
+ 131      4500
+ 132              	.LC2:
+ 133 0006 44454255 		.ascii	"DEBUG\000"
+ 133      4700
+ 134              	.LC3:
+ 135 000c 494E464F 		.ascii	"INFO \000"
+ 135      2000
+ 136              	.LC4:
+ 137 0012 5741524E 		.ascii	"WARN \000"
+ 137      2000
+ 138              	.LC5:
+ 139 0018 4552524F 		.ascii	"ERROR\000"
+ 139      5200
+ 140              	.LC6:
+ 141 001e 46415441 		.ascii	"FATAL\000"
+ 141      4C00
+ 142              		.section	.bss.s_link_log_level,"aw",%nobits
+ 143              		.set	.LANCHOR0,. + 0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s 			page 5
+
+
+ 146              	s_link_log_level:
+ 147 0000 00       		.space	1
+ 148              		.section	.rodata.s_link_log_names,"a"
+ 149              		.align	2
+ 150              		.set	.LANCHOR1,. + 0
+ 153              	s_link_log_names:
+ 154 0000 00000000 		.word	.LC1
+ 155 0004 06000000 		.word	.LC2
+ 156 0008 0C000000 		.word	.LC3
+ 157 000c 12000000 		.word	.LC4
+ 158 0010 18000000 		.word	.LC5
+ 159 0014 1E000000 		.word	.LC6
+ 160              		.text
+ 161              	.Letext0:
+ 162              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 163              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 164              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 165              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 166              		.file 6 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/inc/link_log.h"
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 link_log.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:18     .text.link_log_level_set:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:26     .text.link_log_level_set:00000000 link_log_level_set
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:58     .text.link_log_level_set:00000010 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:63     .text.link_log_level_get:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:70     .text.link_log_level_get:00000000 link_log_level_get
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:85     .text.link_log_level_get:00000008 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:93     .text.link_log_level_name:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:100    .text.link_log_level_name:00000000 link_log_level_name
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:124    .text.link_log_level_name:00000010 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:146    .bss.s_link_log_level:00000000 s_link_log_level
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:147    .bss.s_link_log_level:00000000 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:149    .rodata.s_link_log_names:00000000 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccnycDNc.s:153    .rodata.s_link_log_names:00000000 s_link_log_names
+
+NO UNDEFINED SYMBOLS

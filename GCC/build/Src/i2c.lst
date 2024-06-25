@@ -1,0 +1,1122 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"i2c.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata.MX_I2C1_Init.str1.1,"aMS",%progbits,1
+  18              	.LC0:
+  19 0000 643A2F6C 		.ascii	"d:/liteos/code/WIFI2/Src/i2c.c\000"
+  19      6974656F 
+  19      732F636F 
+  19      64652F57 
+  19      49464932 
+  20              		.section	.text.MX_I2C1_Init,"ax",%progbits
+  21              		.align	1
+  22              		.global	MX_I2C1_Init
+  23              		.arch armv7e-m
+  24              		.syntax unified
+  25              		.thumb
+  26              		.thumb_func
+  27              		.fpu fpv4-sp-d16
+  29              	MX_I2C1_Init:
+  30              	.LFB287:
+  31              		.file 1 "d:/liteos/code/WIFI2/Src/i2c.c"
+   1:d:/liteos/code/WIFI2/Src\i2c.c **** /**
+   2:d:/liteos/code/WIFI2/Src\i2c.c ****   ******************************************************************************
+   3:d:/liteos/code/WIFI2/Src\i2c.c ****   * File Name          : I2C.c
+   4:d:/liteos/code/WIFI2/Src\i2c.c ****   * Description        : This file provides code for the configuration
+   5:d:/liteos/code/WIFI2/Src\i2c.c ****   *                      of the I2C instances.
+   6:d:/liteos/code/WIFI2/Src\i2c.c ****   ******************************************************************************
+   7:d:/liteos/code/WIFI2/Src\i2c.c ****   ** This notice applies to any and all portions of this file
+   8:d:/liteos/code/WIFI2/Src\i2c.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:d:/liteos/code/WIFI2/Src\i2c.c ****   * USER CODE END. Other portions of this file, whether 
+  10:d:/liteos/code/WIFI2/Src\i2c.c ****   * inserted by the user or by software development tools
+  11:d:/liteos/code/WIFI2/Src\i2c.c ****   * are owned by their respective copyright owners.
+  12:d:/liteos/code/WIFI2/Src\i2c.c ****   *
+  13:d:/liteos/code/WIFI2/Src\i2c.c ****   * COPYRIGHT(c) 2019 STMicroelectronics
+  14:d:/liteos/code/WIFI2/Src\i2c.c ****   *
+  15:d:/liteos/code/WIFI2/Src\i2c.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:d:/liteos/code/WIFI2/Src\i2c.c ****   * are permitted provided that the following conditions are met:
+  17:d:/liteos/code/WIFI2/Src\i2c.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:d:/liteos/code/WIFI2/Src\i2c.c ****   *      this list of conditions and the following disclaimer.
+  19:d:/liteos/code/WIFI2/Src\i2c.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:d:/liteos/code/WIFI2/Src\i2c.c ****   *      this list of conditions and the following disclaimer in the documentation
+  21:d:/liteos/code/WIFI2/Src\i2c.c ****   *      and/or other materials provided with the distribution.
+  22:d:/liteos/code/WIFI2/Src\i2c.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:d:/liteos/code/WIFI2/Src\i2c.c ****   *      may be used to endorse or promote products derived from this software
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 2
+
+
+  24:d:/liteos/code/WIFI2/Src\i2c.c ****   *      without specific prior written permission.
+  25:d:/liteos/code/WIFI2/Src\i2c.c ****   *
+  26:d:/liteos/code/WIFI2/Src\i2c.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:d:/liteos/code/WIFI2/Src\i2c.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:d:/liteos/code/WIFI2/Src\i2c.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:d:/liteos/code/WIFI2/Src\i2c.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:d:/liteos/code/WIFI2/Src\i2c.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:d:/liteos/code/WIFI2/Src\i2c.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:d:/liteos/code/WIFI2/Src\i2c.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:d:/liteos/code/WIFI2/Src\i2c.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:d:/liteos/code/WIFI2/Src\i2c.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:d:/liteos/code/WIFI2/Src\i2c.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:d:/liteos/code/WIFI2/Src\i2c.c ****   *
+  37:d:/liteos/code/WIFI2/Src\i2c.c ****   ******************************************************************************
+  38:d:/liteos/code/WIFI2/Src\i2c.c ****   */
+  39:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  40:d:/liteos/code/WIFI2/Src\i2c.c **** /* Includes ------------------------------------------------------------------*/
+  41:d:/liteos/code/WIFI2/Src\i2c.c **** #include "i2c.h"
+  42:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  43:d:/liteos/code/WIFI2/Src\i2c.c **** #include "gpio.h"
+  44:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  45:d:/liteos/code/WIFI2/Src\i2c.c **** /* USER CODE BEGIN 0 */
+  46:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  47:d:/liteos/code/WIFI2/Src\i2c.c **** /* USER CODE END 0 */
+  48:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  49:d:/liteos/code/WIFI2/Src\i2c.c **** I2C_HandleTypeDef hi2c1;
+  50:d:/liteos/code/WIFI2/Src\i2c.c **** I2C_HandleTypeDef hi2c2;
+  51:d:/liteos/code/WIFI2/Src\i2c.c **** I2C_HandleTypeDef hi2c3;
+  52:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  53:d:/liteos/code/WIFI2/Src\i2c.c **** /* I2C1 init function */
+  54:d:/liteos/code/WIFI2/Src\i2c.c **** void MX_I2C1_Init(void)
+  55:d:/liteos/code/WIFI2/Src\i2c.c **** {
+  32              		.loc 1 55 1 view -0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  56:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  57:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Instance = I2C1;
+  36              		.loc 1 57 3 view .LVU1
+  55:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  37              		.loc 1 55 1 is_stmt 0 view .LVU2
+  38 0000 08B5     		push	{r3, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 3, -8
+  42              		.cfi_offset 14, -4
+  43              		.loc 1 57 18 view .LVU3
+  44 0002 1548     		ldr	r0, .L11
+  58:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Init.Timing = 0x10909CEC;
+  45              		.loc 1 58 21 view .LVU4
+  46 0004 154A     		ldr	r2, .L11+4
+  47 0006 164B     		ldr	r3, .L11+8
+  48 0008 C0E90023 		strd	r2, r3, [r0]
+  59:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Init.OwnAddress1 = 0;
+  49              		.loc 1 59 3 is_stmt 1 view .LVU5
+  60:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  50              		.loc 1 60 29 is_stmt 0 view .LVU6
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 3
+
+
+  51 000c 0023     		movs	r3, #0
+  52 000e 0122     		movs	r2, #1
+  53 0010 C0E90232 		strd	r3, r2, [r0, #8]
+  61:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  54              		.loc 1 61 3 is_stmt 1 view .LVU7
+  62:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Init.OwnAddress2 = 0;
+  55              		.loc 1 62 26 is_stmt 0 view .LVU8
+  56 0014 C0E90433 		strd	r3, r3, [r0, #16]
+  63:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+  57              		.loc 1 63 3 is_stmt 1 view .LVU9
+  64:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  58              		.loc 1 64 30 is_stmt 0 view .LVU10
+  59 0018 C0E90633 		strd	r3, r3, [r0, #24]
+  65:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  60              		.loc 1 65 3 is_stmt 1 view .LVU11
+  61              		.loc 1 65 28 is_stmt 0 view .LVU12
+  62 001c 0362     		str	r3, [r0, #32]
+  66:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  63              		.loc 1 66 3 is_stmt 1 view .LVU13
+  64              		.loc 1 66 7 is_stmt 0 view .LVU14
+  65 001e FFF7FEFF 		bl	HAL_I2C_Init
+  66              	.LVL0:
+  67              		.loc 1 66 6 view .LVU15
+  68 0022 18B1     		cbz	r0, .L2
+  67:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+  68:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+  69              		.loc 1 68 5 is_stmt 1 view .LVU16
+  70 0024 0F48     		ldr	r0, .L11+12
+  71 0026 4421     		movs	r1, #68
+  72 0028 FFF7FEFF 		bl	_Error_Handler
+  73              	.LVL1:
+  74              	.L2:
+  69:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+  70:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  71:d:/liteos/code/WIFI2/Src\i2c.c ****     /**Configure Analogue filter 
+  72:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+  73:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+  75              		.loc 1 73 3 view .LVU17
+  76              		.loc 1 73 7 is_stmt 0 view .LVU18
+  77 002c 0A48     		ldr	r0, .L11
+  78 002e 0021     		movs	r1, #0
+  79 0030 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+  80              	.LVL2:
+  81              		.loc 1 73 6 view .LVU19
+  82 0034 18B1     		cbz	r0, .L3
+  74:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+  75:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+  83              		.loc 1 75 5 is_stmt 1 view .LVU20
+  84 0036 0B48     		ldr	r0, .L11+12
+  85 0038 4B21     		movs	r1, #75
+  86 003a FFF7FEFF 		bl	_Error_Handler
+  87              	.LVL3:
+  88              	.L3:
+  76:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+  77:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  78:d:/liteos/code/WIFI2/Src\i2c.c ****     /**Configure Digital filter 
+  79:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 4
+
+
+  80:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+  89              		.loc 1 80 3 view .LVU21
+  90              		.loc 1 80 7 is_stmt 0 view .LVU22
+  91 003e 0648     		ldr	r0, .L11
+  92 0040 0021     		movs	r1, #0
+  93 0042 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+  94              	.LVL4:
+  95              		.loc 1 80 6 view .LVU23
+  96 0046 28B1     		cbz	r0, .L1
+  81:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+  82:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+  97              		.loc 1 82 5 is_stmt 1 view .LVU24
+  83:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+  84:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  85:d:/liteos/code/WIFI2/Src\i2c.c **** }
+  98              		.loc 1 85 1 is_stmt 0 view .LVU25
+  99 0048 BDE80840 		pop	{r3, lr}
+ 100              	.LCFI1:
+ 101              		.cfi_remember_state
+ 102              		.cfi_restore 14
+ 103              		.cfi_restore 3
+ 104              		.cfi_def_cfa_offset 0
+  82:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 105              		.loc 1 82 5 view .LVU26
+ 106 004c 0548     		ldr	r0, .L11+12
+ 107 004e 5221     		movs	r1, #82
+ 108 0050 FFF7FEBF 		b	_Error_Handler
+ 109              	.LVL5:
+ 110              	.L1:
+ 111              	.LCFI2:
+ 112              		.cfi_restore_state
+ 113              		.loc 1 85 1 view .LVU27
+ 114 0054 08BD     		pop	{r3, pc}
+ 115              	.L12:
+ 116 0056 00BF     		.align	2
+ 117              	.L11:
+ 118 0058 00000000 		.word	hi2c1
+ 119 005c 00540040 		.word	1073763328
+ 120 0060 EC9C9010 		.word	277912812
+ 121 0064 00000000 		.word	.LC0
+ 122              		.cfi_endproc
+ 123              	.LFE287:
+ 125              		.section	.text.MX_I2C2_Init,"ax",%progbits
+ 126              		.align	1
+ 127              		.global	MX_I2C2_Init
+ 128              		.syntax unified
+ 129              		.thumb
+ 130              		.thumb_func
+ 131              		.fpu fpv4-sp-d16
+ 133              	MX_I2C2_Init:
+ 134              	.LFB288:
+  86:d:/liteos/code/WIFI2/Src\i2c.c **** /* I2C2 init function */
+  87:d:/liteos/code/WIFI2/Src\i2c.c **** void MX_I2C2_Init(void)
+  88:d:/liteos/code/WIFI2/Src\i2c.c **** {
+ 135              		.loc 1 88 1 is_stmt 1 view -0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 5
+
+
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+  89:d:/liteos/code/WIFI2/Src\i2c.c **** 
+  90:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Instance = I2C2;
+ 139              		.loc 1 90 3 view .LVU29
+  88:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 140              		.loc 1 88 1 is_stmt 0 view .LVU30
+ 141 0000 08B5     		push	{r3, lr}
+ 142              	.LCFI3:
+ 143              		.cfi_def_cfa_offset 8
+ 144              		.cfi_offset 3, -8
+ 145              		.cfi_offset 14, -4
+ 146              		.loc 1 90 18 view .LVU31
+ 147 0002 1548     		ldr	r0, .L23
+  91:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Init.Timing = 0x10909CEC;
+ 148              		.loc 1 91 21 view .LVU32
+ 149 0004 154A     		ldr	r2, .L23+4
+ 150 0006 164B     		ldr	r3, .L23+8
+ 151 0008 C0E90023 		strd	r2, r3, [r0]
+  92:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Init.OwnAddress1 = 0;
+ 152              		.loc 1 92 3 is_stmt 1 view .LVU33
+  93:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 153              		.loc 1 93 29 is_stmt 0 view .LVU34
+ 154 000c 0023     		movs	r3, #0
+ 155 000e 0122     		movs	r2, #1
+ 156 0010 C0E90232 		strd	r3, r2, [r0, #8]
+  94:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 157              		.loc 1 94 3 is_stmt 1 view .LVU35
+  95:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Init.OwnAddress2 = 0;
+ 158              		.loc 1 95 26 is_stmt 0 view .LVU36
+ 159 0014 C0E90433 		strd	r3, r3, [r0, #16]
+  96:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+ 160              		.loc 1 96 3 is_stmt 1 view .LVU37
+  97:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 161              		.loc 1 97 30 is_stmt 0 view .LVU38
+ 162 0018 C0E90633 		strd	r3, r3, [r0, #24]
+  98:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c2.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+ 163              		.loc 1 98 3 is_stmt 1 view .LVU39
+ 164              		.loc 1 98 28 is_stmt 0 view .LVU40
+ 165 001c 0362     		str	r3, [r0, #32]
+  99:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c2) != HAL_OK)
+ 166              		.loc 1 99 3 is_stmt 1 view .LVU41
+ 167              		.loc 1 99 7 is_stmt 0 view .LVU42
+ 168 001e FFF7FEFF 		bl	HAL_I2C_Init
+ 169              	.LVL6:
+ 170              		.loc 1 99 6 view .LVU43
+ 171 0022 18B1     		cbz	r0, .L14
+ 100:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 101:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 172              		.loc 1 101 5 is_stmt 1 view .LVU44
+ 173 0024 0F48     		ldr	r0, .L23+12
+ 174 0026 6521     		movs	r1, #101
+ 175 0028 FFF7FEFF 		bl	_Error_Handler
+ 176              	.LVL7:
+ 177              	.L14:
+ 102:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 103:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 104:d:/liteos/code/WIFI2/Src\i2c.c ****     /**Configure Analogue filter 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 6
+
+
+ 105:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 106:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c2, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+ 178              		.loc 1 106 3 view .LVU45
+ 179              		.loc 1 106 7 is_stmt 0 view .LVU46
+ 180 002c 0A48     		ldr	r0, .L23
+ 181 002e 0021     		movs	r1, #0
+ 182 0030 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+ 183              	.LVL8:
+ 184              		.loc 1 106 6 view .LVU47
+ 185 0034 18B1     		cbz	r0, .L15
+ 107:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 108:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 186              		.loc 1 108 5 is_stmt 1 view .LVU48
+ 187 0036 0B48     		ldr	r0, .L23+12
+ 188 0038 6C21     		movs	r1, #108
+ 189 003a FFF7FEFF 		bl	_Error_Handler
+ 190              	.LVL9:
+ 191              	.L15:
+ 109:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 110:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 111:d:/liteos/code/WIFI2/Src\i2c.c ****     /**Configure Digital filter 
+ 112:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 113:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c2, 0) != HAL_OK)
+ 192              		.loc 1 113 3 view .LVU49
+ 193              		.loc 1 113 7 is_stmt 0 view .LVU50
+ 194 003e 0648     		ldr	r0, .L23
+ 195 0040 0021     		movs	r1, #0
+ 196 0042 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+ 197              	.LVL10:
+ 198              		.loc 1 113 6 view .LVU51
+ 199 0046 28B1     		cbz	r0, .L13
+ 114:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 115:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 200              		.loc 1 115 5 is_stmt 1 view .LVU52
+ 116:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 117:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 118:d:/liteos/code/WIFI2/Src\i2c.c **** }
+ 201              		.loc 1 118 1 is_stmt 0 view .LVU53
+ 202 0048 BDE80840 		pop	{r3, lr}
+ 203              	.LCFI4:
+ 204              		.cfi_remember_state
+ 205              		.cfi_restore 14
+ 206              		.cfi_restore 3
+ 207              		.cfi_def_cfa_offset 0
+ 115:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 208              		.loc 1 115 5 view .LVU54
+ 209 004c 0548     		ldr	r0, .L23+12
+ 210 004e 7321     		movs	r1, #115
+ 211 0050 FFF7FEBF 		b	_Error_Handler
+ 212              	.LVL11:
+ 213              	.L13:
+ 214              	.LCFI5:
+ 215              		.cfi_restore_state
+ 216              		.loc 1 118 1 view .LVU55
+ 217 0054 08BD     		pop	{r3, pc}
+ 218              	.L24:
+ 219 0056 00BF     		.align	2
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 7
+
+
+ 220              	.L23:
+ 221 0058 00000000 		.word	hi2c2
+ 222 005c 00580040 		.word	1073764352
+ 223 0060 EC9C9010 		.word	277912812
+ 224 0064 00000000 		.word	.LC0
+ 225              		.cfi_endproc
+ 226              	.LFE288:
+ 228              		.section	.text.MX_I2C3_Init,"ax",%progbits
+ 229              		.align	1
+ 230              		.global	MX_I2C3_Init
+ 231              		.syntax unified
+ 232              		.thumb
+ 233              		.thumb_func
+ 234              		.fpu fpv4-sp-d16
+ 236              	MX_I2C3_Init:
+ 237              	.LFB289:
+ 119:d:/liteos/code/WIFI2/Src\i2c.c **** /* I2C3 init function */
+ 120:d:/liteos/code/WIFI2/Src\i2c.c **** void MX_I2C3_Init(void)
+ 121:d:/liteos/code/WIFI2/Src\i2c.c **** {
+ 238              		.loc 1 121 1 is_stmt 1 view -0
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 0
+ 241              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 123:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Instance = I2C3;
+ 242              		.loc 1 123 3 view .LVU57
+ 121:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 243              		.loc 1 121 1 is_stmt 0 view .LVU58
+ 244 0000 08B5     		push	{r3, lr}
+ 245              	.LCFI6:
+ 246              		.cfi_def_cfa_offset 8
+ 247              		.cfi_offset 3, -8
+ 248              		.cfi_offset 14, -4
+ 249              		.loc 1 123 18 view .LVU59
+ 250 0002 1548     		ldr	r0, .L35
+ 124:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Init.Timing = 0x10909CEC;
+ 251              		.loc 1 124 21 view .LVU60
+ 252 0004 154A     		ldr	r2, .L35+4
+ 253 0006 164B     		ldr	r3, .L35+8
+ 254 0008 C0E90023 		strd	r2, r3, [r0]
+ 125:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Init.OwnAddress1 = 0;
+ 255              		.loc 1 125 3 is_stmt 1 view .LVU61
+ 126:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 256              		.loc 1 126 29 is_stmt 0 view .LVU62
+ 257 000c 0023     		movs	r3, #0
+ 258 000e 0122     		movs	r2, #1
+ 259 0010 C0E90232 		strd	r3, r2, [r0, #8]
+ 127:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 260              		.loc 1 127 3 is_stmt 1 view .LVU63
+ 128:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Init.OwnAddress2 = 0;
+ 261              		.loc 1 128 26 is_stmt 0 view .LVU64
+ 262 0014 C0E90433 		strd	r3, r3, [r0, #16]
+ 129:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+ 263              		.loc 1 129 3 is_stmt 1 view .LVU65
+ 130:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 264              		.loc 1 130 30 is_stmt 0 view .LVU66
+ 265 0018 C0E90633 		strd	r3, r3, [r0, #24]
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 8
+
+
+ 131:d:/liteos/code/WIFI2/Src\i2c.c ****   hi2c3.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+ 266              		.loc 1 131 3 is_stmt 1 view .LVU67
+ 267              		.loc 1 131 28 is_stmt 0 view .LVU68
+ 268 001c 0362     		str	r3, [r0, #32]
+ 132:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c3) != HAL_OK)
+ 269              		.loc 1 132 3 is_stmt 1 view .LVU69
+ 270              		.loc 1 132 7 is_stmt 0 view .LVU70
+ 271 001e FFF7FEFF 		bl	HAL_I2C_Init
+ 272              	.LVL12:
+ 273              		.loc 1 132 6 view .LVU71
+ 274 0022 18B1     		cbz	r0, .L26
+ 133:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 134:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 275              		.loc 1 134 5 is_stmt 1 view .LVU72
+ 276 0024 0F48     		ldr	r0, .L35+12
+ 277 0026 8621     		movs	r1, #134
+ 278 0028 FFF7FEFF 		bl	_Error_Handler
+ 279              	.LVL13:
+ 280              	.L26:
+ 135:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 136:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 137:d:/liteos/code/WIFI2/Src\i2c.c ****     /**Configure Analogue filter 
+ 138:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 139:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c3, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+ 281              		.loc 1 139 3 view .LVU73
+ 282              		.loc 1 139 7 is_stmt 0 view .LVU74
+ 283 002c 0A48     		ldr	r0, .L35
+ 284 002e 0021     		movs	r1, #0
+ 285 0030 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+ 286              	.LVL14:
+ 287              		.loc 1 139 6 view .LVU75
+ 288 0034 18B1     		cbz	r0, .L27
+ 140:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 141:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 289              		.loc 1 141 5 is_stmt 1 view .LVU76
+ 290 0036 0B48     		ldr	r0, .L35+12
+ 291 0038 8D21     		movs	r1, #141
+ 292 003a FFF7FEFF 		bl	_Error_Handler
+ 293              	.LVL15:
+ 294              	.L27:
+ 142:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 143:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 144:d:/liteos/code/WIFI2/Src\i2c.c ****     /**Configure Digital filter 
+ 145:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 146:d:/liteos/code/WIFI2/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c3, 0) != HAL_OK)
+ 295              		.loc 1 146 3 view .LVU77
+ 296              		.loc 1 146 7 is_stmt 0 view .LVU78
+ 297 003e 0648     		ldr	r0, .L35
+ 298 0040 0021     		movs	r1, #0
+ 299 0042 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+ 300              	.LVL16:
+ 301              		.loc 1 146 6 view .LVU79
+ 302 0046 28B1     		cbz	r0, .L25
+ 147:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 148:d:/liteos/code/WIFI2/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 303              		.loc 1 148 5 is_stmt 1 view .LVU80
+ 149:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 9
+
+
+ 150:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 151:d:/liteos/code/WIFI2/Src\i2c.c **** }
+ 304              		.loc 1 151 1 is_stmt 0 view .LVU81
+ 305 0048 BDE80840 		pop	{r3, lr}
+ 306              	.LCFI7:
+ 307              		.cfi_remember_state
+ 308              		.cfi_restore 14
+ 309              		.cfi_restore 3
+ 310              		.cfi_def_cfa_offset 0
+ 148:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 311              		.loc 1 148 5 view .LVU82
+ 312 004c 0548     		ldr	r0, .L35+12
+ 313 004e 9421     		movs	r1, #148
+ 314 0050 FFF7FEBF 		b	_Error_Handler
+ 315              	.LVL17:
+ 316              	.L25:
+ 317              	.LCFI8:
+ 318              		.cfi_restore_state
+ 319              		.loc 1 151 1 view .LVU83
+ 320 0054 08BD     		pop	{r3, pc}
+ 321              	.L36:
+ 322 0056 00BF     		.align	2
+ 323              	.L35:
+ 324 0058 00000000 		.word	hi2c3
+ 325 005c 005C0040 		.word	1073765376
+ 326 0060 EC9C9010 		.word	277912812
+ 327 0064 00000000 		.word	.LC0
+ 328              		.cfi_endproc
+ 329              	.LFE289:
+ 331              		.section	.text.HAL_I2C_MspInit,"ax",%progbits
+ 332              		.align	1
+ 333              		.global	HAL_I2C_MspInit
+ 334              		.syntax unified
+ 335              		.thumb
+ 336              		.thumb_func
+ 337              		.fpu fpv4-sp-d16
+ 339              	HAL_I2C_MspInit:
+ 340              	.LVL18:
+ 341              	.LFB290:
+ 152:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 153:d:/liteos/code/WIFI2/Src\i2c.c **** void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+ 154:d:/liteos/code/WIFI2/Src\i2c.c **** {
+ 342              		.loc 1 154 1 is_stmt 1 view -0
+ 343              		.cfi_startproc
+ 344              		@ args = 0, pretend = 0, frame = 32
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 155:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 156:d:/liteos/code/WIFI2/Src\i2c.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+ 346              		.loc 1 156 3 view .LVU85
+ 157:d:/liteos/code/WIFI2/Src\i2c.c ****   if(i2cHandle->Instance==I2C1)
+ 347              		.loc 1 157 3 view .LVU86
+ 154:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 348              		.loc 1 154 1 is_stmt 0 view .LVU87
+ 349 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 350              	.LCFI9:
+ 351              		.cfi_def_cfa_offset 20
+ 352              		.cfi_offset 4, -20
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 10
+
+
+ 353              		.cfi_offset 5, -16
+ 354              		.cfi_offset 6, -12
+ 355              		.cfi_offset 7, -8
+ 356              		.cfi_offset 14, -4
+ 357              		.loc 1 157 15 view .LVU88
+ 358 0002 0368     		ldr	r3, [r0]
+ 359              		.loc 1 157 5 view .LVU89
+ 360 0004 304A     		ldr	r2, .L41
+ 361 0006 9342     		cmp	r3, r2
+ 154:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 362              		.loc 1 154 1 view .LVU90
+ 363 0008 89B0     		sub	sp, sp, #36
+ 364              	.LCFI10:
+ 365              		.cfi_def_cfa_offset 56
+ 366              		.loc 1 157 5 view .LVU91
+ 367 000a 19D1     		bne	.L38
+ 158:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 159:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 0 */
+ 160:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 161:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C1_MspInit 0 */
+ 162:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 163:d:/liteos/code/WIFI2/Src\i2c.c ****     /**I2C1 GPIO Configuration    
+ 164:d:/liteos/code/WIFI2/Src\i2c.c ****     PB6     ------> I2C1_SCL
+ 165:d:/liteos/code/WIFI2/Src\i2c.c ****     PB7     ------> I2C1_SDA 
+ 166:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 167:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+ 368              		.loc 1 167 5 is_stmt 1 view .LVU92
+ 168:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 369              		.loc 1 168 26 is_stmt 0 view .LVU93
+ 370 000c C020     		movs	r0, #192
+ 371              	.LVL19:
+ 372              		.loc 1 168 26 view .LVU94
+ 373 000e 1223     		movs	r3, #18
+ 374 0010 CDE90303 		strd	r0, r3, [sp, #12]
+ 169:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 375              		.loc 1 169 5 is_stmt 1 view .LVU95
+ 170:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 376              		.loc 1 170 27 is_stmt 0 view .LVU96
+ 377 0014 0124     		movs	r4, #1
+ 378 0016 0323     		movs	r3, #3
+ 379 0018 CDE90543 		strd	r4, r3, [sp, #20]
+ 171:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+ 380              		.loc 1 171 5 is_stmt 1 view .LVU97
+ 172:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 381              		.loc 1 172 5 is_stmt 0 view .LVU98
+ 382 001c 2B48     		ldr	r0, .L41+4
+ 171:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+ 383              		.loc 1 171 31 view .LVU99
+ 384 001e 0423     		movs	r3, #4
+ 385              		.loc 1 172 5 view .LVU100
+ 386 0020 03A9     		add	r1, sp, #12
+ 171:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+ 387              		.loc 1 171 31 view .LVU101
+ 388 0022 0793     		str	r3, [sp, #28]
+ 389              		.loc 1 172 5 is_stmt 1 view .LVU102
+ 390 0024 FFF7FEFF 		bl	HAL_GPIO_Init
+ 391              	.LVL20:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 11
+
+
+ 173:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 174:d:/liteos/code/WIFI2/Src\i2c.c ****     /* I2C1 clock enable */
+ 175:d:/liteos/code/WIFI2/Src\i2c.c ****     __HAL_RCC_I2C1_CLK_ENABLE();
+ 392              		.loc 1 175 5 view .LVU103
+ 393              	.LBB2:
+ 394              		.loc 1 175 5 view .LVU104
+ 395              		.loc 1 175 5 view .LVU105
+ 396 0028 294B     		ldr	r3, .L41+8
+ 397 002a 9A6D     		ldr	r2, [r3, #88]
+ 398 002c 42F40012 		orr	r2, r2, #2097152
+ 399 0030 9A65     		str	r2, [r3, #88]
+ 400              		.loc 1 175 5 view .LVU106
+ 401 0032 9B6D     		ldr	r3, [r3, #88]
+ 402 0034 03F40013 		and	r3, r3, #2097152
+ 403 0038 0093     		str	r3, [sp]
+ 404              		.loc 1 175 5 view .LVU107
+ 405 003a 009B     		ldr	r3, [sp]
+ 406              	.LBE2:
+ 407              		.loc 1 175 5 view .LVU108
+ 408              	.L37:
+ 176:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 1 */
+ 177:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 178:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C1_MspInit 1 */
+ 179:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 180:d:/liteos/code/WIFI2/Src\i2c.c ****   else if(i2cHandle->Instance==I2C2)
+ 181:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 182:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 0 */
+ 183:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 184:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C2_MspInit 0 */
+ 185:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 186:d:/liteos/code/WIFI2/Src\i2c.c ****     /**I2C2 GPIO Configuration    
+ 187:d:/liteos/code/WIFI2/Src\i2c.c ****     PB10     ------> I2C2_SCL
+ 188:d:/liteos/code/WIFI2/Src\i2c.c ****     PB14     ------> I2C2_SDA 
+ 189:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 190:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_14;
+ 191:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 192:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 193:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 194:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
+ 195:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 196:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 197:d:/liteos/code/WIFI2/Src\i2c.c ****     /* I2C2 clock enable */
+ 198:d:/liteos/code/WIFI2/Src\i2c.c ****     __HAL_RCC_I2C2_CLK_ENABLE();
+ 199:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 200:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 201:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C2_MspInit 1 */
+ 202:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 203:d:/liteos/code/WIFI2/Src\i2c.c ****   else if(i2cHandle->Instance==I2C3)
+ 204:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 205:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 0 */
+ 206:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 207:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C3_MspInit 0 */
+ 208:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 209:d:/liteos/code/WIFI2/Src\i2c.c ****     /**I2C3 GPIO Configuration    
+ 210:d:/liteos/code/WIFI2/Src\i2c.c ****     PA7     ------> I2C3_SCL
+ 211:d:/liteos/code/WIFI2/Src\i2c.c ****     PB4 (NJTRST)     ------> I2C3_SDA 
+ 212:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 12
+
+
+ 213:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_7;
+ 214:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 215:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 216:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 217:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 218:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 219:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 220:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_4;
+ 221:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 222:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 223:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 224:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 225:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 226:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 227:d:/liteos/code/WIFI2/Src\i2c.c ****     /* I2C3 clock enable */
+ 228:d:/liteos/code/WIFI2/Src\i2c.c ****     __HAL_RCC_I2C3_CLK_ENABLE();
+ 229:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 230:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 231:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C3_MspInit 1 */
+ 232:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 233:d:/liteos/code/WIFI2/Src\i2c.c **** }
+ 409              		.loc 1 233 1 is_stmt 0 view .LVU109
+ 410 003c 09B0     		add	sp, sp, #36
+ 411              	.LCFI11:
+ 412              		.cfi_remember_state
+ 413              		.cfi_def_cfa_offset 20
+ 414              		@ sp needed
+ 415 003e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 416              	.LVL21:
+ 417              	.L38:
+ 418              	.LCFI12:
+ 419              		.cfi_restore_state
+ 180:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 420              		.loc 1 180 8 is_stmt 1 view .LVU110
+ 180:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 421              		.loc 1 180 10 is_stmt 0 view .LVU111
+ 422 0040 244A     		ldr	r2, .L41+12
+ 423 0042 9342     		cmp	r3, r2
+ 424 0044 19D1     		bne	.L40
+ 190:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 425              		.loc 1 190 5 is_stmt 1 view .LVU112
+ 191:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 426              		.loc 1 191 26 is_stmt 0 view .LVU113
+ 427 0046 4FF48842 		mov	r2, #17408
+ 428 004a 1223     		movs	r3, #18
+ 429 004c CDE90323 		strd	r2, r3, [sp, #12]
+ 192:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 430              		.loc 1 192 5 is_stmt 1 view .LVU114
+ 193:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
+ 431              		.loc 1 193 27 is_stmt 0 view .LVU115
+ 432 0050 0121     		movs	r1, #1
+ 433 0052 0323     		movs	r3, #3
+ 434 0054 CDE90513 		strd	r1, r3, [sp, #20]
+ 194:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 435              		.loc 1 194 5 is_stmt 1 view .LVU116
+ 195:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 436              		.loc 1 195 5 is_stmt 0 view .LVU117
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 13
+
+
+ 437 0058 1C48     		ldr	r0, .L41+4
+ 438              	.LVL22:
+ 194:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 439              		.loc 1 194 31 view .LVU118
+ 440 005a 0423     		movs	r3, #4
+ 195:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 441              		.loc 1 195 5 view .LVU119
+ 442 005c 03A9     		add	r1, sp, #12
+ 194:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 443              		.loc 1 194 31 view .LVU120
+ 444 005e 0793     		str	r3, [sp, #28]
+ 195:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 445              		.loc 1 195 5 is_stmt 1 view .LVU121
+ 446 0060 FFF7FEFF 		bl	HAL_GPIO_Init
+ 447              	.LVL23:
+ 198:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 448              		.loc 1 198 5 view .LVU122
+ 449              	.LBB3:
+ 198:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 450              		.loc 1 198 5 view .LVU123
+ 198:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 451              		.loc 1 198 5 view .LVU124
+ 452 0064 1A4B     		ldr	r3, .L41+8
+ 453 0066 9A6D     		ldr	r2, [r3, #88]
+ 454 0068 42F48002 		orr	r2, r2, #4194304
+ 455 006c 9A65     		str	r2, [r3, #88]
+ 198:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 456              		.loc 1 198 5 view .LVU125
+ 457 006e 9B6D     		ldr	r3, [r3, #88]
+ 458 0070 03F48003 		and	r3, r3, #4194304
+ 459 0074 0193     		str	r3, [sp, #4]
+ 198:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 460              		.loc 1 198 5 view .LVU126
+ 461 0076 019B     		ldr	r3, [sp, #4]
+ 462              	.LBE3:
+ 198:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 463              		.loc 1 198 5 view .LVU127
+ 464 0078 E0E7     		b	.L37
+ 465              	.LVL24:
+ 466              	.L40:
+ 203:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 467              		.loc 1 203 8 view .LVU128
+ 203:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 468              		.loc 1 203 10 is_stmt 0 view .LVU129
+ 469 007a 174A     		ldr	r2, .L41+16
+ 470 007c 9342     		cmp	r3, r2
+ 471 007e DDD1     		bne	.L37
+ 213:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 472              		.loc 1 213 5 is_stmt 1 view .LVU130
+ 214:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 473              		.loc 1 214 26 is_stmt 0 view .LVU131
+ 474 0080 8023     		movs	r3, #128
+ 475 0082 1227     		movs	r7, #18
+ 216:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 476              		.loc 1 216 27 view .LVU132
+ 477 0084 0126     		movs	r6, #1
+ 478 0086 0325     		movs	r5, #3
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 14
+
+
+ 217:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 479              		.loc 1 217 31 view .LVU133
+ 480 0088 0424     		movs	r4, #4
+ 218:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 481              		.loc 1 218 5 view .LVU134
+ 482 008a 03A9     		add	r1, sp, #12
+ 483 008c 4FF09040 		mov	r0, #1207959552
+ 484              	.LVL25:
+ 214:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 485              		.loc 1 214 26 view .LVU135
+ 486 0090 CDE90337 		strd	r3, r7, [sp, #12]
+ 215:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 487              		.loc 1 215 5 is_stmt 1 view .LVU136
+ 216:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 488              		.loc 1 216 27 is_stmt 0 view .LVU137
+ 489 0094 CDE90565 		strd	r6, r5, [sp, #20]
+ 217:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 490              		.loc 1 217 5 is_stmt 1 view .LVU138
+ 217:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 491              		.loc 1 217 31 is_stmt 0 view .LVU139
+ 492 0098 0794     		str	r4, [sp, #28]
+ 218:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 493              		.loc 1 218 5 is_stmt 1 view .LVU140
+ 494 009a FFF7FEFF 		bl	HAL_GPIO_Init
+ 495              	.LVL26:
+ 220:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 496              		.loc 1 220 5 view .LVU141
+ 220:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 497              		.loc 1 220 25 is_stmt 0 view .LVU142
+ 498 009e 1023     		movs	r3, #16
+ 225:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 499              		.loc 1 225 5 view .LVU143
+ 500 00a0 0A48     		ldr	r0, .L41+4
+ 224:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 501              		.loc 1 224 31 view .LVU144
+ 502 00a2 0794     		str	r4, [sp, #28]
+ 225:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 503              		.loc 1 225 5 view .LVU145
+ 504 00a4 03A9     		add	r1, sp, #12
+ 221:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 505              		.loc 1 221 26 view .LVU146
+ 506 00a6 CDE90337 		strd	r3, r7, [sp, #12]
+ 222:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 507              		.loc 1 222 5 is_stmt 1 view .LVU147
+ 223:d:/liteos/code/WIFI2/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 508              		.loc 1 223 27 is_stmt 0 view .LVU148
+ 509 00aa CDE90565 		strd	r6, r5, [sp, #20]
+ 224:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 510              		.loc 1 224 5 is_stmt 1 view .LVU149
+ 225:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 511              		.loc 1 225 5 view .LVU150
+ 512 00ae FFF7FEFF 		bl	HAL_GPIO_Init
+ 513              	.LVL27:
+ 228:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 514              		.loc 1 228 5 view .LVU151
+ 515              	.LBB4:
+ 228:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 15
+
+
+ 516              		.loc 1 228 5 view .LVU152
+ 228:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 517              		.loc 1 228 5 view .LVU153
+ 518 00b2 074B     		ldr	r3, .L41+8
+ 519 00b4 9A6D     		ldr	r2, [r3, #88]
+ 520 00b6 42F40002 		orr	r2, r2, #8388608
+ 521 00ba 9A65     		str	r2, [r3, #88]
+ 228:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 522              		.loc 1 228 5 view .LVU154
+ 523 00bc 9B6D     		ldr	r3, [r3, #88]
+ 524 00be 03F40003 		and	r3, r3, #8388608
+ 525 00c2 0293     		str	r3, [sp, #8]
+ 228:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 526              		.loc 1 228 5 view .LVU155
+ 527 00c4 029B     		ldr	r3, [sp, #8]
+ 528              	.LBE4:
+ 228:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 529              		.loc 1 228 5 view .LVU156
+ 530              		.loc 1 233 1 is_stmt 0 view .LVU157
+ 531 00c6 B9E7     		b	.L37
+ 532              	.L42:
+ 533              		.align	2
+ 534              	.L41:
+ 535 00c8 00540040 		.word	1073763328
+ 536 00cc 00040048 		.word	1207960576
+ 537 00d0 00100240 		.word	1073876992
+ 538 00d4 00580040 		.word	1073764352
+ 539 00d8 005C0040 		.word	1073765376
+ 540              		.cfi_endproc
+ 541              	.LFE290:
+ 543              		.section	.text.HAL_I2C_MspDeInit,"ax",%progbits
+ 544              		.align	1
+ 545              		.global	HAL_I2C_MspDeInit
+ 546              		.syntax unified
+ 547              		.thumb
+ 548              		.thumb_func
+ 549              		.fpu fpv4-sp-d16
+ 551              	HAL_I2C_MspDeInit:
+ 552              	.LVL28:
+ 553              	.LFB291:
+ 234:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 235:d:/liteos/code/WIFI2/Src\i2c.c **** void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
+ 236:d:/liteos/code/WIFI2/Src\i2c.c **** {
+ 554              		.loc 1 236 1 is_stmt 1 view -0
+ 555              		.cfi_startproc
+ 556              		@ args = 0, pretend = 0, frame = 0
+ 557              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 238:d:/liteos/code/WIFI2/Src\i2c.c ****   if(i2cHandle->Instance==I2C1)
+ 558              		.loc 1 238 3 view .LVU159
+ 236:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 559              		.loc 1 236 1 is_stmt 0 view .LVU160
+ 560 0000 08B5     		push	{r3, lr}
+ 561              	.LCFI13:
+ 562              		.cfi_def_cfa_offset 8
+ 563              		.cfi_offset 3, -8
+ 564              		.cfi_offset 14, -4
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 16
+
+
+ 565              		.loc 1 238 5 view .LVU161
+ 566 0002 164A     		ldr	r2, .L48
+ 567              		.loc 1 238 15 view .LVU162
+ 568 0004 0368     		ldr	r3, [r0]
+ 569              		.loc 1 238 5 view .LVU163
+ 570 0006 9342     		cmp	r3, r2
+ 571 0008 0BD1     		bne	.L44
+ 239:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 240:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspDeInit 0 */
+ 241:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 242:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C1_MspDeInit 0 */
+ 243:d:/liteos/code/WIFI2/Src\i2c.c ****     /* Peripheral clock disable */
+ 244:d:/liteos/code/WIFI2/Src\i2c.c ****     __HAL_RCC_I2C1_CLK_DISABLE();
+ 572              		.loc 1 244 5 is_stmt 1 view .LVU164
+ 573 000a 02F5DE32 		add	r2, r2, #113664
+ 245:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 246:d:/liteos/code/WIFI2/Src\i2c.c ****     /**I2C1 GPIO Configuration    
+ 247:d:/liteos/code/WIFI2/Src\i2c.c ****     PB6     ------> I2C1_SCL
+ 248:d:/liteos/code/WIFI2/Src\i2c.c ****     PB7     ------> I2C1_SDA 
+ 249:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 250:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_6|GPIO_PIN_7);
+ 574              		.loc 1 250 5 is_stmt 0 view .LVU165
+ 575 000e C021     		movs	r1, #192
+ 244:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 576              		.loc 1 244 5 view .LVU166
+ 577 0010 936D     		ldr	r3, [r2, #88]
+ 578 0012 23F40013 		bic	r3, r3, #2097152
+ 579 0016 9365     		str	r3, [r2, #88]
+ 580              		.loc 1 250 5 is_stmt 1 view .LVU167
+ 581              	.LVL29:
+ 582              	.L47:
+ 251:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 252:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspDeInit 1 */
+ 253:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 254:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C1_MspDeInit 1 */
+ 255:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 256:d:/liteos/code/WIFI2/Src\i2c.c ****   else if(i2cHandle->Instance==I2C2)
+ 257:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 258:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspDeInit 0 */
+ 259:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 260:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C2_MspDeInit 0 */
+ 261:d:/liteos/code/WIFI2/Src\i2c.c ****     /* Peripheral clock disable */
+ 262:d:/liteos/code/WIFI2/Src\i2c.c ****     __HAL_RCC_I2C2_CLK_DISABLE();
+ 263:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 264:d:/liteos/code/WIFI2/Src\i2c.c ****     /**I2C2 GPIO Configuration    
+ 265:d:/liteos/code/WIFI2/Src\i2c.c ****     PB10     ------> I2C2_SCL
+ 266:d:/liteos/code/WIFI2/Src\i2c.c ****     PB14     ------> I2C2_SDA 
+ 267:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 268:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10|GPIO_PIN_14);
+ 269:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 270:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspDeInit 1 */
+ 271:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 272:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C2_MspDeInit 1 */
+ 273:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 274:d:/liteos/code/WIFI2/Src\i2c.c ****   else if(i2cHandle->Instance==I2C3)
+ 275:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 276:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspDeInit 0 */
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 17
+
+
+ 277:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 278:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C3_MspDeInit 0 */
+ 279:d:/liteos/code/WIFI2/Src\i2c.c ****     /* Peripheral clock disable */
+ 280:d:/liteos/code/WIFI2/Src\i2c.c ****     __HAL_RCC_I2C3_CLK_DISABLE();
+ 281:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 282:d:/liteos/code/WIFI2/Src\i2c.c ****     /**I2C3 GPIO Configuration    
+ 283:d:/liteos/code/WIFI2/Src\i2c.c ****     PA7     ------> I2C3_SCL
+ 284:d:/liteos/code/WIFI2/Src\i2c.c ****     PB4 (NJTRST)     ------> I2C3_SDA 
+ 285:d:/liteos/code/WIFI2/Src\i2c.c ****     */
+ 286:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_7);
+ 287:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 288:d:/liteos/code/WIFI2/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_4);
+ 289:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 290:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspDeInit 1 */
+ 291:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 292:d:/liteos/code/WIFI2/Src\i2c.c ****   /* USER CODE END I2C3_MspDeInit 1 */
+ 293:d:/liteos/code/WIFI2/Src\i2c.c ****   }
+ 294:d:/liteos/code/WIFI2/Src\i2c.c **** } 
+ 583              		.loc 1 294 1 is_stmt 0 view .LVU168
+ 584 0018 BDE80840 		pop	{r3, lr}
+ 585              	.LCFI14:
+ 586              		.cfi_remember_state
+ 587              		.cfi_restore 14
+ 588              		.cfi_restore 3
+ 589              		.cfi_def_cfa_offset 0
+ 288:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 590              		.loc 1 288 5 view .LVU169
+ 591 001c 1048     		ldr	r0, .L48+4
+ 592 001e FFF7FEBF 		b	HAL_GPIO_DeInit
+ 593              	.LVL30:
+ 594              	.L44:
+ 595              	.LCFI15:
+ 596              		.cfi_restore_state
+ 256:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 597              		.loc 1 256 8 is_stmt 1 view .LVU170
+ 256:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 598              		.loc 1 256 10 is_stmt 0 view .LVU171
+ 599 0022 104A     		ldr	r2, .L48+8
+ 600 0024 9342     		cmp	r3, r2
+ 601 0026 08D1     		bne	.L45
+ 262:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 602              		.loc 1 262 5 is_stmt 1 view .LVU172
+ 603 0028 02F5DC32 		add	r2, r2, #112640
+ 268:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 604              		.loc 1 268 5 is_stmt 0 view .LVU173
+ 605 002c 4FF48841 		mov	r1, #17408
+ 262:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 606              		.loc 1 262 5 view .LVU174
+ 607 0030 936D     		ldr	r3, [r2, #88]
+ 608 0032 23F48003 		bic	r3, r3, #4194304
+ 609 0036 9365     		str	r3, [r2, #88]
+ 268:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 610              		.loc 1 268 5 is_stmt 1 view .LVU175
+ 611 0038 EEE7     		b	.L47
+ 612              	.L45:
+ 274:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 613              		.loc 1 274 8 view .LVU176
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 18
+
+
+ 274:d:/liteos/code/WIFI2/Src\i2c.c ****   {
+ 614              		.loc 1 274 10 is_stmt 0 view .LVU177
+ 615 003a 0B4A     		ldr	r2, .L48+12
+ 616 003c 9342     		cmp	r3, r2
+ 617 003e 0CD1     		bne	.L43
+ 280:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 618              		.loc 1 280 5 is_stmt 1 view .LVU178
+ 619 0040 02F5DA32 		add	r2, r2, #111616
+ 286:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 620              		.loc 1 286 5 is_stmt 0 view .LVU179
+ 621 0044 8021     		movs	r1, #128
+ 280:d:/liteos/code/WIFI2/Src\i2c.c ****   
+ 622              		.loc 1 280 5 view .LVU180
+ 623 0046 936D     		ldr	r3, [r2, #88]
+ 624 0048 23F40003 		bic	r3, r3, #8388608
+ 625 004c 9365     		str	r3, [r2, #88]
+ 286:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 626              		.loc 1 286 5 is_stmt 1 view .LVU181
+ 627 004e 4FF09040 		mov	r0, #1207959552
+ 628              	.LVL31:
+ 286:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 629              		.loc 1 286 5 is_stmt 0 view .LVU182
+ 630 0052 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 631              	.LVL32:
+ 288:d:/liteos/code/WIFI2/Src\i2c.c **** 
+ 632              		.loc 1 288 5 is_stmt 1 view .LVU183
+ 633 0056 1021     		movs	r1, #16
+ 634 0058 DEE7     		b	.L47
+ 635              	.LVL33:
+ 636              	.L43:
+ 637              		.loc 1 294 1 is_stmt 0 view .LVU184
+ 638 005a 08BD     		pop	{r3, pc}
+ 639              	.L49:
+ 640              		.align	2
+ 641              	.L48:
+ 642 005c 00540040 		.word	1073763328
+ 643 0060 00040048 		.word	1207960576
+ 644 0064 00580040 		.word	1073764352
+ 645 0068 005C0040 		.word	1073765376
+ 646              		.cfi_endproc
+ 647              	.LFE291:
+ 649              		.comm	hi2c3,76,4
+ 650              		.comm	hi2c2,76,4
+ 651              		.comm	hi2c1,76,4
+ 652              		.text
+ 653              	.Letext0:
+ 654              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 655              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 656              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 657              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 658              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 659              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_ty
+ 660              		.file 8 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 661              		.file 9 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/commo
+ 662              		.file 10 "d:/liteos/code/WIFI2/Inc/system_stm32l4xx.h"
+ 663              		.file 11 "d:/liteos/code/WIFI2/Inc/stm32l431xx.h"
+ 664              		.file 12 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_c
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 19
+
+
+ 665              		.file 13 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_e
+ 666              		.file 14 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-
+ 667              		.file 15 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 668              		.file 16 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 669              		.file 17 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 670              		.file 18 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ 671              		.file 19 "d:/liteos/code/WIFI2/Inc/i2c.h"
+ 672              		.file 20 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:21     .text.MX_I2C1_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:29     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:118    .text.MX_I2C1_Init:00000058 $d
+                            *COM*:0000004c hi2c1
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:126    .text.MX_I2C2_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:133    .text.MX_I2C2_Init:00000000 MX_I2C2_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:221    .text.MX_I2C2_Init:00000058 $d
+                            *COM*:0000004c hi2c2
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:229    .text.MX_I2C3_Init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:236    .text.MX_I2C3_Init:00000000 MX_I2C3_Init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:324    .text.MX_I2C3_Init:00000058 $d
+                            *COM*:0000004c hi2c3
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:332    .text.HAL_I2C_MspInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:339    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:535    .text.HAL_I2C_MspInit:000000c8 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:544    .text.HAL_I2C_MspDeInit:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:551    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\cc3DDGSl.s:642    .text.HAL_I2C_MspDeInit:0000005c $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Init
+_Error_Handler
+HAL_I2CEx_ConfigAnalogFilter
+HAL_I2CEx_ConfigDigitalFilter
+HAL_GPIO_Init
+HAL_GPIO_DeInit

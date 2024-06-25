@@ -1,0 +1,762 @@
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"oc_lwm2m_al.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.oc_lwm2m_register,"ax",%progbits
+  18              		.align	1
+  19              		.global	oc_lwm2m_register
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	oc_lwm2m_register:
+  27              	.LVL0:
+  28              	.LFB3:
+  29              		.file 1 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al/
+   1:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * All rights reserved.
+   4:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * conditions and the following disclaimer.
+   8:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * provided with the distribution.
+  11:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * permission.
+  14:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * Notice of Export Control Law
+  28:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * ===============================================
+  29:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 2
+
+
+  30:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  * applicable export control laws and regulations.
+  33:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** /**
+  35:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  *  2019-05-14 17:22  zhangqianfu  The first version
+  37:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  *
+  38:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****  */
+  39:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  40:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** #include <stdint.h>
+  41:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** #include <stddef.h>
+  42:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  43:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** #include <string.h>
+  44:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  45:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** #include <stdlib.h>
+  46:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** #include <osal.h>
+  47:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** #include <oc_lwm2m_al.h>
+  48:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  49:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** typedef struct
+  50:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+  51:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     const char            *name;    ///< lwm2m implement name
+  52:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     const oc_lwm2m_opt_t  *opt;     ///< lwm2m implement method
+  53:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** } oc_lwm2m_t;
+  54:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** static oc_lwm2m_t  s_oc_lwm2m_ops;
+  55:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  56:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  57:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** int oc_lwm2m_register(const char *name, const oc_lwm2m_opt_t *opt)
+  58:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+  30              		.loc 1 58 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     int ret = -1;
+  35              		.loc 1 59 5 view .LVU1
+  60:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  61:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     if (NULL == s_oc_lwm2m_ops.opt)
+  36              		.loc 1 61 5 view .LVU2
+  37              		.loc 1 61 31 is_stmt 0 view .LVU3
+  38 0000 044A     		ldr	r2, .L4
+  39              		.loc 1 61 8 view .LVU4
+  40 0002 5368     		ldr	r3, [r2, #4]
+  41 0004 1BB9     		cbnz	r3, .L3
+  62:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     {
+  63:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         s_oc_lwm2m_ops.name = name;
+  42              		.loc 1 63 9 is_stmt 1 view .LVU5
+  64:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         s_oc_lwm2m_ops.opt =  opt;
+  43              		.loc 1 64 28 is_stmt 0 view .LVU6
+  44 0006 C2E90001 		strd	r0, r1, [r2]
+  65:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         ret = 0;
+  45              		.loc 1 65 9 is_stmt 1 view .LVU7
+  46              	.LVL1:
+  47              		.loc 1 65 13 is_stmt 0 view .LVU8
+  48 000a 1846     		mov	r0, r3
+  49              	.LVL2:
+  50              		.loc 1 65 13 view .LVU9
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 3
+
+
+  51 000c 7047     		bx	lr
+  52              	.LVL3:
+  53              	.L3:
+  59:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  54              		.loc 1 59 9 view .LVU10
+  55 000e 4FF0FF30 		mov	r0, #-1
+  56              	.LVL4:
+  66:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     }
+  67:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  68:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     return ret;
+  57              		.loc 1 68 5 is_stmt 1 view .LVU11
+  69:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+  58              		.loc 1 69 1 is_stmt 0 view .LVU12
+  59 0012 7047     		bx	lr
+  60              	.L5:
+  61              		.align	2
+  62              	.L4:
+  63 0014 00000000 		.word	.LANCHOR0
+  64              		.cfi_endproc
+  65              	.LFE3:
+  67              		.section	.text.oc_lwm2m_unregister,"ax",%progbits
+  68              		.align	1
+  69              		.global	oc_lwm2m_unregister
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  73              		.fpu fpv4-sp-d16
+  75              	oc_lwm2m_unregister:
+  76              	.LVL5:
+  77              	.LFB4:
+  70:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  71:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** int oc_lwm2m_unregister(const char *name)
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+  78              		.loc 1 72 1 is_stmt 1 view -0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     int ret = -1;
+  82              		.loc 1 73 5 view .LVU14
+  74:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  75:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     if ((NULL != name) && (NULL != s_oc_lwm2m_ops.name))
+  83              		.loc 1 75 5 view .LVU15
+  72:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     int ret = -1;
+  84              		.loc 1 72 1 is_stmt 0 view .LVU16
+  85 0000 10B5     		push	{r4, lr}
+  86              	.LCFI0:
+  87              		.cfi_def_cfa_offset 8
+  88              		.cfi_offset 4, -8
+  89              		.cfi_offset 14, -4
+  90              		.loc 1 75 8 view .LVU17
+  91 0002 40B1     		cbz	r0, .L10
+  92              		.loc 1 75 50 discriminator 1 view .LVU18
+  93 0004 054C     		ldr	r4, .L11
+  94 0006 2168     		ldr	r1, [r4]
+  95              		.loc 1 75 24 discriminator 1 view .LVU19
+  96 0008 29B1     		cbz	r1, .L10
+  76:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     {
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 4
+
+
+  77:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         if (0 == strcmp(name, s_oc_lwm2m_ops.name))
+  97              		.loc 1 77 9 is_stmt 1 view .LVU20
+  98              		.loc 1 77 18 is_stmt 0 view .LVU21
+  99 000a FFF7FEFF 		bl	strcmp
+ 100              	.LVL6:
+ 101              		.loc 1 77 12 view .LVU22
+ 102 000e 10B9     		cbnz	r0, .L10
+  78:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         {
+  79:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****             s_oc_lwm2m_ops.opt = NULL;   ///< also think about clear all the ops in the context,
+ 103              		.loc 1 79 13 is_stmt 1 view .LVU23
+  80:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****             s_oc_lwm2m_ops.name = NULL;
+ 104              		.loc 1 80 33 is_stmt 0 view .LVU24
+ 105 0010 C4E90000 		strd	r0, r0, [r4]
+  81:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****             ret = 0;
+ 106              		.loc 1 81 13 is_stmt 1 view .LVU25
+ 107              	.LVL7:
+ 108              	.L6:
+  82:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         }
+  83:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     }
+  84:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     return ret;
+  86:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ 109              		.loc 1 86 1 is_stmt 0 view .LVU26
+ 110 0014 10BD     		pop	{r4, pc}
+ 111              	.LVL8:
+ 112              	.L10:
+  73:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 113              		.loc 1 73 9 view .LVU27
+ 114 0016 4FF0FF30 		mov	r0, #-1
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ 115              		.loc 1 85 5 is_stmt 1 view .LVU28
+  85:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ 116              		.loc 1 85 12 is_stmt 0 view .LVU29
+ 117 001a FBE7     		b	.L6
+ 118              	.L12:
+ 119              		.align	2
+ 120              	.L11:
+ 121 001c 00000000 		.word	.LANCHOR0
+ 122              		.cfi_endproc
+ 123              	.LFE4:
+ 125              		.section	.text.oc_lwm2m_report,"ax",%progbits
+ 126              		.align	1
+ 127              		.global	oc_lwm2m_report
+ 128              		.syntax unified
+ 129              		.thumb
+ 130              		.thumb_func
+ 131              		.fpu fpv4-sp-d16
+ 133              	oc_lwm2m_report:
+ 134              	.LVL9:
+ 135              	.LFB5:
+  87:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  88:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  89:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** //////////////////////////APPLICATION INTERFACE/////////////////////////////////
+  90:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** int oc_lwm2m_report(char  *buf, int len, int timeout)
+  91:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+ 136              		.loc 1 91 1 is_stmt 1 view -0
+ 137              		.cfi_startproc
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 5
+
+
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              		@ link register save eliminated.
+  92:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     int ret = (int)en_oc_lwm2m_err_system;
+ 141              		.loc 1 92 5 view .LVU31
+  93:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  94:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     if ((NULL != s_oc_lwm2m_ops.opt) && (NULL != s_oc_lwm2m_ops.opt->report))
+ 142              		.loc 1 94 5 view .LVU32
+ 143              		.loc 1 94 32 is_stmt 0 view .LVU33
+ 144 0000 034B     		ldr	r3, .L19
+ 145 0002 5B68     		ldr	r3, [r3, #4]
+ 146              		.loc 1 94 8 view .LVU34
+ 147 0004 13B1     		cbz	r3, .L13
+ 148              		.loc 1 94 68 discriminator 1 view .LVU35
+ 149 0006 5B68     		ldr	r3, [r3, #4]
+ 150              		.loc 1 94 38 discriminator 1 view .LVU36
+ 151 0008 03B1     		cbz	r3, .L13
+  95:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     {
+  96:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         ret = s_oc_lwm2m_ops.opt->report(buf, len, timeout);
+ 152              		.loc 1 96 9 is_stmt 1 view .LVU37
+ 153              		.loc 1 96 15 is_stmt 0 view .LVU38
+ 154 000a 1847     		bx	r3
+ 155              	.LVL10:
+ 156              	.L13:
+  97:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     }
+  98:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+  99:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     return ret;
+ 100:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ 157              		.loc 1 100 1 view .LVU39
+ 158 000c 0920     		movs	r0, #9
+ 159              	.LVL11:
+ 160              		.loc 1 100 1 view .LVU40
+ 161 000e 7047     		bx	lr
+ 162              	.L20:
+ 163              		.align	2
+ 164              	.L19:
+ 165 0010 00000000 		.word	.LANCHOR0
+ 166              		.cfi_endproc
+ 167              	.LFE5:
+ 169              		.section	.text.oc_lwm2m_config,"ax",%progbits
+ 170              		.align	1
+ 171              		.global	oc_lwm2m_config
+ 172              		.syntax unified
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.fpu fpv4-sp-d16
+ 177              	oc_lwm2m_config:
+ 178              	.LVL12:
+ 179              	.LFB6:
+ 101:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 102:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 103:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** int oc_lwm2m_config( oc_config_param_t *param)
+ 104:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+ 180              		.loc 1 104 1 is_stmt 1 view -0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 6
+
+
+ 184              		@ link register save eliminated.
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     int ret = (int)en_oc_lwm2m_err_system;
+ 185              		.loc 1 105 5 view .LVU42
+ 106:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 107:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     if ((NULL != s_oc_lwm2m_ops.opt) && (NULL != s_oc_lwm2m_ops.opt->config))
+ 186              		.loc 1 107 5 view .LVU43
+ 187              		.loc 1 107 32 is_stmt 0 view .LVU44
+ 188 0000 054A     		ldr	r2, .L26
+ 189 0002 5268     		ldr	r2, [r2, #4]
+ 190              		.loc 1 107 8 view .LVU45
+ 191 0004 1AB1     		cbz	r2, .L24
+ 192              		.loc 1 107 68 discriminator 1 view .LVU46
+ 193 0006 1268     		ldr	r2, [r2]
+ 194              		.loc 1 107 38 discriminator 1 view .LVU47
+ 195 0008 0AB1     		cbz	r2, .L24
+ 108:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     {
+ 109:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         if(NULL != param)
+ 196              		.loc 1 109 9 is_stmt 1 view .LVU48
+ 197              		.loc 1 109 11 is_stmt 0 view .LVU49
+ 198 000a 10B1     		cbz	r0, .L25
+ 110:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         {
+ 111:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****             ret = s_oc_lwm2m_ops.opt->config(param);
+ 199              		.loc 1 111 13 is_stmt 1 view .LVU50
+ 200              		.loc 1 111 19 is_stmt 0 view .LVU51
+ 201 000c 1047     		bx	r2
+ 202              	.LVL13:
+ 203              	.L24:
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 204              		.loc 1 105 9 view .LVU52
+ 205 000e 0920     		movs	r0, #9
+ 206              	.LVL14:
+ 105:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 207              		.loc 1 105 9 view .LVU53
+ 208 0010 7047     		bx	lr
+ 209              	.LVL15:
+ 210              	.L25:
+ 112:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         }
+ 113:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         else
+ 114:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         {
+ 115:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****             ret = (int)en_oc_lwm2m_err_parafmt;
+ 211              		.loc 1 115 17 view .LVU54
+ 212 0012 0120     		movs	r0, #1
+ 213              	.LVL16:
+ 116:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         }
+ 117:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     }
+ 118:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 119:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     return ret;
+ 214              		.loc 1 119 5 is_stmt 1 view .LVU55
+ 120:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ 215              		.loc 1 120 1 is_stmt 0 view .LVU56
+ 216 0014 7047     		bx	lr
+ 217              	.L27:
+ 218 0016 00BF     		.align	2
+ 219              	.L26:
+ 220 0018 00000000 		.word	.LANCHOR0
+ 221              		.cfi_endproc
+ 222              	.LFE6:
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 7
+
+
+ 224              		.section	.text.oc_lwm2m_deconfig,"ax",%progbits
+ 225              		.align	1
+ 226              		.global	oc_lwm2m_deconfig
+ 227              		.syntax unified
+ 228              		.thumb
+ 229              		.thumb_func
+ 230              		.fpu fpv4-sp-d16
+ 232              	oc_lwm2m_deconfig:
+ 233              	.LFB7:
+ 121:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 122:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 123:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** int oc_lwm2m_deconfig(void)
+ 124:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+ 234              		.loc 1 124 1 is_stmt 1 view -0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 0
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 125:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     int ret = (int)en_oc_lwm2m_err_system;
+ 239              		.loc 1 125 5 view .LVU58
+ 240              	.LVL17:
+ 126:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 127:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     if ((NULL != s_oc_lwm2m_ops.opt) && (NULL != s_oc_lwm2m_ops.opt->deconfig))
+ 241              		.loc 1 127 5 view .LVU59
+ 242              		.loc 1 127 32 is_stmt 0 view .LVU60
+ 243 0000 034B     		ldr	r3, .L34
+ 244 0002 5B68     		ldr	r3, [r3, #4]
+ 245              		.loc 1 127 8 view .LVU61
+ 246 0004 13B1     		cbz	r3, .L28
+ 247              		.loc 1 127 68 discriminator 1 view .LVU62
+ 248 0006 9B68     		ldr	r3, [r3, #8]
+ 249              		.loc 1 127 38 discriminator 1 view .LVU63
+ 250 0008 03B1     		cbz	r3, .L28
+ 128:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     {
+ 129:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****         ret = s_oc_lwm2m_ops.opt->deconfig();
+ 251              		.loc 1 129 9 is_stmt 1 view .LVU64
+ 252              		.loc 1 129 15 is_stmt 0 view .LVU65
+ 253 000a 1847     		bx	r3
+ 254              	.LVL18:
+ 255              	.L28:
+ 130:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     }
+ 131:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 132:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     return ret;
+ 133:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ 256              		.loc 1 133 1 view .LVU66
+ 257 000c 0920     		movs	r0, #9
+ 258 000e 7047     		bx	lr
+ 259              	.L35:
+ 260              		.align	2
+ 261              	.L34:
+ 262 0010 00000000 		.word	.LANCHOR0
+ 263              		.cfi_endproc
+ 264              	.LFE7:
+ 266              		.section	.rodata.oc_lwm2m_imp_init.str1.1,"aMS",%progbits,1
+ 267              	.LC0:
+ 268 0000 5B25735D 		.ascii	"[%s][%u][%s] Please implement the oc lwm2m yourself"
+ 268      5B25755D 
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 8
+
+
+ 268      5B25735D 
+ 268      20506C65 
+ 268      61736520 
+ 269 0033 200A0D0D 		.ascii	" \012\015\015\012\000"
+ 269      0A00
+ 270              		.section	.text.oc_lwm2m_imp_init,"ax",%progbits
+ 271              		.align	1
+ 272              		.weak	oc_lwm2m_imp_init
+ 273              		.syntax unified
+ 274              		.thumb
+ 275              		.thumb_func
+ 276              		.fpu fpv4-sp-d16
+ 278              	oc_lwm2m_imp_init:
+ 279              	.LFB8:
+ 134:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 135:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** ///////////////////////OC LWM2M AGENT INITIALIZE////////////////////////////////
+ 136:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** __attribute__ ((weak)) int oc_lwm2m_imp_init(void)
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+ 280              		.loc 1 137 1 is_stmt 1 view -0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     LINK_LOG_WARN("Please implement the oc lwm2m yourself \n\r");
+ 284              		.loc 1 138 5 view .LVU68
+ 285              		.loc 1 138 5 view .LVU69
+ 286              		.loc 1 138 5 view .LVU70
+ 137:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     LINK_LOG_WARN("Please implement the oc lwm2m yourself \n\r");
+ 287              		.loc 1 137 1 is_stmt 0 view .LVU71
+ 288 0000 10B5     		push	{r4, lr}
+ 289              	.LCFI1:
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 4, -8
+ 292              		.cfi_offset 14, -4
+ 293              		.loc 1 138 5 view .LVU72
+ 294 0002 0320     		movs	r0, #3
+ 295 0004 FFF7FEFF 		bl	link_log_level_name
+ 296              	.LVL19:
+ 297 0008 0446     		mov	r4, r0
+ 298 000a FFF7FEFF 		bl	osal_sys_time
+ 299              	.LVL20:
+ 300 000e 2146     		mov	r1, r4
+ 301 0010 0246     		mov	r2, r0
+ 302 0012 064B     		ldr	r3, .L37
+ 303 0014 0648     		ldr	r0, .L37+4
+ 304 0016 FFF7FEFF 		bl	printf
+ 305              	.LVL21:
+ 306              		.loc 1 138 5 is_stmt 1 view .LVU73
+ 307 001a 064B     		ldr	r3, .L37+8
+ 308 001c 1B68     		ldr	r3, [r3]
+ 309 001e 9868     		ldr	r0, [r3, #8]
+ 310 0020 FFF7FEFF 		bl	fflush
+ 311              	.LVL22:
+ 312              		.loc 1 138 5 view .LVU74
+ 313              		.loc 1 138 5 view .LVU75
+ 139:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     return -1;
+ 314              		.loc 1 139 5 view .LVU76
+ 140:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 9
+
+
+ 315              		.loc 1 140 1 is_stmt 0 view .LVU77
+ 316 0024 4FF0FF30 		mov	r0, #-1
+ 317 0028 10BD     		pop	{r4, pc}
+ 318              	.L38:
+ 319 002a 00BF     		.align	2
+ 320              	.L37:
+ 321 002c 00000000 		.word	.LANCHOR1
+ 322 0030 00000000 		.word	.LC0
+ 323 0034 00000000 		.word	_impure_ptr
+ 324              		.cfi_endproc
+ 325              	.LFE8:
+ 327              		.section	.rodata.oc_lwm2m_demo_main.str1.1,"aMS",%progbits,1
+ 328              	.LC1:
+ 329 0000 5B25735D 		.ascii	"[%s][%u][%s] Please implement the oc lwm2m demo you"
+ 329      5B25755D 
+ 329      5B25735D 
+ 329      20506C65 
+ 329      61736520 
+ 330 0033 7273656C 		.ascii	"rself \012\015\015\012\000"
+ 330      66200A0D 
+ 330      0D0A00
+ 331              		.section	.text.oc_lwm2m_demo_main,"ax",%progbits
+ 332              		.align	1
+ 333              		.weak	oc_lwm2m_demo_main
+ 334              		.syntax unified
+ 335              		.thumb
+ 336              		.thumb_func
+ 337              		.fpu fpv4-sp-d16
+ 339              	oc_lwm2m_demo_main:
+ 340              	.LFB9:
+ 141:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 142:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** __attribute__ ((weak)) int oc_lwm2m_demo_main(void)
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+ 341              		.loc 1 143 1 is_stmt 1 view -0
+ 342              		.cfi_startproc
+ 343              		@ args = 0, pretend = 0, frame = 0
+ 344              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     LINK_LOG_WARN("Please implement the oc lwm2m demo yourself \n\r");
+ 345              		.loc 1 144 5 view .LVU79
+ 346              		.loc 1 144 5 view .LVU80
+ 347              		.loc 1 144 5 view .LVU81
+ 143:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     LINK_LOG_WARN("Please implement the oc lwm2m demo yourself \n\r");
+ 348              		.loc 1 143 1 is_stmt 0 view .LVU82
+ 349 0000 10B5     		push	{r4, lr}
+ 350              	.LCFI2:
+ 351              		.cfi_def_cfa_offset 8
+ 352              		.cfi_offset 4, -8
+ 353              		.cfi_offset 14, -4
+ 354              		.loc 1 144 5 view .LVU83
+ 355 0002 0320     		movs	r0, #3
+ 356 0004 FFF7FEFF 		bl	link_log_level_name
+ 357              	.LVL23:
+ 358 0008 0446     		mov	r4, r0
+ 359 000a FFF7FEFF 		bl	osal_sys_time
+ 360              	.LVL24:
+ 361 000e 2146     		mov	r1, r4
+ 362 0010 0246     		mov	r2, r0
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 10
+
+
+ 363 0012 064B     		ldr	r3, .L40
+ 364 0014 0648     		ldr	r0, .L40+4
+ 365 0016 FFF7FEFF 		bl	printf
+ 366              	.LVL25:
+ 367              		.loc 1 144 5 is_stmt 1 view .LVU84
+ 368 001a 064B     		ldr	r3, .L40+8
+ 369 001c 1B68     		ldr	r3, [r3]
+ 370 001e 9868     		ldr	r0, [r3, #8]
+ 371 0020 FFF7FEFF 		bl	fflush
+ 372              	.LVL26:
+ 373              		.loc 1 144 5 view .LVU85
+ 374              		.loc 1 144 5 view .LVU86
+ 145:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     return -1;
+ 375              		.loc 1 145 5 view .LVU87
+ 146:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ 376              		.loc 1 146 1 is_stmt 0 view .LVU88
+ 377 0024 4FF0FF30 		mov	r0, #-1
+ 378 0028 10BD     		pop	{r4, pc}
+ 379              	.L41:
+ 380 002a 00BF     		.align	2
+ 381              	.L40:
+ 382 002c 00000000 		.word	.LANCHOR2
+ 383 0030 00000000 		.word	.LC1
+ 384 0034 00000000 		.word	_impure_ptr
+ 385              		.cfi_endproc
+ 386              	.LFE9:
+ 388              		.section	.rodata.oc_lwm2m_init.str1.1,"aMS",%progbits,1
+ 389              	.LC2:
+ 390 0000 5B25735D 		.ascii	"[%s][%u][%s] IOT_LINK:DO OC LWM2M LOAD-IMPLEMENT RE"
+ 390      5B25755D 
+ 390      5B25735D 
+ 390      20494F54 
+ 390      5F4C494E 
+ 391 0033 543A2564 		.ascii	"T:%d\012\015\015\012\000"
+ 391      0A0D0D0A 
+ 391      00
+ 392              		.section	.text.oc_lwm2m_init,"ax",%progbits
+ 393              		.align	1
+ 394              		.global	oc_lwm2m_init
+ 395              		.syntax unified
+ 396              		.thumb
+ 397              		.thumb_func
+ 398              		.fpu fpv4-sp-d16
+ 400              	oc_lwm2m_init:
+ 401              	.LFB10:
+ 147:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 148:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** int oc_lwm2m_init()
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** {
+ 402              		.loc 1 149 1 is_stmt 1 view -0
+ 403              		.cfi_startproc
+ 404              		@ args = 0, pretend = 0, frame = 0
+ 405              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     int ret;
+ 406              		.loc 1 150 5 view .LVU90
+ 151:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 152:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     ret = oc_lwm2m_imp_init();
+ 407              		.loc 1 152 5 view .LVU91
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 11
+
+
+ 149:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     int ret;
+ 408              		.loc 1 149 1 is_stmt 0 view .LVU92
+ 409 0000 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 410              	.LCFI3:
+ 411              		.cfi_def_cfa_offset 24
+ 412              		.cfi_offset 4, -12
+ 413              		.cfi_offset 5, -8
+ 414              		.cfi_offset 14, -4
+ 415              		.loc 1 152 11 view .LVU93
+ 416 0002 FFF7FEFF 		bl	oc_lwm2m_imp_init
+ 417              	.LVL27:
+ 418 0006 0546     		mov	r5, r0
+ 419              	.LVL28:
+ 153:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 154:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     LINK_LOG_DEBUG("IOT_LINK:DO OC LWM2M LOAD-IMPLEMENT RET:%d\n\r",ret);
+ 420              		.loc 1 154 5 is_stmt 1 view .LVU94
+ 421              		.loc 1 154 5 view .LVU95
+ 422 0008 FFF7FEFF 		bl	link_log_level_get
+ 423              	.LVL29:
+ 424              		.loc 1 154 5 is_stmt 0 view .LVU96
+ 425 000c 0128     		cmp	r0, #1
+ 426 000e 11D8     		bhi	.L43
+ 427              		.loc 1 154 5 is_stmt 1 discriminator 1 view .LVU97
+ 428              		.loc 1 154 5 discriminator 1 view .LVU98
+ 429              		.loc 1 154 5 discriminator 1 view .LVU99
+ 430 0010 0120     		movs	r0, #1
+ 431 0012 FFF7FEFF 		bl	link_log_level_name
+ 432              	.LVL30:
+ 433 0016 0446     		mov	r4, r0
+ 434 0018 FFF7FEFF 		bl	osal_sys_time
+ 435              	.LVL31:
+ 436 001c 074B     		ldr	r3, .L44
+ 437 001e 0095     		str	r5, [sp]
+ 438 0020 0246     		mov	r2, r0
+ 439 0022 2146     		mov	r1, r4
+ 440 0024 0648     		ldr	r0, .L44+4
+ 441 0026 FFF7FEFF 		bl	printf
+ 442              	.LVL32:
+ 443              		.loc 1 154 5 discriminator 1 view .LVU100
+ 444 002a 064B     		ldr	r3, .L44+8
+ 445 002c 1B68     		ldr	r3, [r3]
+ 446 002e 9868     		ldr	r0, [r3, #8]
+ 447 0030 FFF7FEFF 		bl	fflush
+ 448              	.LVL33:
+ 449              	.L43:
+ 450              		.loc 1 154 5 discriminator 3 view .LVU101
+ 451              		.loc 1 154 5 discriminator 3 view .LVU102
+ 452              		.loc 1 154 5 discriminator 3 view .LVU103
+ 155:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 156:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** #ifdef  CONFIG_OCLWM2M_DEMO_ENABLE
+ 157:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     (void) oc_lwm2m_demo_main();
+ 158:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** #endif
+ 159:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** 
+ 160:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c ****     return 0;
+ 453              		.loc 1 160 5 discriminator 3 view .LVU104
+ 161:C:/Users/²Ü¼ÒºÀ/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al\oc_lwm2m_al.c **** }
+ 454              		.loc 1 161 1 is_stmt 0 discriminator 3 view .LVU105
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 12
+
+
+ 455 0034 0020     		movs	r0, #0
+ 456 0036 03B0     		add	sp, sp, #12
+ 457              	.LCFI4:
+ 458              		.cfi_def_cfa_offset 12
+ 459              		@ sp needed
+ 460 0038 30BD     		pop	{r4, r5, pc}
+ 461              	.LVL34:
+ 462              	.L45:
+ 463              		.loc 1 161 1 discriminator 3 view .LVU106
+ 464 003a 00BF     		.align	2
+ 465              	.L44:
+ 466 003c 00000000 		.word	.LANCHOR3
+ 467 0040 00000000 		.word	.LC2
+ 468 0044 00000000 		.word	_impure_ptr
+ 469              		.cfi_endproc
+ 470              	.LFE10:
+ 472              		.section	.bss.s_oc_lwm2m_ops,"aw",%nobits
+ 473              		.align	2
+ 474              		.set	.LANCHOR0,. + 0
+ 477              	s_oc_lwm2m_ops:
+ 478 0000 00000000 		.space	8
+ 478      00000000 
+ 479              		.section	.rodata.__FUNCTION__.7458,"a"
+ 480              		.set	.LANCHOR1,. + 0
+ 483              	__FUNCTION__.7458:
+ 484 0000 6F635F6C 		.ascii	"oc_lwm2m_imp_init\000"
+ 484      776D326D 
+ 484      5F696D70 
+ 484      5F696E69 
+ 484      7400
+ 485              		.section	.rodata.__FUNCTION__.7462,"a"
+ 486              		.set	.LANCHOR2,. + 0
+ 489              	__FUNCTION__.7462:
+ 490 0000 6F635F6C 		.ascii	"oc_lwm2m_demo_main\000"
+ 490      776D326D 
+ 490      5F64656D 
+ 490      6F5F6D61 
+ 490      696E00
+ 491              		.section	.rodata.__FUNCTION__.7466,"a"
+ 492              		.set	.LANCHOR3,. + 0
+ 495              	__FUNCTION__.7466:
+ 496 0000 6F635F6C 		.ascii	"oc_lwm2m_init\000"
+ 496      776D326D 
+ 496      5F696E69 
+ 496      7400
+ 497              		.text
+ 498              	.Letext0:
+ 499              		.file 2 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 500              		.file 3 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 501              		.file 4 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-no
+ 502              		.file 5 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 503              		.file 6 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 504              		.file 7 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/oc/oc_lwm2m/oc_lwm2m_al/
+ 505              		.file 8 "C:/Users/\262\334\274\322\272\300/.iotlink/sdk/IoT_LINK/iot_link/inc/link_log.h"
+ 506              		.file 9 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\i
+ 507              		.file 10 "c:\\users\\\262\334\274\322\272\300\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\
+ARM GAS  C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 oc_lwm2m_al.c
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:18     .text.oc_lwm2m_register:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:26     .text.oc_lwm2m_register:00000000 oc_lwm2m_register
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:63     .text.oc_lwm2m_register:00000014 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:68     .text.oc_lwm2m_unregister:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:75     .text.oc_lwm2m_unregister:00000000 oc_lwm2m_unregister
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:121    .text.oc_lwm2m_unregister:0000001c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:126    .text.oc_lwm2m_report:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:133    .text.oc_lwm2m_report:00000000 oc_lwm2m_report
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:165    .text.oc_lwm2m_report:00000010 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:170    .text.oc_lwm2m_config:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:177    .text.oc_lwm2m_config:00000000 oc_lwm2m_config
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:220    .text.oc_lwm2m_config:00000018 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:225    .text.oc_lwm2m_deconfig:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:232    .text.oc_lwm2m_deconfig:00000000 oc_lwm2m_deconfig
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:262    .text.oc_lwm2m_deconfig:00000010 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:271    .text.oc_lwm2m_imp_init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:278    .text.oc_lwm2m_imp_init:00000000 oc_lwm2m_imp_init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:321    .text.oc_lwm2m_imp_init:0000002c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:332    .text.oc_lwm2m_demo_main:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:339    .text.oc_lwm2m_demo_main:00000000 oc_lwm2m_demo_main
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:382    .text.oc_lwm2m_demo_main:0000002c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:393    .text.oc_lwm2m_init:00000000 $t
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:400    .text.oc_lwm2m_init:00000000 oc_lwm2m_init
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:466    .text.oc_lwm2m_init:0000003c $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:473    .bss.s_oc_lwm2m_ops:00000000 $d
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:477    .bss.s_oc_lwm2m_ops:00000000 s_oc_lwm2m_ops
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:483    .rodata.__FUNCTION__.7458:00000000 __FUNCTION__.7458
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:489    .rodata.__FUNCTION__.7462:00000000 __FUNCTION__.7462
+C:\Users\²Ü¼ÒºÀ\AppData\Local\Temp\ccwgcUs8.s:495    .rodata.__FUNCTION__.7466:00000000 __FUNCTION__.7466
+
+UNDEFINED SYMBOLS
+strcmp
+link_log_level_name
+osal_sys_time
+printf
+fflush
+_impure_ptr
+link_log_level_get
